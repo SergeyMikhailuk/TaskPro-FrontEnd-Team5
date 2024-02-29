@@ -1,16 +1,17 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import {
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from 'react-router-dom';
+
+import routing from 'containers/routes';
+
+const basename = '/';
+
+const router = createBrowserRouter(createRoutesFromElements(routing()), {
+  basename,
+});
+
+const App = () => <RouterProvider router={router} />;
+
+export default App;
