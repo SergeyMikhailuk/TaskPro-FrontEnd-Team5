@@ -6,12 +6,11 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 
+import 'styles/normalize.css';
 import routing from 'containers/routes';
 
-const basename = 'https://github.com/SergeyMikhailuk/TaskPro-FrontEnd-Team5';
-
 const router = createBrowserRouter(createRoutesFromElements(routing()), {
-  basename,
+  basename: '/TaskPro-FrontEnd-Team5',
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(
