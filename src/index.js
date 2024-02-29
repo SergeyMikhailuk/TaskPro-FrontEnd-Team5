@@ -8,7 +8,7 @@ import {
 
 import routing from 'containers/routes';
 
-const basename = '/';
+const basename = 'https://sergeymikhailuk.github.io/';
 
 const router = createBrowserRouter(createRoutesFromElements(routing()), {
   basename,
