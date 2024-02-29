@@ -8,7 +8,7 @@ import {
 
 import routing from 'containers/routes';
 
-const basename = 'https://sergeymikhailuk.github.io/';
+const basename = 'https://github.com/SergeyMikhailuk/TaskPro-FrontEnd-Team5';
 
 const router = createBrowserRouter(createRoutesFromElements(routing()), {
   basename,
