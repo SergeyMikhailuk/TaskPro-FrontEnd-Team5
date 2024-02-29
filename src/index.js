@@ -10,7 +10,7 @@ import 'styles/normalize.css';
 import routing from 'containers/routes';
 
 const router = createBrowserRouter(createRoutesFromElements(routing()), {
-  basename: '/TaskPro-FrontEnd-Team5',
+  basename: '/TaskPro-FrontEnd-Team5/',
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(

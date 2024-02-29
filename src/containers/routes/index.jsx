@@ -2,8 +2,11 @@ import { lazy } from 'react';
 import { Route, Navigate } from 'react-router-dom';
 
 import Layout from 'components/Layout';
-import TestDeployedRouting from 'containers/pages/TestDeployedRouting';
+
 const Home = lazy(() => import('containers/pages/Home'));
+const TestDeployedRouting = lazy(
+  () => import('containers/pages/TestDeployedRouting')
+);
 
 const routing = () => (
   <Route path="/" element={<Layout />}>
