@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from 'react-router-dom';
 
-import App from 'components/App';
+import 'styles/normalize.css';
+import routing from 'containers/routes';
 
-import './index.css';
+const router = createBrowserRouter(createRoutesFromElements(routing()), {
+  basename: '/TaskPro-FrontEnd-Team5',
+});
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
