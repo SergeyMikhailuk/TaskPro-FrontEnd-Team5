@@ -1,16 +1,23 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
+import Header from 'components/Header';
+import Sidebar from 'components/Sidebar';
+
+import { ContentWrapper, LayoutWrapper } from './styled';
+
 const Layout = () => (
-  <>
-    <aside>sidebar</aside>
-    <div>
-      <header>header</header>
+  <LayoutWrapper>
+    <Sidebar />
+
+    <ContentWrapper>
+      <Header />
+
       <Suspense fallback={<>Loading...</>}>
         <Outlet />
       </Suspense>
-    </div>
-  </>
+    </ContentWrapper>
+  </LayoutWrapper>
 );
 
 export default Layout;

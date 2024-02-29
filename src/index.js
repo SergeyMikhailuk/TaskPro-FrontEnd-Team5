@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import 'styles/normalize.css';
-import routing from 'containers/routes';
+import routing from 'routes';
 
 const router = createBrowserRouter(createRoutesFromElements(routing()), {
   basename: '/TaskPro-FrontEnd-Team5',
