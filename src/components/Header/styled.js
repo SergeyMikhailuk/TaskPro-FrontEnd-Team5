@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from 'constants/colors';
 
 export const AppHeader = styled.header`
   display: flex;
@@ -8,6 +9,7 @@ export const AppHeader = styled.header`
   background-color: black;
 
   h2 {
-    color: white;
+    color: ${colors.green};
+    font-family: 'Poppins', sans-serif;
   }
 `;
