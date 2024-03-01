@@ -11,6 +11,10 @@ const HomePage = () => {
       <Title>Home Page</Title>
       <Link to={'/welcome'}>welcome link</Link>
       <Link to={'/welcome'}>welcome link</Link>
+      <Link to={'/welcome'}>welcome link</Link>
+      <Link to={'/welcome'}>welcome link</Link>
+      <Link to={'/welcome'}>welcome link</Link>
+      <Link to={'/welcome'}>welcome link</Link>
     </>
   );
 };
