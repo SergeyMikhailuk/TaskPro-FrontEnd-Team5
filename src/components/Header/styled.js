@@ -9,8 +9,7 @@ export const Burger = styled(BurgerImage)`
   stroke: white;
 `;
 export const Select = styled(ReactSelect)`
-/* width: 68px; */
-
+  /* width: 68px; */
 `;
 export const AppHeader = styled.header`
   display: flex;
