@@ -29,16 +29,7 @@ import {
 const Sidebar = ({ cards }) => {
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
-
-  {
-    /*const cardsList = cards.map(card => (
-    <li key={card.id} icon={card.icon} title={card.title}>
-       <button type="button" onClick={() => editCard(card.id)}></button>
-      <button type="button" onClick={() => deleteCard(card.id)}></button> 
-    </li>
-  ));*/
-  }
-
+  console.log(cards);
   return (
     <Aside>
       <LogoBox>
