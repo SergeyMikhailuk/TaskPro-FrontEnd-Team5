@@ -36,7 +36,7 @@ export const themes = [
     modal: {
       backgroundMain: 'rgba(21, 21, 21, 1)',
       backgroundSecondary: 'rgba(31, 31, 31, 1)',
-      backgeoundAvatar: 'rgba(190, 219, 176, 1)',
+      backgroundAvatar: 'rgba(190, 219, 176, 1)',
       textMain: 'rgba(255, 255, 255, 1)',
       textSecondary: 'rgba(255, 255, 255, 0.5)',
       textAccent: 'rgba(190, 219, 176, 1)',
@@ -137,7 +137,7 @@ export const themes = [
     modal: {
       backgroundMain: 'rgba(252, 252, 252, 1)',
       backgroundSecondary: 'rgba(252, 252, 252, 1)',
-      backgeoundAvatar: 'rgba(246, 246, 247, 1)',
+      backgroundAvatar: 'rgba(246, 246, 247, 1)',
       textMain: 'rgba(22, 22, 22, 1)',
       textSecondary: 'rgba(22, 22, 22, 0.5)',
       textAccent: 'rgba(190, 219, 176, 1)',
@@ -238,7 +238,7 @@ export const themes = [
     modal: {
       backgroundMain: 'rgba(252, 252, 252, 1)',
       backgroundSecondary: 'rgba(252, 252, 252, 1)',
-      backgeoundAvatar: 'rgba(236, 237, 253, 1)',
+      backgroundAvatar: 'rgba(236, 237, 253, 1)',
       textMain: 'rgba(22, 22, 22, 1)',
       textSecondary: 'rgba(22, 22, 22, 0.5)',
       textAccent: 'rgba(82, 85, 188, 1)',
