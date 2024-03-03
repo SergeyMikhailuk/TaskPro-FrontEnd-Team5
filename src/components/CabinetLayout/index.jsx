@@ -6,7 +6,6 @@ import { getTheme } from 'store/themeSlice';
 // import { theme } from 'constants/theme';
 import Header from 'components/Header';
 import Sidebar from 'components/Sidebar';
-
 // background-color: ${props => props.theme.sidebar.projectActive};
 
 import { ContentWrapper, LayoutWrapper } from './styled';
