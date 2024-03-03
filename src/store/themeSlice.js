@@ -10,4 +10,4 @@ export const themeSlice = createSlice({
 
 export const { setTheme } = themeSlice.actions;
 
-export const getTheme = state => state.theme;
+export const getThemeName = state => state.theme;

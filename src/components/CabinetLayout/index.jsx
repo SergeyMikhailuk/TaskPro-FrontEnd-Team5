@@ -3,19 +3,19 @@ import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
-import { getTheme } from 'store/themeSlice';
-import { theme } from 'constants/theme';
+import { getThemeName } from 'store/themeSlice';
+import { themes } from 'constants/theme';
 import Header from 'components/Header';
 import Sidebar from 'components/Sidebar';
 
 import { ContentWrapper, LayoutWrapper } from './styled';
 
 const CabinetLayout = () => {
-  const currentThemeName = useSelector(getTheme);
-  const currentTheme = theme.find(theme => theme.name === currentThemeName);
+  const themeName = useSelector(getThemeName);
+  const theme = themes.find(theme => theme.name === themeName);
 
   return (
-    <ThemeProvider theme={currentTheme}>
+    <ThemeProvider theme={theme}>
       <LayoutWrapper>
         <Sidebar />
 
