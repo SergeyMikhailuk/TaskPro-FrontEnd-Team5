@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import { ReactComponent as AppLogoSvg } from '../../images/sidebar/logo-icon.svg';
-import { ReactComponent as AppBtnSvg } from '../../images/sidebar/add-btn.svg';
-import { ReactComponent as AppHelpsBtnSvg } from '../../images/sidebar/help-icon.svg';
-import { ReactComponent as AppLogOutBtnSvg } from '../../images/sidebar/log-out-icon.svg';
+import { ReactComponent as AppLogoSvg } from 'images/sidebar/logo-icon.svg';
+import { ReactComponent as AppBtnSvg } from 'images/sidebar/add-btn.svg';
+import { ReactComponent as AppHelpsBtnSvg } from 'images/sidebar/help-icon.svg';
+import { ReactComponent as AppLogOutBtnSvg } from 'images/sidebar/log-out-icon.svg';
 
 export const Aside = styled.aside`
   width: 225px;
@@ -15,15 +15,17 @@ export const Aside = styled.aside`
     padding: 24px;
   }
 `;
+
 export const LogoBox = styled.div`
-  width: 104px;
   margin-bottom: 70px;
   display: flex;
+  align-items: center;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 60px;
   }
 `;
+
 export const AppLogo = styled(AppLogoSvg)`
   width: 32px;
   height: 32px;
@@ -36,7 +38,7 @@ export const AppLogo = styled(AppLogoSvg)`
 
 export const LogoBoxTitle = styled.h2`
   color: #fff;
-  font-family: inherit;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.64px;
 `;
@@ -46,7 +48,7 @@ export const AddBoards = styled.div`
 `;
 
 export const AddBoardsTitle = styled.h3`
-  font-family: inherit;
+  font-weight: 400;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: -0.32px;
@@ -66,24 +68,27 @@ export const AddBoardsCreateBox = styled.div`
     width: 212px;
   }
 `;
+
 export const AddBoardsCreateText = styled.div`
-  width: 76px;
   font-weight: 500;
   font-size: 14px;
   color: #fff;
   letter-spacing: -0.32px;
 `;
+
 export const AddBoardsCreateBtnWrap = styled.button`
   border: none;
   background-color: transparent;
 `;
+
 export const AddBoardsCreateBtn = styled(AppBtnSvg)`
   width: 40px;
   height: 36px;
   border-radius: 6px;
   background-color: #bedbb0;
 `;
-export const Boards = styled.ul`
+
+export const CardsBoard = styled.ul`
   height: 185px;
   overflow: auto;
   margin-bottom: 40px;
@@ -103,9 +108,18 @@ export const Boards = styled.ul`
   }
 `;
 
-// .aside-boards-list {
-//   height: 61px;
-// }
+export const CardsBoardList = styled.li`
+  font-weight: 500;
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: -0.32px;
+  height: 61px;
+  background-color: #1f1f1f;
+  /* opacity: 0.4; */
+  padding: 20px 24px 20px 24px;
+  margin-bottom: 4px;
+`;
+
 export const BoxHelps = styled.div`
   width: 197px;
   border-radius: 8px;
@@ -120,7 +134,6 @@ export const BoxHelps = styled.div`
 `;
 
 export const BoxHelpsText = styled.p`
-  font-family: inherit;
   font-size: 12px;
   line-height: 133%;
   letter-spacing: -0.32px;
@@ -141,7 +154,6 @@ export const BoxHelpsSelectedText = styled.span`
 export const BoxHelpsBtn = styled.button`
   display: flex;
   align-items: center;
-  width: 94px;
   background-color: transparent;
   border: none;
 `;
@@ -153,7 +165,6 @@ export const BoxHelpsBtnIcon = styled(AppHelpsBtnSvg)`
 `;
 
 export const BoxHelpsBtnText = styled.p`
-  font-family: inherit;
   font-weight: 500;
   font-size: 12px;
   letter-spacing: -0.32px;
@@ -163,7 +174,6 @@ export const BoxHelpsBtnText = styled.p`
 export const LogOut = styled.div`
   display: flex;
   align-items: center;
-  font-family: inherit;
   font-weight: 500;
   font-size: 14px;
   color: #fff;
@@ -181,8 +191,11 @@ export const LogOutIcon = styled(AppLogOutBtnSvg)`
 `;
 
 export const LogOutText = styled.p`
-  font-family: inherit;
   font-weight: 500;
   font-size: 14px;
   color: #fff;
+
+  @media screen and (min-width: 1440px) {
+    font-size: 16px;
+  }
 `;
