@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/TaskPro-FrontEnd-Team5/static/css/main.bbb4e836.css",
-    "main.js": "/TaskPro-FrontEnd-Team5/static/js/main.57256ffd.js",
+    "main.js": "/TaskPro-FrontEnd-Team5/static/js/main.5d2d5b0a.js",
     "static/js/40.86ed79b0.chunk.js": "/TaskPro-FrontEnd-Team5/static/js/40.86ed79b0.chunk.js",
     "static/media/Poppins-Regular.woff": "/TaskPro-FrontEnd-Team5/static/media/Poppins-Regular.9b9d9585fc27c8fff554.woff",
     "static/media/Poppins-Medium.woff": "/TaskPro-FrontEnd-Team5/static/media/Poppins-Medium.26c20b0f1f2b2d0d7f4e.woff",
@@ -16,11 +16,11 @@
     "static/media/menu.svg": "/TaskPro-FrontEnd-Team5/static/media/menu.b945df6ff7314100fca5925ad3011fde.svg",
     "static/media/add-btn.svg": "/TaskPro-FrontEnd-Team5/static/media/add-btn.a6769b98938a032e88070b7217ff0638.svg",
     "main.bbb4e836.css.map": "/TaskPro-FrontEnd-Team5/static/css/main.bbb4e836.css.map",
-    "main.57256ffd.js.map": "/TaskPro-FrontEnd-Team5/static/js/main.57256ffd.js.map",
+    "main.5d2d5b0a.js.map": "/TaskPro-FrontEnd-Team5/static/js/main.5d2d5b0a.js.map",
     "40.86ed79b0.chunk.js.map": "/TaskPro-FrontEnd-Team5/static/js/40.86ed79b0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bbb4e836.css",
-    "static/js/main.57256ffd.js"
+    "static/js/main.5d2d5b0a.js"
   ]
 }
