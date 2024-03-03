@@ -1,9 +1,25 @@
 import React from 'react';
-// import Select from 'react-select';
+import Select from 'react-select';
 
-import user from '../../images/user.png';
+import userDark from 'images/user-dark.svg';
+import userLight from 'images/user-light.svg';
+import userViolet from 'images/user-violet.svg';
 
-import { AppHeader, Wrap, Select, Burger, Info } from './styled';
+import {
+  AppHeader,
+  Wrap,
+  Burger,
+  Info,
+  selectStyles,
+  ButtonMenu,
+  ButtonProfile,
+} from './styled';
+
+const userImages = {
+  light: userLight,
+  dark: userDark,
+  violet: userViolet,
+};
 
 const options = [
   { value: 'light', label: 'Light' },
@@ -11,15 +27,29 @@ const options = [
   { value: 'violet', label: 'Violet' },
 ];
 
+// поки ручний перехід
+const selectedOption = null;
+const optionValue = 'dark';
+const themeSelectStyles = selectStyles(selectedOption, optionValue);
+
 const Header = () => {
   return (
     <AppHeader>
-      <Burger />
+      <ButtonMenu>
+        <Burger />
+      </ButtonMenu>
       <Info>
-        <Select options={options} placeholder="Theme" />
+        <Select
+          name="theme"
+          options={options}
+          styles={themeSelectStyles}
+          placeholder="Theme"
+        />
         <Wrap>
           <p>Name</p>
-          <img src={user} alt="" />
+          <ButtonProfile>
+            <img src={userImages[optionValue]} alt="" />
+          </ButtonProfile>
         </Wrap>
       </Info>
     </AppHeader>
