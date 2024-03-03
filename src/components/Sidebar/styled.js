@@ -7,6 +7,7 @@ import { ReactComponent as AppLogOutBtnSvg } from 'images/sidebar/log-out-icon.s
 
 export const Aside = styled.aside`
   width: 225px;
+  height: 100vh;
   padding: 14px;
   background-color: #121212;
 
