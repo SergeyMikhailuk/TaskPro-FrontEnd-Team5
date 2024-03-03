@@ -4,18 +4,17 @@ import storage from 'redux-persist/lib/storage';
 
 import { themeSlice } from './themeSlice';
 
-const themePersistConfig = {
+const persistConfig = {
   key: 'root',
   storage,
-  blacklist: [],
 };
 
 const rootReducer = combineReducers({
-  theme: persistReducer(themePersistConfig, themeSlice.reducer),
+  theme: themeSlice.reducer,
 });
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: persistReducer(persistConfig, rootReducer),
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false,
