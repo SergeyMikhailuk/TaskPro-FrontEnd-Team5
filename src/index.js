@@ -1,21 +1,22 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux'
-import { store } from 'redux/store';
-import { App } from 'App';
+import ReactDOM from 'react-dom/client';
+import {
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from 'react-router-dom';
+
 import 'modern-normalize';
 import 'styles/base.css';
 
-const root = document.getElementById('root');
+import routing from 'routes';
 
+const router = createBrowserRouter(createRoutesFromElements(routing()), {
+  basename: '/TaskPro-FrontEnd-Team5',
+});
 
-createRoot(root).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter basename="/TaskPro-FrontEnd-Team6">
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
