@@ -13,7 +13,8 @@ import {
   AddBoardsCreateText,
   AddBoardsCreateBtnWrap,
   AddBoardsCreateBtn,
-  Boards,
+  CardsBoard,
+  CardsBoardList,
   BoxHelps,
   BoxHelpsText,
   BoxHelpsSelectedText,
@@ -30,14 +31,32 @@ const Sidebar = ({ cards }) => {
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
 
-  {
-    /*const cardsList = cards.map(card => (
+  /*const cardsList = cards.map(card => (
     <li key={card.id} icon={card.icon} title={card.title}>
        <button type="button" onClick={() => editCard(card.id)}></button>
       <button type="button" onClick={() => deleteCard(card.id)}></button> 
     </li>
   ));*/
-  }
+
+  const cardsList = [
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
+  ];
 
   return (
     <Aside>
@@ -50,13 +69,17 @@ const Sidebar = ({ cards }) => {
       <AddBoards>
         <AddBoardsTitle>My boards</AddBoardsTitle>
         <AddBoardsCreateBox>
-          <AddBoardsCreateText>Create a new board</AddBoardsCreateText>
+          <AddBoardsCreateText>
+            Create a <br /> new board
+          </AddBoardsCreateText>
           <AddBoardsCreateBtnWrap>
             <AddBoardsCreateBtn />
           </AddBoardsCreateBtnWrap>
         </AddBoardsCreateBox>
       </AddBoards>
-      <Boards>{/* <ul>{cardsList}</ul> */}</Boards>
+      <CardsBoard>
+        <CardsBoardList>{cardsList}</CardsBoardList>
+      </CardsBoard>
       <BoxHelps>
         <img
           src={imgSrc}
