@@ -1,7 +1,7 @@
 import React from 'react';
-import imgDecor from '../../images/sidebar/aside-img.png';
-import imgDecor2x from '../../images/sidebar/aside-img-2x.png';
-// Импортировать nanoid
+import imgDecor from 'images/sidebar/aside-img.png';
+import imgDecor2x from 'images/sidebar/aside-img-2x.png';
+
 import {
   Aside,
   LogoBox,

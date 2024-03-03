@@ -6,7 +6,9 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 
-import 'styles/normalize.css';
+import 'modern-normalize';
+import 'styles/base.css';
+
 import routing from 'routes';
 
 const router = createBrowserRouter(createRoutesFromElements(routing()), {
