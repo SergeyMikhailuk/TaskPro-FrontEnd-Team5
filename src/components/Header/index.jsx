@@ -1,9 +1,12 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 
 import userDark from 'images/user-dark.svg';
 import userLight from 'images/user-light.svg';
 import userViolet from 'images/user-violet.svg';
+
+import { getThemeName, setTheme } from 'store/themeSlice';
 
 import {
   AppHeader,
@@ -27,12 +30,13 @@ const options = [
   { value: 'violet', label: 'Violet' },
 ];
 
-// поки ручний перехід
-const selectedOption = null;
-const optionValue = 'dark';
-const themeSelectStyles = selectStyles(selectedOption, optionValue);
-
 const Header = () => {
+  const dispatch = useDispatch();
+  const selectHandler = ({ value }) => dispatch(setTheme(value));
+  const themeName = useSelector(getThemeName);
+
+  const themeSelectStyles = selectStyles(themeName);
+
   return (
     <AppHeader>
       <ButtonMenu>
@@ -40,15 +44,15 @@ const Header = () => {
       </ButtonMenu>
       <Info>
         <Select
-          name="theme"
           options={options}
           styles={themeSelectStyles}
-          placeholder="Theme"
+          placeholder={options.find(o => o.value === themeName).label}
+          onChange={selectHandler}
         />
         <Wrap>
           <p>Name</p>
           <ButtonProfile>
-            <img src={userImages[optionValue]} alt="" />
+            <img src={userImages[themeName]} alt="" />
           </ButtonProfile>
         </Wrap>
       </Info>

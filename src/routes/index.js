@@ -2,7 +2,8 @@ import { lazy } from 'react';
 import { Route, Navigate } from 'react-router-dom';
 
 import AppLayout from 'components/AppLayout';
-import BaseRedirect from './BaseRedirect';
+import CabinetLayout from 'components/CabinetLayout';
+import BaseRedirect from 'routes/BaseRedirect';
 
 const Welcome = lazy(() => import('pages/Welcome'));
 const Home = lazy(() => import('pages/Home'));
@@ -14,7 +15,8 @@ const routing = () => (
 
     <Route path="welcome" element={<Welcome />} />
 
-    <Route path="home" element={<Home />}>
+    <Route path="home" element={<CabinetLayout />}>
+      <Route index element={<Home />} />
       <Route path=":boardName" element={<Board />} />
     </Route>
 

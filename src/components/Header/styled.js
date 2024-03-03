@@ -75,7 +75,7 @@ export const ButtonProfile = styled.button`
   }
 `;
 
-export const selectStyles = (selectedOption, optionValue) => ({
+export const selectStyles = optionValue => ({
   control: (provided, state) => ({
     ...provided,
     backgroundColor: 'none',
@@ -133,7 +133,7 @@ export const selectStyles = (selectedOption, optionValue) => ({
     width: '102px',
     padding: '18px 40px 18px 18px',
     fontSize: '14px',
-    letterSspacing: '-0.28px',
+    letterSpacing: '-0.28px',
     borderRadius: '8px',
 
     border:
@@ -172,5 +172,4 @@ export const selectStyles = (selectedOption, optionValue) => ({
       cursor: 'pointer',
     },
   }),
-  
 });
