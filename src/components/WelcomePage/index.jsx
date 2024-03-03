@@ -1,7 +1,7 @@
 import React from 'react';
-import iconImage from '../../images/welcome-icon.png';
+import iconImage from 'images/welcome-icon.png';
 
-import sprite from '../../images/sprite.svg';
+import sprite from 'images/sprite.svg';
 
 import {
   WelcomeWrapper,
