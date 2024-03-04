@@ -1,11 +1,20 @@
 import styled from 'styled-components';
 
 import { ReactComponent as BurgerImage } from './menu.svg';
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
+
+
+export const  StyledArrowIcon = styled(MdOutlineKeyboardArrowDown)`
+  color: ${props => props.theme.themePopup.textMain};
+`;
+
+
 
 export const Burger = styled(BurgerImage)`
-  width: 24px;
+  width: 24px ;
   height: 24px;
-  stroke: white;
+  color: ${props => props.theme.header.menuIcon};
+  
 
   @media screen and (min-width: 768px) {
     width: 32px;
@@ -22,7 +31,7 @@ export const AppHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 14px 20px;
-  background-color: #161616;
+  background-color: ${props => props.theme.header.background};
 
   @media screen and (min-width: 768px) {
     padding: 18px 32px;
@@ -48,7 +57,7 @@ export const Wrap = styled.div`
     font-weight: 500;
     font-size: 14px;
     letter-spacing: -0.02em;
-    color: #fff;
+    color: ${props => props.theme.header.userName};
   }
 `;
 
@@ -63,6 +72,8 @@ export const Image = styled.div`
 export const ButtonMenu = styled.button`
   background-color: transparent;
   border: none;
+  padding: 0;
+  display: flex;
 `;
 
 export const ButtonProfile = styled.button`
@@ -75,101 +86,45 @@ export const ButtonProfile = styled.button`
   }
 `;
 
-export const selectStyles = optionValue => ({
-  control: (provided, state) => ({
-    ...provided,
-    backgroundColor: 'none',
-    border: 'none',
-    borderRadius: '4px',
-    outline: 'none',
-    padding: '0px',
-    fontSize: '14px',
-    fontWeight: '500',
-    letterSpacing: '-0.28px',
-    cursor: 'pointer',
-    boxShadow: 'none',
-    width: '80px',
-  }),
+export const StyledSelectWrapper = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+`;
+export const StyledTitle = styled.p`
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  color: ${props => props.theme.themePopup.textMain};
+`;
 
-  valueContainer: provided => ({
-    ...provided,
-    padding: '0',
-  }),
+export const StyledList = styled.ul`
 
-  placeholder: provided => ({
-    ...provided,
-    margin: '0',
-    color:
-      optionValue === 'dark'
-        ? 'rgba(255, 255, 255, 0.5)'
-        : 'rgba(255, 255, 255, 0.8)',
-  }),
+position: absolute;
+opacity: ${(props) => (props.isOpen ? '1' : '0')};
+transform: translateY(${(props) => (props.isOpen ? '70px' : '-150px')});
+transition-property: opacity, transform;
+transition: opacity 0.25s, transform 0.25s;
+display: inline-flex;
+padding: 18px 44px 18px 18px;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+border-radius: 8px;
+border: 1px solid ${props => props.theme.themePopup.border};
+background-color: ${props => props.theme.themePopup.background};
+gap: 4px;
+`;
 
-  indicatorSeparator: () => ({
-    display: 'none',
-  }),
-
-  dropdownIndicator: provided => ({
-    ...provided,
-    padding: '4px',
-    color:
-      optionValue === 'dark'
-        ? 'rgba(255, 255, 255, 0.5)'
-        : 'rgba(22, 22, 22, 0.8)',
-    '&:hover': {
-      color:
-        optionValue === 'dark'
-          ? 'rgba(255, 255, 255, 0.7)'
-          : 'rgba(22, 22, 22, 0.5)',
-    },
-    '& > svg': {
-      padding: '0',
-      fill: 'rgba(255, 255, 255, 0.5)',
-    },
-  }),
-
-  menu: (provided, state) => ({
-    ...provided,
-    width: '102px',
-    padding: '18px 40px 18px 18px',
-    fontSize: '14px',
-    letterSpacing: '-0.28px',
-    borderRadius: '8px',
-
-    border:
-      optionValue === 'light' || optionValue === 'dark'
-        ? '1px solid #BEDBB0'
-        : '1px solid #ECEDFD',
-    backgroundColor:
-      optionValue === 'light' || optionValue === 'violet' ? '#fff' : '#151515',
-    boxShadow: '0px 4px 16px 0px rgba(17, 17, 17, 0.10)',
-  }),
-
-  menuList: (provided, state) => ({
-    ...provided,
-    '& > div': {
-      padding: '0',
-      backgroundColor:
-        optionValue === 'light' || optionValue === 'violet'
-          ? '#fff'
-          : '#151515',
-
-      color: state.isSelected
-        ? '#BEDBB0'
-        : optionValue === 'light' || optionValue === 'violet'
-          ? '#151515'
-          : 'rgba(255, 255, 255, 0.5)',
-      cursor: 'pointer',
-    },
-    '& > div:not(:last-child)': {
-      marginBottom: '5px',
-    },
-    '& > div:hover': {
-      color:
-        optionValue === 'dark' || optionValue === 'light'
-          ? '#bedbb0'
-          : '#5255bc',
-      cursor: 'pointer',
-    },
-  }),
-});
+export const StyledItem = styled.li`
+  cursor: pointer;
+  color: ${props => props.theme.themePopup.textSecondary};
+  transition: color 0.25s;
+  &:hover {
+    color: ${props => props.theme.themePopup.strokeBell};
+  }
+`;

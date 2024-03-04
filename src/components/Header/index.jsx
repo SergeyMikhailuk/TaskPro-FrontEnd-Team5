@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
-import Select from 'react-select';
 
 import userDark from 'images/user-dark.svg';
 import userLight from 'images/user-light.svg';
@@ -11,11 +11,15 @@ import { getThemeName, setTheme } from 'store/themeSlice';
 import {
   AppHeader,
   Wrap,
+  StyledArrowIcon,
   Burger,
   Info,
-  selectStyles,
   ButtonMenu,
   ButtonProfile,
+  StyledSelectWrapper,
+  StyledList,
+  StyledItem,
+  StyledTitle,
 } from './styled';
 
 const userImages = {
@@ -24,18 +28,22 @@ const userImages = {
   violet: userViolet,
 };
 
-const options = [
-  { value: 'light', label: 'Light' },
-  { value: 'dark', label: 'Dark' },
-  { value: 'violet', label: 'Violet' },
+const themes = [
+  { name: 'Light', value: 'light' },
+  { name: 'Dark', value: 'dark' },
+  { name: 'Violet', value: 'violet' },
 ];
 
 const Header = () => {
   const dispatch = useDispatch();
-  const selectHandler = ({ value }) => dispatch(setTheme(value));
-  const themeName = useSelector(getThemeName);
+  const [isThemeOpen, setIsThemeOpen] = useState(false);
 
-  const themeSelectStyles = selectStyles(themeName);
+  const selectHandler = ({ value }) => {
+    dispatch(setTheme(value));
+    setIsThemeOpen(false); 
+  };
+
+  const themeName = useSelector(getThemeName);
 
   return (
     <AppHeader>
@@ -43,12 +51,19 @@ const Header = () => {
         <Burger />
       </ButtonMenu>
       <Info>
-        <Select
-          options={options}
-          styles={themeSelectStyles}
-          placeholder={options.find(o => o.value === themeName).label}
-          onChange={selectHandler}
-        />
+        <StyledSelectWrapper onClick={() => setIsThemeOpen(!isThemeOpen)}>
+          <StyledTitle>Theme</StyledTitle>
+          <StyledArrowIcon />
+          {isThemeOpen && (
+            <StyledList isOpen={isThemeOpen}>
+              {themes.map(({ value, name }) => (
+                <StyledItem key={value} onClick={() => selectHandler({ value })}>
+                  {name}
+                </StyledItem>
+              ))}
+            </StyledList>
+          )}
+        </StyledSelectWrapper>
         <Wrap>
           <p>Name</p>
           <ButtonProfile>
