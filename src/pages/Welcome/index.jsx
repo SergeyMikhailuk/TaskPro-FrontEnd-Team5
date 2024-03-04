@@ -1,18 +1,16 @@
 import React from 'react';
 import iconImage from 'images/welcome-icon.png';
 
-import sprite from 'images/sprite.svg';
-
 import {
   WelcomeWrapper,
   WelcomeIcon,
   WelcomeLogo,
-  WelcomeLogoIcon,
   WelcomeContainer,
   WelcomeDescription,
   WelcomeLoginButton,
   WelcomeRegisterButton,
   WelcomeLogoTitle,
+  Logo,
 } from './styled';
 
 const WelcomePage = () => {
@@ -22,9 +20,7 @@ const WelcomePage = () => {
         <WelcomeIcon src={iconImage} alt="man with macbook" />
 
         <WelcomeLogo>
-          <WelcomeLogoIcon>
-            <use href={sprite + '#icon-logo'} />
-          </WelcomeLogoIcon>
+          <Logo />
 
           <WelcomeLogoTitle>Task Pro</WelcomeLogoTitle>
         </WelcomeLogo>
