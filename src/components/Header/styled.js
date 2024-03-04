@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 import { ReactComponent as BurgerImage } from './menu.svg';
-import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
+import { ReactComponent as DownImage } from './down.svg';
 
 
-export const  StyledArrowIcon = styled(MdOutlineKeyboardArrowDown)`
+export const Down = styled(DownImage)`
   color: ${props => props.theme.themePopup.textMain};
+  width: 16px;
+  height: 16px;
 `;
 
 
@@ -51,7 +53,7 @@ export const Info = styled.div`
 export const Wrap = styled.div`
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   p {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;

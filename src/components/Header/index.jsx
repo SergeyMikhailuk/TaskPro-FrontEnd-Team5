@@ -20,6 +20,7 @@ import {
   StyledList,
   StyledItem,
   StyledTitle,
+  Down,
 } from './styled';
 
 const userImages = {
@@ -53,7 +54,7 @@ const Header = () => {
       <Info>
         <StyledSelectWrapper onClick={() => setIsThemeOpen(!isThemeOpen)}>
           <StyledTitle>Theme</StyledTitle>
-          <StyledArrowIcon />
+          <Down />
           {isThemeOpen && (
             <StyledList isOpen={isThemeOpen}>
               {themes.map(({ value, name }) => (
