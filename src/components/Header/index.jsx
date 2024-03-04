@@ -11,7 +11,6 @@ import { getThemeName, setTheme } from 'store/themeSlice';
 import {
   AppHeader,
   Wrap,
-  StyledArrowIcon,
   Burger,
   Info,
   ButtonMenu,
