@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import { toggleSidebar } from 'store/sidebarSlice';
+
 import userDark from 'images/user-dark.svg';
 import userLight from 'images/user-light.svg';
 import userViolet from 'images/user-violet.svg';
@@ -43,11 +45,15 @@ const Header = () => {
     setIsThemeOpen(false); 
   };
 
+  const handleToggleSidebar = () => {
+    dispatch(toggleSidebar());
+  };
+
   const themeName = useSelector(getThemeName);
 
   return (
     <AppHeader>
-      <ButtonMenu>
+      <ButtonMenu onClick={handleToggleSidebar}>
         <Burger />
       </ButtonMenu>
       <Info>

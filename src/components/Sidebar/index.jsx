@@ -1,4 +1,8 @@
 import React from 'react';
+import { toggleSidebar } from 'store/sidebarSlice'
+import { useSelector, useDispatch } from 'react-redux';
+
+
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
 
@@ -25,9 +29,15 @@ import {
   LogOutIcon,
   LogOutIconBtnWrap,
   LogOutText,
+  StyledOverlay
 } from './styled';
 
 const Sidebar = ({ cards }) => {
+
+  const isOpen = useSelector(state => state.sidebar.isOpen);
+  const dispatch = useDispatch();
+
+
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
 
@@ -58,13 +68,20 @@ const Sidebar = ({ cards }) => {
     <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
   ];
 
+  const handleToggleSidebar = () => {
+    dispatch(toggleSidebar());
+  };
+
   return (
-    <Aside>
+    <>
+    {isOpen && <StyledOverlay onClick={handleToggleSidebar} />}
+    <Aside className={isOpen ? 'open' : ''}>
       <LogoBox>
         <a href="/">
           <AppLogo />
-        </a>
+        
         <LogoBoxTitle>Task Pro</LogoBoxTitle>
+        </a>
       </LogoBox>
       <AddBoards>
         <AddBoardsTitle>My boards</AddBoardsTitle>
@@ -100,10 +117,11 @@ const Sidebar = ({ cards }) => {
       <LogOut>
         <LogOutIconBtnWrap>
           <LogOutIcon />
-        </LogOutIconBtnWrap>
-        <LogOutText>Log out</LogOutText>
+          <LogOutText>Log out</LogOutText>
+        </LogOutIconBtnWrap>        
       </LogOut>
     </Aside>
+    </>
   );
 };
 export default Sidebar;
