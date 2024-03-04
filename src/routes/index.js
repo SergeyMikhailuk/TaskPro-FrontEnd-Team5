@@ -8,7 +8,7 @@ import BaseRedirect from 'routes/BaseRedirect';
 const Welcome = lazy(() => import('pages/Welcome'));
 const Home = lazy(() => import('pages/Home'));
 const Board = lazy(() => import('pages/Board'));
-
+const Auth = lazy(() => import('pages/Auth'));
 const routing = () => (
   <Route path="/" element={<AppLayout />}>
     <Route index element={<BaseRedirect />} />
@@ -20,8 +20,8 @@ const routing = () => (
       <Route path=":boardName" element={<Board />} />
     </Route>
 
-    <Route path="auth/:id" element={<>Auth Page</>}>
-      <Route path="login" element={<>Login Form</>} />
+    <Route path="auth/:id" element={<Auth />}>
+      <Route path="login" element={<>Register Form</>} />
       <Route path="register" element={<>Register Form</>} />
     </Route>
 
