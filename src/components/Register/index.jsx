@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Formik } from 'formik';
 // import { register } from '../../store/auth/authOperations';
 import { RegisterSchema } from './RegisterSchema';
+
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import {
   AuthForm,
   AuthNav,
@@ -11,17 +13,14 @@ import {
   AuthInput,
   AuthField,
   AuthError,
-  EyeSvg,
-  EyeSvgDark,
+  AuthFormPasswordIcon,
   AuthButton,
+  ThirdPasswordField,
 } from './styled';
 
-  const RegisterForm = () => {
+const RegisterForm = () => {
   // const dispatch = useDispatch();
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
+  const [showPassword, setShowPassword] = useState(false);
 
   const initialValues = {
     name: '',
@@ -33,6 +32,8 @@ import {
     // dispatch(register(values));
     resetForm();
   };
+
+  const handleTogglePassword = () => setShowPassword(!showPassword);
 
   return (
     <>
@@ -57,31 +58,27 @@ import {
                 name="name"
                 placeholder="Enter your name"
               />
-              <AuthError name="name" component="div" />
             </AuthInput>
+            <AuthError name="name" component="div" />
             <AuthInput>
               <AuthField
                 type="email"
                 name="email"
                 placeholder="Enter your email"
               />
-              <AuthError name="email" component="div" />
             </AuthInput>
+            <AuthError name="email" component="div" />
             <AuthInput>
-              <AuthField
-                type={passwordVisible ? 'text' : 'password'}
+              <ThirdPasswordField
+                type={showPassword ? 'text' : 'password'}
                 name="password"
                 placeholder="Create a password"
               />
-              <AuthError name="password" component="div" />
-              <span onClick={togglePasswordVisibility}>
-                {passwordVisible ? (
-                  <EyeSvg width="18" height="18" />
-                ) : (
-                  <EyeSvgDark width="18" height="18" />
-                )}
-              </span>
+              <AuthFormPasswordIcon onClick={handleTogglePassword}>
+                {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+              </AuthFormPasswordIcon>
             </AuthInput>
+            <AuthError name="password" component="div" />
             <AuthButton type="submit">Register Now</AuthButton>
           </AuthForm>
         )}

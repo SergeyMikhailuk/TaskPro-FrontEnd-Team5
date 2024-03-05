@@ -21,13 +21,10 @@ export const ModalWindow = styled(Modal)`
     background-color: ${props => props.theme.modal.backgroundMain};
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   
 
     @media screen and (min-width: 768px) {
       width: 400px; 
-  }
-
-    @media screen and (min-width: 1440px) {
-      left: 58%;
   }
   },
 
