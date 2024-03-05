@@ -102,7 +102,7 @@ export const HiddenInput = styled.input`
 
 export const AuthFormWrapper = styled.div`
   position: relative;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 `;
 
 export const ErrorSection = styled(ErrorMessage)`
@@ -110,12 +110,13 @@ export const ErrorSection = styled(ErrorMessage)`
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
-  padding-left: 14px;
+  text-align: center;
   color: #ff0000;
   font-size: 12px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   letter-spacing: -0.36px;
+  width: 350px;
 `;
 
 export const AuthForm = styled(Form)`
@@ -153,6 +154,11 @@ export const AuthFormField = styled(Field)`
   &:focus {
     opacity: 1;
   }
+`;
+
+
+export const ThirdPasswordField = styled(AuthFormField)`
+  padding: 14px 40px 14px 18px;
 `;
 
 export const AuthFormPasswordIcon = styled.div`
