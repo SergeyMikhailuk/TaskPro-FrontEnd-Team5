@@ -1,5 +1,16 @@
 import styled from 'styled-components';
-import { Form, Field } from 'formik';
+import { Form, Field, ErrorMessage } from 'formik';
+
+export const AuthError = styled(ErrorMessage)`
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 8px;
+  font-size: 12px;
+  border: none;
+  margin-bottom: 20px;
+  color: white;
+`;
 
 export const ModalSection = styled.div``;
 

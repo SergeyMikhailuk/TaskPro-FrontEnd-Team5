@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import sprite from '../../../images/sprite.svg';
 
 import {
+  AuthError,
   AuthFormSubmitButton,
   ButtonPlus,
   DateTitle,
@@ -30,7 +31,7 @@ const options = ['low', 'medium', 'high', 'without priority'];
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
   description: Yup.string()
-    .max(230, 'Name must be at most 230 characters')
+    .max(230, 'Maximum 230 characters')
     .required('Description is required'),
 });
 const dateOptions = {
@@ -75,6 +76,7 @@ const EditCardModal = ({ card, closeModal }) => {
               name="title"
               placeholder="Title"
             />
+            <AuthError name="title" component="div" />
 
             <Textarea
               component="textarea"
@@ -83,6 +85,7 @@ const EditCardModal = ({ card, closeModal }) => {
               type="text"
               placeholder="Description"
             />
+            <AuthError name="description" component="div" />
           </FormWrapper>
 
           <FormWrapper>
