@@ -5,10 +5,12 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
 import 'modern-normalize';
 import 'styles/base.css';
 
+import { store, persistor } from 'store';
 import routing from 'routes';
 
 const router = createBrowserRouter(createRoutesFromElements(routing()), {
@@ -17,6 +19,10 @@ const router = createBrowserRouter(createRoutesFromElements(routing()), {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <PersistGate persistor={persistor} loading={null}>
+        <RouterProvider router={router} />
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );

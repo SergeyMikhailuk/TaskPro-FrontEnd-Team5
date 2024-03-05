@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const LayoutWrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 100vh;
+  background-color: #1f1f1f;
 `;
 
 export const ContentWrapper = styled.div`

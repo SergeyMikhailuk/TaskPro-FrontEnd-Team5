@@ -1,42 +1,91 @@
 import styled from 'styled-components';
-import ReactSelect from 'react-select';
+
+import Modal from 'react-modal';
 
 import { ReactComponent as BurgerImage } from './menu.svg';
+import { ReactComponent as DownImage } from './down.svg';
+
+
+
+export const ModalWindow = styled(Modal)`
+& {
+  position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 335px; 
+    max-height: 80vh; 
+    min-height: 200px; 
+    overflow-y: auto; 
+    padding: 24px;
+    background-color: ${props => props.theme.modal.backgroundMain};
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    @media screen and (min-width: 768px) {
+      width: 400px; 
+  }
+
+    @media screen and (min-width: 1440px) {
+      left: 58%;
+  }
+  },
+
+`;
+
+export const Down = styled(DownImage)`
+  color: ${props => props.theme.themePopup.textMain};
+  width: 16px;
+  height: 16px;
+`;
 
 export const Burger = styled(BurgerImage)`
-  width: 32px;
-  height: 32px;
-  stroke: white;
+  width: 24px;
+  height: 24px;
+  color: ${props => props.theme.header.menuIcon};
+
+  @media screen and (min-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    display: none;
+  }
 `;
-export const Select = styled(ReactSelect)`
-  /* width: 68px; */
-`;
+
 export const AppHeader = styled.header`
   display: flex;
   align-items: center;
-
-  width: 100%;
-  padding: 18px 24px;
-  background-color: #161616;
   justify-content: space-between;
+  padding: 14px 20px;
+  background-color: ${props => props.theme.header.background};
+
+  @media screen and (min-width: 768px) {
+    padding: 18px 32px;
+  }
+  @media screen and (min-width: 1440px) {
+    justify-content: flex-end;
+    padding: 18px 24px;
+  }
 `;
 
 export const Info = styled.div`
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 `;
 
 export const Wrap = styled.div`
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   p {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 14px;
     letter-spacing: -0.02em;
-    color: #fff;
+    color: ${props => props.theme.header.userName};
   }
 `;
 
@@ -45,5 +94,66 @@ export const Image = styled.div`
     width: 32px;
     height: 32px;
     stroke: white;
+  }
+`;
+
+export const ButtonMenu = styled.button`
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+`;
+
+export const ButtonProfile = styled.button`
+  background-color: transparent;
+  border: none;
+  padding: 0;
+
+  img {
+    width: 32px;
+  }
+`;
+
+export const StyledSelectWrapper = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+`;
+export const StyledTitle = styled.p`
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  color: ${props => props.theme.themePopup.textMain};
+`;
+
+export const StyledList = styled.ul`
+  position: absolute;
+  opacity: ${props => (props.isOpen ? '1' : '0')};
+  transform: translateY(${props => (props.isOpen ? '70px' : '-150px')});
+  transition-property: opacity, transform;
+  transition:
+    opacity 0.25s,
+    transform 0.25s;
+  display: inline-flex;
+  padding: 18px 44px 18px 18px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 8px;
+  border: 1px solid ${props => props.theme.themePopup.border};
+  background-color: ${props => props.theme.themePopup.background};
+  gap: 4px;
+`;
+
+export const StyledItem = styled.li`
+  cursor: pointer;
+  color: ${props => props.theme.themePopup.textSecondary};
+  transition: color 0.25s;
+  &:hover {
+    color: ${props => props.theme.themePopup.strokeBell};
   }
 `;

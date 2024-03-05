@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Title } from './styled';
-import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   return (
