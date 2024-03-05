@@ -21,6 +21,7 @@ import {
   AddPhoto,
   CloseModal,
   ClosedButton,
+  ThirdPasswordField ,
 } from './styled';
 
 import userDark from 'images/user-dark.svg';
@@ -152,7 +153,7 @@ const UserModal = ({ closeModal }) => {
 
           <AuthFormWrapper>
             <ErrorSection name="password" component="div" />
-            <AuthFormField
+            <ThirdPasswordField 
               type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"

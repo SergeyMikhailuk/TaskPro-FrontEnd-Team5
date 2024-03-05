@@ -156,6 +156,11 @@ export const AuthFormField = styled(Field)`
   }
 `;
 
+
+export const ThirdPasswordField = styled(AuthFormField)`
+  padding: 14px 40px 14px 18px;
+`;
+
 export const AuthFormPasswordIcon = styled.div`
   position: absolute;
   bottom: 10px;
