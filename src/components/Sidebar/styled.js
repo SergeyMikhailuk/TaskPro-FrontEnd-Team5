@@ -51,6 +51,7 @@ export const Aside = styled.aside`
     transform: translateX(0);
     transition: none;
     width: 310px;
+    z-index: 0;
   }
 `;
 

@@ -1,7 +1,6 @@
 import { Form, Field, ErrorMessage } from 'formik';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { ReactComponent as eyeIcon } from '../../images/eye.svg';
 
 export const AuthForm = styled(Form)`
   max-width: 335px;
@@ -15,6 +14,7 @@ export const AuthForm = styled(Form)`
     padding: 40px;
   }
 `;
+
 
 
 export const AuthNav = styled.div`
@@ -119,32 +119,29 @@ export const AuthField = styled(Field)`
   }
 `;
 
-export const AuthError = styled(ErrorMessage)`
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 8px;
-  font-size: 12px;
-  border: none;
-  margin-bottom: 20px;
-  color: white;
+export const ThirdPasswordField = styled(AuthField)`
+  padding: 14px 40px 14px 0;
+  position: relative;
 `;
-export const EyeSvg = styled(eyeIcon)`
-  display: flex;
-  top: 50%;
-  transform: translate(-50%);
-  fill: black;
-  stroke: rgba(190, 219, 176, 1);
+
+export const AuthFormPasswordIcon = styled.div`
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  color: rgba(255, 255, 255, 1);
+  opacity: 0.4;
+
   cursor: pointer;
 `;
 
-export const EyeSvgDark = styled(eyeIcon)`
-  display: flex;
-  top: 50%;
-  transform: translate(-50%);
-  fill: black;
-  stroke: rgba(255, 255, 255, 0.3);
-  cursor: pointer;
+export const AuthError = styled(ErrorMessage)`
+  text-align: left;
+  color: #ff0000;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.36px;
+  margin-bottom: 10px;
 `;
 
 export const AuthButton = styled.button`

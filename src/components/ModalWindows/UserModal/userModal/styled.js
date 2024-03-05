@@ -106,17 +106,13 @@ export const AuthFormWrapper = styled.div`
 `;
 
 export const ErrorSection = styled(ErrorMessage)`
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
+  text-align: left;
   color: #ff0000;
   font-size: 12px;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   letter-spacing: -0.36px;
-  width: 350px;
+  margin-top: 6px;
 `;
 
 export const AuthForm = styled(Form)`
@@ -159,11 +155,12 @@ export const AuthFormField = styled(Field)`
 
 export const ThirdPasswordField = styled(AuthFormField)`
   padding: 14px 40px 14px 18px;
+  position: relative;
 `;
 
 export const AuthFormPasswordIcon = styled.div`
   position: absolute;
-  bottom: 10px;
+  top: 15px;
   right: 18px;
   color: ${props => props.theme.editProfileModal.textMain};
   opacity: 0.4;

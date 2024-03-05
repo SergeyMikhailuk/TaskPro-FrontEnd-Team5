@@ -132,36 +132,40 @@ const UserModal = ({ closeModal }) => {
       >
         <AuthForm>
           <AuthFormWrapper>
-            <ErrorSection name="name" component="div" />
+            
             <AuthFormField
               type="text"
               id="name"
               name="name"
               placeholder="Enter your name"
             />
+            <ErrorSection name="name" component="div" />
           </AuthFormWrapper>
 
           <AuthFormWrapper>
-            <ErrorSection name="email" component="div" />
+            
             <AuthFormField
               type="email"
               id="email"
               name="email"
               placeholder="Enter your email"
             />
+            <ErrorSection name="email" component="div" />
           </AuthFormWrapper>
 
           <AuthFormWrapper>
-            <ErrorSection name="password" component="div" />
+            
             <ThirdPasswordField 
               type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"
               placeholder="Enter your password"
             />
+            
             <AuthFormPasswordIcon onClick={handleTogglePassword}>
               {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
             </AuthFormPasswordIcon>
+            <ErrorSection name="password" component="div" />
           </AuthFormWrapper>
 
           <AuthFormSubmitButton type="submit">Send</AuthFormSubmitButton>
