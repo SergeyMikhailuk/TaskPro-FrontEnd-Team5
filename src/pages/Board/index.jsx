@@ -40,7 +40,7 @@ const BoardPage = () => {
             <h3>Priority</h3>
             <div class="priority-color"></div>
             <h3>Deadline</h3>
-            <p class="deadline">12/05/2023</p>
+            <p class="deadline">12/05/2022</p>
             <ul>
               <li></li>
               <li></li>
