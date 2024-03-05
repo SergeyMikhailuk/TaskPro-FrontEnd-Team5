@@ -10,6 +10,8 @@ import {
   AuthError,
   AuthFormSubmitButton,
   ButtonPlus,
+  CloseModal,
+  ClosedButton,
   DateTitle,
   DefaultRadioBtn,
   FormTitle,
@@ -62,7 +64,9 @@ const EditCardModal = ({ card, closeModal }) => {
   return (
     <ModalSection>
       <Title>Edit Card</Title>
-
+      <ClosedButton>
+        <CloseModal onClick={closeModal} />
+      </ClosedButton>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -70,13 +74,15 @@ const EditCardModal = ({ card, closeModal }) => {
       >
         <ModalForm>
           <FormWrapper>
+            <AuthError name="title" component="div" />
+
             <TitleInput
               type="text"
               id="title"
               name="title"
               placeholder="Title"
             />
-            <AuthError name="title" component="div" />
+            <AuthError name="description" component="div" />
 
             <Textarea
               component="textarea"
@@ -85,7 +91,6 @@ const EditCardModal = ({ card, closeModal }) => {
               type="text"
               placeholder="Description"
             />
-            <AuthError name="description" component="div" />
           </FormWrapper>
 
           <FormWrapper>

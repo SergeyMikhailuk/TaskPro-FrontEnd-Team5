@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-
+import { useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Formik } from 'formik';
+import { RegisterSchema } from '../../../Register/RegisterSchema';
+import { getThemeName } from 'store/themeSlice';
+
 import * as Yup from 'yup';
 import sprite from '../../../images/sprite.svg';
 
@@ -10,6 +13,8 @@ import {
   AuthError,
   AuthFormSubmitButton,
   ButtonPlus,
+  CloseModal,
+  ClosedButton,
   DateTitle,
   DefaultRadioBtn,
   FormTitle,
@@ -35,6 +40,26 @@ const validationSchema = Yup.object().shape({
     .max(230, 'Maximum 230 characters')
     .required('Description is required'),
 });
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+const today = new Date();
+const month = months[today.getMonth()];
+const day = today.getDate();
+const formattedDate = `${month} ${day}`;
+
 const dateOptions = {
   year: 'numeric',
   month: '2-digit',
@@ -61,7 +86,9 @@ const AddCardModal = ({ columnId, closeModal }) => {
   return (
     <ModalSection>
       <Title>Add Card</Title>
-
+      <ClosedButton>
+        <CloseModal onClick={closeModal} />
+      </ClosedButton>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -69,13 +96,15 @@ const AddCardModal = ({ columnId, closeModal }) => {
       >
         <ModalForm>
           <FormWrapper>
+            <AuthError name="title" component="div" />
+
             <TitleInput
               type="text"
               id="title"
               name="title"
               placeholder="Title"
             />
-            <AuthError name="title" component="div" />
+            <AuthError name="description" component="div" />
 
             <Textarea
               component="textarea"
@@ -84,7 +113,6 @@ const AddCardModal = ({ columnId, closeModal }) => {
               type="text"
               placeholder="Description"
             />
-            <AuthError name="description" component="div" />
           </FormWrapper>
 
           <FormWrapper>

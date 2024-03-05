@@ -1,5 +1,23 @@
 import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
+import { ReactComponent as CloseBtn } from 'images/svg/close.svg';
+
+export const CloseModal = styled(CloseBtn)`
+  width: 18px;
+  height: 18px;
+  color: ${props => props.theme.modal.textMain};
+`;
+
+export const ClosedButton = styled.button`
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+`;
 
 export const AuthError = styled(ErrorMessage)`
   display: block;
