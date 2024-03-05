@@ -1,8 +1,37 @@
 import styled from 'styled-components';
 
+import Modal from 'react-modal';
+
 import { ReactComponent as BurgerImage } from './menu.svg';
 import { ReactComponent as DownImage } from './down.svg';
 
+
+
+export const ModalWindow = styled(Modal)`
+& {
+  position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 335px; 
+    max-height: 80vh; 
+    min-height: 200px; 
+    overflow-y: auto; 
+    padding: 24px;
+    background-color: ${props => props.theme.modal.backgroundMain};
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    @media screen and (min-width: 768px) {
+      width: 400px; 
+  }
+
+    @media screen and (min-width: 1440px) {
+      left: 58%;
+  }
+  },
+
+`;
 
 export const Down = styled(DownImage)`
   color: ${props => props.theme.themePopup.textMain};
@@ -10,13 +39,10 @@ export const Down = styled(DownImage)`
   height: 16px;
 `;
 
-
-
 export const Burger = styled(BurgerImage)`
-  width: 24px ;
+  width: 24px;
   height: 24px;
   color: ${props => props.theme.header.menuIcon};
-  
 
   @media screen and (min-width: 768px) {
     width: 32px;
@@ -105,21 +131,22 @@ export const StyledTitle = styled.p`
 `;
 
 export const StyledList = styled.ul`
-
-position: absolute;
-opacity: ${(props) => (props.isOpen ? '1' : '0')};
-transform: translateY(${(props) => (props.isOpen ? '70px' : '-150px')});
-transition-property: opacity, transform;
-transition: opacity 0.25s, transform 0.25s;
-display: inline-flex;
-padding: 18px 44px 18px 18px;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-border-radius: 8px;
-border: 1px solid ${props => props.theme.themePopup.border};
-background-color: ${props => props.theme.themePopup.background};
-gap: 4px;
+  position: absolute;
+  opacity: ${props => (props.isOpen ? '1' : '0')};
+  transform: translateY(${props => (props.isOpen ? '70px' : '-150px')});
+  transition-property: opacity, transform;
+  transition:
+    opacity 0.25s,
+    transform 0.25s;
+  display: inline-flex;
+  padding: 18px 44px 18px 18px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 8px;
+  border: 1px solid ${props => props.theme.themePopup.border};
+  background-color: ${props => props.theme.themePopup.background};
+  gap: 4px;
 `;
 
 export const StyledItem = styled.li`

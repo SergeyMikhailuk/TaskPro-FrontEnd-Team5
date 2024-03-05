@@ -14,7 +14,7 @@ export const StyledOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: 90;
 
   @media screen and (min-width: 1440px) {

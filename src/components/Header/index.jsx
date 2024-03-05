@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import { toggleSidebar } from 'store/sidebarSlice';
+import { getThemeName, setTheme } from 'store/themeSlice';
 
+import UserModal from '../ModalWindows/UserModal/userModal/UserModal'; // Імпортуємо EditProfileModal
 import userDark from 'images/user-dark.svg';
 import userLight from 'images/user-light.svg';
 import userViolet from 'images/user-violet.svg';
-
-import { getThemeName, setTheme } from 'store/themeSlice';
-
 import {
   AppHeader,
   Wrap,
@@ -22,6 +19,7 @@ import {
   StyledItem,
   StyledTitle,
   Down,
+  ModalWindow,
 } from './styled';
 
 const userImages = {
@@ -39,6 +37,7 @@ const themes = [
 const Header = () => {
   const dispatch = useDispatch();
   const [isThemeOpen, setIsThemeOpen] = useState(false);
+  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false); // Додаємо стейт для модального вікна
 
   const selectHandler = ({ value }) => {
     dispatch(setTheme(value));
@@ -47,6 +46,14 @@ const Header = () => {
 
   const handleToggleSidebar = () => {
     dispatch(toggleSidebar());
+  };
+
+  const handleOpenEditProfileModal = () => {
+    setIsEditProfileModalOpen(true);
+  };
+
+  const handleCloseEditProfileModal = () => {
+    setIsEditProfileModalOpen(false);
   };
 
   const themeName = useSelector(getThemeName);
@@ -72,11 +79,14 @@ const Header = () => {
         </StyledSelectWrapper>
         <Wrap>
           <p>Name</p>
-          <ButtonProfile>
+          <ButtonProfile onClick={handleOpenEditProfileModal}> {/* Додаємо onClick для відкриття модального вікна */}
             <img src={userImages[themeName]} alt="" />
           </ButtonProfile>
         </Wrap>
       </Info>
+      <ModalWindow isOpen={isEditProfileModalOpen} onRequestClose={handleCloseEditProfileModal}>
+        <UserModal closeModal={handleCloseEditProfileModal} />
+      </ModalWindow>
     </AppHeader>
   );
 };
