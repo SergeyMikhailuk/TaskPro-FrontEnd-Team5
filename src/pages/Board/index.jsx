@@ -1,5 +1,5 @@
-import { Title, TestIcon, HeaderList, TaskCard } from './styled';
-import testImg from 'images/2.png';
+import { Title, HeaderList, TaskCard } from './styled';
+// import testImg from 'images/2.png';
 
 const BoardPage = () => {
   return (
@@ -12,14 +12,14 @@ const BoardPage = () => {
           </div>
         </li>
         <div class="icon-container">
-          <li>
+          <li class="svg-icon">
             <a href="">
               <svg width="16" height="16">
                 <use xlinkHref="images/sprite.svg#icon-pencil"></use>
               </svg>
             </a>
           </li>
-          <li>
+          <li class="svg-icon">
             <a href="">
               <svg width="16" height="16">
                 <use xlinkHref="images/sprite.svg#icon-trash"></use>
@@ -32,16 +32,15 @@ const BoardPage = () => {
         <li>
           <div>
             <h2>The Watch Spot Design</h2>
-            <p>
+            <p class="task-description">
               Create a visually stunning and eye-catching watch dial design that
-              embodies our brand's essence of sleek aesthetics and modern
-              elegance. Your design should be unique, innovative, and reflective
-              of the latest trends in watch design.
+              embodies our brand's
             </p>
-            <h3></h3>
-            <div></div>
-            <h3></h3>
-            <p></p>
+            <div class="line"></div>
+            <h3>Priority</h3>
+            <div class="priority-color"></div>
+            <h3>Deadline</h3>
+            <p class="deadline">12/05/2023</p>
             <ul>
               <li></li>
               <li></li>
@@ -50,10 +49,14 @@ const BoardPage = () => {
           </div>
         </li>
       </TaskCard>
-      {/* <img src={testImg} alt="" /> */}
-      {/* <TestIcon /> */}
     </>
   );
 };
 
 export default BoardPage;
+{
+  /* <img src={testImg} alt="" /> */
+}
+{
+  /* <TestIcon /> */
+}
