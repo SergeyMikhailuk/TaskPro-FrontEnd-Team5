@@ -1,4 +1,4 @@
-export const theme = [
+export const themes = [
   {
     name: 'dark',
     container: {
@@ -36,7 +36,7 @@ export const theme = [
     modal: {
       backgroundMain: 'rgba(21, 21, 21, 1)',
       backgroundSecondary: 'rgba(31, 31, 31, 1)',
-      backgeoundAvatar: 'rgba(190, 219, 176, 1)',
+      backgroundAvatar: 'rgba(190, 219, 176, 1)',
       textMain: 'rgba(255, 255, 255, 1)',
       textSecondary: 'rgba(255, 255, 255, 0.5)',
       textAccent: 'rgba(190, 219, 176, 1)',
@@ -51,6 +51,8 @@ export const theme = [
       iconDefault: 'rgba(31, 31, 31, 1)',
       unactiveDay: 'rgba(255, 255, 255, 0.2)',
       today: 'rgba(31, 31, 31, 1)',
+      plusHover: 'rgba(157, 200, 136, 1)',
+      btnHover: 'rgba(157, 200, 136, 1)',
     },
     sidebar: {
       background: 'rgba(18, 18, 18, 1)',
@@ -68,6 +70,10 @@ export const theme = [
       projectBorder: 'rgba(190, 219, 176, 1)',
       iconLogout: 'rgba(190, 219, 176, 1)',
       iconClose: 'rgba(255, 255, 255, 1)',
+      iconLogoBackground: 'rgba(31, 31, 31, 1)',
+      iconLogoImage: 'rgba(255, 255, 255, 1)',
+      scroll: 'rgba(190, 219, 176, 1)',
+      iconLogoutHover: 'rgba(157, 200, 136, 1)',
     },
     editProfileModal: {
       background: 'rgba(21, 21, 21, 1)',
@@ -137,7 +143,7 @@ export const theme = [
     modal: {
       backgroundMain: 'rgba(252, 252, 252, 1)',
       backgroundSecondary: 'rgba(252, 252, 252, 1)',
-      backgeoundAvatar: 'rgba(246, 246, 247, 1)',
+      backgroundAvatar: 'rgba(246, 246, 247, 1)',
       textMain: 'rgba(22, 22, 22, 1)',
       textSecondary: 'rgba(22, 22, 22, 0.5)',
       textAccent: 'rgba(190, 219, 176, 1)',
@@ -152,6 +158,8 @@ export const theme = [
       iconDefault: 'rgba(246, 246, 247, 1)',
       unactiveDay: 'rgba(22, 22, 22, 0.2)',
       today: 'rgba(22, 22, 22, 1)',
+      plusHover: 'rgba(157, 200, 136, 1)',
+      btnHover: 'rgba(157, 200, 136, 1)',
     },
     sidebar: {
       background: 'rgba(255, 255, 255, 1)',
@@ -169,6 +177,10 @@ export const theme = [
       projectBorder: 'rgba(190, 219, 176, 1)',
       iconLogout: 'rgba(190, 219, 176, 1)',
       iconClose: 'rgba(22, 22, 22, 1)',
+      iconLogoBackground: 'rgba(31, 31, 31, 1)',
+      iconLogoImage: 'rgba(255, 255, 255, 1)',
+      scroll: 'rgba(190, 219, 176, 1)',
+      iconLogoutHover: 'rgba(157, 200, 136, 1)',
     },
     editProfileModal: {
       background: 'rgba(252, 252, 252, 1)',
@@ -238,7 +250,7 @@ export const theme = [
     modal: {
       backgroundMain: 'rgba(252, 252, 252, 1)',
       backgroundSecondary: 'rgba(252, 252, 252, 1)',
-      backgeoundAvatar: 'rgba(236, 237, 253, 1)',
+      backgroundAvatar: 'rgba(236, 237, 253, 1)',
       textMain: 'rgba(22, 22, 22, 1)',
       textSecondary: 'rgba(22, 22, 22, 0.5)',
       textAccent: 'rgba(82, 85, 188, 1)',
@@ -253,6 +265,8 @@ export const theme = [
       iconDefault: 'rgba(236, 237, 253, 1)',
       unactiveDay: 'rgba(22, 22, 22, 0.2)',
       today: 'rgba(252, 252, 252, 1)',
+      plusHover: 'rgba(151, 156, 234, 1)',
+      btnHover: 'rgba(123, 126, 222, 1)',
     },
     sidebar: {
       background: 'rgba(82, 85, 188, 1)',
@@ -270,6 +284,10 @@ export const theme = [
       projectBorder: 'rgba(255, 255, 255, 1)',
       iconLogout: 'rgba(255, 255, 255, 1)',
       iconClose: 'rgba(255, 255, 255, 1)',
+      iconLogoBackground: 'rgba(236, 237, 253, 1)',
+      iconLogoImage: 'rgba(82, 85, 188, 1)',
+      scroll: 'rgba(255, 255, 255, 1)',
+      iconLogoutHover: 'rgba(184, 188, 253, 1)',
     },
     editProfileModal: {
       background: 'rgba(252, 252, 252, 1)',
