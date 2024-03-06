@@ -1,13 +1,20 @@
 import * as Yup from 'yup';
 import React, { useState } from 'react';
-import BtnAdd from '../../buttons/btnAdd/BtnAdd';
+import BtnAdd from 'components/buttons/BtnAdd';
 import images from '../../../images/backgrounds.js';
-import bgImageLight from '../../../images/user-dark.svg';
-import bgImageDark from '../../../images/user-dark.svg';
-import sprite from '../../../images/icons.svg';
+import { ReactComponent as Hexagon } from 'images/svg/NewBoard/hexagon.svg';
+import { ReactComponent as Colors } from 'images/svg/NewBoard/colors.svg';
+import { ReactComponent as Containers } from 'images/svg/NewBoard/container.svg';
+import { ReactComponent as Lightning } from 'images/svg/NewBoard/lightning.svg';
+import { ReactComponent as Loading } from 'images/svg/NewBoard/loading.svg';
+import { ReactComponent as Project } from 'images/svg/NewBoard/Project.svg';
+import { ReactComponent as Puzzle } from 'images/svg/NewBoard/puzzle.svg';
+import { ReactComponent as Star } from 'images/svg/NewBoard/star.svg';
+import bgImageLight from 'images/user-dark.svg';
+import bgImageDark from 'images/user-dark.svg';
 import { toast } from 'react-hot-toast';
 import { Formik } from 'formik';
-import { BtnCloseBlack } from '../../buttons/buttons';
+import { BtnCloseBlack } from 'components/buttons/buttons';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/auth/authSelectors.js';
 import { useTheme } from '@mui/material';
@@ -92,7 +99,6 @@ const NewBoardForm = ({
               />
               <Error name="title" component="div" />
             </Container>
-
             <Text>Icons</Text>
             <IconList>
               <li>
@@ -104,7 +110,7 @@ const NewBoardForm = ({
                     value="#icon-Project"
                   />
                   <Icon theme={themeObj}>
-                    <use href={sprite + '#icon-Project'}></use>
+                    <Project/>
                   </Icon>
                 </label>
               </li>
@@ -117,7 +123,7 @@ const NewBoardForm = ({
                     value="#icon-star-04"
                   />
                   <Icon theme={themeObj}>
-                    <use href={sprite + '#icon-star-04'}></use>
+                    <Star/>
                   </Icon>
                 </label>
               </li>
@@ -130,7 +136,7 @@ const NewBoardForm = ({
                     value="#icon-loading-03"
                   />
                   <Icon theme={themeObj}>
-                    <use href={sprite + '#icon-loading-03'}></use>
+                    <Loading/>
                   </Icon>
                 </label>
               </li>
@@ -143,7 +149,7 @@ const NewBoardForm = ({
                     value="#icon-puzzle-piece-02"
                   />
                   <Icon theme={themeObj}>
-                    <use href={sprite + '#icon-puzzle-piece-02'}></use>
+                    <Puzzle/>
                   </Icon>
                 </label>
               </li>
@@ -156,7 +162,7 @@ const NewBoardForm = ({
                     value="#icon-container"
                   />
                   <Icon theme={themeObj}>
-                    <use href={sprite + '#icon-container'}></use>
+                    <Containers/>
                   </Icon>
                 </label>
               </li>
@@ -169,7 +175,7 @@ const NewBoardForm = ({
                     value="#icon-lightning-02"
                   />
                   <Icon theme={themeObj}>
-                    <use href={sprite + '#icon-lightning-02'}></use>
+                    <Lightning/>
                   </Icon>
                 </label>
               </li>
@@ -182,7 +188,7 @@ const NewBoardForm = ({
                     value="#icon-colors"
                   />
                   <Icon theme={themeObj}>
-                    <use href={sprite + '#icon-colors'}></use>
+                    <Colors/>
                   </Icon>
                 </label>
               </li>
@@ -195,7 +201,7 @@ const NewBoardForm = ({
                     value="#icon-hexagon-01"
                   />
                   <Icon theme={themeObj}>
-                    <use href={sprite + '#icon-hexagon-01'}></use>
+                    <Hexagon/>
                   </Icon>
                 </label>
               </li>
