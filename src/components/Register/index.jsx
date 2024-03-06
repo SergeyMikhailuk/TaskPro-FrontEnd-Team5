@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
-// import { register } from '../../store/auth/authOperations';
+import { register } from '../../store/auth/authOperations';
 import { RegisterSchema } from './RegisterSchema';
 
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
@@ -19,7 +19,7 @@ import {
 } from './styled';
 
 const RegisterForm = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   const initialValues = {
@@ -29,7 +29,7 @@ const RegisterForm = () => {
   };
 
   const onSubmit = (values, { resetForm }) => {
-    // dispatch(register(values));
+    dispatch(register(values));
     resetForm();
   };
 
