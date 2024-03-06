@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
-// import { logIn } from '../../store/auth/authOperations';
+import { logIn } from '../../store/auth/authOperations';
 
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { LoginSchema } from './LoginSchema';
@@ -19,7 +19,7 @@ import {
 } from '../Register/styled';
 
 const LoginForm = () => {
-  //   const dispatch = useDispatch();
+    const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePassword = () => setShowPassword(!showPassword);
@@ -30,7 +30,7 @@ const LoginForm = () => {
   };
 
   const onSubmit = (values, { resetForm }) => {
-    // dispatch(logIn(values));
+    dispatch(logIn(values));
     resetForm();
   };
 
