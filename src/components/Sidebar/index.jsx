@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
-import cards from './todo.json'; // тестовые карточки, удалить, когда подключить бэк и активировать пропс в сайтбаре!!!
+import cards from './todo.json'; // тестовые карточки, удалить, когда подключить бэк и активировать пропс в сайтбаре!!
 import Cards from './Cards/index.js';
 import {
   Aside,
