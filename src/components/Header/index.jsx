@@ -21,7 +21,6 @@ import {
   Down,
   ModalWindow,
 } from './styled';
-import zIndex from '@mui/material/styles/zIndex';
 
 const userImages = {
   light: userLight,
