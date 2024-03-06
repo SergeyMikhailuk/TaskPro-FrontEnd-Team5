@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Formik } from 'formik';
-import { RegisterSchema } from '../../../Register/RegisterSchema';
-import { getThemeName } from 'store/themeSlice';
+// import { RegisterSchema } from '../../../Register/RegisterSchema';
+// import { getThemeName } from 'store/themeSlice';
 
 import * as Yup from 'yup';
 import sprite from '../../../images/sprite.svg';
@@ -30,7 +30,7 @@ import {
   TitleInput,
   Wrapper,
 } from '../AddCardModal/CardModal.styled';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 
 const options = ['low', 'medium', 'high', 'without priority'];
 
@@ -67,17 +67,17 @@ const dateOptions = {
 };
 
 const AddCardModal = ({ columnId, closeModal }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [selectedLabel, setSelectedLabel] = useState(options[3]);
   const [startDate, setStartDate] = useState('');
   const customDate =
     startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
-  let deadline = startDate;
+  // let deadline = startDate;
 
   const initialValues = {
-    title,
-    description,
+    title: '',
+    description: '',
     priority: selectedLabel,
   };
 
@@ -143,7 +143,7 @@ const AddCardModal = ({ columnId, closeModal }) => {
             <DateTitle
               onClick={() => document.querySelector('.input-ref').click()}
             >
-              {startDate !== '' ? customDate : dateLabel}
+              {startDate !== '' ? customDate : `Today, ${formattedDate}`}
             </DateTitle>
             <Wrapper>
               <DatePicker
