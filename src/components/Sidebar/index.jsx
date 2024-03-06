@@ -38,9 +38,7 @@ const Sidebar = () => {
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
 
-  const cardsList = cards.map(card => (
-    <Cards key={cards.id} cards={card} /*deleteCard={deleteCard}*/ />
-  ));
+  const cardsList = cards.map(card => <Cards key={cards.id} cards={card} />);
 
   const handleToggleSidebar = () => {
     dispatch(toggleSidebar());
