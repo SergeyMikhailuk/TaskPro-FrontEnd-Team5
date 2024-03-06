@@ -1,7 +1,8 @@
 import React from 'react';
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
-
+import cards from './todo.json'; // тестовые карточки, удалить, когда подключить бэк и активировать пропс в сайтбаре!!!
+import Cards from './Cards/index.js';
 import {
   Aside,
   LogoBox,
@@ -14,7 +15,6 @@ import {
   AddBoardsCreateBtnWrap,
   AddBoardsCreateBtn,
   CardsBoard,
-  CardsBoardList,
   BoxHelps,
   BoxHelpsText,
   BoxHelpsSelectedText,
@@ -27,36 +27,13 @@ import {
   LogOutText,
 } from './styled';
 
-const Sidebar = ({ cards }) => {
+const Sidebar = (/*{ cards, deleteCard }*/) => {
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
 
-  /*const cardsList = cards.map(card => (
-    <li key={card.id} icon={card.icon} title={card.title}>
-       <button type="button" onClick={() => editCard(card.id)}></button>
-      <button type="button" onClick={() => deleteCard(card.id)}></button> 
-    </li>
-  ));*/
-
-  const cardsList = [
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-    <li>ПРИЛИТЕЛА КАРТОЧКА</li>,
-  ];
+  const cardsList = cards.map(card => (
+    <Cards key={cards.id} cards={card} /*deleteCard={deleteCard}*/ />
+  ));
 
   return (
     <Aside>
@@ -77,9 +54,7 @@ const Sidebar = ({ cards }) => {
           </AddBoardsCreateBtnWrap>
         </AddBoardsCreateBox>
       </AddBoards>
-      <CardsBoard>
-        <CardsBoardList>{cardsList}</CardsBoardList>
-      </CardsBoard>
+      <CardsBoard>{cardsList}</CardsBoard>
       <BoxHelps>
         <img
           src={imgSrc}
