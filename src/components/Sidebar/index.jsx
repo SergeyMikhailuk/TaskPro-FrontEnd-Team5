@@ -27,7 +27,7 @@ import {
   LogOutText,
 } from './styled';
 
-const Sidebar = (/*{ cards, deleteCard }*/) => {
+const Sidebar = (/*{ cards, deleteCard, }*/) => {
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
 
