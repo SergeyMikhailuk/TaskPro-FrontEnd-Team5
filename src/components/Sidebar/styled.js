@@ -167,18 +167,6 @@ export const CardsBoard = styled.ul`
   }
 `;
 
-export const CardsBoardList = styled.li`
-  font-weight: 500;
-  font-size: 14px;
-  color: #fff;
-  letter-spacing: -0.32px;
-  height: 61px;
-  background-color: #1f1f1f;
-  /* opacity: 0.4; */
-  padding: 20px 24px 20px 24px;
-  margin-bottom: 4px;
-`;
-
 export const BoxHelps = styled.div`
   width: 197px;
   border-radius: 8px;
