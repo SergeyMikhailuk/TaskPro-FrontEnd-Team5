@@ -22,8 +22,8 @@ import {
 const BoardPage = () => {
   return (
     <>
-      <Title>Board Page</Title>
       <Wrapper>
+        <Title>Board Page</Title>
         <ColumnName>
           <li>
             <TitleWrapper>

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import { colors } from 'constants/colors';
-
 export const Title = styled.h1`
-  color: ${colors.green};
-  font-size: 50px;
+  color: ${props => props.theme.column.textMain};
+  padding-left: 20px;
+  padding-top: 20px;
+  margin-bottom: 20px;
 `;
 export const Wrapper = styled.div``;
 
