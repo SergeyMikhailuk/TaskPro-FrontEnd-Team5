@@ -1,5 +1,5 @@
 import React from 'react';
-import icon from '../../images/icons.svg';
+import { ReactComponent as Close } from 'images/svg/close.svg';
 import {
   ButtonUpDateSvg,
   ButtonClose,
@@ -17,18 +17,6 @@ export const BtnClose = () => {
     <ButtonClose>
       <ButtonCloseIcon theme={theme}>
         <ButtonUpDateSvg href={icon + '#icon-x-close'}></ButtonUpDateSvg>
-      </ButtonCloseIcon>
-    </ButtonClose>
-  );
-};
-
-export const BtnCloseBlack = () => {
-  const theme = useTheme();
-
-  return (
-    <ButtonClose>
-      <ButtonCloseIcon theme={theme}>
-        <ButtonUpDateSvg href={icon + '#icon-x-close-2'}></ButtonUpDateSvg>
       </ButtonCloseIcon>
     </ButtonClose>
   );

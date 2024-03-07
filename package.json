@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://SergeyMikhailuk/TaskPro-FrontEnd-Team5/",
   "dependencies": {
+    "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.13.6",
     "@reduxjs/toolkit": "^2.2.1",
     "@testing-library/jest-dom": "^5.16.3",
@@ -16,6 +17,7 @@
     "react-beautiful-dnd": "^13.1.1",
     "react-datepicker": "^4.14.1",
     "react-dom": "^18.1.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
     "react-loader-spinner": "^5.3.4",
     "react-modal": "^3.16.1",
