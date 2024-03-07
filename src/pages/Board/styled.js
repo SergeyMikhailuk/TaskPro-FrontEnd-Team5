@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 // import { ReactComponent as TestSVG } from 'images/logo-violet.svg';
 
+import { ReactComponent as Sprite } from 'images/sprite.svg';
+
 import { colors } from 'constants/colors';
+
+export const TestIcon = styled(Sprite)``;
 
 export const Title = styled.h1`
   color: ${colors.green};
@@ -40,6 +44,7 @@ export const IconLink = styled.a``;
 export const Icon = styled.svg`
   width: 16px;
   height: 16px;
+  fill: #fff;
 `;
 export const Use = styled.use``;
 

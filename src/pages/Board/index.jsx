@@ -17,6 +17,7 @@ import {
   PriorityInfo,
   PriorityWrapper,
   Deadline,
+  TestIcon,
 } from './styled';
 
 const BoardPage = () => {
@@ -34,7 +35,7 @@ const BoardPage = () => {
             <IconWrapper>
               <IconLink>
                 <Icon>
-                  <Use href="images/sprite.svg#icon-pencil"></Use>
+                  <TestIcon id="icon-pencil"></TestIcon>
                 </Icon>
               </IconLink>
               <IconLink>
