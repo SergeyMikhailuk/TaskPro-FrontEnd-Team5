@@ -26,6 +26,7 @@ const Title = styled.h2`
   letter-spacing: -0.02em;
   font-family: 'Poppins';
   margin: 0;
+  color: ${props => props.theme.themePopup.textSecondary};
 `;
 
 const FormikContainer = styled(Form)`

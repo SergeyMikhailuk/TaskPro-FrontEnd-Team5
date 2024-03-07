@@ -9,13 +9,9 @@ import { ReactComponent as Loading } from 'images/svg/NewBoard/loading.svg';
 import { ReactComponent as Project } from 'images/svg/NewBoard/Project.svg';
 import { ReactComponent as Puzzle } from 'images/svg/NewBoard/puzzle.svg';
 import { ReactComponent as Star } from 'images/svg/NewBoard/star.svg';
-import bgImageLight from 'images/user-light.svg';
-import bgImageDark from 'images/user-dark.svg';
 import { toast } from 'react-hot-toast';
 import { Formik } from 'formik';
 import { BtnCloseBlack } from 'components/buttons/dropDownMoveRight';
-import { useSelector } from 'react-redux';
-import { selectTheme } from 'redux/auth/authSelectors.js';
 import { useTheme } from '@mui/material';
 import {
   FormContainer,
@@ -25,7 +21,6 @@ import {
   Input,
   Text,
   Icon,
-  Img,
   BgColor,
   IconList,
   BgList,
@@ -44,7 +39,7 @@ const NewBoardForm = ({
   closeModal,
 }) => {
   const [background, setbackground] = useState();
-  const theme = useSelector(selectTheme);
+
 
   const themeObj = useTheme();
 
@@ -222,14 +217,9 @@ const NewBoardForm = ({
                       })
                     }
                   />
-                  {theme === 'dark' ? (
-                    <Img src={bgImageDark} alt="bgImage" />
-                  ) : (
-                    <Img src={bgImageLight} alt="bgImage" />
-                  )}
                 </label>
               </BgColor>
-              {images.map(image => (
+              {/* {images.map(image => (
                 <BgColor key={image.min}>
                   <label>
                     <RadioFieldBg
@@ -240,7 +230,7 @@ const NewBoardForm = ({
                     <Img src={image.min} alt="bgImage" />
                   </label>
                 </BgColor>
-              ))}
+              ))} */}
             </BgList>
             <BtnAdd btnTitle={btnText} />
           </FormikContainer>
