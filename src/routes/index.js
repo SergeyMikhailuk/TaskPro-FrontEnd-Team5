@@ -20,10 +20,10 @@ const routing = () => (
       <Route path=":boardName" element={<Board />} />
     </Route>
 
-    <Route path="auth/:id" element={<Auth />}>
-      <Route path="login" element={<>Register Form</>} />
+    <Route path="auth/:id" element={<Auth />} />
+      {/* <Route path="login" element={<>Register Form</>} />
       <Route path="register" element={<>Register Form</>} />
-    </Route>
+    </Route> */}
 
     <Route path="*" element={<Navigate to="/" />} />
   </Route>

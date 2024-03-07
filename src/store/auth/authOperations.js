@@ -25,7 +25,7 @@ export const register = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
-    }
+    }    
   }
 );
 
@@ -39,7 +39,7 @@ export const logIn = createAsyncThunk('auth/login', async credentials => {
       'Error: "The email address or password is incorrect. Please retry..."'
     );
   }
-
+  
 });
 
 export const logOut = createAsyncThunk('auth/logout', async () => {
