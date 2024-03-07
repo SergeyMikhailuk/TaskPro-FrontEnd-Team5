@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
-// import { logIn } from '../../store/auth/authOperations';
+import { logIn } from '../../store/auth/authOperations';
+
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { LoginSchema } from './LoginSchema';
 import {
   AuthForm,
@@ -11,17 +13,16 @@ import {
   AuthInput,
   AuthField,
   AuthError,
-  EyeSvg,
-  EyeSvgDark,
+  AuthFormPasswordIcon,
+  ThirdPasswordField,
   AuthButton,
 } from '../Register/styled';
 
-  const LoginForm = () => {
-//   const dispatch = useDispatch();
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
+const LoginForm = () => {
+    const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePassword = () => setShowPassword(!showPassword);
 
   const initialValues = {
     email: '',
@@ -29,7 +30,7 @@ import {
   };
 
   const onSubmit = (values, { resetForm }) => {
-    // dispatch(logIn(values));
+    dispatch(logIn(values));
     resetForm();
   };
 
@@ -56,24 +57,21 @@ import {
                 name="email"
                 placeholder="Enter your email"
               />
-              <AuthError name="email" component="div" />
             </AuthInput>
+            <AuthError name="email" component="div" />
             <AuthInput>
-              <AuthField
-                type={passwordVisible ? 'text' : 'password'}
+              <ThirdPasswordField
+                type={showPassword ? 'text' : 'password'}
                 name="password"
                 placeholder="Confirm a password"
               />
-              <AuthError name="password" component="div" />
-              <span onClick={togglePasswordVisibility}>
-                {passwordVisible ? (
-                  <EyeSvg width="18" height="18" />
-                ) : (
-                  <EyeSvgDark width="18" height="18" />
-                )}
-              </span>
+
+              <AuthFormPasswordIcon onClick={handleTogglePassword}>
+                {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+              </AuthFormPasswordIcon>
             </AuthInput>
-            <AuthButton type="submit">Logi In Now</AuthButton>
+            <AuthError name="password" component="div" />
+            <AuthButton type="submit">Log In Now</AuthButton>
           </AuthForm>
         )}
       </Formik>
@@ -81,4 +79,4 @@ import {
   );
 };
 
-export default LoginForm
+export default LoginForm;

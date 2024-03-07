@@ -51,6 +51,7 @@ export const Aside = styled.aside`
     transform: translateX(0);
     transition: none;
     width: 310px;
+    z-index: 0;
   }
 `;
 
@@ -152,7 +153,7 @@ export const CardsBoard = styled.ul`
   margin-bottom: 40px;
 
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 7px;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -164,18 +165,6 @@ export const CardsBoard = styled.ul`
     background-color: ${props => props.theme.sidebar.scroll};
     border-radius: 5px;
   }
-`;
-
-export const CardsBoardList = styled.li`
-  font-weight: 500;
-  font-size: 14px;
-  color: #fff;
-  letter-spacing: -0.32px;
-  height: 61px;
-  background-color: #1f1f1f;
-  /* opacity: 0.4; */
-  padding: 20px 24px 20px 24px;
-  margin-bottom: 4px;
 `;
 
 export const BoxHelps = styled.div`
