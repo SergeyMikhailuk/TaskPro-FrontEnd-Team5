@@ -9,13 +9,13 @@ import { ReactComponent as Loading } from 'images/svg/NewBoard/loading.svg';
 import { ReactComponent as Project } from 'images/svg/NewBoard/Project.svg';
 import { ReactComponent as Puzzle } from 'images/svg/NewBoard/puzzle.svg';
 import { ReactComponent as Star } from 'images/svg/NewBoard/star.svg';
-import bgImageLight from 'images/user-dark.svg';
+import bgImageLight from 'images/user-light.svg';
 import bgImageDark from 'images/user-dark.svg';
 import { toast } from 'react-hot-toast';
 import { Formik } from 'formik';
 import { BtnCloseBlack } from 'components/buttons/dropDownMoveRight';
 import { useSelector } from 'react-redux';
-// import { selectTheme } from 'redux/auth/authSelectors.js';
+import { selectTheme } from 'redux/auth/authSelectors.js';
 import { useTheme } from '@mui/material';
 import {
   FormContainer,

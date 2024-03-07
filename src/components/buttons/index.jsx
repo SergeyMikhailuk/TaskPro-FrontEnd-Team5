@@ -1,13 +1,9 @@
 import React from 'react';
-import { ReactComponent as Close } from 'images/svg/close.svg';
+import { ReactComponent as CloseIcon } from 'images/svg/close.svg';
 import {
-  ButtonUpDateSvg,
   ButtonClose,
   ButtonCloseIcon,
-  ButtonFilter,
-  ButtonFilterIcon,
-  ButtonFilterThumb,
-} from './buttons.styled';
+  } from './buttons.styled';
 import { useTheme } from '@mui/material';
 
 export const BtnClose = () => {
@@ -16,23 +12,8 @@ export const BtnClose = () => {
   return (
     <ButtonClose>
       <ButtonCloseIcon theme={theme}>
-        <ButtonUpDateSvg href={icon + '#icon-x-close'}></ButtonUpDateSvg>
+        <CloseIcon />
       </ButtonCloseIcon>
     </ButtonClose>
-  );
-};
-
-export const BtnFilter = ({ color, onClick }) => {
-  const theme = useTheme();
-
-  return (
-    <ButtonFilter onClick={onClick} theme={theme}>
-      <ButtonFilterThumb>
-        <ButtonFilterIcon>
-          <use href={icon + '#icon-filter'}></use>
-        </ButtonFilterIcon>
-      </ButtonFilterThumb>
-      Filters
-    </ButtonFilter>
   );
 };
