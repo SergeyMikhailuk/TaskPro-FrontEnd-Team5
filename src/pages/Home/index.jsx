@@ -2,9 +2,12 @@ import React from 'react';
 
 import { Description, HomeWrapper, Accent } from './styled';
 
+import Filter from '../../components/Filter/Filter'
+
 const HomePage = () => {
   return (
     <HomeWrapper>
+      <Filter />
       <Description>
         Before starting your project, it is essential{' '}
         <Accent>to create a board</Accent> to visualize and track all the

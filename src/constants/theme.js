@@ -53,6 +53,7 @@ export const themes = [
       today: 'rgba(31, 31, 31, 1)',
       plusHover: 'rgba(157, 200, 136, 1)',
       btnHover: 'rgba(157, 200, 136, 1)',
+      radioGray: 'rgba(255, 255, 255, 0.3)',
     },
     sidebar: {
       background: 'rgba(18, 18, 18, 1)',
@@ -160,6 +161,7 @@ export const themes = [
       today: 'rgba(22, 22, 22, 1)',
       plusHover: 'rgba(157, 200, 136, 1)',
       btnHover: 'rgba(157, 200, 136, 1)',
+      radioGray: 'rgba(22, 22, 22, 0.3)',
     },
     sidebar: {
       background: 'rgba(255, 255, 255, 1)',
@@ -267,6 +269,7 @@ export const themes = [
       today: 'rgba(252, 252, 252, 1)',
       plusHover: 'rgba(151, 156, 234, 1)',
       btnHover: 'rgba(123, 126, 222, 1)',
+      radioGray: 'rgba(22, 22, 22, 0.3)',
     },
     sidebar: {
       background: 'rgba(82, 85, 188, 1)',
