@@ -23,8 +23,19 @@ export const CardsBoardList = styled.li`
   letter-spacing: -0.32px;
   height: 61px;
   background-color: #1f1f1f;
-  padding: 20px 24px 20px 24px;
   margin-bottom: 4px;
+  margin-right: 4px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+export const CardsBoardListBox = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 20px 24px 20px 24px;
 `;
 
 export const CardsBoardListBtnGroup = styled.div`
@@ -32,12 +43,29 @@ export const CardsBoardListBtnGroup = styled.div`
   align-items: center;
 `;
 
-export const CardsBoardListEditBtn = styled(AppEditCardSvg)`
-  width: 16px;
-  height: 16px;
+export const CardsBoardListEditBtn = styled.button`
+  background: transparent;
+  border: none;
   margin-right: 8px;
 `;
-export const CardsBoardListDeleteBtn = styled(AppTrashCardSvg)`
+
+export const CardsBoardListBtnEdit = styled(AppEditCardSvg)`
   width: 16px;
   height: 16px;
+`;
+
+export const CardsBoardListDeleteBtn = styled.button`
+  background: transparent;
+  border: none;
+`;
+
+export const CardsBoardListBtnDelete = styled(AppTrashCardSvg)`
+  width: 16px;
+  height: 16px;
+`;
+
+export const CardsBoardListLine = styled.div`
+  width: 4px;
+  border-radius: 4px 0 0 4px;
+  background-color: #bedbb0;
 `;

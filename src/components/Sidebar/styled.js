@@ -153,7 +153,7 @@ export const CardsBoard = styled.ul`
   margin-bottom: 40px;
 
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 7px;
   }
 
   &::-webkit-scrollbar-thumb {
