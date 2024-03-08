@@ -26,8 +26,8 @@ export const Container = styled.button`
   }};
 `;
 export const PlusIcon = styled.svg`
-  width: 50px;
-  height: 50px;
+  width: 14px;
+  height: 14px;
   stroke: ${props => {
     return props.theme.palette.secondary.error;
   }};

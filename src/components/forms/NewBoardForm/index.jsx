@@ -79,7 +79,6 @@ const NewBoardForm = ({
         <BtnCloseBlack />
       </CloseButton>
       <Title>{formTitle}</Title>
-      <Text>New board</Text>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}

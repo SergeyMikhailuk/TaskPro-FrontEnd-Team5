@@ -1,6 +1,6 @@
 import React from 'react';
 import CloseIcon from 'images/svg/close.svg';
-import { BtnBox, BtnRight, Icon } from "./DropDownMoveRight.styled";
+import { BtnBox, BtnRight, BtnTitle } from "./DropDownMoveRight.styled";
 
 const DropDownMoveRight = ({ handleCloseModal }) => {
     const handleClick = () => {
@@ -10,8 +10,9 @@ const DropDownMoveRight = ({ handleCloseModal }) => {
     return (
         <BtnBox>
             <li>
-                <BtnRight onClick={handleClick}>
-                    <Icon src={CloseIcon} alt="Close" />
+                <BtnRight>
+                    <BtnTitle onClick={handleClick}>Close</BtnTitle>
+                    <img src={CloseIcon} alt="Close" />
                 </BtnRight>
             </li>
         </BtnBox>
