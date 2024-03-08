@@ -2,20 +2,20 @@ import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 
 const FormContainer = styled.div`
-  position: relative;
+  position: fixed;
   display: flex;
   flex-direction: column;
   gap: 24px;
   padding: 24px;
-  background: ${props => {
-    return props.theme.palette.background.paper;
-  }};
-  color: ${props => {
-    return props.theme.palette.text.secondary;
-  }};
+  background: ${props => props.theme.palette.background.paper};
+  color: ${props => props.theme.palette.text.secondary};
   border-radius: 8px;
   width: 100vw;
   max-width: 350px;
+  z-index: 100;
+  top: 50%;
+  left: 58%;
+  transform: translate(-50%, -50%);
 `;
 
 const Title = styled.h2`
@@ -49,14 +49,9 @@ const Input = styled(Field)`
   width: 100%;
   padding: 18px 14px;
 
-  color: ${props => {
-    return props.theme.palette.text.primary;
-  }};
+  color: ${props => props.theme.palette.text.primary};
   background: inherit;
-  border: 1px solid
-    ${props => {
-      return props.theme.palette.text.info;
-    }};
+  border: 1px solid ${props => props.theme.palette.text.info};
 
   border-radius: 8px;
   outline: none;
@@ -103,9 +98,7 @@ const IconList = styled.ul`
 const Icon = styled.svg`
   height: 18px;
   width: 18px;
-  stroke: ${props => {
-    return props.theme.palette.primary.info;
-  }};
+  stroke: ${props => props.theme.palette.primary.info};
 `;
 
 const BgList = styled.ul`
@@ -136,9 +129,7 @@ const RadioField = styled(Field)`
   position: absolute;
 
   &:checked + ${Icon} {
-    stroke: ${props => {
-      return props.theme.palette.text.primary;
-    }};
+    stroke: ${props => props.theme.palette.text.primary};
   }
 `;
 
@@ -154,8 +145,13 @@ const RadioFieldBg = styled.input`
 
 const CloseButton = styled.div`
   position: absolute;
-  top: 14px;
-  right: 14px;
+  right: 0;
+  top: 0;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
 `;
 
 export {
