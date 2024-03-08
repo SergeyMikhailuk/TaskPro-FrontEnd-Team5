@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { logOut } from '../../store/auth/authOperations';
+import ModalHelp from '../ModalWindows/ModalHelp/index';
 import { toggleSidebar } from 'store/sidebarSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -18,12 +20,12 @@ import {
   AddBoardsCreateBtnWrap,
   AddBoardsCreateBtn,
   CardsBoard,
-  BoxHelps,
-  BoxHelpsText,
-  BoxHelpsSelectedText,
-  BoxHelpsBtn,
-  BoxHelpsBtnIcon,
-  BoxHelpsBtnText,
+  BoxHelp,
+  BoxHelpText,
+  BoxHelpSelectedText,
+  BoxHelpBtnOpenModal,
+  BoxHelpBtnIcon,
+  BoxHelpBtnText,
   LogOut,
   LogOutIcon,
   LogOutIconBtnWrap,
@@ -32,8 +34,12 @@ import {
 } from './styled';
 
 const Sidebar = () => {
-  const isOpen = useSelector(state => state.sidebar.isOpen);
   const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logOut());
+  };
+
+  const isOpen = useSelector(state => state.sidebar.isOpen);
 
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
@@ -44,6 +50,12 @@ const Sidebar = () => {
     dispatch(toggleSidebar());
   };
 
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleModal = () => {
+    setModalOpen(!isModalOpen);
+  };
+
   return (
     <>
       {isOpen && <StyledOverlay onClick={handleToggleSidebar} />}
@@ -51,7 +63,6 @@ const Sidebar = () => {
         <LogoBox>
           <a href="/">
             <AppLogo />
-
             <LogoBoxTitle>Task Pro</LogoBoxTitle>
           </a>
         </LogoBox>
@@ -67,27 +78,28 @@ const Sidebar = () => {
           </AddBoardsCreateBox>
         </AddBoards>
         <CardsBoard>{cardsList}</CardsBoard>
-        <BoxHelps>
+        <BoxHelp>
           <img
             src={imgSrc}
             alt="flower in a flowerpot"
             width="54px"
             height="78px"
           />
-          <BoxHelpsText>
+          <BoxHelpText>
             If you need help with
-            <BoxHelpsSelectedText> TaskPro</BoxHelpsSelectedText>, check out our
+            <BoxHelpSelectedText> TaskPro</BoxHelpSelectedText>, check out our
             support resources or reach out to our customer support team.
-          </BoxHelpsText>
-          <BoxHelpsBtn>
-            <BoxHelpsBtnIcon />
-            <BoxHelpsBtnText>Need help?</BoxHelpsBtnText>
-          </BoxHelpsBtn>
-        </BoxHelps>
+          </BoxHelpText>
+          <BoxHelpBtnOpenModal onClick={handleModal}>
+            <BoxHelpBtnIcon />
+            <BoxHelpBtnText>Need help?</BoxHelpBtnText>
+          </BoxHelpBtnOpenModal>
+          {isModalOpen && <ModalHelp handleModal={handleModal} />}
+        </BoxHelp>
         <LogOut>
-          <LogOutIconBtnWrap>
+          <LogOutIconBtnWrap onClick={handleLogout}>
             <LogOutIcon />
-            <LogOutText>Log out</LogOutText>
+            <LogOutText>LogOut</LogOutText>
           </LogOutIconBtnWrap>
         </LogOut>
       </Aside>

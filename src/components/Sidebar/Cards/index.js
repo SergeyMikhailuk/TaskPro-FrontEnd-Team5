@@ -31,7 +31,7 @@ const Cards = ({ cards, deleteCard }) => {
           </CardsBoardListDeleteBtn>
         </CardsBoardListBtnGroup>
       </CardsBoardListBox>
-      <CardsBoardListLine></CardsBoardListLine>
+      <CardsBoardListLine />
     </CardsBoardList>
   );
 };

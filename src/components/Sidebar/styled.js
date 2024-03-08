@@ -28,7 +28,7 @@ export const Aside = styled.aside`
   flex-direction: column;
   width: 225px;
   background: ${props => props.theme.sidebar.background};
-  overflow: auto;
+  /* overflow: auto; */
   position: fixed;
   top: 0;
   left: 0;
@@ -157,17 +157,18 @@ export const CardsBoard = styled.ul`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #888;
+    background-color: ${props => props.theme.column.scrollThumb};
     border-radius: 5px;
   }
 
   &::-webkit-scrollbar-track {
-    background-color: ${props => props.theme.sidebar.scroll};
+    background-color: ${props => props.theme.column.scrollTrack};
     border-radius: 5px;
+    border: 1px solid ${props => props.theme.column.scrollBorder};
   }
 `;
 
-export const BoxHelps = styled.div`
+export const BoxHelp = styled.div`
   width: 197px;
   border-radius: 8px;
   background-color: ${props => props.theme.needHelp.background};
@@ -180,7 +181,7 @@ export const BoxHelps = styled.div`
   }
 `;
 
-export const BoxHelpsText = styled.p`
+export const BoxHelpText = styled.p`
   font-size: 12px;
   line-height: 133%;
   letter-spacing: -0.32px;
@@ -194,11 +195,11 @@ export const BoxHelpsText = styled.p`
   }
 `;
 
-export const BoxHelpsSelectedText = styled.span`
+export const BoxHelpSelectedText = styled.span`
   color: ${props => props.theme.themePopup.textAccent};
 `;
 
-export const BoxHelpsBtn = styled.button`
+export const BoxHelpBtnOpenModal = styled.button`
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -211,14 +212,14 @@ export const BoxHelpsBtn = styled.button`
   }
 `;
 
-export const BoxHelpsBtnIcon = styled(AppHelpsBtnSvg)`
+export const BoxHelpBtnIcon = styled(AppHelpsBtnSvg)`
   width: 20px;
   height: 20px;
   margin-right: 8px;
   color: ${props => props.theme.needHelp.icon};
 `;
 
-export const BoxHelpsBtnText = styled.p`
+export const BoxHelpBtnText = styled.p`
   font-weight: 500;
   font-size: 12px;
   letter-spacing: -0.32px;

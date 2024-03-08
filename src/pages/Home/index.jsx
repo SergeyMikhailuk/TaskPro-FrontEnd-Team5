@@ -1,6 +1,9 @@
 import React from 'react';
 
 import { Description, HomeWrapper, Accent } from './styled';
+import ModalHelp from 'components/ModalWindows/ModalHelp';
+import ModalAdd from 'components/ModalWindows/ModalAdd';
+import ModalEdit from 'components/ModalWindows/ModalEdit';
 
 const HomePage = () => {
   return (
@@ -12,6 +15,9 @@ const HomePage = () => {
         organize the workflow and ensure effective collaboration among team
         members.
       </Description>
+      <ModalHelp />
+      <ModalAdd />
+      <ModalEdit />
     </HomeWrapper>
   );
 };
