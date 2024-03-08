@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { logOut } from '../../store/auth/authOperations';
+import ModalHelp from '../ModalWindows/ModalHelp/index';
 import { toggleSidebar } from 'store/sidebarSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import Modal from '../forms/NewBoardForm';
 
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
@@ -19,12 +20,12 @@ import {
   AddBoardsCreateBtnWrap,
   AddBoardsCreateBtn,
   CardsBoard,
-  BoxHelps,
-  BoxHelpsText,
-  BoxHelpsSelectedText,
-  BoxHelpsBtn,
-  BoxHelpsBtnIcon,
-  BoxHelpsBtnText,
+  BoxHelp,
+  BoxHelpText,
+  BoxHelpSelectedText,
+  BoxHelpBtnOpenModal,
+  BoxHelpBtnIcon,
+  BoxHelpBtnText,
   LogOut,
   LogOutIcon,
   LogOutIconBtnWrap,
@@ -33,25 +34,26 @@ import {
 } from './styled';
 
 const Sidebar = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const isOpen = useSelector(state => state.sidebar.isOpen);
   const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logOut());
+  };
+
+  const isOpen = useSelector(state => state.sidebar.isOpen);
 
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
 
-  const cardsList = cards.map(card => <Cards key={cards.id} cards={card} />);
+  const cardsList = cards.map(card => <Cards key={card.id} cards={card} />);
 
   const handleToggleSidebar = () => {
     dispatch(toggleSidebar());
   };
 
-  const openModal = () => {
-    setIsModalOpen(true); 
-  };
+  const [isModalOpen, setModalOpen] = useState(false);
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const handleModal = () => {
+    setModalOpen(!isModalOpen);
   };
 
   return (
@@ -61,7 +63,6 @@ const Sidebar = () => {
         <LogoBox>
           <a href="/">
             <AppLogo />
-
             <LogoBoxTitle>Task Pro</LogoBoxTitle>
           </a>
         </LogoBox>
@@ -72,37 +73,36 @@ const Sidebar = () => {
               Create a <br /> new board
             </AddBoardsCreateText>
             <AddBoardsCreateBtnWrap>
-              <AddBoardsCreateBtn onClick={openModal} />
+              <AddBoardsCreateBtn />
             </AddBoardsCreateBtnWrap>
           </AddBoardsCreateBox>
         </AddBoards>
         <CardsBoard>{cardsList}</CardsBoard>
-        <BoxHelps>
+        <BoxHelp>
           <img
             src={imgSrc}
             alt="flower in a flowerpot"
             width="54px"
             height="78px"
           />
-          <BoxHelpsText>
+          <BoxHelpText>
             If you need help with
-            <BoxHelpsSelectedText> TaskPro</BoxHelpsSelectedText>, check out our
+            <BoxHelpSelectedText> TaskPro</BoxHelpSelectedText>, check out our
             support resources or reach out to our customer support team.
-          </BoxHelpsText>
-          <BoxHelpsBtn>
-            <BoxHelpsBtnIcon />
-            <BoxHelpsBtnText>Need help?</BoxHelpsBtnText>
-          </BoxHelpsBtn>
-        </BoxHelps>
+          </BoxHelpText>
+          <BoxHelpBtnOpenModal onClick={handleModal}>
+            <BoxHelpBtnIcon />
+            <BoxHelpBtnText>Need help?</BoxHelpBtnText>
+          </BoxHelpBtnOpenModal>
+          {isModalOpen && <ModalHelp handleModal={handleModal} />}
+        </BoxHelp>
         <LogOut>
-          <LogOutIconBtnWrap>
+          <LogOutIconBtnWrap onClick={handleLogout}>
             <LogOutIcon />
-            <LogOutText>Log out</LogOutText>
+            <LogOutText>LogOut</LogOutText>
           </LogOutIconBtnWrap>
         </LogOut>
       </Aside>
-   
-      {isModalOpen && <Modal closeModal={closeModal} />}
     </>
   );
 };
