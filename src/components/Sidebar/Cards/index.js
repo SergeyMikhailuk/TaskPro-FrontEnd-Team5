@@ -12,7 +12,6 @@ import {
 } from './styled';
 
 const Cards = ({ cards, deleteCard }) => {
-  console.log(cards.icon);
   return (
     <CardsBoardList>
       <CardsBoardListBox>
