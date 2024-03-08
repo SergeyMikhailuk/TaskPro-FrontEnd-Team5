@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { toggleSidebar } from 'store/sidebarSlice';
 import { useSelector, useDispatch } from 'react-redux';
+import Modal from '../forms/NewBoardForm';
 
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
@@ -32,6 +33,7 @@ import {
 } from './styled';
 
 const Sidebar = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const isOpen = useSelector(state => state.sidebar.isOpen);
   const dispatch = useDispatch();
 
@@ -42,6 +44,14 @@ const Sidebar = () => {
 
   const handleToggleSidebar = () => {
     dispatch(toggleSidebar());
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true); 
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -62,7 +72,7 @@ const Sidebar = () => {
               Create a <br /> new board
             </AddBoardsCreateText>
             <AddBoardsCreateBtnWrap>
-              <AddBoardsCreateBtn />
+              <AddBoardsCreateBtn onClick={openModal} />
             </AddBoardsCreateBtnWrap>
           </AddBoardsCreateBox>
         </AddBoards>
@@ -91,6 +101,8 @@ const Sidebar = () => {
           </LogOutIconBtnWrap>
         </LogOut>
       </Aside>
+   
+      {isModalOpen && <Modal closeModal={closeModal} />}
     </>
   );
 };

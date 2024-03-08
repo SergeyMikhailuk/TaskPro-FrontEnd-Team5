@@ -1,5 +1,5 @@
-import * as Yup from 'yup';
 import React, { useState } from 'react';
+import * as Yup from 'yup';
 import BtnAdd from 'components/buttons/BtnAdd';
 import { ReactComponent as Hexagon } from 'images/svg/NewBoard/hexagon.svg';
 import { ReactComponent as Colors } from 'images/svg/NewBoard/colors.svg';
@@ -11,7 +11,7 @@ import { ReactComponent as Puzzle } from 'images/svg/NewBoard/puzzle.svg';
 import { ReactComponent as Star } from 'images/svg/NewBoard/star.svg';
 import { toast } from 'react-hot-toast';
 import { Formik } from 'formik';
-import { BtnCloseBlack } from 'components/buttons/dropDownMoveRight';
+import BtnCloseBlack from 'components/buttons/dropDownMoveRight';
 import { useTheme } from '@mui/material';
 import {
   FormContainer,
@@ -28,7 +28,7 @@ import {
   RadioFieldBg,
   FormikContainer,
   CloseButton,
-} from './NewBoardForm.styled.jsx'
+} from './NewBoardForm.styled.jsx';
 
 const NewBoardForm = ({
   formTitle,
@@ -36,11 +36,9 @@ const NewBoardForm = ({
   boardIcon = '#icon-Project',
   btnText,
   handleSubmit,
-  closeModal,
+  closeModal, 
 }) => {
   const [background, setbackground] = useState();
-
-
   const themeObj = useTheme();
 
   const formSubmit = values => {
@@ -71,9 +69,13 @@ const NewBoardForm = ({
     setbackground(data);
   };
 
+  const handleCloseModal = () => {
+    closeModal();
+  };
+
   return (
     <FormContainer theme={themeObj}>
-      <CloseButton type="button" onClick={closeModal}>
+      <CloseButton type="button" onClick={handleCloseModal}>
         <BtnCloseBlack />
       </CloseButton>
       <Title>{formTitle}</Title>

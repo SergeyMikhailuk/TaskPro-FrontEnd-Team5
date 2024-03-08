@@ -48,3 +48,7 @@ export const BtnRight = styled.button`
     margin-bottom: 8px;
   }
 `;
+export const BtnCloseBlack = styled.button`
+  /* Ваши стили для кнопки закрытия */
+`;
+export default BtnCloseBlack;
