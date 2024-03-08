@@ -47,6 +47,7 @@ const routing = () => (
     </Route>
 
     <Route path="auth" element={<Auth />}>
+      <Route index element={<Navigate to="/welcome" replace />} />
       <Route
         path="login"
         element={
