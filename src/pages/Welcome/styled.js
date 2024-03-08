@@ -1,6 +1,18 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+import { ReactComponent as LogoSvg } from 'images/logo-icon.svg';
+
+export const Logo = styled(LogoSvg)`
+  width: 40px;
+  height: 40px;
+
+  @media (min-width: 768px) {
+    width: 48px;
+    height: 48px;
+  }
+`;
+
 export const WelcomeWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -49,16 +61,6 @@ export const WelcomeLogo = styled.div`
   @media (min-width: 768px) {
     margin-top: 24px;
     height: 60px;
-  }
-`;
-
-export const WelcomeLogoIcon = styled.svg`
-  width: 40px;
-  height: 40px;
-
-  @media (min-width: 768px) {
-    width: 48px;
-    height: 48px;
   }
 `;
 

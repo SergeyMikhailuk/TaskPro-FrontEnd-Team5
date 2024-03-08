@@ -51,6 +51,9 @@ export const themes = [
       iconDefault: 'rgba(31, 31, 31, 1)',
       unactiveDay: 'rgba(255, 255, 255, 0.2)',
       today: 'rgba(31, 31, 31, 1)',
+      plusHover: 'rgba(157, 200, 136, 1)',
+      btnHover: 'rgba(157, 200, 136, 1)',
+      radioGray: 'rgba(255, 255, 255, 0.3)',
     },
     sidebar: {
       background: 'rgba(18, 18, 18, 1)',
@@ -68,6 +71,10 @@ export const themes = [
       projectBorder: 'rgba(190, 219, 176, 1)',
       iconLogout: 'rgba(190, 219, 176, 1)',
       iconClose: 'rgba(255, 255, 255, 1)',
+      iconLogoBackground: 'rgba(31, 31, 31, 1)',
+      iconLogoImage: 'rgba(255, 255, 255, 1)',
+      scroll: 'rgba(190, 219, 176, 1)',
+      iconLogoutHover: 'rgba(157, 200, 136, 1)',
     },
     editProfileModal: {
       background: 'rgba(21, 21, 21, 1)',
@@ -152,6 +159,9 @@ export const themes = [
       iconDefault: 'rgba(246, 246, 247, 1)',
       unactiveDay: 'rgba(22, 22, 22, 0.2)',
       today: 'rgba(22, 22, 22, 1)',
+      plusHover: 'rgba(157, 200, 136, 1)',
+      btnHover: 'rgba(157, 200, 136, 1)',
+      radioGray: 'rgba(22, 22, 22, 0.3)',
     },
     sidebar: {
       background: 'rgba(255, 255, 255, 1)',
@@ -169,6 +179,10 @@ export const themes = [
       projectBorder: 'rgba(190, 219, 176, 1)',
       iconLogout: 'rgba(190, 219, 176, 1)',
       iconClose: 'rgba(22, 22, 22, 1)',
+      iconLogoBackground: 'rgba(31, 31, 31, 1)',
+      iconLogoImage: 'rgba(255, 255, 255, 1)',
+      scroll: 'rgba(190, 219, 176, 1)',
+      iconLogoutHover: 'rgba(157, 200, 136, 1)',
     },
     editProfileModal: {
       background: 'rgba(252, 252, 252, 1)',
@@ -253,6 +267,9 @@ export const themes = [
       iconDefault: 'rgba(236, 237, 253, 1)',
       unactiveDay: 'rgba(22, 22, 22, 0.2)',
       today: 'rgba(252, 252, 252, 1)',
+      plusHover: 'rgba(151, 156, 234, 1)',
+      btnHover: 'rgba(123, 126, 222, 1)',
+      radioGray: 'rgba(22, 22, 22, 0.3)',
     },
     sidebar: {
       background: 'rgba(82, 85, 188, 1)',
@@ -270,6 +287,10 @@ export const themes = [
       projectBorder: 'rgba(255, 255, 255, 1)',
       iconLogout: 'rgba(255, 255, 255, 1)',
       iconClose: 'rgba(255, 255, 255, 1)',
+      iconLogoBackground: 'rgba(236, 237, 253, 1)',
+      iconLogoImage: 'rgba(82, 85, 188, 1)',
+      scroll: 'rgba(255, 255, 255, 1)',
+      iconLogoutHover: 'rgba(184, 188, 253, 1)',
     },
     editProfileModal: {
       background: 'rgba(252, 252, 252, 1)',

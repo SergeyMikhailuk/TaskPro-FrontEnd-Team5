@@ -8,8 +8,8 @@ import {
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import 'modern-normalize';
-
 import 'styles/base.css';
+
 import { store, persistor } from 'store';
 import routing from 'routes';
 
