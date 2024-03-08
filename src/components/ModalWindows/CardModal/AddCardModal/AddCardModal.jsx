@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Formik } from 'formik';
@@ -29,7 +29,7 @@ import {
   Title,
   TitleInput,
   Wrapper,
-} from '../AddCardModal/CardModal.styled';
+} from './CardModal.styled';
 // import { useDispatch } from 'react-redux';
 
 const options = ['low', 'medium', 'high', 'without priority'];
