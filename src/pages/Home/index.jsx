@@ -1,11 +1,11 @@
 import React from 'react';
 
 import { Description, HomeWrapper, Accent } from './styled';
-import ModalHelp from 'components/ModalWindows/ModalHelp';
-import ModalAdd from 'components/ModalWindows/ModalAdd';
-import ModalEdit from 'components/ModalWindows/ModalEdit';
+// import ModalHelp from 'components/ModalWindows/ModalHelp';
+// import ModalAdd from 'components/ModalWindows/ModalAdd';
+// import ModalEdit from 'components/ModalWindows/ModalEdit';
 
-import Filter from '../../components/Filter/Filter'
+import Filter from '../../components/Filter/Filter';
 
 const HomePage = () => {
   return (
@@ -18,9 +18,9 @@ const HomePage = () => {
         organize the workflow and ensure effective collaboration among team
         members.
       </Description>
-      <ModalHelp />
-      <ModalAdd />
-      <ModalEdit />
+      {/*<ModalHelp />*/}
+      {/*<ModalAdd />*/}
+      {/*<ModalEdit />*/}
     </HomeWrapper>
   );
 };
