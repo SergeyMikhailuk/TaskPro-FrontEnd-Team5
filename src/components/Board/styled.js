@@ -47,7 +47,7 @@ export const IconWrapper = styled.div`
   gap: 8px;
   padding-right: 20px;
 `;
-export const IconLink = styled.button`
+export const IconBtn = styled.button`
   background-color: #121212;
   border: none;
   width: 16px;
