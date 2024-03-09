@@ -6,9 +6,7 @@ const ButtonPlus = styled.div`
   justify-content: center;
   width: 40px;
   height: 36px;
-  background-color: ${props => {
-    return props.theme.palette.secondary.info;
-  }};
+  background-color: ${props => props.theme.themePopup.background};
   border-radius: 6px;
   border: none;
 `;
@@ -19,9 +17,7 @@ const ButtonPlusColumn = styled.div`
   justify-content: center;
   width: 40px;
   height: 36px;
-  background-color: ${props => {
-    return props.theme.palette.primary.error;
-  }};
+  background-color: ${props => props.theme.themePopup.background};
   border-radius: 6px;
   border: none;
 `;
@@ -43,19 +39,15 @@ const ButtonClose = styled.div`
   background-color: transparent;
   border: none;
   &:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
   }
 `;
 
 const ButtonCloseIcon = styled.svg`
   width: 18px;
   height: 18px;
-  fill: ${props => {
-    return props.theme.palette.text.primary;
-  }};
-  stroke: ${props => {
-    return props.theme.palette.text.primary;
-  }};
+  fill: ${props => props.theme.themePopup.textAccent};
+  stroke: ${props => props.theme.themePopup.textAccent};
   cursor: pointer;
 `;
 
@@ -73,17 +65,13 @@ const ButtonFilter = styled.button`
   height: 25px;
   padding: 5px;
   border-radius: 8px;
-  background-color: ${props => {
-    return props.theme.palette.background.paper;
-  }};
+  background-color: ${props => props.theme.themePopup.background};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  stroke: ${props => {
-    return props.theme.palette.text.primary;
-  }};
+  stroke: ${props => props.theme.themePopup.textAccent};
 `;
 
 const ButtonFilterThumb = styled.div`

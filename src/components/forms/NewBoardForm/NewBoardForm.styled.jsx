@@ -25,7 +25,7 @@ const Title = styled.h2`
   letter-spacing: -0.02em;
   font-family: 'Poppins';
   margin: 0;
-  //  color: ${props => props.theme.themePopup.textSecondary};
+   color: ${props => props.theme.themePopup.textSecondary};
 `;
 
 const FormikContainer = styled(Form)`
@@ -128,17 +128,14 @@ const RadioField = styled(Field)`
 
   &:checked + ${Icon} {
     stroke: ${props => props.theme.themePopup.boxShadow};
-    }};
   }
 `;
 
 const RadioFieldBg = styled.input`
   appearance: none;
   position: absolute;
-
   &:checked + ${Img} {
     transform: scale(0.95);
-   
   }
 `;
 

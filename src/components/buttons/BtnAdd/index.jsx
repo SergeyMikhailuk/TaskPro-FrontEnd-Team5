@@ -3,7 +3,7 @@ import { Container, PlusIcon, TitleButton } from './BtnAdd.styled';
 import { ButtonPlus } from '../buttons.styled';
 import { useTheme } from '@mui/material';
 
-const BtnAdd = ({ data, btnTitle, btnColor, onClick, isDisabled = false }) => {
+const BtnAdd = ({ onClick, isDisabled = false }) => {
   
   const theme = useTheme();
   

@@ -17,7 +17,7 @@ export const BtnRight = styled.button`
   justify-content: center;
   align-items: center;
   background: none;
-  border: none; /* Удаляем рамку */
+  border: none;
 
   &:hover,
   &:focus {

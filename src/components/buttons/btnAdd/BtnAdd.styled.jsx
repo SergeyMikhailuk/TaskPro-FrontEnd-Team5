@@ -14,24 +14,18 @@ export const Container = styled.button`
   transition: background-color 200ms linear;
   &:hover,
   &:focus {
-  background-color: ${props => props.theme.palette.text.error};
+  background-color: ${props => props.theme.themePopup.background};
   }
-  background-color: ${props => {
-  return props.theme.palette.text.hint;
-  }};
+  background-color: ${props => props.theme.themePopup.textAccent};
 `;
 export const PlusIcon = styled.svg`
   width: 14px;
   height: 14px;
-  stroke: ${props => {
-    return props.theme.palette.secondary.error;
-  }};
+  stroke: ${props => props.theme.themePopup.textSecondary};
 `;
 
 export const TitleButton = styled.p`
-  color: ${props => {
-    return props.theme.palette.secondary.info;
-  }};
+  color: ${props => props.theme.themePopup.textSecondary};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -47,29 +41,20 @@ export const ContainerColumn = styled.button`
   max-width: 334px;
   height: 56px;
   border-radius: 8px;
-
   padding: 20px 18px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background-color: ${props => {
-    return props.theme.palette.background.paper;
-  }};
+ background-color: ${props => props.theme.themePopup.background};
 `;
 export const PlusIconColumn = styled.svg`
   width: 14px;
   height: 14px;
-  stroke: ${props => {
-    return props.theme.palette.background.paper;
-  }};
+  stroke: ${props => props.theme.themePopup.background};
 `;
 
 export const TitleButtonColumn = styled.p`
-  color: ${props => {
-    return props.theme.palette.text.primary;
-  }};
+  color: ${props => props.theme.themePopup.backgroundBell};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
