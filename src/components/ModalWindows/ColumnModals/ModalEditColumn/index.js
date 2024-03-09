@@ -15,7 +15,7 @@ import {
 } from './styled';
 import { Formik } from 'formik';
 
-const ModalEdit = ({ isOpen, closeModal }) => {
+const ModalEditColumn = ({ isOpen, closeModal }) => {
   const initialValues = {
     title: '',
   };
@@ -56,4 +56,4 @@ const ModalEdit = ({ isOpen, closeModal }) => {
   );
 };
 
-export default ModalEdit;
+export default ModalEditColumn;

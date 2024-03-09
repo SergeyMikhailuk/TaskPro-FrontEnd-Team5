@@ -14,7 +14,7 @@ import {
 } from './styled';
 import { Formik } from 'formik';
 
-const ModalAdd = ({ isOpen, closeModal }) => {
+const ModalAddColumn = ({ isOpen, closeModal }) => {
   const initialValues = {
     title: '',
   };
@@ -59,4 +59,4 @@ const ModalAdd = ({ isOpen, closeModal }) => {
   );
 };
 
-export default ModalAdd;
+export default ModalAddColumn;
