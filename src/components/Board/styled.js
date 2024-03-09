@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import { ReactComponent as TestSVG } from 'images/logo-violet.svg';
 
 import { ReactComponent as PencilSVG } from 'images/svg/pencil.svg';
 import { ReactComponent as TrashSVG } from 'images/svg/trash.svg';
@@ -33,7 +32,6 @@ export const ColumnName = styled.ul`
   letter-spacing: -0.02em;
   line-height: 21px;
   color: #ffffff;
-  /* position: relative; */
 `;
 export const TitleWrapper = styled.div``;
 
@@ -111,7 +109,6 @@ export const OptionWrapper = styled.div`
 export const TaskOPtions = styled.ul`
   display: flex;
   width: 35px;
-
   gap: 14px;
   margin-top: 30px;
   li {
