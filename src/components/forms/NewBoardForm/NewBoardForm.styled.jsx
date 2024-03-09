@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { ReactComponent as IconInButtonSvg } from 'images/svg/plus28.svg'
 
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -9,7 +9,7 @@ export const ModalOverlay = styled.div`
   flex-direction: column;
   gap: 24px;
   padding: 24px;
-  background: ${props => props.theme.themePopup.background};
+  background: red;
   color: ${props => props.theme.themePopup.textSecondary};
   border-radius: 8px;
   width: 350px;
@@ -120,9 +120,10 @@ export const ButtonModal = styled.button`
   min-width: 302px;
   height: 49px; 
 `;
-export const IconInButton = styled.img`
+export const IconInButton = styled(IconInButtonSvg)`
   width: 28px;
   height: 28px;
   margin-right: 3.5px;
-  stroke: ${props => props.theme.themePopup.icon};
+  color: ${props => props.theme.themePopup.icon};
+  fill: black;
 `;
