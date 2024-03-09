@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/TaskPro-FrontEnd-Team5/static/css/main.5ba5220e.css",
-    "main.js": "/TaskPro-FrontEnd-Team5/static/js/main.90764436.js",
+    "main.js": "/TaskPro-FrontEnd-Team5/static/js/main.d6873140.js",
     "static/js/484.96c98b78.chunk.js": "/TaskPro-FrontEnd-Team5/static/js/484.96c98b78.chunk.js",
     "static/js/396.9d915633.chunk.js": "/TaskPro-FrontEnd-Team5/static/js/396.9d915633.chunk.js",
     "static/js/704.2876ad6e.chunk.js": "/TaskPro-FrontEnd-Team5/static/js/704.2876ad6e.chunk.js",
@@ -13,24 +13,25 @@
     "static/media/Poppins-Medium.woff2": "/TaskPro-FrontEnd-Team5/static/media/Poppins-Medium.a19883c1cd77faacd63d.woff2",
     "static/media/Poppins-SemiBold.woff2": "/TaskPro-FrontEnd-Team5/static/media/Poppins-SemiBold.810728e0001e1f7c0a71.woff2",
     "static/media/welcome-icon.png": "/TaskPro-FrontEnd-Team5/static/media/welcome-icon.47ac3097a0f12b998d37.png",
-    "static/media/icon-card.svg": "/TaskPro-FrontEnd-Team5/static/media/icon-card.808e6778537ebd8885537784552cc335.svg",
+    "static/media/icon-card.svg": "/TaskPro-FrontEnd-Team5/static/media/icon-card.5cd61021f7da6dfd6b04911030c40572.svg",
     "static/media/logo-icon.svg": "/TaskPro-FrontEnd-Team5/static/media/logo-icon.9c242b80f796f4c122aed8a84f8e317c.svg",
     "static/media/help-icon.svg": "/TaskPro-FrontEnd-Team5/static/media/help-icon.f47de054711e02f555ffee5616ae23ea.svg",
-    "static/media/edit-card.svg": "/TaskPro-FrontEnd-Team5/static/media/edit-card.d266f29833c6d80bfd808dd708781037.svg",
+    "static/media/edit-card.svg": "/TaskPro-FrontEnd-Team5/static/media/edit-card.14943654cc734d4b204619fd3d8d4cd6.svg",
     "index.html": "/TaskPro-FrontEnd-Team5/index.html",
     "static/media/user-dark.svg": "/TaskPro-FrontEnd-Team5/static/media/user-dark.2d2e890c3043f996c0cb5c7a64c3fbdc.svg",
     "static/media/user-light.svg": "/TaskPro-FrontEnd-Team5/static/media/user-light.c757b6ef444375f4367cc94835fbb6ac.svg",
     "static/media/user-violet.svg": "/TaskPro-FrontEnd-Team5/static/media/user-violet.1ad82273455132b83953bbe9a6cc602a.svg",
-    "static/media/trash-card.svg": "/TaskPro-FrontEnd-Team5/static/media/trash-card.4776b797dcbcc3d4a5f2c87f2b4b4600.svg",
+    "static/media/trash-card.svg": "/TaskPro-FrontEnd-Team5/static/media/trash-card.f8ad97281cfa92b8152ae490ae912ad0.svg",
     "static/media/log-out-icon.svg": "/TaskPro-FrontEnd-Team5/static/media/log-out-icon.c845a85a4a07074e951e9110fcd67b1e.svg",
     "static/media/close.svg": "/TaskPro-FrontEnd-Team5/static/media/close.53c6a8c750a964ddea984dcf8b75a55b.svg",
+    "static/media/modal-add-btn-icon.svg": "/TaskPro-FrontEnd-Team5/static/media/modal-add-btn-icon.83e20a6d50090d6cd154532a38d8ec2c.svg",
     "static/media/add-btn.svg": "/TaskPro-FrontEnd-Team5/static/media/add-btn.11820c9d74614ae9e2d22313a7c39ee5.svg",
     "static/media/menu.svg": "/TaskPro-FrontEnd-Team5/static/media/menu.2e28e6a8817adfb2d2e03a207b5c1150.svg",
-    "static/media/close-modal-btn-icon.svg": "/TaskPro-FrontEnd-Team5/static/media/close-modal-btn-icon.54bda963a713b3620091b4797c4e462a.svg",
+    "static/media/close-modal-btn-icon.svg": "/TaskPro-FrontEnd-Team5/static/media/close-modal-btn-icon.7dea6d7c5e0fe49de32996f1cebfa1c0.svg",
     "static/media/filter.svg": "/TaskPro-FrontEnd-Team5/static/media/filter.d2cedc1fa7be861a1a4cc9831a678447.svg",
     "static/media/down.svg": "/TaskPro-FrontEnd-Team5/static/media/down.58e20fab67c62b9262ddffd115f28a6d.svg",
     "main.5ba5220e.css.map": "/TaskPro-FrontEnd-Team5/static/css/main.5ba5220e.css.map",
-    "main.90764436.js.map": "/TaskPro-FrontEnd-Team5/static/js/main.90764436.js.map",
+    "main.d6873140.js.map": "/TaskPro-FrontEnd-Team5/static/js/main.d6873140.js.map",
     "484.96c98b78.chunk.js.map": "/TaskPro-FrontEnd-Team5/static/js/484.96c98b78.chunk.js.map",
     "396.9d915633.chunk.js.map": "/TaskPro-FrontEnd-Team5/static/js/396.9d915633.chunk.js.map",
     "704.2876ad6e.chunk.js.map": "/TaskPro-FrontEnd-Team5/static/js/704.2876ad6e.chunk.js.map",
@@ -38,6 +39,6 @@
   },
   "entrypoints": [
     "static/css/main.5ba5220e.css",
-    "static/js/main.90764436.js"
+    "static/js/main.d6873140.js"
   ]
 }
