@@ -1,13 +1,16 @@
 import React from 'react';
 
 import { Description, HomeWrapper, Accent } from './styled';
-import ModalHelp from 'components/ModalWindows/ModalHelp';
-import ModalAdd from 'components/ModalWindows/ModalAdd';
-import ModalEdit from 'components/ModalWindows/ModalEdit';
+// import ModalHelp from 'components/ModalWindows/ModalHelp';
+// import ModalAdd from 'components/ModalWindows/ModalAdd';
+// import ModalEdit from 'components/ModalWindows/ModalEdit';
+
+import Filter from '../../components/Filter/Filter';
 
 const HomePage = () => {
   return (
     <HomeWrapper>
+      <Filter />
       <Description>
         Before starting your project, it is essential{' '}
         <Accent>to create a board</Accent> to visualize and track all the
@@ -15,9 +18,9 @@ const HomePage = () => {
         organize the workflow and ensure effective collaboration among team
         members.
       </Description>
-      <ModalHelp />
-      <ModalAdd />
-      <ModalEdit />
+      {/*<ModalHelp />*/}
+      {/*<ModalAdd />*/}
+      {/*<ModalEdit />*/}
     </HomeWrapper>
   );
 };

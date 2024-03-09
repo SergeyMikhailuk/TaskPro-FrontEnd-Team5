@@ -1,11 +1,11 @@
 import { Navigate } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-// import { getIsLoggedIn } from 'store/auth/auth-selectors';
-// import { selectIsLoggedIn } from '../store/auth/authSelectors';
+
+import { selectIsLoggedIn } from '../store/auth/authSelectors';
 const BaseRedirect = () => {
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isLoggedIn = false; // uncomment other and remove this
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const isLoggedIn = false; // uncomment other and remove this
 
   return isLoggedIn ? (
     <Navigate to="/home" replace />
