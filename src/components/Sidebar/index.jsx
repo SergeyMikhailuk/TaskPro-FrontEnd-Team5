@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { logOut } from '../../store/auth/authOperations';
 import ModalHelp from '../ModalWindows/ModalHelp/index';
+import NewBoardForm from '../forms/NewBoardForm';
 import { toggleSidebar } from 'store/sidebarSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
-import cards from './todo.json'; // тестовые карточки, удалить, когда подключить бэк и активировать пропс в сайтбаре!!
+import cards from './todo.json';
 import Cards from './Cards/index.js';
 import {
   Aside,
@@ -50,10 +51,22 @@ const Sidebar = () => {
     dispatch(toggleSidebar());
   };
 
-  const [isModalOpen, setModalOpen] = useState(false);
+ 
+  const [isNewBoardModalOpen, setIsNewBoardModalOpen] = useState(false);
+  const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
 
-  const handleModal = () => {
-    setModalOpen(!isModalOpen);
+  
+  const openNewBoardModal = () => {
+    setIsNewBoardModalOpen(true);
+  };
+
+  const openHelpModal = () => {
+    setIsHelpModalOpen(true);
+  };
+
+  const closeModals = () => {
+    setIsNewBoardModalOpen(false);
+    setIsHelpModalOpen(false);
   };
 
   return (
@@ -73,28 +86,28 @@ const Sidebar = () => {
               Create a <br /> new board
             </AddBoardsCreateText>
             <AddBoardsCreateBtnWrap>
-              <AddBoardsCreateBtn />
+             
+              <AddBoardsCreateBtn onClick={openNewBoardModal} />
             </AddBoardsCreateBtnWrap>
           </AddBoardsCreateBox>
         </AddBoards>
         <CardsBoard>{cardsList}</CardsBoard>
         <BoxHelp>
-          <img
-            src={imgSrc}
-            alt="flower in a flowerpot"
-            width="54px"
-            height="78px"
-          />
+          <img src={imgSrc} alt="flower in a flowerpot" width="54px" height="78px" />
           <BoxHelpText>
             If you need help with
-            <BoxHelpSelectedText> TaskPro</BoxHelpSelectedText>, check out our
-            support resources or reach out to our customer support team.
+            <BoxHelpSelectedText> TaskPro</BoxHelpSelectedText>, check out our support resources or reach out to our
+            customer support team.
           </BoxHelpText>
-          <BoxHelpBtnOpenModal onClick={handleModal}>
+         
+          <BoxHelpBtnOpenModal onClick={openHelpModal}>
             <BoxHelpBtnIcon />
             <BoxHelpBtnText>Need help?</BoxHelpBtnText>
           </BoxHelpBtnOpenModal>
-          {isModalOpen && <ModalHelp handleModal={handleModal} />}
+         
+          {isNewBoardModalOpen && <NewBoardForm closeModal={closeModals} />}
+         
+          {isHelpModalOpen && <ModalHelp handleModal={closeModals} />}
         </BoxHelp>
         <LogOut>
           <LogOutIconBtnWrap onClick={handleLogout}>

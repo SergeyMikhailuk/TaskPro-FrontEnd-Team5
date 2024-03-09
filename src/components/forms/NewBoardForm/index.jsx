@@ -28,6 +28,7 @@ import {
   RadioFieldBg,
   FormikContainer,
   CloseButton,
+  NewBoardText,
 } from './NewBoardForm.styled.jsx';
 
 const NewBoardForm = ({
@@ -86,6 +87,7 @@ const NewBoardForm = ({
       >
         {formik => (
           <FormikContainer>
+            <NewBoardText>New board</NewBoardText>
             <Container>
               <Input
                 theme={themeObj}

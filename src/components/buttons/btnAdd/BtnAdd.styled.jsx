@@ -7,22 +7,17 @@ export const Container = styled.button`
   max-width: 334px;
   height: 56px;
   border-radius: 8px;
-
   padding: 20px 18px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   transition: background-color 200ms linear;
-
   &:hover,
   &:focus {
-    background-color: ${props => props.theme.palette.text.error};
+  background-color: ${props => props.theme.palette.text.error};
   }
-
   background-color: ${props => {
-    return props.theme.palette.text.hint;
+  return props.theme.palette.text.hint;
   }};
 `;
 export const PlusIcon = styled.svg`

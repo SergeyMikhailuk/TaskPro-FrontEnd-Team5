@@ -2,17 +2,16 @@ import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 
 const FormContainer = styled.div`
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 350%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   gap: 24px;
   padding: 24px;
-  background: ${props => {
-    return props.theme.palette.background.paper;
-  }};
-  color: ${props => {
-    return props.theme.palette.text.secondary;
-  }};
+  background: ${props => props.theme.themePopup.background};
+  color: ${props => props.theme.themePopup.textSecondary};
   border-radius: 8px;
   width: 100vw;
   max-width: 350px;
@@ -26,14 +25,20 @@ const Title = styled.h2`
   letter-spacing: -0.02em;
   font-family: 'Poppins';
   margin: 0;
-  color: ${props => props.theme.themePopup.textSecondary};
+  //  color: ${props => props.theme.themePopup.textSecondary};
 `;
 
 const FormikContainer = styled(Form)`
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 24px;
+`;
+const NewBoardText = styled.p`
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  color: rgba(22, 22, 22, 1);
 `;
 
 const Container = styled.div`
@@ -48,32 +53,20 @@ const Input = styled(Field)`
   display: inline-block;
   width: 100%;
   padding: 18px 14px;
-
-  color: ${props => {
-    return props.theme.palette.text.primary;
-  }};
-  background: inherit;
+  color: ${props => props.theme.themePopup.textAccent};
   border: 1px solid
-    ${props => {
-      return props.theme.palette.text.info;
-    }};
-
+  ${props => props.theme.themePopup.border};
   border-radius: 8px;
-  outline: none;
-
   &:placeholder-shown {
-    color: ${props => props.theme.palette.text.secondary};
-    font-size: 14px;
+  color: ${props => props.theme.themePopup.textSecondary};
+  font-size: 14px;
   }
-
   &:focus {
-    border-color: ${props => props.theme.palette.text.hint};
+    border-color: ${props => props.theme.themePopup.border};
   }
 `;
 
 const Error = styled(ErrorMessage)`
-  position: absolute;
-  bottom: -8px;
   padding-left: 14px;
   margin: 0;
   color: var(--color-pastel);
@@ -103,9 +96,7 @@ const IconList = styled.ul`
 const Icon = styled.svg`
   height: 18px;
   width: 18px;
-  stroke: ${props => {
-    return props.theme.palette.primary.info;
-  }};
+  stroke: ${props => props.theme.themePopup.boxShadow};
 `;
 
 const BgList = styled.ul`
@@ -136,8 +127,7 @@ const RadioField = styled(Field)`
   position: absolute;
 
   &:checked + ${Icon} {
-    stroke: ${props => {
-      return props.theme.palette.text.primary;
+    stroke: ${props => props.theme.themePopup.boxShadow};
     }};
   }
 `;
@@ -148,7 +138,7 @@ const RadioFieldBg = styled.input`
 
   &:checked + ${Img} {
     transform: scale(0.95);
-    outline: 1px solid var(--color-green);
+   
   }
 `;
 
@@ -174,4 +164,5 @@ export {
   FormikContainer,
   RadioFieldBg,
   CloseButton,
+  NewBoardText,
 };

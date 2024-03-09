@@ -14,7 +14,7 @@ const BtnAdd = ({ data, btnTitle, btnColor, onClick, isDisabled = false }) => {
           <Plus/>
         </PlusIcon>
       </ButtonPlus>
-      <TitleButton theme={theme}>{btnTitle}</TitleButton>
+      <TitleButton theme={theme}>Create</TitleButton>
     </Container>
   );
 };
