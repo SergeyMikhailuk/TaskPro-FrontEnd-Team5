@@ -6,7 +6,7 @@ const ButtonPlus = styled.div`
   justify-content: center;
   width: 40px;
   height: 36px;
-  background-color: ${props => props.theme.themePopup.background};
+  background-color: white;
   border-radius: 6px;
   border: none;
 `;
@@ -17,7 +17,7 @@ const ButtonPlusColumn = styled.div`
   justify-content: center;
   width: 40px;
   height: 36px;
-  background-color: ${props => props.theme.themePopup.background};
+  background-color: white;
   border-radius: 6px;
   border: none;
 `;
@@ -46,8 +46,8 @@ const ButtonClose = styled.div`
 const ButtonCloseIcon = styled.svg`
   width: 18px;
   height: 18px;
-  fill: ${props => props.theme.themePopup.textAccent};
-  stroke: ${props => props.theme.themePopup.textAccent};
+  fill: black;
+  stroke: black;
   cursor: pointer;
 `;
 
@@ -65,13 +65,13 @@ const ButtonFilter = styled.button`
   height: 25px;
   padding: 5px;
   border-radius: 8px;
-  background-color: ${props => props.theme.themePopup.background};
+  background-color: white;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  stroke: ${props => props.theme.themePopup.textAccent};
+  stroke: black;
 `;
 
 const ButtonFilterThumb = styled.div`

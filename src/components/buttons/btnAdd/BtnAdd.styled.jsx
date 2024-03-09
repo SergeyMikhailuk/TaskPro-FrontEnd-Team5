@@ -14,18 +14,18 @@ export const Container = styled.button`
   transition: background-color 200ms linear;
   &:hover,
   &:focus {
-  background-color: ${props => props.theme.themePopup.background};
+  background-color: white;
   }
-  background-color: ${props => props.theme.themePopup.textAccent};
+  background-color: white;
 `;
 export const PlusIcon = styled.svg`
   width: 14px;
   height: 14px;
-  stroke: ${props => props.theme.themePopup.textSecondary};
+  stroke: black;
 `;
 
 export const TitleButton = styled.p`
-  color: ${props => props.theme.themePopup.textSecondary};
+  color: black;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -45,7 +45,7 @@ export const ContainerColumn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
- background-color: ${props => props.theme.themePopup.background};
+ background-color: white;
 `;
 export const PlusIconColumn = styled.svg`
   width: 14px;

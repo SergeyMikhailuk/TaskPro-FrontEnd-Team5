@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../store/auth/authOperations';
-import ModalHelp from '../ModalWindows/ModalHelp/index';
-import NewBoardForm from '../forms/NewBoardForm';
 import { toggleSidebar } from 'store/sidebarSlice';
-import { useSelector, useDispatch } from 'react-redux';
-
+import NewBoardForm from '../forms/NewBoardForm/index';
+import ModalHelp from '../ModalWindows/ModalHelp/index';
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
 import cards from './todo.json';
@@ -51,11 +50,9 @@ const Sidebar = () => {
     dispatch(toggleSidebar());
   };
 
- 
   const [isNewBoardModalOpen, setIsNewBoardModalOpen] = useState(false);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
 
-  
   const openNewBoardModal = () => {
     setIsNewBoardModalOpen(true);
   };
@@ -86,7 +83,6 @@ const Sidebar = () => {
               Create a <br /> new board
             </AddBoardsCreateText>
             <AddBoardsCreateBtnWrap>
-             
               <AddBoardsCreateBtn onClick={openNewBoardModal} />
             </AddBoardsCreateBtnWrap>
           </AddBoardsCreateBox>
@@ -99,14 +95,11 @@ const Sidebar = () => {
             <BoxHelpSelectedText> TaskPro</BoxHelpSelectedText>, check out our support resources or reach out to our
             customer support team.
           </BoxHelpText>
-         
           <BoxHelpBtnOpenModal onClick={openHelpModal}>
             <BoxHelpBtnIcon />
             <BoxHelpBtnText>Need help?</BoxHelpBtnText>
           </BoxHelpBtnOpenModal>
-         
           {isNewBoardModalOpen && <NewBoardForm closeModal={closeModals} />}
-         
           {isHelpModalOpen && <ModalHelp handleModal={closeModals} />}
         </BoxHelp>
         <LogOut>
@@ -119,4 +112,5 @@ const Sidebar = () => {
     </>
   );
 };
+
 export default Sidebar;
