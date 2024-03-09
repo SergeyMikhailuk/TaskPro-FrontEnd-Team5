@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { themes } from 'constants/theme';
-import { ModalOverlay, ModalContent, CloseButton, StyledInput, NewBoardText, Container, TextOne, Text, IconList, Icon, ButtonModal } from './NewBoardForm.styled.jsx';
+import { ModalOverlay, ModalContent, CloseButton, StyledInput, NewBoardText, Container, TextOne, Text, IconList, Icon, ButtonModal, IconInButton } from './NewBoardForm.styled.jsx';
 import { Field, ErrorMessage, Formik } from 'formik';
 import { ReactComponent as Hexagon } from 'images/svg/NewBoard/hexagon.svg';
 import { ReactComponent as Colors } from 'images/svg/NewBoard/colors.svg';
@@ -13,6 +13,7 @@ import { ReactComponent as Puzzle } from 'images/svg/NewBoard/puzzle.svg';
 import { ReactComponent as Star } from 'images/svg/NewBoard/star.svg';
 import * as Yup from 'yup';
 
+import plusIcon from 'images/svg/plus28.svg';
 
 const NewBoardForm = ({ closeModal }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -117,7 +118,7 @@ const NewBoardForm = ({ closeModal }) => {
                     <TextOne>Background</TextOne>
                     
                       <ButtonModal type="submit" id="createBtn" disabled={isSubmitting}>
-                      <img src="plus_icon.png" alt="Create" />
+                      <IconInButton src={plusIcon} alt="Create" /> Create
                     </ButtonModal>
                     
                   </form>

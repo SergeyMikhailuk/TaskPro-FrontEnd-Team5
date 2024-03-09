@@ -1,14 +1,10 @@
 import styled from 'styled-components';
-// import { Field } from 'formik';
-// import { ErrorMessage } from 'formik';
-
 
 
 export const ModalOverlay = styled.div`
   position: fixed;
-  top: 50%;
-  left: 50%; 
-  transform: translate(-50%, -50%); 
+  top: 30%;
+  left: 280%; 
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -18,7 +14,6 @@ export const ModalOverlay = styled.div`
   border-radius: 8px;
   width: 350px;
   height: 433px;
-  z-index: 1000; 
 `;
 export const ModalContent = styled.div`
   color: ${props => props.theme.themePopup.textMain};
@@ -60,11 +55,6 @@ export const StyledInput = styled.input`
   }
 `;
 
-// export const ModalContent = styled(Form)`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 24px;
-// `;
 
 export const Container = styled.div`
   line-height: 0;
@@ -74,32 +64,6 @@ export const Container = styled.div`
   margin-bottom: 0;
 `;
 
-// const Formik = styled(Field)`
-//   display: inline-block;
-//   width: 100%;
-//   padding: 18px 14px;
-//   color: ${props => props.theme.themePopup.textAccent};
-//   border: 1px solid
-//   ${props => props.theme.themePopup.border};
-//   border-radius: 8px;
-//   &:placeholder-shown {
-//   color: ${props => props.theme.themePopup.textSecondary};
-//   font-size: 14px;
-//   }
-//   &:focus {
-//     border-color: ${props => props.theme.themePopup.border};
-//   }
-// `;
-
-// export const Error = styled(ErrorMessage)`
-//   padding-left: 14px;
-//   margin: 0;
-//   color: var(--color-pastel);
-//   font-size: 12px;
-//   font-family: Poppins;
-//   font-weight: 500;
-//   letter-spacing: -0.36px;
-// `;
 
 export const Text = styled.p`
   font-family: 'Poppins';
@@ -124,7 +88,7 @@ export const IconList = styled.ul`
 export const Icon = styled.svg`
   height: 18px;
   width: 18px;
-  stroke: ${props => props.theme.themePopup.boxShadow};
+  stroke: ${props => props.theme.themePopup.icon};
 `;
 
 export const TextOne = styled.p`
@@ -138,51 +102,6 @@ export const TextOne = styled.p`
 `;
 
 
-// const BgList = styled.ul`
-//   list-style: none;
-//   padding: 0;
-//   margin: 0;
-//   margin-bottom: 16px;
-//   max-width: 256px;
-// `;
-
-// const Img = styled.img`
-//   border-radius: 6px;
-// `;
-
-// const BgColor = styled.li`
-//   display: inline-block;
-//   padding: 0px;
-//   height: 28px;
-//   width: 28px;
-//   margin: 2px;
-//   border-radius: 6px;
-//   border: none;
-//   cursor: pointer;
-// `;
-
-// const RadioField = styled(Field)`
-//   appearance: none;
-//   position: absolute;
-
-//   &:checked + ${Icon} {
-//     stroke: ${props => props.theme.themePopup.boxShadow};
-//   }
-// `;
-
-// const RadioFieldBg = styled.input`
-//   appearance: none;
-//   position: absolute;
-//   &:checked + ${Img} {
-//     transform: scale(0.95);
-//   }
-// `;
-
-// const CloseButton = styled.div`
-//   position: absolute;
-//   top: 14px;
-//   right: 14px;
-// `;
 
 export const ButtonModal = styled.button`
   background: ${props => props.theme.themePopup.backgroundBell};
@@ -200,4 +119,10 @@ export const ButtonModal = styled.button`
   bottom: 24px;
   min-width: 302px;
   height: 49px; 
+`;
+export const IconInButton = styled.img`
+  width: 28px;
+  height: 28px;
+  margin-right: 3.5px;
+  stroke: ${props => props.theme.themePopup.icon};
 `;
