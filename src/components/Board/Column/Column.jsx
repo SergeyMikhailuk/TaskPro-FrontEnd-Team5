@@ -23,7 +23,7 @@ import {
 
 
 
-export const ColumnTask = ({ item }) => {
+export const Column = ({ item }) => {
   const dispatch = useDispatch();
 
   const [openColumnModal, setOpenColumnModal] = useState(false);

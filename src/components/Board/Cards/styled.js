@@ -4,7 +4,7 @@ import { ReactComponent as BellSvg } from 'images/svg/bell.svg';
 import { ReactComponent as ArrowCircleBrockenSvg } from 'images/svg/arrow-circle-broken-right.svg';
 import { ReactComponent as ArrowCircleSvg } from 'images/svg/arrow-circle.svg';
 import { ReactComponent as PencilSvg } from 'images/svg/pencil.svg';
-import { ReactComponent as TrashSvg } from 'images/svg/trash.svgg';
+import { ReactComponent as TrashSvg } from 'images/svg/trash.svg';
 
 
 
