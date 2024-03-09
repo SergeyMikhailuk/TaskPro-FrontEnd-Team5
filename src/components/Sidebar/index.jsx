@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { logOut } from '../../store/auth/authOperations';
 import ModalHelp from '../ModalWindows/ModalHelp/index';
+import ModalAdd from '../ModalWindows/ModalAdd/index';
 import { toggleSidebar } from 'store/sidebarSlice';
 import { useSelector, useDispatch } from 'react-redux';
-
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
 import cards from './todo.json'; // тестовые карточки, удалить, когда подключить бэк и активировать пропс в сайтбаре!!
@@ -50,10 +50,15 @@ const Sidebar = () => {
     dispatch(toggleSidebar());
   };
 
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpenHelp, setIsModalOpenHelp] = useState(false);
+  const [isModalOpenAdd, setIsModalOpenAdd] = useState(false);
 
-  const handleModal = () => {
-    setModalOpen(!isModalOpen);
+  const openModalHelp = () => {
+    setIsModalOpenHelp(true);
+  };
+
+  const openModalAdd = () => {
+    setIsModalOpenAdd(true);
   };
 
   return (
@@ -73,7 +78,7 @@ const Sidebar = () => {
               Create a <br /> new board
             </AddBoardsCreateText>
             <AddBoardsCreateBtnWrap>
-              <AddBoardsCreateBtn />
+              <AddBoardsCreateBtn onClick={openModalAdd} />
             </AddBoardsCreateBtnWrap>
           </AddBoardsCreateBox>
         </AddBoards>
@@ -90,11 +95,22 @@ const Sidebar = () => {
             <BoxHelpSelectedText> TaskPro</BoxHelpSelectedText>, check out our
             support resources or reach out to our customer support team.
           </BoxHelpText>
-          <BoxHelpBtnOpenModal onClick={handleModal}>
+          <BoxHelpBtnOpenModal onClick={openModalHelp}>
             <BoxHelpBtnIcon />
             <BoxHelpBtnText>Need help?</BoxHelpBtnText>
           </BoxHelpBtnOpenModal>
-          {isModalOpen && <ModalHelp handleModal={handleModal} />}
+          {
+            <ModalHelp
+              isOpen={isModalOpenHelp}
+              closeModal={() => setIsModalOpenHelp(false)}
+            />
+          }
+          {
+            <ModalAdd
+              isOpen={isModalOpenAdd}
+              closeModal={() => setIsModalOpenAdd(false)}
+            />
+          }
         </BoxHelp>
         <LogOut>
           <LogOutIconBtnWrap onClick={handleLogout}>

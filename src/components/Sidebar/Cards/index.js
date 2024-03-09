@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import ModalEdit from '../../ModalWindows/ModalEdit/index';
+
 import {
   CardsBoardList,
   CardsBoardListBox,
@@ -8,11 +11,15 @@ import {
   CardsBoardListBtnEdit,
   CardsBoardListDeleteBtn,
   CardsBoardListBtnDelete,
-  CardsBoardListLine,
 } from './styled';
 
 const Cards = ({ cards, deleteCard }) => {
-  console.log(cards.icon);
+  const [isModalOpenEdit, setIsModalOpenEdit] = useState(false);
+
+  const openModalEdit = () => {
+    setIsModalOpenEdit(true);
+  };
+
   return (
     <CardsBoardList>
       <CardsBoardListBox>
@@ -21,9 +28,15 @@ const Cards = ({ cards, deleteCard }) => {
           {cards.title}
         </CardsBoardListTitle>
         <CardsBoardListBtnGroup>
-          <CardsBoardListEditBtn>
+          <CardsBoardListEditBtn onClick={openModalEdit}>
             <CardsBoardListBtnEdit></CardsBoardListBtnEdit>
           </CardsBoardListEditBtn>
+          {
+            <ModalEdit
+              isOpen={isModalOpenEdit}
+              closeModal={() => setIsModalOpenEdit(false)}
+            />
+          }
           <CardsBoardListDeleteBtn>
             <CardsBoardListBtnDelete
               onClick={() => deleteCard(cards.id)}
@@ -31,7 +44,6 @@ const Cards = ({ cards, deleteCard }) => {
           </CardsBoardListDeleteBtn>
         </CardsBoardListBtnGroup>
       </CardsBoardListBox>
-      <CardsBoardListLine />
     </CardsBoardList>
   );
 };
