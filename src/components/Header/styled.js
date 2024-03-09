@@ -5,29 +5,23 @@ import Modal from 'react-modal';
 import { ReactComponent as BurgerImage } from './menu.svg';
 import { ReactComponent as DownImage } from './down.svg';
 
-
-
 export const ModalWindow = styled(Modal)`
-& {
   position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 335px; 
-    max-height: 80vh; 
-    min-height: 200px; 
-    overflow-y: auto; 
-    padding: 24px;
-    background-color: ${props => props.theme.modal.backgroundMain};
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-   
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 335px;
+  max-height: 80vh;
+  min-height: 200px;
+  overflow-y: auto;
+  padding: 24px;
+  background-color: ${props => props.theme.modal.backgroundMain};
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-    @media screen and (min-width: 768px) {
-      width: 400px; 
+  @media screen and (min-width: 768px) {
+    width: 400px;
   }
-  },
-
 `;
 
 export const Down = styled(DownImage)`
