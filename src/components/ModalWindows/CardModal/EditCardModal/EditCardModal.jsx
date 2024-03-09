@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+
 import sprite from '../../../images/sprite.svg';
 
 import {
@@ -27,6 +28,8 @@ import {
   TitleInput,
   Wrapper,
 } from '../AddCardModal/CardModal.styled';
+import { editCard } from 'store/auth/authOperations';
+import { useDispatch } from 'react-redux';
 
 const options = ['low', 'medium', 'high', 'without priority'];
 
@@ -43,7 +46,9 @@ const dateOptions = {
 };
 
 const EditCardModal = ({ card, closeModal }) => {
-  const { id = 12546, title, deadline, description, priority } = card;
+  const dispatch = useDispatch();
+
+  const { _id, title, deadline, description, priority } = card;
 
   const [selectedLabel, setSelectedLabel] = useState(priority);
   const [startDate, setStartDate] = useState('');
@@ -58,8 +63,27 @@ const EditCardModal = ({ card, closeModal }) => {
     description,
     priority: selectedLabel,
   };
+  let editedDeadline = startDate;
 
-  const handleSubmit = () => {};
+  const handleSubmit = (values, { resetForm }) => {
+    const { title, description, priority } = values;
+
+    if (editedDeadline === '') {
+      editedDeadline = deadline;
+    }
+
+    dispatch(
+      editCard({
+        cardId: _id,
+        title,
+        description,
+        priority,
+        deadline: editedDeadline,
+      })
+    );
+    resetForm();
+    closeModal();
+  };
 
   return (
     <ModalSection>
@@ -68,21 +92,20 @@ const EditCardModal = ({ card, closeModal }) => {
         <CloseModal onClick={closeModal} />
       </ClosedButton>
       <Formik
+        id="edifCardForm"
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         <ModalForm>
           <FormWrapper>
-            <AuthError name="title" component="div" />
-
             <TitleInput
               type="text"
               id="title"
               name="title"
               placeholder="Title"
             />
-            <AuthError name="description" component="div" />
+            <AuthError name="title" component="div" />
 
             <Textarea
               component="textarea"
@@ -91,6 +114,7 @@ const EditCardModal = ({ card, closeModal }) => {
               type="text"
               placeholder="Description"
             />
+            <AuthError name="description" component="div" />
           </FormWrapper>
 
           <FormWrapper>
