@@ -12,10 +12,10 @@ export const CardsBoardListIcon = styled(AppIconCardSvg)`
   width: 18px;
   height: 18px;
   margin-right: 4px;
-  color: ${props => props.theme.needHelp.icon};
 `;
 
 export const CardsBoardList = styled.li`
+  position: relative;
   display: flex;
   justify-content: space-between;
   font-weight: 500;
@@ -27,24 +27,24 @@ export const CardsBoardList = styled.li`
   margin-right: 4px;
 
   &:hover {
-    color: ${props => props.theme.sidebar.projectIconHover};
-    background-color: ${props => props.theme.sidebar.projectActive};
+    background-color: ${props => props.theme.sidebar.projectHover};
+  }
+
+  :hover::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    top: 0;
+    right: 0px;
+    background-color: ${props => props.theme.sidebar.projectBorder};
+    border-radius: 4px 0px 0px 4px;
+    opacity: 1;
   }
 
   &:last-child {
     margin-bottom: 0;
-  }
-`;
-
-export const CardsBoardListLine = styled.div`
-  width: 4px;
-  height: 100%;
-  border-radius: 4px 0 0 4px;
-  background-color: #bedbb0;
-  visibility: hidden;
-
-  ${CardsBoardList}:hover {
-    visibility: visible;
   }
 `;
 
@@ -55,8 +55,9 @@ export const CardsBoardListBox = styled.div`
   padding: 20px 24px 20px 24px;
 
   &:hover {
+    color: ${props => props.theme.needHelp.icon};
     svg {
-      color: ${props => props.theme.sidebar.iconLogoutHover};
+      color: ${props => props.theme.needHelp.icon};
     }
   }
 `;
@@ -70,18 +71,12 @@ export const CardsBoardListEditBtn = styled.button`
   background: transparent;
   border: none;
   margin-right: 8px;
-
-  &:hover {
-    svg {
-      color: ${props => props.theme.sidebar.iconLogoutHover};
-    }
-  }
 `;
 
 export const CardsBoardListBtnEdit = styled(AppEditCardSvg)`
   width: 16px;
   height: 16px;
-  color: ${props => props.theme.sidebar.iconLogoutHover};
+  color: ${props => props.theme.sidebar.addButtonBackground};
 `;
 
 export const CardsBoardListDeleteBtn = styled.button`
@@ -92,4 +87,5 @@ export const CardsBoardListDeleteBtn = styled.button`
 export const CardsBoardListBtnDelete = styled(AppTrashCardSvg)`
   width: 16px;
   height: 16px;
+  color: ${props => props.theme.sidebar.addButtonBackground};
 `;

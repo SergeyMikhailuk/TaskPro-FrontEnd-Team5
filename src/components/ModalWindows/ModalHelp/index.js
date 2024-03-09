@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Modal from 'react-modal';
 import {
   ModalOverlay,
   ModalContainer,
@@ -14,27 +14,23 @@ import {
 } from './styled';
 import { Formik } from 'formik';
 
-const ModalHelp = ({ handleModal }) => {
+const ModalHelp = ({ isOpen, closeModal }) => {
   const initialValues = {
     email: '',
     comment: '',
   };
 
   return (
-    <>
+    <Modal isOpen={isOpen} onRequestClose={closeModal}>
       <ModalOverlay>
         <ModalContainer>
           <ModalCloseBox>
-            <ModalCloseBtnWrap onClick={handleModal}>
+            <ModalCloseBtnWrap onClick={closeModal}>
               <ModalCloseBtnIcon />
             </ModalCloseBtnWrap>
           </ModalCloseBox>
           <ModalTitle>Need help</ModalTitle>
-          <Formik
-            id="formHelp"
-            initialValues={initialValues}
-            // validationSchema={ModalSchema}
-          >
+          <Formik id="formHelp" initialValues={initialValues}>
             {formik => (
               <>
                 <ModalFormikBox>
@@ -61,7 +57,7 @@ const ModalHelp = ({ handleModal }) => {
           </Formik>
         </ModalContainer>
       </ModalOverlay>
-    </>
+    </Modal>
   );
 };
 

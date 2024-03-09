@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from 'react-modal';
 
 import {
   ModalOverlay,
@@ -14,26 +15,22 @@ import {
 } from './styled';
 import { Formik } from 'formik';
 
-const ModalEdit = ({ handleModal }) => {
+const ModalEdit = ({ isOpen, closeModal }) => {
   const initialValues = {
     title: '',
   };
 
   return (
-    <>
+    <Modal isOpen={isOpen} onRequestClose={closeModal}>
       <ModalOverlay>
         <ModalContainer>
           <ModalCloseBox>
-            <ModalCloseBtnWrap onClick={handleModal}>
+            <ModalCloseBtnWrap onClick={closeModal}>
               <ModalCloseBtnIcon />
             </ModalCloseBtnWrap>
           </ModalCloseBox>
           <ModalTitle>Edit column</ModalTitle>
-          <Formik
-            id="formEditColumn"
-            initialValues={initialValues}
-            // validationSchema={ModalSchema}
-          >
+          <Formik id="formEditColumn" initialValues={initialValues}>
             {formik => (
               <>
                 <ModalFormikBox>
@@ -55,7 +52,7 @@ const ModalEdit = ({ handleModal }) => {
           </Formik>
         </ModalContainer>
       </ModalOverlay>
-    </>
+    </Modal>
   );
 };
 

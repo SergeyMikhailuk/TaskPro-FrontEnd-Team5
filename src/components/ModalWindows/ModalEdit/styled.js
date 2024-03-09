@@ -47,7 +47,7 @@ export const ModalCloseBtnWrap = styled.button`
 `;
 
 export const ModalCloseBtnIcon = styled(CloseModalSvg)`
-  color: ${props => props.theme.needHelpModal.buttonColor};
+  color: ${props => props.theme.needHelpModal.textMain};
   position: absolute;
   top: 0;
   right: 0;
@@ -110,12 +110,8 @@ export const ModalFormikBoxBtn = styled.button`
 
 export const ModalFormikBoxBtnIcon = styled(AddModalSvg)`
   color: ${props => props.theme.modal.plusColor};
+  fill: ${props => props.theme.modal.plusBackground};
   width: 28px;
   height: 28px;
   margin-right: 8px;
-
-  &:hover,
-  &:focus {
-    background-color: ${props => props.theme.modal.plusHover};
-  }
 `;

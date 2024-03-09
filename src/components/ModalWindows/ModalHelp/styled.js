@@ -46,7 +46,7 @@ export const ModalCloseBtnWrap = styled.button`
 `;
 
 export const ModalCloseBtnIcon = styled(CloseModalSvg)`
-  color: ${props => props.theme.needHelpModal.buttonColor};
+  color: ${props => props.theme.needHelpModal.textMain};
   position: absolute;
   top: 0;
   right: 0;
