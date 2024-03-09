@@ -9,7 +9,7 @@ export const ModalOverlay = styled.div`
   flex-direction: column;
   gap: 24px;
   padding: 24px;
-  background: red;
+  background-color: ${props => props.theme.modal.backgroundMain};
   color: ${props => props.theme.themePopup.textSecondary};
   border-radius: 8px;
   width: 350px;
@@ -17,8 +17,6 @@ export const ModalOverlay = styled.div`
 `;
 export const ModalContent = styled.div`
   color: ${props => props.theme.themePopup.textMain};
-  border-radius: 5px;
-  box-shadow: 0 0 10px ${props => props.theme.themePopup.boxShadow};
 `;
 
 export const CloseButton = styled.span`

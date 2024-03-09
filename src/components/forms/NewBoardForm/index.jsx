@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { themes } from 'constants/theme';
 import { ModalOverlay, ModalContent, CloseButton, StyledInput, NewBoardText, Container, TextOne, Text, IconList, Icon, ButtonModal, IconInButton } from './NewBoardForm.styled.jsx';
 import { Field, ErrorMessage, Formik } from 'formik';
 import { ReactComponent as Hexagon } from 'images/svg/NewBoard/hexagon.svg';
@@ -19,7 +17,6 @@ const NewBoardForm = ({ closeModal }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [title, setTitle] = useState('');
   const [error, setError] = useState('');
-  const themeObj = themes[0];
 
   const handleSubmit = (values, { setSubmitting }) => {
     const { title } = values;
@@ -36,7 +33,7 @@ const NewBoardForm = ({ closeModal }) => {
   };
 
   return (
-    <ThemeProvider theme={themeObj}>
+  
       <div>
         {isOpen && (
           <ModalOverlay>
@@ -59,56 +56,56 @@ const NewBoardForm = ({ closeModal }) => {
                     <IconList>
                       <li>
                         <label>
-                          <Icon theme={themeObj}>
+                          <Icon>
                             <Project />
                           </Icon>
                         </label>
                       </li>
                       <li>
                         <label>
-                          <Icon theme={themeObj}>
+                          <Icon>
                             <Star />
                           </Icon>
                         </label>
                       </li>
                       <li>
                         <label>
-                          <Icon theme={themeObj}>
+                          <Icon>
                             <Loading />
                           </Icon>
                         </label>
                       </li>
                       <li>
                         <label>
-                          <Icon theme={themeObj}>
+                          <Icon>
                             <Puzzle />
                           </Icon>
                         </label>
                       </li>
                       <li>
                         <label>
-                          <Icon theme={themeObj}>
+                          <Icon>
                             <Containers />
                           </Icon>
                         </label>
                       </li>
                       <li>
                         <label>
-                          <Icon theme={themeObj}>
+                          <Icon>
                             <Lightning />
                           </Icon>
                         </label>
                       </li>
                       <li>
                         <label>
-                          <Icon theme={themeObj}>
+                          <Icon>
                             <Colors />
                           </Icon>
                         </label>
                       </li>
                       <li>
                         <label>
-                          <Icon theme={themeObj}>
+                          <Icon>
                             <Hexagon />
                           </Icon>
                         </label>
@@ -128,7 +125,6 @@ const NewBoardForm = ({ closeModal }) => {
           </ModalOverlay>
         )}
       </div>
-    </ThemeProvider>
   );
 }
 
