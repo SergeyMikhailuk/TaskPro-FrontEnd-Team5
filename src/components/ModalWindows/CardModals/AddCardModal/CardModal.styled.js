@@ -77,7 +77,6 @@ export const ModalSection = styled.div`
 export const Title = styled.h2`
   color: ${props => props.theme.modal.textMain};
   font-size: 18px;
-  font-family: 'Poppins';
   font-weight: 500;
   letter-spacing: -0.36px;
   margin-bottom: 24px;
@@ -107,12 +106,11 @@ export const TitleInput = styled(Field)`
   padding: 14px 18px;
 
   font-size: 14px;
-  font-family: 'Poppins';
   letter-spacing: -0.28px;
 
   background-color: ${props => props.theme.modal.backgroundMain};
   border: 1px solid ${props => props.theme.modal.buttonBackground};
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
+  box-shadow: 0 4px 16px rgba(22, 22, 22, 0.08);
   outline: none;
   border-radius: 8px;
 
@@ -123,7 +121,6 @@ export const TitleInput = styled(Field)`
   &::placeholder {
     color: ${props => props.theme.modal.textMain};
     font-size: 14px;
-    font-family: 'Poppins';
     letter-spacing: -0.28px;
   }
 
@@ -142,9 +139,7 @@ export const AuthFormSubmitButton = styled.button`
   background: ${props => props.theme.modal.buttonBackground};
   border-radius: 8px;
 
-  font-family: 'Poppins';
   font-size: 14px;
-  font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.28px;
   color: ${props => props.theme.modal.buttonText};
@@ -175,7 +170,6 @@ export const DefaultRadioBtn = styled(Field)`
 export const FormTitle = styled.h3`
   color: ${props => props.theme.modal.textSecondary};
   font-size: 12px;
-  font-family: 'Poppins';
   font-weight: 400;
   letter-spacing: -0.24px;
   margin-bottom: 4px;
@@ -318,7 +312,6 @@ export const Wrapper = styled.div`
     &__week {
       color: ${props => props.theme.modal.unactiveDay};
       font-size: 14px;
-      font-family: Poppins;
       line-height: 18px;
       letter-spacing: -0.28px;
 
@@ -332,8 +325,6 @@ export const Wrapper = styled.div`
       height: 24px;
       color: ${props => props.theme.modal.textMain};
       font-size: 14px;
-      font-family: Poppins;
-      width: 1.5rem;
 
       transition: all 250ms ease;
 
@@ -397,7 +388,6 @@ export const Wrapper = styled.div`
     &__day-name {
       color: ${props => props.theme.modal.textSecondary};
       font-size: 14px;
-      font-family: 'Poppins';
       font-style: normal;
       font-weight: 500;
       line-height: normal;
@@ -407,7 +397,6 @@ export const Wrapper = styled.div`
     &__current-month {
       color: ${props => props.theme.modal.textMain};
       font-size: 16px;
-      font-family: Poppins;
       font-weight: 500;
       letter-spacing: -0.32px;
       margin-bottom: 14px;
@@ -420,7 +409,6 @@ export const Wrapper = styled.div`
 export const DateTitle = styled.div`
   color: ${props => props.theme.modal.buttonBackground};
   font-size: 14px;
-  font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.28px;
 

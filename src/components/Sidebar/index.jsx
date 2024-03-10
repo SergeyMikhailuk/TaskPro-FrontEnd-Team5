@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { logOut } from '../../store/auth/authOperations';
 import ModalHelp from '../ModalWindows/ModalHelp/index';
-import ModalAdd from '../ModalWindows/ModalAdd/index';
+import ModalAdd from '../ModalWindows/ColumnModals/ModalAddColumn/index';
 import { toggleSidebar } from 'store/sidebarSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
-import cards from './todo.json'; // тестовые карточки, удалить, когда подключить бэк и активировать пропс в сайтбаре!!
-import Cards from './Cards/index.js';
+// import cards from './todo.json'; // тестовые карточки, удалить, когда подключить бэк и активировать пропс в сайтбаре!!
+import Board from './Board/index.js';
 import {
   Aside,
   LogoBox,
@@ -19,7 +20,7 @@ import {
   AddBoardsCreateText,
   AddBoardsCreateBtnWrap,
   AddBoardsCreateBtn,
-  CardsBoard,
+  BoardsList,
   BoxHelp,
   BoxHelpText,
   BoxHelpSelectedText,
@@ -35,16 +36,31 @@ import {
 
 const Sidebar = () => {
   const dispatch = useDispatch();
+
   const handleLogout = () => {
     dispatch(logOut());
   };
 
   const isOpen = useSelector(state => state.sidebar.isOpen);
+  const token = useSelector(state => state.auth.token);
+  const [boards, setBoards] = useState([]);
+
+  useEffect(() => {
+    const fetchBoards = async () => {
+      try {
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+        const { data } = await axios.get('/api/users/current');
+        console.log('data: ', data);
+        setBoards(data.boards);
+      } catch (error) {
+        console.error('Error fetching boards:', error);
+      }
+    };
+    fetchBoards();
+  }, [token]);
 
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
-
-  const cardsList = cards.map(card => <Cards key={card.id} cards={card} />);
 
   const handleToggleSidebar = () => {
     dispatch(toggleSidebar());
@@ -58,7 +74,7 @@ const Sidebar = () => {
   };
 
   const openModalAdd = () => {
-    setIsModalOpenAdd(true);
+    setIsModalOpenAdd(false);
   };
 
   return (
@@ -82,7 +98,11 @@ const Sidebar = () => {
             </AddBoardsCreateBtnWrap>
           </AddBoardsCreateBox>
         </AddBoards>
-        <CardsBoard>{cardsList}</CardsBoard>
+        <BoardsList>
+          {boards.map(board => (
+            <Board key={board.id} board={board} />
+          ))}
+        </BoardsList>
         <BoxHelp>
           <img
             src={imgSrc}

@@ -15,13 +15,17 @@ import {
 } from './styled';
 import { Formik } from 'formik';
 
-const ModalEdit = ({ isOpen, closeModal }) => {
+const ModalEditColumn = ({ isOpen, closeModal }) => {
   const initialValues = {
     title: '',
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={closeModal}>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={closeModal}
+      //overlayClassName="standartOverlayNone"
+    >
       <ModalOverlay>
         <ModalContainer>
           <ModalCloseBox>
@@ -56,4 +60,4 @@ const ModalEdit = ({ isOpen, closeModal }) => {
   );
 };
 
-export default ModalEdit;
+export default ModalEditColumn;

@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
+
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Formik } from 'formik';
-// import { RegisterSchema } from '../../../Register/RegisterSchema';
-// import { getThemeName } from 'store/themeSlice';
-
 import * as Yup from 'yup';
+
+// import sprite from '../../../images/sprite.svg';
 
 import {
   AuthError,
@@ -28,8 +27,9 @@ import {
   Title,
   TitleInput,
   Wrapper,
-} from './CardModal.styled';
-// import { useDispatch } from 'react-redux';
+} from '../AddCardModal/CardModal.styled';
+import { editCard } from 'store/auth/authOperations';
+import { useDispatch } from 'react-redux';
 
 const options = ['low', 'medium', 'high', 'without priority'];
 
@@ -39,71 +39,73 @@ const validationSchema = Yup.object().shape({
     .max(230, 'Maximum 230 characters')
     .required('Description is required'),
 });
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-
-const today = new Date();
-const month = months[today.getMonth()];
-const day = today.getDate();
-const formattedDate = `${month} ${day}`;
-
 const dateOptions = {
   year: 'numeric',
   month: '2-digit',
   day: '2-digit',
 };
 
-const AddCardModal = ({ columnId, closeModal }) => {
-  // const dispatch = useDispatch();
-  const [selectedLabel, setSelectedLabel] = useState(options[3]);
+const EditCardModal = ({ card, closeModal }) => {
+  const dispatch = useDispatch();
+
+  const { _id, title, deadline, description, priority } = card;
+
+  const [selectedLabel, setSelectedLabel] = useState(priority);
   const [startDate, setStartDate] = useState('');
   const customDate =
     startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
-  // let deadline = startDate;
+  const dateForEdit = new Date(deadline);
+  const dateLabel = dateForEdit.toLocaleString('en-GB', dateOptions);
 
   const initialValues = {
-    title: '',
-    description: '',
+    title,
+    description,
     priority: selectedLabel,
   };
+  let editedDeadline = startDate;
 
-  const handleSubmit = () => {};
+  const handleSubmit = (values, { resetForm }) => {
+    const { title, description, priority } = values;
+
+    if (editedDeadline === '') {
+      editedDeadline = deadline;
+    }
+
+    dispatch(
+      editCard({
+        cardId: _id,
+        title,
+        description,
+        priority,
+        deadline: editedDeadline,
+      })
+    );
+    resetForm();
+    closeModal();
+  };
 
   return (
     <ModalSection>
-      <Title>Add Card</Title>
+      <Title>Edit Card</Title>
       <ClosedButton>
         <CloseModal onClick={closeModal} />
       </ClosedButton>
       <Formik
+        id="edifCardForm"
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         <ModalForm>
           <FormWrapper>
-            <AuthError name="title" component="div" />
-
             <TitleInput
               type="text"
               id="title"
               name="title"
               placeholder="Title"
             />
-            <AuthError name="description" component="div" />
+            <AuthError name="title" component="div" />
 
             <Textarea
               component="textarea"
@@ -112,6 +114,7 @@ const AddCardModal = ({ columnId, closeModal }) => {
               type="text"
               placeholder="Description"
             />
+            <AuthError name="description" component="div" />
           </FormWrapper>
 
           <FormWrapper>
@@ -142,7 +145,7 @@ const AddCardModal = ({ columnId, closeModal }) => {
             <DateTitle
               onClick={() => document.querySelector('.input-ref').click()}
             >
-              {startDate !== '' ? customDate : `Today, ${formattedDate}`}
+              {startDate !== '' ? customDate : dateLabel}
             </DateTitle>
             <Wrapper>
               <DatePicker
@@ -158,7 +161,7 @@ const AddCardModal = ({ columnId, closeModal }) => {
 
           <AuthFormSubmitButton type="submit">
             <ButtonPlus>
-              <PlusIcon/>
+              <PlusIcon>{/* <use href={plus16} /> */}</PlusIcon>
             </ButtonPlus>
             Edit
           </AuthFormSubmitButton>
@@ -168,4 +171,4 @@ const AddCardModal = ({ columnId, closeModal }) => {
   );
 };
 
-export default AddCardModal;
+export default EditCardModal;

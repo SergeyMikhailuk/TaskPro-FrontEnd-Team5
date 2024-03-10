@@ -75,7 +75,7 @@ const RegisterForm = () => {
                 placeholder="Create a password"
               />
               <AuthFormPasswordIcon onClick={handleTogglePassword}>
-                {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
               </AuthFormPasswordIcon>
             </AuthInput>
             <AuthError name="password" component="div" />

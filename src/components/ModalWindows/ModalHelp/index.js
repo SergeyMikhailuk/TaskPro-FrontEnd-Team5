@@ -1,10 +1,9 @@
 import React from 'react';
 import Modal from 'react-modal';
+import axios from 'axios';
 import {
   ModalOverlay,
   ModalContainer,
-  ModalCloseBox,
-  ModalCloseBtnWrap,
   ModalCloseBtnIcon,
   ModalTitle,
   ModalFormikBox,
@@ -12,48 +11,57 @@ import {
   ModalFormikBoxInputComment,
   ModalFormikBoxBtn,
 } from './styled';
-import { Formik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+
+Modal.setAppElement('#root');
 
 const ModalHelp = ({ isOpen, closeModal }) => {
-  const initialValues = {
-    email: '',
-    comment: '',
+  const handleSubmit = async (values, { resetForm }) => {
+    console.log('Form submitted!');
+    try {
+      await axios.post('/api/need-help', values);
+      resetForm();
+      closeModal();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
 
   return (
     <Modal isOpen={isOpen} onRequestClose={closeModal}>
       <ModalOverlay>
         <ModalContainer>
-          <ModalCloseBox>
-            <ModalCloseBtnWrap onClick={closeModal}>
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <button onClick={closeModal}>
               <ModalCloseBtnIcon />
-            </ModalCloseBtnWrap>
-          </ModalCloseBox>
+            </button>
+          </div>
           <ModalTitle>Need help</ModalTitle>
-          <Formik id="formHelp" initialValues={initialValues}>
-            {formik => (
-              <>
-                <ModalFormikBox>
-                  <ModalFormikBoxInputEmail
-                    type="text"
-                    name="email"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    placeholder="Email address"
-                    required
-                  />
-                  <ModalFormikBoxInputComment
-                    type="text"
-                    name="comment"
-                    value={formik.values.comment}
-                    onChange={formik.handleChange}
-                    placeholder="Comment"
-                    required
-                  />
-                </ModalFormikBox>
-                <ModalFormikBoxBtn type="submit">Send</ModalFormikBoxBtn>
-              </>
-            )}
+          <Formik
+            initialValues={{ email: '', comment: '' }}
+            onSubmit={handleSubmit}
+          >
+            <Form>
+              <ModalFormikBox>
+                <Field
+                  type="text"
+                  name="email"
+                  placeholder="Email address"
+                  as={ModalFormikBoxInputEmail}
+                  required
+                />
+                <ErrorMessage name="email" component="div" />
+                <Field
+                  type="text"
+                  name="comment"
+                  placeholder="Comment"
+                  as={ModalFormikBoxInputComment}
+                  required
+                />
+                <ErrorMessage name="comment" component="div" />
+              </ModalFormikBox>
+              <ModalFormikBoxBtn type="submit">Send</ModalFormikBoxBtn>
+            </Form>
           </Formik>
         </ModalContainer>
       </ModalOverlay>
