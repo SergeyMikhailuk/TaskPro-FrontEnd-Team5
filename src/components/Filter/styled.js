@@ -52,12 +52,11 @@ export const FilterBtn = styled.button`
   padding: 0;
 
   @media screen and (min-width: 768px) {
-    top: 88px;
+    top: 0;
     right: 32px;
   }
 
   @media screen and (min-width: 1440px) {
-    top: 88px;
     right: 24px;
   }
 `;

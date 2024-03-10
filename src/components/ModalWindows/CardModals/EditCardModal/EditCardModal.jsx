@@ -5,7 +5,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-// import sprite from '../../../images/sprite.svg';
 
 import {
   AuthError,
@@ -28,8 +27,8 @@ import {
   TitleInput,
   Wrapper,
 } from '../AddCardModal/CardModal.styled';
-import { editCard } from 'store/auth/authOperations';
-import { useDispatch } from 'react-redux';
+// import { editCard } from 'store/dashboards/dashboardsOperations';
+// import { useDispatch } from 'react-redux';
 
 const options = ['low', 'medium', 'high', 'without priority'];
 
@@ -39,51 +38,30 @@ const validationSchema = Yup.object().shape({
     .max(230, 'Maximum 230 characters')
     .required('Description is required'),
 });
-const dateOptions = {
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
-};
+// const dateOptions = {
+//   year: 'numeric',
+//   month: '2-digit',
+//   day: '2-digit',
+// };
 
 const EditCardModal = ({ card, closeModal }) => {
-  const dispatch = useDispatch();
+  // const { id = 12546, title, deadline, description, priority } = card;
 
-  const { _id, title, deadline, description, priority } = card;
-
-  const [selectedLabel, setSelectedLabel] = useState(priority);
+  // const [selectedLabel, setSelectedLabel] = useState(priority);
   const [startDate, setStartDate] = useState('');
-  const customDate =
-    startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
+  // const customDate =
+    // startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
-  const dateForEdit = new Date(deadline);
-  const dateLabel = dateForEdit.toLocaleString('en-GB', dateOptions);
+  // const dateForEdit = new Date(deadline);
+  // const dateLabel = dateForEdit.toLocaleString('en-GB', dateOptions);
 
-  const initialValues = {
-    title,
-    description,
-    priority: selectedLabel,
-  };
-  let editedDeadline = startDate;
+  // const initialValues = {
+  //   title,
+  //   description,
+  //   priority: selectedLabel,
+  // };
 
-  const handleSubmit = (values, { resetForm }) => {
-    const { title, description, priority } = values;
-
-    if (editedDeadline === '') {
-      editedDeadline = deadline;
-    }
-
-    dispatch(
-      editCard({
-        cardId: _id,
-        title,
-        description,
-        priority,
-        deadline: editedDeadline,
-      })
-    );
-    resetForm();
-    closeModal();
-  };
+  const handleSubmit = () => {};
 
   return (
     <ModalSection>
@@ -92,20 +70,21 @@ const EditCardModal = ({ card, closeModal }) => {
         <CloseModal onClick={closeModal} />
       </ClosedButton>
       <Formik
-        id="edifCardForm"
-        initialValues={initialValues}
+        // initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         <ModalForm>
           <FormWrapper>
+            <AuthError name="title" component="div" />
+
             <TitleInput
               type="text"
               id="title"
               name="title"
               placeholder="Title"
             />
-            <AuthError name="title" component="div" />
+            <AuthError name="description" component="div" />
 
             <Textarea
               component="textarea"
@@ -114,7 +93,6 @@ const EditCardModal = ({ card, closeModal }) => {
               type="text"
               placeholder="Description"
             />
-            <AuthError name="description" component="div" />
           </FormWrapper>
 
           <FormWrapper>
@@ -124,13 +102,13 @@ const EditCardModal = ({ card, closeModal }) => {
                 <Label
                   key={idx}
                   value={el}
-                  className={selectedLabel === el ? 'active' : ''}
+                  // className={selectedLabel === el ? 'active' : ''}
                   id="labelOut"
                 >
                   <LabelItem
-                    onClick={() => setSelectedLabel(el)}
+                    // onClick={() => setSelectedLabel(el)}
                     value={el}
-                    className={selectedLabel === el ? 'active' : ''}
+                    // className={selectedLabel === el ? 'active' : ''}
                     id="labelIn"
                   />
 
@@ -145,7 +123,7 @@ const EditCardModal = ({ card, closeModal }) => {
             <DateTitle
               onClick={() => document.querySelector('.input-ref').click()}
             >
-              {startDate !== '' ? customDate : dateLabel}
+              {/* {startDate !== '' ? customDate : dateLabel} */}
             </DateTitle>
             <Wrapper>
               <DatePicker
@@ -161,7 +139,9 @@ const EditCardModal = ({ card, closeModal }) => {
 
           <AuthFormSubmitButton type="submit">
             <ButtonPlus>
-              <PlusIcon>{/* <use href={plus16} /> */}</PlusIcon>
+              <PlusIcon>
+                {/* <use href={sprite} /> */}
+              </PlusIcon>
             </ButtonPlus>
             Edit
           </AuthFormSubmitButton>

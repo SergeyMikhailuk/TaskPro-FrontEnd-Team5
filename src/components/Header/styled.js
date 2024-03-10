@@ -138,6 +138,7 @@ export const StyledList = styled.ul`
   border: 1px solid ${props => props.theme.themePopup.border};
   background-color: ${props => props.theme.themePopup.background};
   gap: 4px;
+  z-index: 100;
 `;
 
 export const StyledItem = styled.li`
