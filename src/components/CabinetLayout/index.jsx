@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-
+import Loader from '../Loader/Loader';
 import { getThemeName } from 'store/themeSlice';
 import { themes } from 'constants/theme';
 import Header from 'components/Header';
@@ -22,7 +22,7 @@ const CabinetLayout = () => {
         <ContentWrapper>
           <Header />
 
-          <Suspense fallback={<>Loading...</>}>
+          <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </ContentWrapper>

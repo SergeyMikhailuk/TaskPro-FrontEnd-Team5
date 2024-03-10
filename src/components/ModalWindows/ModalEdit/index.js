@@ -21,7 +21,11 @@ const ModalEdit = ({ isOpen, closeModal }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={closeModal}>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={closeModal}
+      //overlayClassName="standartOverlayNone"
+    >
       <ModalOverlay>
         <ModalContainer>
           <ModalCloseBox>
