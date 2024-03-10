@@ -83,7 +83,7 @@ export const AuthInput = styled.label`
   position: relative;
   height: 49px;
   margin-bottom: 14px;
-  padding: 14px 0px 14px 18px;
+  padding: 14px 30px 14px 18px;
   outline: none;
   color: 1F1F1F;
   border-radius: 8px;
@@ -93,12 +93,7 @@ export const AuthInput = styled.label`
   &:focus-within {
     border: 1px solid rgba(190, 219, 176, 1);
   }
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px #151515 inset;
-    -webkit-text-fill-color: grey;
-  }
+ 
 `;
 
 export const AuthField = styled(Field)`
@@ -117,10 +112,15 @@ export const AuthField = styled(Field)`
     transition: opacity 0.3s ease-in-out;
     border: none;
   }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px rgba(31, 31, 31, 1) inset;
+    -webkit-text-fill-color: grey;
+  }
 `;
 
 export const ThirdPasswordField = styled(AuthField)`
-  padding: 14px 40px 14px 0;
   position: relative;
 `;
 
