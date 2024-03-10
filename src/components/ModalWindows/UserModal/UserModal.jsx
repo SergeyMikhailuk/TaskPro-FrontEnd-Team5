@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import { RegisterSchema } from '../../../Register/RegisterSchema';
-import { getThemeName} from 'store/themeSlice';
+import { RegisterSchema } from '../../Register/RegisterSchema';
+import { getThemeName } from 'store/themeSlice';
 
 import {
   AuthFormWrapper,
@@ -21,21 +21,18 @@ import {
   AddPhoto,
   CloseModal,
   ClosedButton,
-  ThirdPasswordField ,
+  ThirdPasswordField,
 } from './styled';
 
 import userDark from 'images/user-dark.svg';
 import userLight from 'images/user-light.svg';
 import userViolet from 'images/user-violet.svg';
 
-
 const userImages = {
   light: userLight,
   dark: userDark,
   violet: userViolet,
 };
-
-
 
 const UserModal = ({ closeModal }) => {
   const theme = useSelector(getThemeName); // Получаем текущую тему из Redux store
@@ -67,11 +64,9 @@ const UserModal = ({ closeModal }) => {
     }
   };
 
-
-
   const setDefaultAvatar = () => {
     // Используем текущую тему для выбора соответствующего изображения аватара
-    return userImages[theme] || userDark; 
+    return userImages[theme] || userDark;
   };
 
   const handleTogglePassword = () => setShowPassword(!showPassword);
@@ -104,7 +99,7 @@ const UserModal = ({ closeModal }) => {
     <EditWrapper>
       <Title>Edit profile</Title>
       <ClosedButton>
-      <CloseModal onClick={closeModal}/>
+        <CloseModal onClick={closeModal} />
       </ClosedButton>
 
       <ImageWrapper url={!currentImageUrl && setDefaultAvatar}>
@@ -132,7 +127,6 @@ const UserModal = ({ closeModal }) => {
       >
         <AuthForm>
           <AuthFormWrapper>
-            
             <AuthFormField
               type="text"
               id="name"
@@ -143,7 +137,6 @@ const UserModal = ({ closeModal }) => {
           </AuthFormWrapper>
 
           <AuthFormWrapper>
-            
             <AuthFormField
               type="email"
               id="email"
@@ -154,14 +147,13 @@ const UserModal = ({ closeModal }) => {
           </AuthFormWrapper>
 
           <AuthFormWrapper>
-            
-            <ThirdPasswordField 
+            <ThirdPasswordField
               type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"
               placeholder="Enter your password"
             />
-            
+
             <AuthFormPasswordIcon onClick={handleTogglePassword}>
               {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
             </AuthFormPasswordIcon>

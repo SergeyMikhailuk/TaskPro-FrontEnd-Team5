@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+
 import {
   ModalOverlay,
   ModalContainer,
@@ -14,13 +15,17 @@ import {
 } from './styled';
 import { Formik } from 'formik';
 
-const ModalAdd = ({ isOpen, closeModal }) => {
+const ModalEditColumn = ({ isOpen, closeModal }) => {
   const initialValues = {
     title: '',
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={closeModal}>
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={closeModal}
+      //overlayClassName="standartOverlayNone"
+    >
       <ModalOverlay>
         <ModalContainer>
           <ModalCloseBox>
@@ -28,12 +33,8 @@ const ModalAdd = ({ isOpen, closeModal }) => {
               <ModalCloseBtnIcon />
             </ModalCloseBtnWrap>
           </ModalCloseBox>
-          <ModalTitle>Add column</ModalTitle>
-          <Formik
-            id="formEditColumn"
-            initialValues={initialValues}
-            // validationSchema={ModalSchema}
-          >
+          <ModalTitle>Edit column</ModalTitle>
+          <Formik id="formEditColumn" initialValues={initialValues}>
             {formik => (
               <>
                 <ModalFormikBox>
@@ -42,7 +43,7 @@ const ModalAdd = ({ isOpen, closeModal }) => {
                     name="title"
                     value={formik.values.title}
                     onChange={formik.handleChange}
-                    placeholder="Title"
+                    placeholder="Rename"
                     required
                   />
                 </ModalFormikBox>
@@ -59,4 +60,4 @@ const ModalAdd = ({ isOpen, closeModal }) => {
   );
 };
 
-export default ModalAdd;
+export default ModalEditColumn;
