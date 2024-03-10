@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Formik } from 'formik';
@@ -7,7 +7,6 @@ import { Formik } from 'formik';
 // import { getThemeName } from 'store/themeSlice';
 
 import * as Yup from 'yup';
-// import sprite from '../../../images/sprite.svg';
 
 import {
   AuthError,
@@ -159,9 +158,7 @@ const AddCardModal = ({ columnId, closeModal }) => {
 
           <AuthFormSubmitButton type="submit">
             <ButtonPlus>
-              <PlusIcon>
-                {/* <use href={sprite} /> */}
-              </PlusIcon>
+              <PlusIcon/>
             </ButtonPlus>
             Edit
           </AuthFormSubmitButton>

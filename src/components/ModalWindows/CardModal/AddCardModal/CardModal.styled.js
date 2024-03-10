@@ -1,9 +1,43 @@
 import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 import { ReactComponent as CloseBtn } from 'images/svg/close.svg';
+import { ReactComponent as AppBtnSvg } from 'images/svg/plus28.svg';
 
 
-export const Textarea = styled.textarea``
+export const Textarea = styled.textarea`
+resize: none;
+  width: 100%;
+  height: 154px;
+  padding: 14px 18px;
+
+  font-size: 14px;
+  font-family: 'Poppins';
+  letter-spacing: -0.28px;
+
+  margin-top: 14px;
+  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
+
+  background-color: ${props => props.theme.modal.backgroundMain};
+  border: 1px solid ${props => props.theme.modal.buttonBackground};
+  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
+  outline: none;
+  border-radius: 8px;
+
+  color: ${props => props.theme.modal.textMain};
+  transition: all 250ms ease;
+  opacity: 0.4;
+
+  &::placeholder {
+    color: ${props => props.theme.modal.textMain};
+    font-size: 14px;
+    font-family: 'Poppins';
+    letter-spacing: -0.28px;
+  }
+
+  &:focus {
+    opacity: 1;
+  }
+`
 
 export const CloseModal = styled(CloseBtn)`
   width: 18px;
@@ -206,17 +240,24 @@ export const ButtonPlus = styled.div`
   align-items: center;
   border-radius: 8px;
 
-  width: 28px;
-  height: 28px;
-  background-color: ${props => props.theme.modal.plusBackground};
+  
+  background-color: transparent;
   margin-right: 8px;
-  padding: 7px;
 `;
 
-export const PlusIcon = styled.svg`
-  width: 14px;
-  height: 14px;
-  stroke: ${props => props.theme.modal.plusColor};
+
+
+export const PlusIcon = styled(AppBtnSvg)`
+  width: 40px;
+  height: 36px;
+  border-radius: 6px;
+  & .plus{
+    color: ${props => props.theme.modal.plusColor};  
+  }
+
+  & .backgr{
+    color: ${props => props.theme.modal.buttonText};
+    }
 `;
 
 export const ModalForm = styled(Form)`

@@ -36,28 +36,28 @@ const validationSchema = Yup.object().shape({
     .max(230, 'Maximum 230 characters')
     .required('Description is required'),
 });
-const dateOptions = {
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit',
-};
+// const dateOptions = {
+//   year: 'numeric',
+//   month: '2-digit',
+//   day: '2-digit',
+// };
 
 const EditCardModal = ({ card, closeModal }) => {
-  const { id = 12546, title, deadline, description, priority } = card;
+  // const { id = 12546, title, deadline, description, priority } = card;
 
-  const [selectedLabel, setSelectedLabel] = useState(priority);
+  // const [selectedLabel, setSelectedLabel] = useState(priority);
   const [startDate, setStartDate] = useState('');
-  const customDate =
-    startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
+  // const customDate =
+    // startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
-  const dateForEdit = new Date(deadline);
-  const dateLabel = dateForEdit.toLocaleString('en-GB', dateOptions);
+  // const dateForEdit = new Date(deadline);
+  // const dateLabel = dateForEdit.toLocaleString('en-GB', dateOptions);
 
-  const initialValues = {
-    title,
-    description,
-    priority: selectedLabel,
-  };
+  // const initialValues = {
+  //   title,
+  //   description,
+  //   priority: selectedLabel,
+  // };
 
   const handleSubmit = () => {};
 
@@ -68,7 +68,7 @@ const EditCardModal = ({ card, closeModal }) => {
         <CloseModal onClick={closeModal} />
       </ClosedButton>
       <Formik
-        initialValues={initialValues}
+        // initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
@@ -100,13 +100,13 @@ const EditCardModal = ({ card, closeModal }) => {
                 <Label
                   key={idx}
                   value={el}
-                  className={selectedLabel === el ? 'active' : ''}
+                  // className={selectedLabel === el ? 'active' : ''}
                   id="labelOut"
                 >
                   <LabelItem
-                    onClick={() => setSelectedLabel(el)}
+                    // onClick={() => setSelectedLabel(el)}
                     value={el}
-                    className={selectedLabel === el ? 'active' : ''}
+                    // className={selectedLabel === el ? 'active' : ''}
                     id="labelIn"
                   />
 
@@ -121,7 +121,7 @@ const EditCardModal = ({ card, closeModal }) => {
             <DateTitle
               onClick={() => document.querySelector('.input-ref').click()}
             >
-              {startDate !== '' ? customDate : dateLabel}
+              {/* {startDate !== '' ? customDate : dateLabel} */}
             </DateTitle>
             <Wrapper>
               <DatePicker

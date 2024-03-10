@@ -14,6 +14,9 @@ import {
 } from './styled';
 import { Formik } from 'formik';
 
+
+Modal.setAppElement('#root');
+
 const ModalAdd = ({ isOpen, closeModal }) => {
   const initialValues = {
     title: '',

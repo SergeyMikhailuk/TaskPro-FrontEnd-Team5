@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { deleteColumn } from 'store/dashboards/dashboardsOperations';
+// import { deleteColumn } from 'store/dashboards/dashboardsOperations';
 import Card from '../Cards/Cards';
 import ModalEdit from 'components/ModalWindows/ModalEdit/index';
 import AddCardModal from 'components/ModalWindows/CardModal/AddCardModal';
-
+import Modal from 'react-modal'
 import {
   Wrapper,
   Header,
@@ -21,15 +21,15 @@ import {
   CardstBtnEdit,
   ModalWindow,
   AddCardCreateBtn,
-  ModalWindowFirst,
 } from './styled';
 
 
 
 export const Column = ({ item }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  
+  Modal.setAppElement('#root');
+
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
 
