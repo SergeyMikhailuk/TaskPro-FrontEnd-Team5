@@ -2,8 +2,8 @@
 import { useState } from 'react';
 // import { deleteColumn } from 'store/dashboards/dashboardsOperations';
 import Card from '../Cards/Cards';
-import ModalEdit from 'components/ModalWindows/ModalEdit/index';
-import AddCardModal from 'components/ModalWindows/CardModal/AddCardModal';
+import ModalEdit from 'components/ModalWindows/ColumnModals/ModalEditColumn/index';
+import AddCardModal from 'components/ModalWindows/CardModals/AddCardModal/AddCardModal';
 import Modal from 'react-modal'
 import {
   Wrapper,
