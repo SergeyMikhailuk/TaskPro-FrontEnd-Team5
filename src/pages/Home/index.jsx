@@ -1,7 +1,6 @@
 import React from 'react';
 
-// import { Description, Accent } from './styled';
-import { HomeWrapper } from './styled';
+// import { Description,  HomeWrapper, Accent } from './styled';
 
 import MainPart from 'components/MainPart/MainPart';
 import { HomeWrapperBoard } from './styled';

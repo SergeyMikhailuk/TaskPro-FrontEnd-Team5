@@ -242,8 +242,8 @@ export const ButtonPlus = styled.div`
 
 
 export const PlusIcon = styled(AppBtnSvg)`
-  width: 40px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   border-radius: 6px;
   & .plus{
     color: ${props => props.theme.modal.plusColor};  
