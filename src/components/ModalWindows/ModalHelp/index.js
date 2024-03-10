@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import axios from 'axios';
 import {
   ModalOverlay,
   ModalContainer,
@@ -20,6 +21,18 @@ const ModalHelp = ({ isOpen, closeModal }) => {
     comment: '',
   };
 
+  const handleSubmit = async (values, { resetForm }) => {
+    console.log('Form submitted!');
+    try {
+      await axios.post('/api/need-help', values);
+
+      resetForm();
+      closeModal();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
+
   return (
     <Modal isOpen={isOpen} onRequestClose={closeModal}>
       <ModalOverlay>
@@ -30,7 +43,11 @@ const ModalHelp = ({ isOpen, closeModal }) => {
             </ModalCloseBtnWrap>
           </ModalCloseBox>
           <ModalTitle>Need help</ModalTitle>
-          <Formik id="formHelp" initialValues={initialValues}>
+          <Formik
+            id="formHelp"
+            initialValues={initialValues}
+            onSubmit={handleSubmit}
+          >
             {formik => (
               <>
                 <ModalFormikBox>

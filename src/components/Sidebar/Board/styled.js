@@ -3,18 +3,18 @@ import { ReactComponent as AppEditCardSvg } from 'images/sidebar/edit-card.svg';
 import { ReactComponent as AppIconCardSvg } from 'images/sidebar/icon-card.svg';
 import { ReactComponent as AppTrashCardSvg } from 'images/sidebar/trash-card.svg';
 
-export const CardsBoardListTitle = styled.div`
+export const BoardListTitle = styled.div`
   display: flex;
   align-items: center;
 `;
 
-export const CardsBoardListIcon = styled(AppIconCardSvg)`
+export const BoardListIcon = styled(AppIconCardSvg)`
   width: 18px;
   height: 18px;
   margin-right: 4px;
 `;
 
-export const CardsBoardList = styled.li`
+export const BoardList = styled.li`
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -48,7 +48,7 @@ export const CardsBoardList = styled.li`
   }
 `;
 
-export const CardsBoardListBox = styled.div`
+export const BoardListBox = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -62,29 +62,29 @@ export const CardsBoardListBox = styled.div`
   }
 `;
 
-export const CardsBoardListBtnGroup = styled.div`
+export const BoardListBtnGroup = styled.div`
   display: flex;
   align-items: center;
 `;
 
-export const CardsBoardListEditBtn = styled.button`
+export const BoardListEditBtn = styled.button`
   background: transparent;
   border: none;
   margin-right: 8px;
 `;
 
-export const CardsBoardListBtnEdit = styled(AppEditCardSvg)`
+export const BoardListBtnEdit = styled(AppEditCardSvg)`
   width: 16px;
   height: 16px;
   color: ${props => props.theme.sidebar.addButtonBackground};
 `;
 
-export const CardsBoardListDeleteBtn = styled.button`
+export const BoardListDeleteBtn = styled.button`
   background: transparent;
   border: none;
 `;
 
-export const CardsBoardListBtnDelete = styled(AppTrashCardSvg)`
+export const BoardListBtnDelete = styled(AppTrashCardSvg)`
   width: 16px;
   height: 16px;
   color: ${props => props.theme.sidebar.addButtonBackground};
