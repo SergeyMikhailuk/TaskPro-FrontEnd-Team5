@@ -32,6 +32,7 @@ import {
   LogOutText,
   StyledOverlay,
 } from './styled';
+import { deleteBoard } from 'Services/api';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -57,6 +58,16 @@ const Sidebar = () => {
     };
     fetchBoards();
   }, [token]);
+
+  const updateBoardsList = async () => {
+    try {
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      const { data } = await axios.get('/api/boards');
+      setBoards(data);
+    } catch (error) {
+      console.error('Error updating board list:', error);
+    }
+  };
 
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
@@ -99,7 +110,12 @@ const Sidebar = () => {
         </AddBoards>
         <BoardsList>
           {boards.map(board => (
-            <Board key={board.id} board={board} />
+            <Board
+              key={board.id}
+              board={board}
+              deleteBoard={deleteBoard}
+              updateBoardsList={updateBoardsList}
+            />
           ))}
         </BoardsList>
         <BoxHelp>

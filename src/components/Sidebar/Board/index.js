@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ModalEdit from '../../ModalWindows/ColumnModals/ModalEditColumn/index';
 
 import {
-  BoardList,
+  BoardItem,
   BoardListBox,
   BoardListTitle,
   BoardListIcon,
@@ -12,16 +12,23 @@ import {
   BoardListDeleteBtn,
   BoardListBtnDelete,
 } from './styled';
+import { useSelector } from 'react-redux';
 
-const Board = ({ board, deleteBoard }) => {
+const Board = ({ board, deleteBoard, updateBoardsList }) => {
   const [isModalOpenEdit, setIsModalOpenEdit] = useState(false);
+  const token = useSelector(state => state.auth.token);
 
   const openModalEdit = () => {
     setIsModalOpenEdit(false);
   };
 
+  const handleDeleteBoard = async () => {
+    await deleteBoard(board.id, token);
+    updateBoardsList();
+  };
+
   return (
-    <BoardList>
+    <BoardItem>
       <BoardListBox>
         <BoardListTitle>
           <BoardListIcon>{}</BoardListIcon>
@@ -39,12 +46,12 @@ const Board = ({ board, deleteBoard }) => {
           }
           <BoardListDeleteBtn>
             <BoardListBtnDelete
-              onClick={() => deleteBoard(board.id)}
+              onClick={handleDeleteBoard}
             ></BoardListBtnDelete>
           </BoardListDeleteBtn>
         </BoardListBtnGroup>
       </BoardListBox>
-    </BoardList>
+    </BoardItem>
   );
 };
 

@@ -1,10 +1,18 @@
 import axios from 'axios';
 
-export async function fetchCurrent() {
-  const { data } = await axios.get(`/api/users/current`);
-  return data;
-}
-export async function fetchBoards() {
-  const { data } = await axios.get(`/api/boards`);
-  return data;
-}
+export const deleteBoard = async (boardId, token) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    await axios.delete(`/api/boards/${boardId}`, config);
+    console.log('Board deleted successfully');
+    return { success: true };
+  } catch (error) {
+    console.error('Error deleting board:', error);
+    return { success: false, error };
+  }
+};
