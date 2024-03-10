@@ -36,24 +36,28 @@ import {
 
 const Sidebar = () => {
   const dispatch = useDispatch();
+
   const handleLogout = () => {
     dispatch(logOut());
   };
 
   const isOpen = useSelector(state => state.sidebar.isOpen);
+  const token = useSelector(state => state.auth.token);
   const [boards, setBoards] = useState([]);
 
   useEffect(() => {
     const fetchBoards = async () => {
       try {
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
         const { data } = await axios.get('/api/users/current');
+        console.log('data: ', data);
         setBoards(data.boards);
       } catch (error) {
         console.error('Error fetching boards:', error);
       }
     };
     fetchBoards();
-  }, []);
+  }, [token]);
 
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
