@@ -21,6 +21,7 @@ import {
   CardstBtnEdit,
   ModalWindow,
   AddCardCreateBtn,
+  ModalWindowFirst,
 } from './styled';
 
 
@@ -28,20 +29,34 @@ import {
 export const Column = ({ item }) => {
   const dispatch = useDispatch();
 
-  const [openColumnModal, setOpenColumnModal] = useState(false);
-  const [openCardModal, setOpenCardModal] = useState(false);
+  
+  const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
+  const [isOpenCardModal, setIsOpenCardModal] = useState(false);
 
   // const selectedPriority = useSelector(
   //   state => state.dashboards.selectedPriority
   // );
 
-  const handleOpenColumnModal = () => setOpenColumnModal(true);
-  const handleCloseColumnModal = () => setOpenColumnModal(false);
 
-  const handleOpenCardModal = () => setOpenCardModal(true);
-  const handleCloseCardModal = () => setOpenCardModal(false);
 
   
+  
+  const handleOpenColumnModal = () => {
+    setIsOpenColumnModal(true);
+  };
+
+  const handleCloseColumnModal = () => {
+    setIsOpenColumnModal(false);
+  };
+
+  const handleOpenCardModal = () => {
+    setIsOpenCardModal(true);
+  };
+
+  const handleCloseCardModal = () => {
+    setIsOpenCardModal(false);
+  };
+
 
   // const filteredColumn =
   //   item.cards && item.cards.filter(item => item.priority === selectedPriority);
@@ -96,22 +111,17 @@ export const Column = ({ item }) => {
           Add another card
         </Button>
       </ContentWrapper>
-      <ModalWindow
-        open={openColumnModal}
-        closeModal={handleCloseColumnModal}
-        children={
+      {/* <ModalWindowFirst isOpen={isOpenColumnModal} onRequestClose={handleCloseColumnModal}> */}
+        
           <ModalEdit
             // title={item.title}
             // columnId={item._id}
-            closeModal={handleCloseColumnModal}
+            closeModal={handleCloseColumnModal} isOpen={isOpenColumnModal} onRequestClose={handleCloseColumnModal}
           />
-        }
-      />
+        {/* </ModalWindowFirst> */}
+        
 
-      <ModalWindow
-        open={openCardModal}
-        closeModal={handleCloseCardModal}
-        >
+      <ModalWindow isOpen={isOpenCardModal} onRequestClose={handleCloseCardModal} >
           {/* <AddCardModal columnId={item._id} closeModal={handleCloseCardModal} /> */}
           <AddCardModal closeModal={handleCloseCardModal} />
         </ModalWindow>

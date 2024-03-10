@@ -8,6 +8,10 @@ import { ReactComponent as AppBtnSvg } from 'images/svg/plus28.svg';
 export const Wrapper = styled.div`
 `;
 
+
+
+
+
 export const ButtonEdit = styled.button`
 border: none;
 background-color: transparent;
@@ -50,13 +54,13 @@ export const AddCardCreateBtn = styled(AppBtnSvg)`
 export const CardstBtnEdit = styled(AppEditCardSvg)`
   width: 16px;
   height: 16px;
-  color: ${props => props.theme.sidebar.textSecondary};
+  color: ${props => props.theme.column.textSecondary};
 `;
 
 export const CardsBtnDelete = styled(AppTrashCardSvg)`
   width: 16px;
   height: 16px;
-  color: ${props => props.theme.sidebar.textSecondary};
+  color: ${props => props.theme.column.textSecondary};
 `;
 
 export const Content = styled.div`
@@ -175,9 +179,12 @@ export const Button = styled.button`
   color: ${props => props.theme.column.buttonColor};
   background-color: ${props => props.theme.column.buttonBackground};
   border-radius: 8px;
-
   transition: all 250ms linear;
   cursor: pointer;
+
+  &:hover svg {
+    transform: scale(1.1);
+  }
 `
 
 export const ButtonPlus = styled.div`
@@ -191,13 +198,11 @@ export const ButtonPlus = styled.div`
   background-color: ${props => props.theme.column.plusBackground};
   margin-right: 8px;
 
-  transition: all 250ms linear;
+  
 
   cursor: pointer;
 
-  &:hover {
-    transform: scale(1.1);
-  }
+ 
 `;
 
 export const PlusIcon = styled.svg`

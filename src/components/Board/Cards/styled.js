@@ -172,9 +172,6 @@ export const Pencil = styled(PencilSvg)`
   color: ${props => props.theme.column.textSecondary};
   transition: all 150ms linear;
   cursor: pointer;
-
-  &:hover {
-  }
 `;
 
 export const ArrowCircle = styled(ArrowCircleSvg)`

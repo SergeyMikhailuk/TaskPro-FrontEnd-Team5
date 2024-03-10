@@ -101,8 +101,8 @@ export const AddButton = styled.button`
   transition: all 250ms linear;
   cursor: pointer;
 
-  &:hover {
-    opacity: 0.9;
+  &:hover svg {
+    transform: scale(1.1);
   }
 `;
 
