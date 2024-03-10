@@ -147,7 +147,7 @@ export const AddBoardsCreateBtn = styled(AppBtnSvg)`
   }
 `;
 
-export const CardsBoard = styled.ul`
+export const BoardsList = styled.ul`
   height: 185px;
   overflow: auto;
   margin-bottom: 40px;
@@ -180,6 +180,8 @@ export const BoxHelp = styled.div`
     padding: 20px;
   }
 `;
+
+// export const BoardItem = styled.li``;
 
 export const BoxHelpText = styled.p`
   font-size: 12px;

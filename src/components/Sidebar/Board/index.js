@@ -13,19 +13,19 @@ import {
   BoardListBtnDelete,
 } from './styled';
 
-const Boards = ({ boards, deleteBoard }) => {
+const Board = ({ board, deleteBoard }) => {
   const [isModalOpenEdit, setIsModalOpenEdit] = useState(false);
 
   const openModalEdit = () => {
-    setIsModalOpenEdit(true);
+    setIsModalOpenEdit(false);
   };
 
   return (
     <BoardList>
       <BoardListBox>
         <BoardListTitle>
-          <BoardListIcon>{cards.icon}</BoardListIcon>
-          {cards.title}
+          <BoardListIcon>{}</BoardListIcon>
+          {board.title}
         </BoardListTitle>
         <BoardListBtnGroup>
           <BoardListEditBtn onClick={openModalEdit}>
@@ -39,7 +39,7 @@ const Boards = ({ boards, deleteBoard }) => {
           }
           <BoardListDeleteBtn>
             <BoardListBtnDelete
-              onClick={() => deleteBoard(cards.id)}
+              onClick={() => deleteBoard(board.id)}
             ></BoardListBtnDelete>
           </BoardListDeleteBtn>
         </BoardListBtnGroup>
@@ -48,4 +48,4 @@ const Boards = ({ boards, deleteBoard }) => {
   );
 };
 
-export default Boards;
+export default Board;
