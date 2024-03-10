@@ -11,6 +11,10 @@ export const ModalOverlay = styled.div`
   height: 100%;
   background-color: rgba(28, 28, 28, 0.5);
   backdrop-filter: blur(5px);
+
+  //.standartOverlayNone {
+  //  display: none;
+  //}
 `;
 
 export const ModalContainer = styled.div`
