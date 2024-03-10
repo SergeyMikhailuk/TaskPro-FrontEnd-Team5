@@ -7,7 +7,7 @@ import Filter from '../Filter/Filter';
 // import {  selectColumnsLength } from 'store/dashboards/dashboardsSelectors';
 import { Column } from '../Board/Column/Column'
 import { WrapperMain, Header, AddIcon, Title, AddButton, IconWrapper, Text, ContentWrapper, Wrapper} from './styled';
-import ModalAdd from '../ModalWindows/ModalAdd/index'
+import ModalAdd from '../ModalWindows/ColumnModals/ModalAddColumn/index'
 
 
 const MainPart = ({ children }) => {

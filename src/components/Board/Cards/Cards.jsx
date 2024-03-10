@@ -28,7 +28,8 @@ import {
   Trash,
   ModalWindow,
 } from './styled';
-import EditCardModal from '../../ModalWindows/CardModal/EditCardModal/EditCardModal';
+  
+import EditCardModal from 'ModalWindows/CardModals/EditCardModal/EditCardModal';
 // import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
 
 // const Card = ({ item, columnName }) => {
