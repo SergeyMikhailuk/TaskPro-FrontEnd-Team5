@@ -102,7 +102,7 @@ export const TextOne = styled.p`
 
 
 export const ButtonModal = styled.button`
-  background: ${props => props.theme.themePopup.backgroundBell};
+  background: ${props => props.theme.themePopup.strokeBell};
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -123,5 +123,5 @@ export const IconInButton = styled(IconInButtonSvg)`
   height: 28px;
   margin-right: 3.5px;
   color: ${props => props.theme.themePopup.icon};
-  fill: black;
+  fill: ${props => props.theme.themePopup.backgroundBell};
 `;
