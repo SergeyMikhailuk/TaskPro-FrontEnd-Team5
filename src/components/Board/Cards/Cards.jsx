@@ -1,6 +1,6 @@
 // import { useState, useRef, useEffect } from 'react';
 import { useState } from 'react';
-import Modal from 'react-modal';
+import { ReactModal } from '../../ModalWindows/Modal/Modal';
 
 // import CardMovePopUp from './CardMovePopUp';
 // import { useDispatch } from 'react-redux';
@@ -26,7 +26,6 @@ import {
   // PopupText,
   Pencil,
   Trash,
-  ModalWindow,
 } from './styled';
 
 import EditCardModal from '../../ModalWindows/CardModals/EditCardModal/EditCardModal';
@@ -39,7 +38,7 @@ const Card = () => {
   // const [delayPopup, setDelayPopup] = useState(false);
   // const moveIconRef = useRef();
   // const [openCardModal, setOpenCardModal] = useState(false);
-  Modal.setAppElement('#root');
+
 
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
 
@@ -202,13 +201,14 @@ const Card = () => {
           </IconsGroup>
         </BottomWrapper>
       </CardWrapper>
-      <ModalWindow
+      <ReactModal
         isOpen={isOpenCardModal}
+        title="Edit Card"
+        closeModal={handleCloseCardModal}
         onRequestClose={handleCloseCardModal}
       >
-        {/* <EditCardModal card={item} closeModal={handleCloseCardModal} /> */}
-        <EditCardModal closeModal={handleCloseCardModal} />
-      </ModalWindow>
+        <EditCardModal />
+      </ReactModal>
     </>
   );
 };

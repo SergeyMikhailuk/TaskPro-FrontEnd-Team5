@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Card from '../Cards/Cards';
 import ModalEdit from 'components/ModalWindows/ColumnModals/ModalEditColumn/index';
 import AddCardModal from 'components/ModalWindows/CardModals/AddCardModal/AddCardModal';
-import Modal from 'react-modal'
+import { ReactModal } from '../../ModalWindows/Modal/Modal';
 import {
   Wrapper,
   Header,
@@ -19,16 +19,12 @@ import {
   ButtonDelete,
   CardsBtnDelete,
   CardstBtnEdit,
-  ModalWindow,
   AddCardCreateBtn,
 } from './styled';
-
-
 
 export const Column = ({ item }) => {
   // const dispatch = useDispatch();
 
-  Modal.setAppElement('#root');
 
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
@@ -37,10 +33,6 @@ export const Column = ({ item }) => {
   //   state => state.dashboards.selectedPriority
   // );
 
-
-
-  
-  
   const handleOpenColumnModal = () => {
     setIsOpenColumnModal(true);
   };
@@ -56,7 +48,6 @@ export const Column = ({ item }) => {
   const handleCloseCardModal = () => {
     setIsOpenCardModal(false);
   };
-
 
   // const filteredColumn =
   //   item.cards && item.cards.filter(item => item.priority === selectedPriority);
@@ -75,23 +66,21 @@ export const Column = ({ item }) => {
             {/* <Title>{item.title}</Title> */}
             <Title>NameColumn </Title>
 
-
             <ButtonWrapper>
-
               <ButtonEdit>
-              <CardstBtnEdit onClick={handleOpenColumnModal} />
+                <CardstBtnEdit onClick={handleOpenColumnModal} />
               </ButtonEdit>
 
               {/* <CardsBtnDelete onClick={() => dispatch(deleteColumn(item._id))} /> */}
               <ButtonDelete>
-              <CardsBtnDelete/>
+                <CardsBtnDelete />
               </ButtonDelete>
             </ButtonWrapper>
           </Header>
 
           {/* <TaskList length={condition}> */}
           <TaskList>
-            <Card/>
+            <Card />
             {/* {selectedPriority === 'show all'
               ? item.cards &&
                 item.cards.map(el => (
@@ -111,20 +100,24 @@ export const Column = ({ item }) => {
           Add another card
         </Button>
       </ContentWrapper>
-      {/* <ModalWindowFirst isOpen={isOpenColumnModal} onRequestClose={handleCloseColumnModal}> */}
-        
-          <ModalEdit
-            // title={item.title}
-            // columnId={item._id}
-            closeModal={handleCloseColumnModal} isOpen={isOpenColumnModal} onRequestClose={handleCloseColumnModal}
-          />
-        {/* </ModalWindowFirst> */}
-        
 
-      <ModalWindow isOpen={isOpenCardModal} onRequestClose={handleCloseCardModal} >
-          {/* <AddCardModal columnId={item._id} closeModal={handleCloseCardModal} /> */}
-          <AddCardModal closeModal={handleCloseCardModal} />
-        </ModalWindow>
+      <ReactModal
+        isOpen={isOpenColumnModal}
+        title="Edit Column"
+        closeModal={handleCloseColumnModal}
+        onRequestClose={handleCloseColumnModal}
+      >
+        <ModalEdit />
+      </ReactModal>
+
+      <ReactModal
+        isOpen={isOpenCardModal}
+        title="Add Card"
+        closeModal={handleCloseCardModal}
+        onRequestClose={handleCloseCardModal}
+      >
+        <AddCardModal />
+      </ReactModal>
     </Wrapper>
   );
 };

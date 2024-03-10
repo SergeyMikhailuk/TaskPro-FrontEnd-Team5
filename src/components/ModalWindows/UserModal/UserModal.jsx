@@ -12,15 +12,12 @@ import {
   AuthFormField,
   AuthFormPasswordIcon,
   AuthFormSubmitButton,
-  Title,
   EditWrapper,
   ImageWrapper,
   CustomButton,
   UserImage,
   HiddenInput,
   AddPhoto,
-  CloseModal,
-  ClosedButton,
   ThirdPasswordField,
 } from './styled';
 
@@ -35,7 +32,7 @@ const userImages = {
 };
 
 const UserModal = ({ closeModal }) => {
-  const theme = useSelector(getThemeName); // Получаем текущую тему из Redux store
+  const theme = useSelector(getThemeName);
   const [showPassword, setShowPassword] = useState(false);
   const [fileImage, setFileImage] = useState(null);
   const [currentImageUrl, setCurrentImageUrl] = useState('');
@@ -65,7 +62,6 @@ const UserModal = ({ closeModal }) => {
   };
 
   const setDefaultAvatar = () => {
-    // Используем текущую тему для выбора соответствующего изображения аватара
     return userImages[theme] || userDark;
   };
 
@@ -97,18 +93,12 @@ const UserModal = ({ closeModal }) => {
 
   return (
     <EditWrapper>
-      <Title>Edit profile</Title>
-      <ClosedButton>
-        <CloseModal onClick={closeModal} />
-      </ClosedButton>
-
-      <ImageWrapper url={!currentImageUrl && setDefaultAvatar}>
+      <ImageWrapper url={!currentImageUrl ? setDefaultAvatar() : undefined}>
         {currentImageUrl && <UserImage src={changeImage()} alt="user" />}
         <CustomButton
           onClick={() => document.querySelector('.input-field').click()}
         >
           <AddPhoto />
-
           <HiddenInput
             className="input-field"
             type="file"
@@ -155,7 +145,7 @@ const UserModal = ({ closeModal }) => {
             />
 
             <AuthFormPasswordIcon onClick={handleTogglePassword}>
-              {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+              {showPassword ?  <AiOutlineEye /> : <AiOutlineEyeInvisible />}
             </AuthFormPasswordIcon>
             <ErrorSection name="password" component="div" />
           </AuthFormWrapper>
