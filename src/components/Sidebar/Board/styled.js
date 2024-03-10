@@ -14,7 +14,7 @@ export const BoardListIcon = styled(AppIconCardSvg)`
   margin-right: 4px;
 `;
 
-export const BoardList = styled.li`
+export const BoardItem = styled.li`
   position: relative;
   display: flex;
   justify-content: space-between;

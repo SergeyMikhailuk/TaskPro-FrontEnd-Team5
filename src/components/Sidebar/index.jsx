@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { logOut } from '../../store/auth/authOperations';
 import ModalHelp from '../ModalWindows/ModalHelp/index';
 import ModalAdd from '../ModalWindows/ColumnModals/ModalAddColumn/index';
 import { toggleSidebar } from 'store/sidebarSlice';
-import { useSelector, useDispatch } from 'react-redux';
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
-// import cards from './todo.json'; // тестовые карточки, удалить, когда подключить бэк и активировать пропс в сайтбаре!!
 import Board from './Board/index.js';
 import {
   Aside,
@@ -33,6 +32,7 @@ import {
   LogOutText,
   StyledOverlay,
 } from './styled';
+import { deleteBoard } from 'Services/api';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ const Sidebar = () => {
       try {
         axios.defaults.headers.common.Authorization = `Bearer ${token}`;
         const { data } = await axios.get('/api/users/current');
-        console.log('data: ', data);
+
         setBoards(data.boards);
       } catch (error) {
         console.error('Error fetching boards:', error);
@@ -58,6 +58,16 @@ const Sidebar = () => {
     };
     fetchBoards();
   }, [token]);
+
+  const updateBoardsList = async () => {
+    try {
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      const { data } = await axios.get('/api/boards');
+      setBoards(data);
+    } catch (error) {
+      console.error('Error updating board list:', error);
+    }
+  };
 
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
@@ -100,7 +110,12 @@ const Sidebar = () => {
         </AddBoards>
         <BoardsList>
           {boards.map(board => (
-            <Board key={board.id} board={board} />
+            <Board
+              key={board.id}
+              board={board}
+              deleteBoard={deleteBoard}
+              updateBoardsList={updateBoardsList}
+            />
           ))}
         </BoardsList>
         <BoxHelp>

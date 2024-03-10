@@ -17,9 +17,8 @@ Modal.setAppElement('#root');
 
 const ModalHelp = ({ isOpen, closeModal }) => {
   const handleSubmit = async (values, { resetForm }) => {
-    console.log('Form submitted!');
     try {
-      await axios.post('/api/need-help', values);
+      await axios.post('/api/users/need-help', values);
       resetForm();
       closeModal();
     } catch (error) {
@@ -38,7 +37,7 @@ const ModalHelp = ({ isOpen, closeModal }) => {
           </div>
           <ModalTitle>Need help</ModalTitle>
           <Formik
-            initialValues={{ email: '', comment: '' }}
+            initialValues={{ email: '', message: '' }}
             onSubmit={handleSubmit}
           >
             <Form>
@@ -53,7 +52,7 @@ const ModalHelp = ({ isOpen, closeModal }) => {
                 <ErrorMessage name="email" component="div" />
                 <Field
                   type="text"
-                  name="comment"
+                  name="message"
                   placeholder="Comment"
                   as={ModalFormikBoxInputComment}
                   required
