@@ -1,5 +1,18 @@
-import React, { useState } from 'react';
-import { ModalOverlay, ModalContent, CloseButton, StyledInput, NewBoardText, Container, TextOne, Text, IconList, Icon, ButtonModal, IconInButton } from './NewBoardForm.styled'; // убран лишний .jsx
+import React from 'react';
+import {
+  ModalOverlay,
+  ModalContent,
+  CloseButton,
+  StyledInput,
+  NewBoardText,
+  Container,
+  TextOne,
+  Text,
+  IconList,
+  Icon,
+  ButtonModal,
+  IconInButton,
+} from './NewBoardForm.styled';
 import { Field, ErrorMessage, Formik } from 'formik';
 import { ReactComponent as Hexagon } from 'images/svg/NewBoard/hexagon.svg';
 import { ReactComponent as Colors } from 'images/svg/NewBoard/colors.svg';
@@ -13,119 +26,120 @@ import * as Yup from 'yup';
 
 import plusIcon from 'images/svg/plus28.svg';
 
-
 const NewBoardForm = ({ isOpen = true, closeModal }) => {
-  const [title, setTitle] = useState('');
-  const [error, setError] = useState(''); 
   console.log(isOpen);
-  const handleSubmit = (values, { setSubmitting }) => {
+  const handleSubmit = values => {
     const { title } = values;
     const isValid = validationSchema.isValidSync({ title });
 
     if (!isValid) {
-      setError('Title must be at least 3 characters long');
       return;
     }
-   
-    setTitle('');
-    setError('');
     closeModal();
   };
   const openModal = true;
   return (
-      <>
-        {openModal && (
-          <ModalOverlay>
-            <ModalContent>
-              <CloseButton onClick={closeModal}>&times;</CloseButton>
-              <NewBoardText>New board</NewBoardText>
-              <Formik
-                initialValues={{ title: '' }}
-                validationSchema={validationSchema}
-                onSubmit={handleSubmit}
-              >
-                {({ isSubmitting }) => (
-                  <form>
-                    <Container>
-                      <Field as={StyledInput} type="text" name="title" placeholder="Title" />
-                      <ErrorMessage name="title" component="div" />
-                    </Container>
+    <>
+      {openModal && (
+        <ModalOverlay>
+          <ModalContent>
+            <CloseButton onClick={closeModal}>&times;</CloseButton>
+            <NewBoardText>New board</NewBoardText>
+            <Formik
+              initialValues={{ title: '' }}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {({ isSubmitting }) => (
+                <form>
+                  <Container>
+                    <Field
+                      as={StyledInput}
+                      type="text"
+                      name="title"
+                      placeholder="Title"
+                    />
+                    <ErrorMessage name="title" component="div" />
+                  </Container>
 
-                    <Text>Icons</Text>
-                    <IconList>
-                      <li>
-                        <label>
-                          <Icon>
-                            <Project />
-                          </Icon>
-                        </label>
-                      </li>
-                      <li>
-                        <label>
-                          <Icon>
-                            <Star />
-                          </Icon>
-                        </label>
-                      </li>
-                      <li>
-                        <label>
-                          <Icon>
-                            <Loading />
-                          </Icon>
-                        </label>
-                      </li>
-                      <li>
-                        <label>
-                          <Icon>
-                            <Puzzle />
-                          </Icon>
-                        </label>
-                      </li>
-                      <li>
-                        <label>
-                          <Icon>
-                            <Containers />
-                          </Icon>
-                        </label>
-                      </li>
-                      <li>
-                        <label>
-                          <Icon>
-                            <Lightning />
-                          </Icon>
-                        </label>
-                      </li>
-                      <li>
-                        <label>
-                          <Icon>
-                            <Colors />
-                          </Icon>
-                        </label>
-                      </li>
-                      <li>
-                        <label>
-                          <Icon>
-                            <Hexagon />
-                          </Icon>
-                        </label>
-                      </li>
-                    </IconList>
+                  <Text>Icons</Text>
+                  <IconList>
+                    <li>
+                      <label>
+                        <Icon>
+                          <Project />
+                        </Icon>
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <Icon>
+                          <Star />
+                        </Icon>
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <Icon>
+                          <Loading />
+                        </Icon>
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <Icon>
+                          <Puzzle />
+                        </Icon>
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <Icon>
+                          <Containers />
+                        </Icon>
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <Icon>
+                          <Lightning />
+                        </Icon>
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <Icon>
+                          <Colors />
+                        </Icon>
+                      </label>
+                    </li>
+                    <li>
+                      <label>
+                        <Icon>
+                          <Hexagon />
+                        </Icon>
+                      </label>
+                    </li>
+                  </IconList>
 
-                    <TextOne>Background</TextOne>
-                    
-                      <ButtonModal type="submit" id="createBtn" disabled={isSubmitting}>
-                      <IconInButton src={plusIcon} alt="Create" /> Create
-                    </ButtonModal>
-                    
-                  </form>
-                )}
-              </Formik>
-            </ModalContent>
-          </ModalOverlay>
-        )}
-      </>
+                  <TextOne>Background</TextOne>
+
+                  <ButtonModal
+                    type="submit"
+                    id="createBtn"
+                    disabled={isSubmitting}
+                  >
+                    <IconInButton src={plusIcon} alt="Create" /> Create
+                  </ButtonModal>
+                </form>
+              )}
+            </Formik>
+          </ModalContent>
+        </ModalOverlay>
+      )}
+    </>
   );
-}
+};
 
 const validationSchema = Yup.object().shape({
   title: Yup.string()

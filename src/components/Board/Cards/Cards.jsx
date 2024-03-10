@@ -1,6 +1,6 @@
 // import { useState, useRef, useEffect } from 'react';
 import { useState } from 'react';
-import Modal from 'react-modal'
+import Modal from 'react-modal';
 
 // import CardMovePopUp from './CardMovePopUp';
 // import { useDispatch } from 'react-redux';
@@ -28,7 +28,7 @@ import {
   Trash,
   ModalWindow,
 } from './styled';
-  
+
 import EditCardModal from '../../ModalWindows/CardModals/EditCardModal/EditCardModal';
 // import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
 
@@ -40,7 +40,7 @@ const Card = () => {
   // const moveIconRef = useRef();
   // const [openCardModal, setOpenCardModal] = useState(false);
   Modal.setAppElement('#root');
-  
+
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
 
   const handleOpenCardModal = () => {
@@ -50,8 +50,6 @@ const Card = () => {
   const handleCloseCardModal = () => {
     setIsOpenCardModal(false);
   };
-
-
 
   // const { title, _id, deadline, description, priority } = item;
 
@@ -131,22 +129,21 @@ const Card = () => {
 
         <BottomWrapper>
           <Stats>
-          <div>
-          <SubTitle>Priority</SubTitle>
-          <PriorityWrapper>
-            {/* <PriorityIndicator color={priorityStyles.color} /> */}
+            <div>
+              <SubTitle>Priority</SubTitle>
+              <PriorityWrapper>
+                {/* <PriorityIndicator color={priorityStyles.color} /> */}
 
-            <PriorityIndicator />
-            {/* <SubText>{priorityStyles.labelText}</SubText> */}
-            <SubText>Without </SubText>
-          </PriorityWrapper>
-        </div>
-        <div>
-          <SubTitle>Deadline</SubTitle>
-          {/* <SubText>{formatedDeadline}</SubText> */}
-          <SubText>12/05/2023</SubText>
-        </div>
-            
+                <PriorityIndicator />
+                {/* <SubText>{priorityStyles.labelText}</SubText> */}
+                <SubText>Without </SubText>
+              </PriorityWrapper>
+            </div>
+            <div>
+              <SubTitle>Deadline</SubTitle>
+              {/* <SubText>{formatedDeadline}</SubText> */}
+              <SubText>12/05/2023</SubText>
+            </div>
           </Stats>
 
           <IconsGroup>
@@ -166,12 +163,8 @@ const Card = () => {
             )} */}
             {/* <ArrowCircle onClick={handleDelayPopup} /> */}
             <ArrowCircle />
-             
 
             {/* Окно с дедлайном */}
-
-
-
 
             {/* <MoverWrapper>
               <ArrowCircle
@@ -201,7 +194,6 @@ const Card = () => {
               <CardMovePopUp />
             </MoverWrapper> */}
 
-            
             <Pencil onClick={handleOpenCardModal} aria-label="edit icon" />
             <Trash
               aria-label="edit icon"
@@ -210,7 +202,10 @@ const Card = () => {
           </IconsGroup>
         </BottomWrapper>
       </CardWrapper>
-      <ModalWindow isOpen={isOpenCardModal} onRequestClose={handleCloseCardModal}>
+      <ModalWindow
+        isOpen={isOpenCardModal}
+        onRequestClose={handleCloseCardModal}
+      >
         {/* <EditCardModal card={item} closeModal={handleCloseCardModal} /> */}
         <EditCardModal closeModal={handleCloseCardModal} />
       </ModalWindow>
