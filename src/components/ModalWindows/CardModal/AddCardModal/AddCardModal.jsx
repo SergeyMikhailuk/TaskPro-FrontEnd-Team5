@@ -3,11 +3,9 @@ import { useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Formik } from 'formik';
-// import { RegisterSchema } from '../../../Register/RegisterSchema';
-// import { getThemeName } from 'store/themeSlice';
 
 import * as Yup from 'yup';
-import sprite from '../../../images/sprite.svg';
+// import sprite from '../../../images/sprite.svg';
 
 import {
   AuthError,
@@ -30,7 +28,8 @@ import {
   TitleInput,
   Wrapper,
 } from './CardModal.styled';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { addCard } from 'store/dashboards/dashboardsOperations';
 
 const options = ['low', 'medium', 'high', 'without priority'];
 
@@ -67,13 +66,13 @@ const dateOptions = {
 };
 
 const AddCardModal = ({ columnId, closeModal }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [selectedLabel, setSelectedLabel] = useState(options[3]);
   const [startDate, setStartDate] = useState('');
   const customDate =
     startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
-  // let deadline = startDate;
+  let deadline = startDate;
 
   const initialValues = {
     title: '',
@@ -81,8 +80,17 @@ const AddCardModal = ({ columnId, closeModal }) => {
     priority: selectedLabel,
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (values, { resetForm }) => {
+    const { title, description, priority } = values;
 
+    if (deadline === '') {
+      deadline = new Date().toISOString();
+    }
+
+    dispatch(addCard({ columnId, title, description, priority, deadline }));
+    resetForm();
+    closeModal();
+  };
   return (
     <ModalSection>
       <Title>Add Card</Title>
@@ -159,9 +167,7 @@ const AddCardModal = ({ columnId, closeModal }) => {
 
           <AuthFormSubmitButton type="submit">
             <ButtonPlus>
-              <PlusIcon>
-                <use href={sprite} />
-              </PlusIcon>
+              <PlusIcon>{/* <use href={sprite} /> */}</PlusIcon>
             </ButtonPlus>
             Edit
           </AuthFormSubmitButton>

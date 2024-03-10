@@ -6,7 +6,6 @@ import { ReactComponent as BurgerImage } from './menu.svg';
 import { ReactComponent as DownImage } from './down.svg';
 
 export const ModalWindow = styled(Modal)`
-  & {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -23,7 +22,6 @@ export const ModalWindow = styled(Modal)`
     @media screen and (min-width: 768px) {
       width: 400px;
     }
-  }
 `;
 
 export const Down = styled(DownImage)`
