@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import sprite from '../../../images/sprite.svg';
+// import sprite from '../../../images/sprite.svg';
 
 import {
   AuthError,
@@ -138,7 +138,7 @@ const EditCardModal = ({ card, closeModal }) => {
           <AuthFormSubmitButton type="submit">
             <ButtonPlus>
               <PlusIcon>
-                <use href={sprite} />
+                {/* <use href={sprite} /> */}
               </PlusIcon>
             </ButtonPlus>
             Edit

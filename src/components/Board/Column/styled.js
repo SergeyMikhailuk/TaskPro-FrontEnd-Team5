@@ -1,10 +1,27 @@
 import styled from 'styled-components';
+import Modal from 'react-modal';
 
 import { ReactComponent as AppEditCardSvg } from 'images/sidebar/edit-card.svg';
 import { ReactComponent as AppTrashCardSvg } from 'images/sidebar/trash-card.svg';
 import { ReactComponent as AppBtnSvg } from 'images/sidebar/add-btn.svg';
 
 export const Wrapper = styled.div``;
+
+
+export const ModalWindow = styled(Modal)`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 335px;
+  max-height: 80vh;
+  min-height: 200px;
+  overflow-y: auto;
+  padding: 24px;
+  background-color: ${props => props.theme.modal.backgroundMain};
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+`
 
 
 export const AddCardCreateBtn = styled(AppBtnSvg)`

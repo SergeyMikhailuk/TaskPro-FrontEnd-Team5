@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { deleteColumn } from 'store/dashboards/dashboardsOperations';
-import Card from 'components/Cards/Card';
-import ModalAdd from 'components/ModalWindows/ModalAdd/index';
+import Card from '../Cards/Cards';
 import ModalEdit from 'components/ModalWindows/ModalEdit/index';
 import AddCardModal from 'components/ModalWindows/CardModal/AddCardModal';
 
@@ -18,6 +17,7 @@ import {
   ContentWrapper,
   CardsBtnDelete,
   CardstBtnEdit,
+  ModalWindow,
   AddCardCreateBtn,
 } from './styled';
 
@@ -29,9 +29,9 @@ export const Column = ({ item }) => {
   const [openColumnModal, setOpenColumnModal] = useState(false);
   const [openCardModal, setOpenCardModal] = useState(false);
 
-  const selectedPriority = useSelector(
-    state => state.dashboards.selectedPriority
-  );
+  // const selectedPriority = useSelector(
+  //   state => state.dashboards.selectedPriority
+  // );
 
   const handleOpenColumnModal = () => setOpenColumnModal(true);
   const handleCloseColumnModal = () => setOpenColumnModal(false);
@@ -39,31 +39,38 @@ export const Column = ({ item }) => {
   const handleOpenCardModal = () => setOpenCardModal(true);
   const handleCloseCardModal = () => setOpenCardModal(false);
 
-  const filteredColumn =
-    item.cards && item.cards.filter(item => item.priority === selectedPriority);
+  
 
-  const columnLength = item.cards && item.cards.length;
-  const fileteredColumnLength = filteredColumn && filteredColumn.length;
+  // const filteredColumn =
+  //   item.cards && item.cards.filter(item => item.priority === selectedPriority);
 
-  const condition =
-    selectedPriority === 'show all' ? columnLength : fileteredColumnLength;
+  // const columnLength = item.cards && item.cards.length;
+  // const fileteredColumnLength = filteredColumn && filteredColumn.length;
+
+  // const condition =
+  //   selectedPriority === 'show all' ? columnLength : fileteredColumnLength;
 
   return (
     <Wrapper>
       <ContentWrapper>
         <Content>
           <Header>
-            <Title>{item.title}</Title>
+            {/* <Title>{item.title}</Title> */}
+            <Title />
+
 
             <IconWrapper>
               <CardstBtnEdit onClick={handleOpenColumnModal} />
 
-              <CardsBtnDelete onClick={() => dispatch(deleteColumn(item._id))} />
+              {/* <CardsBtnDelete onClick={() => dispatch(deleteColumn(item._id))} /> */}
+              <CardsBtnDelete/>
             </IconWrapper>
           </Header>
 
-          <TaskList length={condition}>
-            {selectedPriority === 'show all'
+          {/* <TaskList length={condition}> */}
+          <TaskList>
+            <Card/>
+            {/* {selectedPriority === 'show all'
               ? item.cards &&
                 item.cards.map(el => (
                   <Card key={el._id} item={el} columnName={item.title} />
@@ -71,7 +78,7 @@ export const Column = ({ item }) => {
               : filteredColumn &&
                 filteredColumn.map(el => (
                   <Card key={el._id} item={el} columnName={item.title} />
-                ))}
+                ))} */}
           </TaskList>
         </Content>
 
@@ -82,25 +89,25 @@ export const Column = ({ item }) => {
           Add another card
         </Button>
       </ContentWrapper>
-      <ModalAdd
+      <ModalWindow
         open={openColumnModal}
         closeModal={handleCloseColumnModal}
         children={
           <ModalEdit
-            title={item.title}
-            columnId={item._id}
+            // title={item.title}
+            // columnId={item._id}
             closeModal={handleCloseColumnModal}
           />
         }
       />
 
-      <ModalAdd
+      <ModalWindow
         open={openCardModal}
         closeModal={handleCloseCardModal}
-        children={
-          <AddCardModal columnId={item._id} closeModal={handleCloseCardModal} />
-        }
-      />
+        >
+          {/* <AddCardModal columnId={item._id} closeModal={handleCloseCardModal} /> */}
+          <AddCardModal closeModal={handleCloseCardModal} />
+        </ModalWindow>
     </Wrapper>
   );
 };

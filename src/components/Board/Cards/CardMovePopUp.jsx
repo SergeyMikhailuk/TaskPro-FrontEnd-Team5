@@ -4,10 +4,10 @@ import { selectColumns } from 'store/dashboards/dashboardsSelectors';
 import { changeColumn } from 'store/dashboards/dashboardsOperations';
 
 const CardMovePopUp = ({ card, columnName }) => {
-  const dispatch = useDispatch();
-  const columns = useSelector(selectColumns);
+  // const dispatch = useDispatch();
+  // const columns = useSelector(selectColumns);
 
-  const filteredColumnNames = columns.filter(item => item.title !== columnName);
+  // const filteredColumnNames = columns.filter(item => item.title !== columnName);
 
 
   const checkTextLength = text => {
@@ -19,13 +19,13 @@ const CardMovePopUp = ({ card, columnName }) => {
     return str.splice(0, 8).join('') + '...';
   };
 
-  const handleChangeColumn = (cardId, columnId, currentOwner) => {
-    dispatch(changeColumn({ cardId, columnId, currentOwner }));
-  };
+  // const handleChangeColumn = (cardId, columnId, currentOwner) => {
+  //   dispatch(changeColumn({ cardId, columnId, currentOwner }));
+  // };
 
   return (
     <PopupWrapper>
-      {filteredColumnNames.map(item => (
+      {/* {filteredColumnNames.map(item => (
         <PopupItem
           onClick={() => handleChangeColumn(card._id, item._id, card.owner)}
           key={item._id}
@@ -34,7 +34,7 @@ const CardMovePopUp = ({ card, columnName }) => {
 
           <ArrowCircleBrocken />
         </PopupItem>
-      ))}
+      ))} */}
     </PopupWrapper>
   );
 };

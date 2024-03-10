@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import CardmovePopup from './Popitem';
+import CardMovePopUp from './CardMovePopUp';
 import { useDispatch } from 'react-redux';
 
 import {
@@ -22,12 +22,14 @@ import {
   PopupText,
   Pencil,
   Trash,
-} from './Card.styled';
-import { deleteCard, editCard } from 'redux/dashboards/dashboardsOperations';
-import BasicModal from 'components/Modals/BasicModal/BasicModal';
-import EditCardModal from 'components/Modals/CardModal/EditCardModal/EditCardModal';
+  ModalWindow
+} from './styled';
+import EditCardModal from '../../ModalWindows/CardModal/EditCardModal/EditCardModal';
+import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
 
-const Card = ({ item, columnName }) => {
+
+// const Card = ({ item, columnName }) => {
+  const Card = () => {
   const dispatch = useDispatch();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [delayPopup, setDelayPopup] = useState(false);
@@ -36,7 +38,7 @@ const Card = ({ item, columnName }) => {
   const handleOpenCardModal = () => setOpenCardModal(true);
   const handleCloseCardModal = () => setOpenCardModal(false);
 
-  const { title, _id, deadline, description, priority } = item;
+  // const { title, _id, deadline, description, priority } = item;
 
   const delayOptions = [1, 3, 5, 7];
 
@@ -47,10 +49,10 @@ const Card = ({ item, columnName }) => {
   };
 
   const today = new Date().toLocaleString('en-GB', options);
-  const parsedDate = new Date(deadline);
+  // const parsedDate = new Date(deadline);
 
-  const formatedDeadline =
-    parsedDate && parsedDate.toLocaleString('en-GB', options);
+  // const formatedDeadline =
+  //   parsedDate && parsedDate.toLocaleString('en-GB', options);
 
   const handleIconMoveClick = () => setIsPopupOpen(!isPopupOpen);
 
@@ -79,7 +81,7 @@ const Card = ({ item, columnName }) => {
     };
   }, []);
 
-  const expiredCard = today > formatedDeadline;
+  // const expiredCard = today > formatedDeadline;
 
   const handleDelayPopup = () => {
     setDelayPopup(prev => !prev);
@@ -89,42 +91,48 @@ const Card = ({ item, columnName }) => {
     const date = new Date(deadline);
     date.setDate(date.getDate() + delay);
 
-    dispatch(
-      editCard({ cardId: _id, title, description, priority, deadline: date })
-    );
+    // dispatch(
+    //   editCard({ cardId: _id, title, description, priority, deadline: date })
+    // );
 
     setDelayPopup(prev => !prev);
   };
 
   return (
     <>
-      <CardWrapper priority={priority} expired={expiredCard}>
+      {/* <CardWrapper priority={priority} expired={expiredCard}> */}
+      <CardWrapper>
         <TopWrapper>
-          <Title>{title}</Title>
-
-          <Text>{checkTextLength(description)}</Text>
+          {/* <Title>{title}</Title> */}
+          <Title />
+          {/* <Text>{checkTextLength(description)}</Text> */}
+          <Text />
         </TopWrapper>
 
         <BottomWrapper>
           <Stats>
-            <Priority priority={priority}>{priority}</Priority>
-
-            <Deadline>{formatedDeadline}</Deadline>
+            {/* <Priority priority={priority}>{priority}</Priority> */}
+            <Priority/>
+            {/* <Deadline>{formatedDeadline}</Deadline> */}
+            <Deadline />
           </Stats>
 
           <IconsGroup>
-            {today === formatedDeadline && (
+            {/* {today === formatedDeadline && (
               <>
                 <Bell aria-label="bell icon" />
                 <IconBellWrapper></IconBellWrapper>
               </>
-            )}
+            )} */}
+            <Bell aria-label="bell icon" />
+            <IconBellWrapper></IconBellWrapper>
 
-            {today > formatedDeadline && (
+            {/* {today > formatedDeadline && (
               <>
                 <DelayIcon onClick={handleDelayPopup} />
               </>
-            )}
+            )} */}
+            <DelayIcon onClick={handleDelayPopup} />
             <MoverWrapper>
               <ArrowCircle
                 ref={moveIconRef}
@@ -134,7 +142,7 @@ const Card = ({ item, columnName }) => {
 
               {delayPopup && (
                 <PopupWrapper>
-                  {delayOptions.map((item, idx) => (
+                  {/* {delayOptions.map((item, idx) => (
                     <PopupItem
                       onClick={() => handleDeadline(deadline, item)}
                       key={idx}
@@ -143,29 +151,31 @@ const Card = ({ item, columnName }) => {
                         {item > 1 ? `${item} days delay` : `${item} day delay`}{' '}
                       </PopupText>
                     </PopupItem>
-                  ))}
+                  ))} */}
                 </PopupWrapper>
               )}
 
-              {isPopupOpen && (
-                <CardmovePopup card={item} columnName={columnName} />
-              )}
+              {/* {isPopupOpen && (
+                <CardMovePopUp card={item} columnName={columnName} />
+              )} */}
+              <CardMovePopUp/>
             </MoverWrapper>
             <Pencil onClick={handleOpenCardModal} aria-label="edit icon" />
             <Trash
               aria-label="edit icon"
-              onClick={() => dispatch(deleteCard(_id))}
+              // onClick={() => dispatch(deleteCard(_id))}
             />
           </IconsGroup>
         </BottomWrapper>
       </CardWrapper>
-      <BasicModal
+      <ModalWindow
         open={openCardModal}
         closeModal={handleCloseCardModal}
-        children={
-          <EditCardModal card={item} closeModal={handleCloseCardModal} />
-        }
-      />
+        >
+          {/* <EditCardModal card={item} closeModal={handleCloseCardModal} /> */}
+          <EditCardModal closeModal={handleCloseCardModal} />
+        
+      </ModalWindow>
     </>
   );
 };

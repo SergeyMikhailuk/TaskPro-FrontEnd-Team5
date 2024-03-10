@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 import { ReactComponent as CloseBtn } from 'images/svg/close.svg';
 
+
+export const Textarea = styled.textarea``
+
 export const CloseModal = styled(CloseBtn)`
   width: 18px;
   height: 18px;

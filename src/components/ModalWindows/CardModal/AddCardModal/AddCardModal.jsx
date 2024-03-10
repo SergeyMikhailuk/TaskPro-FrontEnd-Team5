@@ -7,7 +7,7 @@ import { Formik } from 'formik';
 // import { getThemeName } from 'store/themeSlice';
 
 import * as Yup from 'yup';
-import sprite from '../../../images/sprite.svg';
+// import sprite from '../../../images/sprite.svg';
 
 import {
   AuthError,
@@ -160,7 +160,7 @@ const AddCardModal = ({ columnId, closeModal }) => {
           <AuthFormSubmitButton type="submit">
             <ButtonPlus>
               <PlusIcon>
-                <use href={sprite} />
+                {/* <use href={sprite} /> */}
               </PlusIcon>
             </ButtonPlus>
             Edit

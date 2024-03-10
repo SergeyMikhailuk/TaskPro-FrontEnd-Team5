@@ -1,23 +1,28 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsMenuOpen } from 'store/modeMenu/modeMenuSelectors';
+import { useState, useRef } from 'react';
+// import { selectIsMenuOpen } from 'store/modeMenu/modeMenuSelectors';
 import { closeMenuMode } from 'store/modeMenu/modeMenuSlice';
 import Filter from '../Filter/Filter';
 import { ReactComponent as AddIcon } from 'images/svg/plus16.svg';
-import { selectColumns, selectColumnsLength, selectCurrentDashboard, } from 'store/dashboards/dashboardsSelectors';
-import { Column } from 'Board/Column/Column'
-import { WrapperMain, Header, Title, AddButton, IconWrapper, Text, ContentWrapper, Wrapper} from './styled';
-import { ModalAdd } from 'ModalWindows/ModalAdd'
+import { selectColumns,  selectCurrentDashboard, } from 'store/dashboards/dashboardsSelectors';
+// import {  selectColumnsLength } from 'store/dashboards/dashboardsSelectors';
+import { Column } from '../Board/Column/Column'
+import { WrapperMain, Header, Title, AddButton, ModalWindow, IconWrapper, Text, ContentWrapper, Wrapper} from './styled';
+import ModalAdd from '../ModalWindows/ModalAdd/index'
 
 
-const MainPart = () => {
+const MainPart = ({ children }) => {
   const dispatch = useDispatch();
 
-  const columnsLength = useSelector(selectColumnsLength);
-  const menuMode = useSelector(selectIsMenuOpen);
+  // const columnsLength = useSelector(selectColumnsLength);
+  // const menuMode = useSelector(selectIsMenuOpen);
+
+  //Временно:
+  const menuMode = true;
   const currentBg = useSelector(state => state?.dashboards?.currentBg);
   const currentName = useSelector(state => state?.dashboards?.currentName);
-  const currentDashboard = useSelector(selectCurrentDashboard);
-  const columns = useSelector(selectColumns);
+  // const currentDashboard = useSelector(selectCurrentDashboard);
+  // const columns = useSelector(selectColumns);
 
   const [open, setOpen] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -65,6 +70,8 @@ const MainPart = () => {
     }
   };
 
+  
+
   return (
     <WrapperMain onClick={handleScreenClick} bgcUrl={currentBg} isOpen={menuMode}>
       <Header children={currentName}>
@@ -73,18 +80,20 @@ const MainPart = () => {
         <Filter />
       </Header>
 
-      <Wrapper length={columnLength} ref={scrollRef}>
+      {/* <Wrapper length={columnsLength} ref={scrollRef}> */}
+      <Wrapper  ref={scrollRef}>
         <ContentWrapper
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUp}
         >
-          {columns &&
-            columns.map(item => <Column key={item._id} item={item} />)}
+          {/* {columns &&
+            columns.map(item => <Column key={item._id} item={item} />)} */}
+          <Column />
           <AddButton
             openModal={handleOpen}
-            length={columnsLength}
-            onClick={openModal}
+            // length={columnsLength}
+            onClick={handleOpen}
             type="button"
           >
             <IconWrapper>
@@ -95,16 +104,10 @@ const MainPart = () => {
           </AddButton>
         </ContentWrapper>
 
-        <BasicModal
-          open={open}
-          closeModal={handleCloseModal}
-          children={
-            <ModalAdd
-              dashboardId={currentDashboard?._id}
-              closeModal={handleCloseModal}
-            />
-          }
-        />
+        <ModalWindow open={open} closeModal={handleCloseModal}>
+          {/* <ModalAdd dashboardId={currentDashboard?._id} closeModal={handleCloseModal} />           */}
+          <ModalAdd  closeModal={handleCloseModal} />          
+        </ModalWindow>
       </Wrapper>
     </WrapperMain>
   );
