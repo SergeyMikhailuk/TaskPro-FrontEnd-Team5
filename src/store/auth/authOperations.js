@@ -1,9 +1,7 @@
-
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 axios.defaults.baseURL = 'https://taskpro-backend-uiwy.onrender.com';
 
@@ -25,7 +23,7 @@ export const register = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
-    }    
+    }
   }
 );
 
@@ -39,7 +37,6 @@ export const logIn = createAsyncThunk('auth/login', async credentials => {
       'Error: "The email address or password is incorrect. Please retry..."'
     );
   }
-  
 });
 
 export const logOut = createAsyncThunk('auth/logout', async () => {
@@ -54,7 +51,7 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
-    if (!persistedToken) {    
+    if (!persistedToken) {
       return thunkAPI.rejectWithValue('Oops');
     }
     token.set(persistedToken);
@@ -66,4 +63,3 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
-

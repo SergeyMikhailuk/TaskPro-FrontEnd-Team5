@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import { logIn } from '../../store/auth/authOperations';
-
+import { ToastContainer } from 'react-toastify';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { LoginSchema } from './LoginSchema';
 import {
@@ -36,6 +36,7 @@ const LoginForm = () => {
 
   return (
     <>
+      <ToastContainer/>
       <Formik
         initialValues={initialValues}
         validationSchema={LoginSchema}
@@ -67,7 +68,7 @@ const LoginForm = () => {
               />
 
               <AuthFormPasswordIcon onClick={handleTogglePassword}>
-                {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
               </AuthFormPasswordIcon>
             </AuthInput>
             <AuthError name="password" component="div" />

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../store/auth/authOperations';
-import { toggleSidebar } from 'store/sidebarSlice';
-import NewBoardForm from '../forms/NewBoardForm/index';
 import ModalHelp from '../ModalWindows/ModalHelp/index';
+import ModalAdd from '../ModalWindows/ModalAdd/index';
+import { toggleSidebar } from 'store/sidebarSlice';
+import { useSelector, useDispatch } from 'react-redux';
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
-import cards from './todo.json';
+import cards from './todo.json'; // тестовые карточки, удалить, когда подключить бэк и активировать пропс в сайтбаре!!
 import Cards from './Cards/index.js';
 import {
   Aside,
@@ -50,20 +50,15 @@ const Sidebar = () => {
     dispatch(toggleSidebar());
   };
 
-  const [isNewBoardModalOpen, setIsNewBoardModalOpen] = useState(false);
-  const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
+  const [isModalOpenHelp, setIsModalOpenHelp] = useState(false);
+  const [isModalOpenAdd, setIsModalOpenAdd] = useState(false);
 
-  const openNewBoardModal = () => {
-    setIsNewBoardModalOpen(true);
+  const openModalHelp = () => {
+    setIsModalOpenHelp(true);
   };
 
-  const openHelpModal = () => {
-    setIsHelpModalOpen(true);
-  };
-
-  const closeModals = () => {
-    setIsNewBoardModalOpen(false);
-    setIsHelpModalOpen(false);
+  const openModalAdd = () => {
+    setIsModalOpenAdd(true);
   };
 
   return (
@@ -83,24 +78,39 @@ const Sidebar = () => {
               Create a <br /> new board
             </AddBoardsCreateText>
             <AddBoardsCreateBtnWrap>
-              <AddBoardsCreateBtn onClick={openNewBoardModal} />
+              <AddBoardsCreateBtn onClick={openModalAdd} />
             </AddBoardsCreateBtnWrap>
           </AddBoardsCreateBox>
         </AddBoards>
         <CardsBoard>{cardsList}</CardsBoard>
         <BoxHelp>
-          <img src={imgSrc} alt="flower in a flowerpot" width="54px" height="78px" />
+          <img
+            src={imgSrc}
+            alt="flower in a flowerpot"
+            width="54px"
+            height="78px"
+          />
           <BoxHelpText>
             If you need help with
-            <BoxHelpSelectedText> TaskPro</BoxHelpSelectedText>, check out our support resources or reach out to our
-            customer support team.
+            <BoxHelpSelectedText> TaskPro</BoxHelpSelectedText>, check out our
+            support resources or reach out to our customer support team.
           </BoxHelpText>
-          <BoxHelpBtnOpenModal onClick={openHelpModal}>
+          <BoxHelpBtnOpenModal onClick={openModalHelp}>
             <BoxHelpBtnIcon />
             <BoxHelpBtnText>Need help?</BoxHelpBtnText>
           </BoxHelpBtnOpenModal>
-          {isNewBoardModalOpen && <NewBoardForm closeModal={closeModals} />}
-          {isHelpModalOpen && <ModalHelp handleModal={closeModals} />}
+          {
+            <ModalHelp
+              isOpen={isModalOpenHelp}
+              closeModal={() => setIsModalOpenHelp(false)}
+            />
+          }
+          {
+            <ModalAdd
+              isOpen={isModalOpenAdd}
+              closeModal={() => setIsModalOpenAdd(false)}
+            />
+          }
         </BoxHelp>
         <LogOut>
           <LogOutIconBtnWrap onClick={handleLogout}>
@@ -112,5 +122,4 @@ const Sidebar = () => {
     </>
   );
 };
-
 export default Sidebar;

@@ -5,7 +5,7 @@ import {
   TitleWrapper,
   TitleHeader,
   IconWrapper,
-  IconLink,
+  IconBtn,
   Icon,
   TaskCard,
   Task,
@@ -41,16 +41,16 @@ const BoardPage = () => {
             </li>
             <li>
               <IconWrapper>
-                <IconLink>
+                <IconBtn>
                   <Icon>
                     <Pencil></Pencil>
                   </Icon>
-                </IconLink>
-                <IconLink>
+                </IconBtn>
+                <IconBtn>
                   <Icon>
                     <TrashBin></TrashBin>
                   </Icon>
-                </IconLink>
+                </IconBtn>
               </IconWrapper>
             </li>
           </ColumnName>

@@ -28,7 +28,7 @@ export const Aside = styled.aside`
   flex-direction: column;
   width: 225px;
   background: ${props => props.theme.sidebar.background};
-  /* overflow: auto; */
+  overflow: auto;
   position: fixed;
   top: 0;
   left: 0;
@@ -157,14 +157,14 @@ export const CardsBoard = styled.ul`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: ${props => props.theme.column.scrollThumb};
+    background-color: ${props => props.theme.sidebar.addButtonHover};
     border-radius: 5px;
   }
 
   &::-webkit-scrollbar-track {
-    background-color: ${props => props.theme.column.scrollTrack};
+    background-color: ${props => props.theme.sidebar.textMain};
     border-radius: 5px;
-    border: 1px solid ${props => props.theme.column.scrollBorder};
+    border: 1px solid ${props => props.theme.sidebar.addButtonHover};
   }
 `;
 
