@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import Modal from 'react-modal'
 import { useDispatch} from 'react-redux';
 
 
@@ -28,6 +28,8 @@ import {
 const Filter = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+
+  Modal.setAppElement('#root');
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
