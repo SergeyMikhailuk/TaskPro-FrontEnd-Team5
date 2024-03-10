@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ModalOverlay, ModalContent, CloseButton, StyledInput, NewBoardText, Container, TextOne, Text, IconList, Icon, ButtonModal, IconInButton } from './NewBoardForm.styled.jsx';
+import { ModalOverlay, ModalContent, CloseButton, StyledInput, NewBoardText, Container, TextOne, Text, IconList, Icon, ButtonModal, IconInButton } from './NewBoardForm.styled'; // убран лишний .jsx
 import { Field, ErrorMessage, Formik } from 'formik';
 import { ReactComponent as Hexagon } from 'images/svg/NewBoard/hexagon.svg';
 import { ReactComponent as Colors } from 'images/svg/NewBoard/colors.svg';
@@ -13,11 +13,11 @@ import * as Yup from 'yup';
 
 import plusIcon from 'images/svg/plus28.svg';
 
-const NewBoardForm = ({ closeModal }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [title, setTitle] = useState('');
-  const [error, setError] = useState('');
 
+const NewBoardForm = ({ isOpen = true, closeModal }) => {
+  const [title, setTitle] = useState('');
+  const [error, setError] = useState(''); 
+  console.log(isOpen);
   const handleSubmit = (values, { setSubmitting }) => {
     const { title } = values;
     const isValid = validationSchema.isValidSync({ title });
@@ -31,14 +31,13 @@ const NewBoardForm = ({ closeModal }) => {
     setError('');
     closeModal();
   };
-
+  const openModal = true;
   return (
-  
-      <div>
-        {isOpen && (
+      <>
+        {openModal && (
           <ModalOverlay>
             <ModalContent>
-              <CloseButton onClick={() => { setIsOpen(false); closeModal(); }}>&times;</CloseButton>
+              <CloseButton onClick={closeModal}>&times;</CloseButton>
               <NewBoardText>New board</NewBoardText>
               <Formik
                 initialValues={{ title: '' }}
@@ -124,7 +123,7 @@ const NewBoardForm = ({ closeModal }) => {
             </ModalContent>
           </ModalOverlay>
         )}
-      </div>
+      </>
   );
 }
 
