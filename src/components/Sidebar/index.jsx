@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { logOut } from '../../store/auth/authOperations';
 import ModalHelp from '../ModalWindows/ModalHelp/index';
-import ModalAdd from '../ModalWindows/ColumnModals/ModalAddColumn/index';
+import NewBoardForm from '../forms/NewBoardForm/index';
 import { toggleSidebar } from 'store/sidebarSlice';
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
@@ -81,10 +81,12 @@ const Sidebar = () => {
 
   const openModalHelp = () => {
     setIsModalOpenHelp(true);
+    setIsModalOpenAdd(false); 
   };
 
   const openModalAdd = () => {
-    setIsModalOpenAdd(false);
+    setIsModalOpenAdd(true); 
+    setIsModalOpenHelp(false); 
   };
 
   return (
@@ -141,7 +143,7 @@ const Sidebar = () => {
             />
           }
           {
-            <ModalAdd
+            <NewBoardForm 
               isOpen={isModalOpenAdd}
               closeModal={() => setIsModalOpenAdd(false)}
             />
