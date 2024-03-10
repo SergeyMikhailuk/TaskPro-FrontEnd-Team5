@@ -1,5 +1,22 @@
 import styled from 'styled-components';
 import Modal from 'react-modal';
+import { ReactComponent as AppBtnSvg } from 'images/svg/plus28.svg';
+
+
+
+export const AddIcon = styled(AppBtnSvg)`
+  width: 40px;
+  height: 36px;
+  border-radius: 6px;
+  & .plus{
+    color: ${props => props.theme.addColumnButton.plusColor};  
+  }
+
+  & .backgr{
+    color: ${props => props.theme.addColumnButton.plusBackground};
+    }
+`;
+
 
 export const ModalWindow = styled(Modal)`
   position: fixed;
@@ -22,7 +39,7 @@ export const WrapperMain = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: start;
-
+  width: 100%;
   height: calc(100vh - 60px);
 
   background-image: url(${props => props.bgcUrl});
@@ -30,22 +47,19 @@ export const WrapperMain = styled.div`
   background-position: center;
   background-repeat: no-repeat;
 
-  padding: 14px 20px 0 20px;
+  padding: 14px 20px 14px 20px;
 
-  margin-left: ${props => (props.isOpen ? '225px' : '0')};
-  opacity: ${props => (props.isOpen ? '0.6' : '1')};
   transition: all 250ms linear;
+
+  
 
   @media screen and (min-width: 768px) {
     height: calc(100vh - 68px);
-    padding: 26px 32px 0 32px;
-
-    margin-left: ${props => (props.isOpen ? '260px' : '0')};
+    padding: 20x 32px 20x 32px;
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 10px 24px 0 24px;
-    margin-left: 260px;
+    padding: 14px 24px 14px 24px;
   }
 `;
 
@@ -54,27 +68,25 @@ export const Header = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-
+  position: relative;
   margin-bottom: 10px;
 `;
 
 export const Title = styled.h2`
   color: ${props => props.theme.header.userName};
-  font-size: 20px;
-  font-family: 'Poppins';
-  font-style: normal;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
-  letter-spacing: -0.36px;
 `;
 
 export const AddButton = styled.button`
   position: absolute;
   top: 0;
-
   right: ${props => (props.length === 0 ? '-334px' : '-368px')};
   width: 334px;
   height: 56px;
-  padding: 14px 79px;
+  padding: 14px 0;
 
   display: flex;
   justify-content: center;
@@ -112,11 +124,6 @@ export const IconWrapper = styled.div`
   }
 `;
 
-export const AddIcon = styled.svg`
-  width: 14px;
-  height: 14px;
-  stroke: ${props => props.theme.addColumnButton.plusColor};
-`;
 
 export const Text = styled.p`
   color: ${props => props.theme.addColumnButton.color};
@@ -131,36 +138,35 @@ export const Text = styled.p`
 
 export const Wrapper = styled.div`
   display: flex;
-
-  overflow-x: scroll;
+  overflow: auto;
   width: 100%;
   height: 100%;
-  margin-bottom: 8px;
+  
 
-  user-select: none;
-
-  ::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     height: 12px;
     width: calc(100% - 24px);
   }
 
-  ::-webkit-scrollbar-track {
-    background-color: ${props => props.theme.column.scrollTrack};
-    border: 1px solid ${props => props.theme.column.scrollBorder};
+  &::-webkit-scrollbar-thumb {
+    background-color: ${props => props.theme.column.scrollThumb};
     border-radius: 12px;
   }
 
-  ::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-track {
+    background-color: ${props => props.theme.column.scrollTrack};
     border-radius: 12px;
-    background-color: ${props => props.theme.column.scrollThumb};
+    border: 1px solid ${props => props.theme.column.scrollBorder};
   }
 
   @media screen and (min-width: 768px) {
-    overflow-x: ${props => (props.length < 2 ? 'hidden' : 'scroll')};
+    /* overflow-x: ${props => (props.length < 2 ? 'hidden' : 'scroll')}; */
+    overflow-x: scroll;
   }
 
   @media screen and (min-width: 1280px) {
-    overflow-x: ${props => (props.length < 3 ? 'hidden' : 'scroll')};
+    /* overflow-x: ${props => (props.length < 3 ? 'hidden' : 'scroll')}; */
+    overflow-x: scroll;
   }
 `;
 

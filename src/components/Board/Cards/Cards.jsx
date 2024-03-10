@@ -3,7 +3,6 @@ import CardMovePopUp from './CardMovePopUp';
 import { useDispatch } from 'react-redux';
 
 import {
-  DelayIcon,
   Title,
   CardWrapper,
   Text,
@@ -12,8 +11,10 @@ import {
   TopWrapper,
   BottomWrapper,
   Stats,
-  Priority,
-  Deadline,
+  SubTitle,
+  PriorityWrapper,
+  PriorityIndicator,
+  SubText,
   ArrowCircle,
   MoverWrapper,
   IconBellWrapper,
@@ -22,14 +23,13 @@ import {
   PopupText,
   Pencil,
   Trash,
-  ModalWindow
+  ModalWindow,
 } from './styled';
 import EditCardModal from '../../ModalWindows/CardModal/EditCardModal/EditCardModal';
 import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
 
-
 // const Card = ({ item, columnName }) => {
-  const Card = () => {
+const Card = () => {
   const dispatch = useDispatch();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [delayPopup, setDelayPopup] = useState(false);
@@ -51,8 +51,7 @@ import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
   const today = new Date().toLocaleString('en-GB', options);
   // const parsedDate = new Date(deadline);
 
-  // const formatedDeadline =
-  //   parsedDate && parsedDate.toLocaleString('en-GB', options);
+  // const formatedDeadline = format(new Date(deadline), 'dd/MM/yyyy');
 
   const handleIconMoveClick = () => setIsPopupOpen(!isPopupOpen);
 
@@ -104,17 +103,38 @@ import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
       <CardWrapper>
         <TopWrapper>
           {/* <Title>{title}</Title> */}
-          <Title />
+          <Title>NameCard </Title>
           {/* <Text>{checkTextLength(description)}</Text> */}
-          <Text />
+          <Text>
+            {' '}
+            Create a visually stunning and eye-catching wat ch dial design that
+            embodies our brand's essence of sleek aesthetics and modern
+            elegance. Your design should be unique, innovative, and reflective
+            of the latest trends in watch design.
+          </Text>
         </TopWrapper>
 
         <BottomWrapper>
           <Stats>
-            {/* <Priority priority={priority}>{priority}</Priority> */}
-            <Priority/>
-            {/* <Deadline>{formatedDeadline}</Deadline> */}
-            <Deadline />
+          <div>
+          <SubTitle>Priority</SubTitle>
+          <PriorityWrapper>
+            {/* <PriorityIndicator color={priorityStyles.color} /> */}
+
+            <PriorityIndicator />
+            {/* <SubText>{priorityStyles.labelText}</SubText> */}
+            <SubText>Without </SubText>
+          </PriorityWrapper>
+        </div>
+        <div>
+          <SubTitle>Deadline</SubTitle>
+          {/* <SubText>{formatedDeadline}</SubText> */}
+          <SubText>12/05/2023</SubText>
+        </div>
+           
+        
+
+            
           </Stats>
 
           <IconsGroup>
@@ -129,11 +149,18 @@ import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
 
             {/* {today > formatedDeadline && (
               <>
-                <DelayIcon onClick={handleDelayPopup} />
+                <ArrowCircle onClick={handleDelayPopup} />
               </>
             )} */}
-            <DelayIcon onClick={handleDelayPopup} />
-            <MoverWrapper>
+            <ArrowCircle onClick={handleDelayPopup} />
+
+
+            {/* Окно с дедлайном */}
+
+
+
+
+            {/* <MoverWrapper>
               <ArrowCircle
                 ref={moveIconRef}
                 aria-label="move card icon"
@@ -142,7 +169,7 @@ import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
 
               {delayPopup && (
                 <PopupWrapper>
-                  {/* {delayOptions.map((item, idx) => (
+                  {delayOptions.map((item, idx) => (
                     <PopupItem
                       onClick={() => handleDeadline(deadline, item)}
                       key={idx}
@@ -151,15 +178,17 @@ import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
                         {item > 1 ? `${item} days delay` : `${item} day delay`}{' '}
                       </PopupText>
                     </PopupItem>
-                  ))} */}
+                  ))}
                 </PopupWrapper>
               )}
 
-              {/* {isPopupOpen && (
+              {isPopupOpen && (
                 <CardMovePopUp card={item} columnName={columnName} />
-              )} */}
-              <CardMovePopUp/>
-            </MoverWrapper>
+              )}
+              <CardMovePopUp />
+            </MoverWrapper> */}
+
+            
             <Pencil onClick={handleOpenCardModal} aria-label="edit icon" />
             <Trash
               aria-label="edit icon"
@@ -168,13 +197,9 @@ import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
           </IconsGroup>
         </BottomWrapper>
       </CardWrapper>
-      <ModalWindow
-        open={openCardModal}
-        closeModal={handleCloseCardModal}
-        >
-          {/* <EditCardModal card={item} closeModal={handleCloseCardModal} /> */}
-          <EditCardModal closeModal={handleCloseCardModal} />
-        
+      <ModalWindow open={openCardModal} closeModal={handleCloseCardModal}>
+        {/* <EditCardModal card={item} closeModal={handleCloseCardModal} /> */}
+        <EditCardModal closeModal={handleCloseCardModal} />
       </ModalWindow>
     </>
   );

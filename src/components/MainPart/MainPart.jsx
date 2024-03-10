@@ -3,11 +3,10 @@ import { useState, useRef } from 'react';
 // import { selectIsMenuOpen } from 'store/modeMenu/modeMenuSelectors';
 import { closeMenuMode } from 'store/modeMenu/modeMenuSlice';
 import Filter from '../Filter/Filter';
-import { ReactComponent as AddIcon } from 'images/svg/plus16.svg';
 import { selectColumns,  selectCurrentDashboard, } from 'store/dashboards/dashboardsSelectors';
 // import {  selectColumnsLength } from 'store/dashboards/dashboardsSelectors';
 import { Column } from '../Board/Column/Column'
-import { WrapperMain, Header, Title, AddButton, ModalWindow, IconWrapper, Text, ContentWrapper, Wrapper} from './styled';
+import { WrapperMain, Header, AddIcon, Title, AddButton, ModalWindow, IconWrapper, Text, ContentWrapper, Wrapper} from './styled';
 import ModalAdd from '../ModalWindows/ModalAdd/index'
 
 
@@ -74,8 +73,10 @@ const MainPart = ({ children }) => {
 
   return (
     <WrapperMain onClick={handleScreenClick} bgcUrl={currentBg} isOpen={menuMode}>
-      <Header children={currentName}>
-        <Title>{children}</Title>
+      {/* <Header children={currentName}>
+        <Title>{children}</Title> */}
+        <Header >
+        <Title>Project office</Title> 
 
         <Filter />
       </Header>

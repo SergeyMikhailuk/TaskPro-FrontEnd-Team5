@@ -11,10 +11,12 @@ import {
   Button,
   ButtonPlus,
   TaskList,
-  IconWrapper,
+  ButtonWrapper,
   Content,
   Title,
   ContentWrapper,
+  ButtonEdit,
+  ButtonDelete,
   CardsBtnDelete,
   CardstBtnEdit,
   ModalWindow,
@@ -56,15 +58,20 @@ export const Column = ({ item }) => {
         <Content>
           <Header>
             {/* <Title>{item.title}</Title> */}
-            <Title />
+            <Title>NameColumn </Title>
 
 
-            <IconWrapper>
+            <ButtonWrapper>
+
+              <ButtonEdit>
               <CardstBtnEdit onClick={handleOpenColumnModal} />
+              </ButtonEdit>
 
               {/* <CardsBtnDelete onClick={() => dispatch(deleteColumn(item._id))} /> */}
+              <ButtonDelete>
               <CardsBtnDelete/>
-            </IconWrapper>
+              </ButtonDelete>
+            </ButtonWrapper>
           </Header>
 
           {/* <TaskList length={condition}> */}

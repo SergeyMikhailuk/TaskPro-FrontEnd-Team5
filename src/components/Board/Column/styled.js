@@ -3,10 +3,21 @@ import Modal from 'react-modal';
 
 import { ReactComponent as AppEditCardSvg } from 'images/sidebar/edit-card.svg';
 import { ReactComponent as AppTrashCardSvg } from 'images/sidebar/trash-card.svg';
-import { ReactComponent as AppBtnSvg } from 'images/sidebar/add-btn.svg';
+import { ReactComponent as AppBtnSvg } from 'images/svg/plus28.svg';
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+`;
 
+export const ButtonEdit = styled.button`
+border: none;
+background-color: transparent;
+cursor: pointer;
+`;
+export const ButtonDelete = styled.button`
+border: none;
+background-color: transparent;
+cursor: pointer;
+`;
 
 export const ModalWindow = styled(Modal)`
   position: fixed;
@@ -21,37 +32,32 @@ export const ModalWindow = styled(Modal)`
   background-color: ${props => props.theme.modal.backgroundMain};
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-`
-
+`;
 
 export const AddCardCreateBtn = styled(AppBtnSvg)`
   width: 40px;
   height: 36px;
   border-radius: 6px;
-  & .plus-back {
-    color: ${props => props.theme.sidebar.addButtonHover};
+  & .plus{
+    color: ${props => props.theme.modal.plusColor};  
+  }
 
-    &:hover {
-      color: ${props => props.theme.sidebar.iconLogoutHover};
+  & .backgr{
+    color: ${props => props.theme.modal.buttonText};
     }
-  }
-  & .plus {
-    color: ${props => props.theme.sidebar.addButtonColor};
-  }
 `;
 
 export const CardstBtnEdit = styled(AppEditCardSvg)`
   width: 16px;
   height: 16px;
-  color: ${props => props.theme.sidebar.addButtonBackground};
+  color: ${props => props.theme.sidebar.textSecondary};
 `;
 
 export const CardsBtnDelete = styled(AppTrashCardSvg)`
   width: 16px;
   height: 16px;
-  color: ${props => props.theme.sidebar.addButtonBackground};
-`
-
+  color: ${props => props.theme.sidebar.textSecondary};
+`;
 
 export const Content = styled.div`
   display: flex;
@@ -64,21 +70,17 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  overflow-x: hidden;
 `;
 
 export const TaskList = styled.ul`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 335px;
   gap: 8px;
   max-height: calc(154px * 2 + 8px);
-  padding-right: 8px;
-
-  overflow-y: scroll;
-
-  overflow-y: scroll;
-  width: 350px;
+  /* overflow-y: scroll;
 
   ::-webkit-scrollbar {
     width: 8px;
@@ -93,28 +95,27 @@ export const TaskList = styled.ul`
   ::-webkit-scrollbar-thumb {
     border-radius: 12px;
     background-color: ${props => props.theme.column.scrollThumb};
-  }
+  } */
 
   @media screen and (min-height: 780px) {
     max-height: calc(154px * 3 + 16px);
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     width: 350px;
   }
 
   @media screen and (min-height: 942px) {
     max-height: calc(154px * 4 + 24px);
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     width: 350px;
   }
 
   @media screen and (min-height: 1104px) {
     max-height: calc(154px * 5 + 32px);
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     width: 350px;
   }
 `;
 
-// header
 export const Header = styled.div`
   display: flex;
   align-items: center;
@@ -137,7 +138,7 @@ export const Title = styled.h2`
   letter-spacing: -0.28px;
 `;
 
-export const IconWrapper = styled.div`
+export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -164,14 +165,12 @@ export const Button = styled.button`
   align-items: center;
   width: 334px;
   padding: 14px;
-  margin-bottom: 16px;
-
   font-size: 14px;
   font-family: 'Poppins';
   font-weight: 500;
   line-height: normal;
-  letter-spacing: -0.28px;
-
+  letter-spacing: -0.28px;  
+  margin-bottom: 6px;
   border: none;
   color: ${props => props.theme.column.buttonColor};
   background-color: ${props => props.theme.column.buttonBackground};
@@ -179,11 +178,7 @@ export const Button = styled.button`
 
   transition: all 250ms linear;
   cursor: pointer;
-
-  &:hover {
-    opacity: 0.9;
-  }
-`;
+`
 
 export const ButtonPlus = styled.div`
   display: flex;
@@ -195,7 +190,6 @@ export const ButtonPlus = styled.div`
   height: 28px;
   background-color: ${props => props.theme.column.plusBackground};
   margin-right: 8px;
-  padding: 7px;
 
   transition: all 250ms linear;
 
