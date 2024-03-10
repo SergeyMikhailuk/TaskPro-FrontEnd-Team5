@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { logOut } from '../../store/auth/authOperations';
 import ModalHelp from '../ModalWindows/ModalHelp/index';
 import ModalAdd from '../ModalWindows/ModalAdd/index';
+import NewBoardModal from '../forms/NewBoardForm/index'; 
 import { toggleSidebar } from 'store/sidebarSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
-import cards from './todo.json'; // тестовые карточки, удалить, когда подключить бэк и активировать пропс в сайтбаре!!
+import cards from './todo.json';
 import Cards from './Cards/index.js';
 import {
   Aside,
@@ -52,6 +53,11 @@ const Sidebar = () => {
 
   const [isModalOpenHelp, setIsModalOpenHelp] = useState(false);
   const [isModalOpenAdd, setIsModalOpenAdd] = useState(false);
+  const [isNewBoardModalOpen, setIsNewBoardModalOpen] = useState(false); 
+
+  const openNewBoardModal = () => {
+    setIsNewBoardModalOpen(true);
+  };
 
   const openModalHelp = () => {
     setIsModalOpenHelp(true);
@@ -78,7 +84,7 @@ const Sidebar = () => {
               Create a <br /> new board
             </AddBoardsCreateText>
             <AddBoardsCreateBtnWrap>
-              <AddBoardsCreateBtn onClick={openModalAdd} />
+              <AddBoardsCreateBtn onClick={openNewBoardModal} />
             </AddBoardsCreateBtnWrap>
           </AddBoardsCreateBox>
         </AddBoards>
@@ -100,14 +106,20 @@ const Sidebar = () => {
             <BoxHelpBtnText>Need help?</BoxHelpBtnText>
           </BoxHelpBtnOpenModal>
           {
+            isNewBoardModalOpen &&
+            <NewBoardModal
+              closeModal={() => setIsNewBoardModalOpen(false)}
+            />
+          }
+          {
+            isModalOpenHelp &&
             <ModalHelp
-              isOpen={isModalOpenHelp}
               closeModal={() => setIsModalOpenHelp(false)}
             />
           }
           {
+            isModalOpenAdd &&
             <ModalAdd
-              isOpen={isModalOpenAdd}
               closeModal={() => setIsModalOpenAdd(false)}
             />
           }
@@ -122,4 +134,5 @@ const Sidebar = () => {
     </>
   );
 };
+
 export default Sidebar;

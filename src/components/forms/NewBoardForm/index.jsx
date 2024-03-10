@@ -14,7 +14,7 @@ import * as Yup from 'yup';
 import plusIcon from 'images/svg/plus28.svg';
 
 const NewBoardForm = ({ closeModal }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [error, setError] = useState('');
 
