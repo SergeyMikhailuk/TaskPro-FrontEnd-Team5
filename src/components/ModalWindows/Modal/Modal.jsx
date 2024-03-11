@@ -1,6 +1,3 @@
-import React from 'react';
-import Modal from 'react-modal';
-
 import {
   ModalWindow,
   ModalHeder,
@@ -9,12 +6,8 @@ import {
   CloseModal,
 } from './styled';
 
+ModalWindow.setAppElement('#root');
 
-
-  Modal.setAppElement('#root');
-
-  
-  
 export const ReactModal = ({ isOpen, title, children, closeModal, onRequestClose }) => {
   return (
     <ModalWindow isOpen={isOpen} onRequestClose={onRequestClose}>

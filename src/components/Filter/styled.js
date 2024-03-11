@@ -40,7 +40,11 @@ export const Wrapper = styled.div`
 `;
 
 export const Label = styled.div`
-  width: 252px;
+  width: 160px;  
+
+  @media screen and (min-width: 345px) {
+    width: 252px; 
+    }
 `;
 
 
@@ -48,6 +52,8 @@ export const Label = styled.div`
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 4px;
+  margin-bottom: 16px;
 
   &::after {
     content: '';
@@ -61,8 +67,7 @@ export const Container = styled.div`
 `;
 
 export const LabelColors = styled.p`
-  margin-top: 4px;
-  margin-bottom: 16px;
+  
   color: ${props => props.theme.header.userName};
   font-weight: 500;
   font-size: 14px;
@@ -147,4 +152,5 @@ export const RadioInput = styled.input`
   &:checked + ${Marker} + span {
     color: ${props => props.theme.header.userName};
   }
+  
 `;
