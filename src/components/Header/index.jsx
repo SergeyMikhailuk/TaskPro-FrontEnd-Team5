@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleSidebar } from 'store/sidebarSlice';
 import { getThemeName, setTheme } from 'store/themeSlice';
 
-import UserModal from '../ModalWindows/UserModal/UserModal'; // Імпортуємо EditProfileModal
+import UserModal from '../ModalWindows/UserModal/UserModal'; 
 import userDark from 'images/user-dark.svg';
 import userLight from 'images/user-light.svg';
 import userViolet from 'images/user-violet.svg';
+
+import {ReactModal} from '../ModalWindows/Modal/Modal';
+
 import {
   AppHeader,
   Wrap,
@@ -19,7 +22,6 @@ import {
   StyledItem,
   StyledTitle,
   Down,
-  ModalWindow,
 } from './styled';
 
 const userImages = {
@@ -89,12 +91,15 @@ const Header = () => {
           </ButtonProfile>
         </Wrap>
       </Info>
-      <ModalWindow
+
+      <ReactModal
         isOpen={isEditProfileModalOpen}
+        title="Edit Profile"
+        closeModal={handleCloseEditProfileModal}
         onRequestClose={handleCloseEditProfileModal}
       >
-        <UserModal closeModal={handleCloseEditProfileModal} />
-      </ModalWindow>
+        <UserModal />
+      </ReactModal>
     </AppHeader>
   );
 };

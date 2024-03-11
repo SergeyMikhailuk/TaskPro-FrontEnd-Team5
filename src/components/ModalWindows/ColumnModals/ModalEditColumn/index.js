@@ -1,13 +1,7 @@
 import React from 'react';
-import Modal from 'react-modal';
 
 import {
-  ModalOverlay,
   ModalContainer,
-  ModalCloseBox,
-  ModalCloseBtnWrap,
-  ModalCloseBtnIcon,
-  ModalTitle,
   ModalFormikBox,
   ModalFormikBoxInput,
   ModalFormikBoxBtn,
@@ -21,19 +15,9 @@ const ModalEditColumn = ({ isOpen, closeModal }) => {
   };
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={closeModal}
-      //overlayClassName="standartOverlayNone"
-    >
-      <ModalOverlay>
-        <ModalContainer>
-          <ModalCloseBox>
-            <ModalCloseBtnWrap onClick={closeModal}>
-              <ModalCloseBtnIcon />
-            </ModalCloseBtnWrap>
-          </ModalCloseBox>
-          <ModalTitle>Edit column</ModalTitle>
+    
+      
+        <ModalContainer>          
           <Formik id="formEditColumn" initialValues={initialValues}>
             {formik => (
               <>
@@ -55,8 +39,6 @@ const ModalEditColumn = ({ isOpen, closeModal }) => {
             )}
           </Formik>
         </ModalContainer>
-      </ModalOverlay>
-    </Modal>
   );
 };
 

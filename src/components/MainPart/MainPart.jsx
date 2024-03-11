@@ -5,10 +5,21 @@ import { useState, useRef } from 'react';
 import Filter from '../Filter/Filter';
 // import { selectColumns,  selectCurrentDashboard, } from 'store/dashboards/dashboardsSelectors';
 // import {  selectColumnsLength } from 'store/dashboards/dashboardsSelectors';
-import { Column } from '../Board/Column/Column'
-import { WrapperMain, Header, AddIcon, Title, AddButton, IconWrapper, Text, ContentWrapper, Wrapper} from './styled';
-import ModalAdd from '../ModalWindows/ColumnModals/ModalAddColumn/index'
+import { Column } from '../Board/Column/Column';
+import {
+  WrapperMain,
+  Header,
+  AddIcon,
+  Title,
+  AddButton,
+  IconWrapper,
+  Text,
+  ContentWrapper,
+  Wrapper,
+} from './styled';
+import ModalAdd from '../ModalWindows/ColumnModals/ModalAddColumn/index';
 
+import { ReactModal } from '../ModalWindows/Modal/Modal';
 
 const MainPart = ({ children }) => {
   // const dispatch = useDispatch();
@@ -28,7 +39,6 @@ const MainPart = ({ children }) => {
 
   const scrollRef = useRef(null);
   // const [startX, setStartX] = useState(0);
-
 
   // const handleScreenClick = () => {
   //   if (menuMode) {
@@ -71,25 +81,23 @@ const MainPart = ({ children }) => {
   //   }
   // };
 
-  
-
   return (
     // <WrapperMain onClick={handleScreenClick} bgcUrl={currentBg} isOpen={menuMode}>
     <WrapperMain>
       {/* <Header children={currentName}>
         <Title>{children}</Title> */}
-        <Header >
-        <Title>Project office</Title> 
+      <Header>
+        <Title>Project office</Title>
 
         <Filter />
       </Header>
 
       {/* <Wrapper length={columnsLength} ref={scrollRef}> */}
-      <Wrapper  ref={scrollRef}>
+      <Wrapper ref={scrollRef}>
         <ContentWrapper
-          // onMouseDown={handleMouseDown}
-          // onMouseMove={handleMouseMove}
-          // onMouseUp={handleMouseUp}
+        // onMouseDown={handleMouseDown}
+        // onMouseMove={handleMouseMove}
+        // onMouseUp={handleMouseUp}
         >
           {/* {columns &&
             columns.map(item => <Column key={item._id} item={item} />)} */}
@@ -107,10 +115,16 @@ const MainPart = ({ children }) => {
           </AddButton>
         </ContentWrapper>
 
-        
-          {/* <ModalAdd dashboardId={currentDashboard?._id} closeModal={handleCloseModal} />           */}
-          <ModalAdd  closeModal={handleCloseColumnModal} isOpen={isOpenColumnModal} onRequestClose={handleCloseColumnModal}/>
-         
+        {/* <ModalAdd dashboardId={currentDashboard?._id} closeModal={handleCloseModal} />           */}
+
+        <ReactModal
+          isOpen={isOpenColumnModal}
+          title="Add Column"
+          closeModal={handleCloseColumnModal}
+          onRequestClose={handleCloseColumnModal}
+        >
+          <ModalAdd />
+        </ReactModal>
       </Wrapper>
     </WrapperMain>
   );

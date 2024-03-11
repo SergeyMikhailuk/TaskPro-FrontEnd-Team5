@@ -12,8 +12,6 @@ import {
   AuthError,
   AuthFormSubmitButton,
   ButtonPlus,
-  CloseModal,
-  ClosedButton,
   DateTitle,
   DefaultRadioBtn,
   FormTitle,
@@ -25,7 +23,6 @@ import {
   PlusIcon,
   RadioBtnWrapper,
   Textarea,
-  Title,
   TitleInput,
   Wrapper,
 } from './CardModal.styled';
@@ -83,11 +80,7 @@ const AddCardModal = ({ columnId, closeModal }) => {
   const handleSubmit = () => {};
 
   return (
-    <ModalSection>
-      <Title>Add Card</Title>
-      <ClosedButton>
-        <CloseModal onClick={closeModal} />
-      </ClosedButton>
+    <ModalSection>      
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}

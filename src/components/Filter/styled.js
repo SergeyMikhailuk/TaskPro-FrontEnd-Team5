@@ -1,40 +1,7 @@
 import styled from 'styled-components';
-import Modal from 'react-modal';
 
 import { ReactComponent as FilterImage } from 'images/svg/filter.svg';
-import { ReactComponent as CloseBtn } from 'images/svg/close.svg';
 
-export const ModalWindow = styled(Modal)`
-& {
-  position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px; 
-    height: 234px;
-    overflow-y: auto; 
-    padding: 24px;
-    background-color: ${props => props.theme.modal.backgroundMain};
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  },
-`;
-export const CloseModal = styled(CloseBtn)`
-  width: 18px;
-  height: 18px;
-  color: ${props => props.theme.modal.textMain};
-`;
-
-export const ClosedButton = styled.button`
-  position: absolute;
-  right: 0;
-  top: 0;
-  background-color: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-  padding: 0;
-`;
 
 export const FilterBtn = styled.button`
   position: absolute;
@@ -72,36 +39,37 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
-export const Title = styled.p`
-  margin-bottom: 14px;
-  color: ${props => props.theme.header.userName};
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-`;
-
 export const Label = styled.div`
   width: 252px;
 `;
 
-export const Line = styled.hr`
-  border: none;
-  border-top: 1px solid ${props => props.theme.column.borderColor};
-`;
+
 
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 140px;
+    width: 100%;
+    height: 1px;
+    background-color: ${props => props.theme.column.borderColor};
+  }
 `;
 
 export const LabelColors = styled.p`
-  margin-top: 14px;
+  margin-top: 4px;
   margin-bottom: 16px;
   color: ${props => props.theme.header.userName};
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.28px;
   font-family: 'Poppins', sans-serif;
+
+  
 `;
 
 export const ShowAllBtn = styled.button`

@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import Modal from 'react-modal'
 import { useDispatch} from 'react-redux';
-
+import { ReactModal } from '../ModalWindows/Modal/Modal';
 
 import { setFilter } from 'store/filterSlice';
 
@@ -9,7 +8,6 @@ import {
   FilterBtn,
   FilterIcon,
   Wrapper,
-  Title,
   Label,
   CustomRadioContainer,
   LabelColors,
@@ -18,18 +16,12 @@ import {
   RadioLabel,
   Container,
   ShowAllBtn,
-  ModalWindow,
-  Line,
-  CloseModal,
-  ClosedButton,
   RadioInput,
 } from './styled';
 
 const Filter = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
-
-  Modal.setAppElement('#root');
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -50,14 +42,14 @@ const Filter = () => {
         <span>Filters</span>
       </FilterBtn>
 
-      {isModalOpen && (
-        <ModalWindow isOpen={isModalOpen} onRequestClose={handleCloseModal}>
-          <Wrapper closeModal={handleCloseModal}>
-            <ClosedButton>
-              <CloseModal onClick={handleCloseModal} />
-            </ClosedButton>
-            <Title>Filters</Title>
-            <Line />
+
+      <ReactModal
+        isOpen={isModalOpen}
+        title="Filters"
+        closeModal={handleCloseModal}
+        onRequestClose={handleCloseModal}
+      >
+        <Wrapper >   
             <Label>
               <Container>
                 <LabelColors>Label colors</LabelColors>
@@ -118,8 +110,7 @@ const Filter = () => {
               </CustomRadioContainer>
             </Label>
           </Wrapper>
-        </ModalWindow>
-      )}
+      </ReactModal>
     </>
   );
 };

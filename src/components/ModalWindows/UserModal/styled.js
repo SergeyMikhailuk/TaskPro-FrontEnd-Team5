@@ -2,24 +2,6 @@ import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 
 import { ReactComponent as AddBtn } from 'images/sidebar/add-btn.svg';
-import { ReactComponent as CloseBtn } from 'images/svg/close.svg';
-
-export const CloseModal = styled(CloseBtn)`
-  width: 18px;
-  height: 18px;  
-  color: ${props => props.theme.modal.textMain};
-`;
-
-export const ClosedButton = styled.button`
-  position: absolute;
-  right: 14px;
-  top: 14px;
-  background-color: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-  padding: 0;
-`;
 
 
 export const AddPhoto = styled(AddBtn)`
@@ -46,18 +28,9 @@ export const EditWrapper = styled.div`
   background-color: ${props => props.theme.modal.backgroundMain};
 `;
 
-export const Title = styled.h2`
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  margin: 0;
-  font-weight: 500;
-  letter-spacing: -0.36px;
-  color: ${props => props.theme.modal.textMain};
-`;
-
 export const ImageWrapper = styled.div`
   position: relative;
-  margin: 24px auto 25px;
+  margin: 0 auto 25px;
   border-radius: 8px;
   width: 68px;
   height: 68px;
