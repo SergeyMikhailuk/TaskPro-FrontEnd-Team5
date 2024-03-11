@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import axios from 'axios';
+import { useDeleteBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
 import { logOut } from '../../store/auth/authOperations';
 import HelpModal from '../ModalWindows/HelpModal/index';
 import NewBoardForm from '../forms/NewBoardForm/index';
-import BoardItem from './BoardItem/index.js';
 import { toggleSidebar } from 'store/sidebarSlice';
-import { useDeleteBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
-
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
-
+import Board from './BoardItem/index.js';
 import {
   Aside,
   LogoBox,
@@ -44,6 +42,7 @@ const Sidebar = () => {
   };
 
   const isOpen = useSelector(state => state.sidebar.isOpen);
+  const token = useSelector(state => state.auth.token);
   const [boards, setBoards] = useState([]);
 
   const { data } = useGetBoardsQuery();
@@ -52,6 +51,16 @@ const Sidebar = () => {
   useEffect(() => {
     setBoards(data || []);
   }, [data]);
+
+  const updateBoardsList = async () => {
+    try {
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      const { data } = await axios.get('/api/boards');
+      setBoards(data);
+    } catch (error) {
+      console.error('Error updating board list:', error);
+    }
+  };
 
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
@@ -63,7 +72,7 @@ const Sidebar = () => {
   const [isModalOpenHelp, setIsModalOpenHelp] = useState(false);
   const [isModalOpenAdd, setIsModalOpenAdd] = useState(false);
 
-  const openHelpModal = () => {
+  const openModalHelp = () => {
     setIsModalOpenHelp(true);
     setIsModalOpenAdd(false);
   };
@@ -104,10 +113,11 @@ const Sidebar = () => {
         </AddBoards>
         <BoardsList>
           {boards.map(board => (
-            <BoardItem
-              key={board.id}
+            <Board
+              key={board._id}
               board={board}
               deleteBoard={deleteBoardHandler}
+              updateBoardsList={updateBoardsList}
             />
           ))}
         </BoardsList>
@@ -123,7 +133,7 @@ const Sidebar = () => {
             <BoxHelpSelectedText> TaskPro</BoxHelpSelectedText>, check out our
             support resources or reach out to our customer support team.
           </BoxHelpText>
-          <BoxHelpBtnOpenModal onClick={openHelpModal}>
+          <BoxHelpBtnOpenModal onClick={openModalHelp}>
             <BoxHelpBtnIcon />
             <BoxHelpBtnText>Need help?</BoxHelpBtnText>
           </BoxHelpBtnOpenModal>
