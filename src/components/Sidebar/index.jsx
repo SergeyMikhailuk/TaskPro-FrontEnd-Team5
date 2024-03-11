@@ -36,14 +36,9 @@ const Sidebar = () => {
   const dispatch = useDispatch();
 
   const [activeBoardId, setActiveBoardId] = useState();
-  const [boards, setBoards] = useState([]);
-  const { data } = useGetBoardsQuery();
+  const { data: boards } = useGetBoardsQuery();
   const [deleteBoard] = useDeleteBoardMutation();
   const isOpen = useSelector(state => state.sidebar.isOpen);
-
-  useEffect(() => {
-    setBoards(data || []);
-  }, [data]);
 
   useEffect(() => {
     if (boards.length > 0) {
