@@ -4,7 +4,7 @@ export const activeBoardIdSlice = createSlice({
   name: 'activeBoardId',
   initialState: '',
   reducers: {
-    setTheme: (_, action) => action.payload,
+    setActiveBoardId: (_, action) => action.payload,
   },
 });
 
