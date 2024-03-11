@@ -26,9 +26,7 @@ import {
   TitleInput,
   Wrapper,
 } from './CardModal.styled';
-import { useDispatch } from 'react-redux';
-import { addCard } from 'store/dashboards/dashboardsOperations';
-// import { useDispatch } from 'react-redux';
+import { useCreateTodosMutation } from 'store/todosSlice';
 
 const options = ['low', 'medium', 'high', 'without priority'];
 
@@ -63,9 +61,8 @@ const dateOptions = {
   month: '2-digit',
   day: '2-digit',
 };
-
 const AddCardModal = ({ columnId, closeModal }) => {
-  const dispatch = useDispatch();
+  const [createTodos] = useCreateTodosMutation();
   const [selectedLabel, setSelectedLabel] = useState(options[3]);
   const [startDate, setStartDate] = useState('');
   const customDate =
@@ -78,18 +75,27 @@ const AddCardModal = ({ columnId, closeModal }) => {
     description: '',
     priority: selectedLabel,
   };
-
-  const handleSubmit = (values, { resetForm }) => {
-    const { title, description, priority } = values;
-
-    if (deadline === '') {
-      deadline = new Date().toISOString();
+  const activeColumnId = columnId;
+  const { title, description, priority, deadline } = values;
+  const handleSubmit = async values => {
+    try {
+      await createTodos({ columnId: activeColumnId, ...values });
+    } catch (error) {
+      console.error('Error creating todo:', error);
     }
-
-    dispatch(addCard({ columnId, title, description, priority, deadline }));
-    resetForm();
-    closeModal();
   };
+
+  // const handleSubmit = (values, { resetForm }) => {
+  //   const { title, description, priority } = values;
+
+  //   if (deadline === '') {
+  //     deadline = new Date().toISOString();
+  //   }
+
+  //   dispatch(addCard({ columnId, title, description, priority, deadline }));
+  //   resetForm();
+  //   closeModal();
+  // };
 
   return (
     <ModalSection>
@@ -100,15 +106,14 @@ const AddCardModal = ({ columnId, closeModal }) => {
       >
         <ModalForm>
           <FormWrapper>
-            <AuthError name="title" component="div" />
-
             <TitleInput
               type="text"
               id="title"
               name="title"
               placeholder="Title"
+              required
             />
-            <AuthError name="description" component="div" />
+            <AuthError name="title" component="div" />
 
             <Textarea
               component="textarea"
@@ -116,7 +121,9 @@ const AddCardModal = ({ columnId, closeModal }) => {
               id="description"
               type="text"
               placeholder="Description"
+              required
             />
+            <AuthError name="description" component="div" />
           </FormWrapper>
 
           <FormWrapper>
