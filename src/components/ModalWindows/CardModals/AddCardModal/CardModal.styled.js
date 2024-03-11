@@ -66,7 +66,7 @@ export const FormWrapper = styled.div`
   justify-content: center;
   align-items: start;
 
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 
   &:last-of-type {
     margin-bottom: 14px;
@@ -110,12 +110,11 @@ export const AuthFormSubmitButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
-  padding: 14px;
+  padding: 10px;
   border: none;
   background: ${props => props.theme.modal.buttonBackground};
   border-radius: 8px;
-
+  max-width: 287px; 
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.28px;
@@ -127,6 +126,13 @@ export const AuthFormSubmitButton = styled.button`
   &:hover {
     opacity: 0.8;
   }
+
+  @media screen and (min-width: 345px) {
+    width: 287px; 
+    }
+  @media screen and (min-width: 768px) {
+    width: 302px; 
+    }
 `;
 
 export const DefaultRadioBtn = styled(Field)`
@@ -189,7 +195,7 @@ export const LabelItem = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background-color: ${props => props.value === 'without' && 'rgb(128,128,128)'};
+  background-color: ${props => props.value === 'without' && 'rgb(128,128,128,1)'};
   background-color: ${props =>
     props.value === 'low' && 'rgba(143, 161, 208, 1)'};
   background-color: ${props =>

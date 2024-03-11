@@ -41,7 +41,7 @@ export const ModalFormikBoxBtn = styled.button`
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.32px;
-  width: 100%;
+  width: 240px;
   padding: 14px;
   background-color: ${props => props.theme.modal.buttonBackground};
   border-radius: 8px;
@@ -51,6 +51,14 @@ export const ModalFormikBoxBtn = styled.button`
   &:focus {
     background-color: ${props => props.theme.modal.btnHover};
   }
+
+  @media screen and (min-width: 345px) {
+    width: 287px; 
+    }
+
+  @media screen and (min-width: 768px) {
+    width: 302px; 
+    }
 `;
 
 export const ModalFormikBoxBtnIcon = styled(AddModalSvg)`
