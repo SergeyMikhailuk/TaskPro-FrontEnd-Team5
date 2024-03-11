@@ -26,6 +26,8 @@ import {
   TitleInput,
   Wrapper,
 } from './CardModal.styled';
+import { useDispatch } from 'react-redux';
+import { addCard } from 'store/dashboards/dashboardsOperations';
 // import { useDispatch } from 'react-redux';
 
 const options = ['low', 'medium', 'high', 'without priority'];
@@ -63,13 +65,13 @@ const dateOptions = {
 };
 
 const AddCardModal = ({ columnId, closeModal }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [selectedLabel, setSelectedLabel] = useState(options[3]);
   const [startDate, setStartDate] = useState('');
   const customDate =
     startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
-  // let deadline = startDate;
+  let deadline = startDate;
 
   const initialValues = {
     title: '',
@@ -77,10 +79,20 @@ const AddCardModal = ({ columnId, closeModal }) => {
     priority: selectedLabel,
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (values, { resetForm }) => {
+    const { title, description, priority } = values;
+
+    if (deadline === '') {
+      deadline = new Date().toISOString();
+    }
+
+    dispatch(addCard({ columnId, title, description, priority, deadline }));
+    resetForm();
+    closeModal();
+  };
 
   return (
-    <ModalSection>      
+    <ModalSection>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -141,7 +153,7 @@ const AddCardModal = ({ columnId, closeModal }) => {
               <DatePicker
                 className="input-ref"
                 minDate={new Date()}
-                timeFormat="dd/MM/yyyy"
+                // timeFormat="dd/MM/yyyy"
                 selected={startDate}
                 onChange={date => setStartDate(date)}
                 id="datePicker"
@@ -151,9 +163,9 @@ const AddCardModal = ({ columnId, closeModal }) => {
 
           <AuthFormSubmitButton type="submit">
             <ButtonPlus>
-              <PlusIcon/>
+              <PlusIcon />
             </ButtonPlus>
-            Edit
+            Add
           </AuthFormSubmitButton>
         </ModalForm>
       </Formik>

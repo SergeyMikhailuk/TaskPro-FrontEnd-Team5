@@ -2,9 +2,8 @@ import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
 import { ReactComponent as AppBtnSvg } from 'images/svg/plus28.svg';
 
-
 export const Textarea = styled.textarea`
-resize: none;
+  resize: none;
   width: 100%;
   height: 154px;
   padding: 14px 18px;
@@ -36,9 +35,7 @@ resize: none;
   &:focus {
     opacity: 1;
   }
-`
-
-
+`;
 
 export const AuthError = styled(ErrorMessage)`
   display: block;
@@ -57,7 +54,6 @@ export const ModalSection = styled.div`
   justify-content: center;
   align-items: start;
 `;
-
 
 export const FormWrapper = styled.div`
   width: 100%;
@@ -114,7 +110,7 @@ export const AuthFormSubmitButton = styled.button`
   border: none;
   background: ${props => props.theme.modal.buttonBackground};
   border-radius: 8px;
-  max-width: 287px; 
+  max-width: 287px;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.28px;
@@ -128,11 +124,11 @@ export const AuthFormSubmitButton = styled.button`
   }
 
   @media screen and (min-width: 345px) {
-    width: 287px; 
-    }
+    width: 287px;
+  }
   @media screen and (min-width: 768px) {
-    width: 302px; 
-    }
+    width: 302px;
+  }
 `;
 
 export const DefaultRadioBtn = styled(Field)`
@@ -175,7 +171,7 @@ export const Label = styled.label`
 
   &.active {
     border: ${props =>
-      props.value === 'without' && '2px solid rgb(128,128,128)'};
+      props.value === 'without priority' && '2px solid rgb(128,128,128)'};
     border: ${props =>
       props.value === 'low' && '2px solid rgba(143, 161, 208, 1)'};
     border: ${props =>
@@ -195,7 +191,8 @@ export const LabelItem = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background-color: ${props => props.value === 'without' && 'rgb(128,128,128,1)'};
+  background-color: ${props =>
+    props.value === 'without priority' && 'rgb(128,128,128,1)'};
   background-color: ${props =>
     props.value === 'low' && 'rgba(143, 161, 208, 1)'};
   background-color: ${props =>
@@ -217,24 +214,21 @@ export const ButtonPlus = styled.div`
   align-items: center;
   border-radius: 8px;
 
-  
   background-color: transparent;
   margin-right: 8px;
 `;
-
-
 
 export const PlusIcon = styled(AppBtnSvg)`
   width: 28px;
   height: 28px;
   border-radius: 6px;
-  & .plus{
-    color: ${props => props.theme.modal.plusColor};  
+  & .plus {
+    color: ${props => props.theme.modal.plusColor};
   }
 
-  & .backgr{
+  & .backgr {
     color: ${props => props.theme.modal.buttonText};
-    }
+  }
 `;
 
 export const ModalForm = styled(Form)`
