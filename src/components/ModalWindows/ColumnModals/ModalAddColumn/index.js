@@ -17,7 +17,7 @@ const ModalAddColumn = ({ isOpen, closeModal, activeBoardId }) => {
   const [createColumn] = useCreateColumnMutation();
   const handleSubmit = async values => {
     try {
-      await createColumn({ boardId: activeBoardId, ...values });
+      await createColumn({ boardId: activeBoardId, column: values });
     } catch (error) {
       console.error('Error creating column:', error);
     }

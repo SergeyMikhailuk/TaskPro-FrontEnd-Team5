@@ -1,6 +1,3 @@
-import React, { useState } from 'react';
-import ModalEdit from '../../ModalWindows/ColumnModals/ModalEditColumn/index';
-
 import {
   BoardIt,
   BoardListBox,
@@ -14,12 +11,6 @@ import {
 } from './styled';
 
 const BoardItem = ({ board, deleteBoard, setActiveBoardId }) => {
-  const [isModalOpenEdit, setIsModalOpenEdit] = useState(false);
-
-  const openModalEdit = () => {
-    setIsModalOpenEdit(false);
-  };
-
   const handleDelete = () => {
     deleteBoard(board._id);
   };
@@ -36,15 +27,10 @@ const BoardItem = ({ board, deleteBoard, setActiveBoardId }) => {
           {board.title}
         </BoardListTitle>
         <BoardListBtnGroup>
-          <BoardListEditBtn onClick={openModalEdit}>
+          <BoardListEditBtn onClick={console.log}>
             <BoardListBtnEdit></BoardListBtnEdit>
           </BoardListEditBtn>
-          {
-            <ModalEdit
-              isOpen={isModalOpenEdit}
-              closeModal={() => setIsModalOpenEdit(false)}
-            />
-          }
+
           <BoardListDeleteBtn>
             <BoardListBtnDelete onClick={handleDelete}></BoardListBtnDelete>
           </BoardListDeleteBtn>

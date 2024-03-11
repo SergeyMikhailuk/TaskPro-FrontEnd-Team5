@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useDeleteBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
 import { logOut } from '../../store/auth/authOperations';
 import HelpModal from '../ModalWindows/HelpModal/index';
-import NewBoardForm from '../forms/NewBoardForm/index';
 import { toggleSidebar } from 'store/sidebarSlice';
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
@@ -39,7 +38,7 @@ const Sidebar = () => {
   const [activeBoardId, setActiveBoardId] = useState();
   const [boards, setBoards] = useState([]);
   const { data } = useGetBoardsQuery();
-  const deleteBoard = useDeleteBoardMutation();
+  const [deleteBoard] = useDeleteBoardMutation();
   const isOpen = useSelector(state => state.sidebar.isOpen);
 
   useEffect(() => {
@@ -60,15 +59,12 @@ const Sidebar = () => {
   };
 
   const [isModalOpenHelp, setIsModalOpenHelp] = useState(false);
-  const [isModalOpenAdd, setIsModalOpenAdd] = useState(false);
 
   const openModalHelp = () => {
     setIsModalOpenHelp(true);
-    setIsModalOpenAdd(false);
   };
 
   const openModalAdd = () => {
-    setIsModalOpenAdd(true);
     setIsModalOpenHelp(false);
   };
 
@@ -83,7 +79,6 @@ const Sidebar = () => {
   const handleLogout = () => {
     dispatch(logOut());
   };
-  
 
   return (
     <>
@@ -133,18 +128,10 @@ const Sidebar = () => {
             <BoxHelpBtnIcon />
             <BoxHelpBtnText>Need help?</BoxHelpBtnText>
           </BoxHelpBtnOpenModal>
-          {
-            <HelpModal
-              isOpen={isModalOpenHelp}
-              closeModal={() => setIsModalOpenHelp(false)}
-            />
-          }
-          {
-            <NewBoardForm
-              isOpen={isModalOpenAdd}
-              closeModal={() => setIsModalOpenAdd(false)}
-            />
-          }
+          <HelpModal
+            isOpen={isModalOpenHelp}
+            closeModal={() => setIsModalOpenHelp(false)}
+          />
         </BoxHelp>
         <LogOut>
           <LogOutIconBtnWrap onClick={handleLogout}>
