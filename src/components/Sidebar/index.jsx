@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
+
 import { logOut } from '../../store/auth/authOperations';
-import ModalHelp from '../ModalWindows/ModalHelp/index';
+import HelpModal from '../ModalWindows/HelpModal/index';
 import NewBoardForm from '../forms/NewBoardForm/index';
+import BoardItem from './BoardItem/index.js';
 import { toggleSidebar } from 'store/sidebarSlice';
+import { useDeleteBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
+
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
-import Board from './Board/index.js';
+
 import {
   Aside,
   LogoBox,
@@ -32,7 +35,6 @@ import {
   LogOutText,
   StyledOverlay,
 } from './styled';
-import { deleteBoard } from 'Services/api';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -42,32 +44,14 @@ const Sidebar = () => {
   };
 
   const isOpen = useSelector(state => state.sidebar.isOpen);
-  const token = useSelector(state => state.auth.token);
   const [boards, setBoards] = useState([]);
 
+  const { data } = useGetBoardsQuery();
+  const deleteBoard = useDeleteBoardMutation();
+
   useEffect(() => {
-    const fetchBoards = async () => {
-      try {
-        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-        const { data } = await axios.get('/api/users/current');
-
-        setBoards(data.boards);
-      } catch (error) {
-        console.error('Error fetching boards:', error);
-      }
-    };
-    fetchBoards();
-  }, [token]);
-
-  const updateBoardsList = async () => {
-    try {
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-      const { data } = await axios.get('/api/boards');
-      setBoards(data);
-    } catch (error) {
-      console.error('Error updating board list:', error);
-    }
-  };
+    setBoards(data || []);
+  }, [data]);
 
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
@@ -79,14 +63,22 @@ const Sidebar = () => {
   const [isModalOpenHelp, setIsModalOpenHelp] = useState(false);
   const [isModalOpenAdd, setIsModalOpenAdd] = useState(false);
 
-  const openModalHelp = () => {
+  const openHelpModal = () => {
     setIsModalOpenHelp(true);
-    setIsModalOpenAdd(false); 
+    setIsModalOpenAdd(false);
   };
 
   const openModalAdd = () => {
-    setIsModalOpenAdd(true); 
-    setIsModalOpenHelp(false); 
+    setIsModalOpenAdd(true);
+    setIsModalOpenHelp(false);
+  };
+
+  const deleteBoardHandler = async boardId => {
+    try {
+      await deleteBoard({ boardId });
+    } catch (error) {
+      console.error('Error deleting board:', error);
+    }
   };
 
   return (
@@ -112,11 +104,10 @@ const Sidebar = () => {
         </AddBoards>
         <BoardsList>
           {boards.map(board => (
-            <Board
+            <BoardItem
               key={board.id}
               board={board}
-              deleteBoard={deleteBoard}
-              updateBoardsList={updateBoardsList}
+              deleteBoard={deleteBoardHandler}
             />
           ))}
         </BoardsList>
@@ -132,18 +123,18 @@ const Sidebar = () => {
             <BoxHelpSelectedText> TaskPro</BoxHelpSelectedText>, check out our
             support resources or reach out to our customer support team.
           </BoxHelpText>
-          <BoxHelpBtnOpenModal onClick={openModalHelp}>
+          <BoxHelpBtnOpenModal onClick={openHelpModal}>
             <BoxHelpBtnIcon />
             <BoxHelpBtnText>Need help?</BoxHelpBtnText>
           </BoxHelpBtnOpenModal>
           {
-            <ModalHelp
+            <HelpModal
               isOpen={isModalOpenHelp}
               closeModal={() => setIsModalOpenHelp(false)}
             />
           }
           {
-            <NewBoardForm 
+            <NewBoardForm
               isOpen={isModalOpenAdd}
               closeModal={() => setIsModalOpenAdd(false)}
             />

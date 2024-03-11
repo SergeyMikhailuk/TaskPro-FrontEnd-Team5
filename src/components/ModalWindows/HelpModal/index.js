@@ -15,7 +15,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 Modal.setAppElement('#root');
 
-const ModalHelp = ({ isOpen, closeModal }) => {
+const HelpModal = ({ isOpen, closeModal }) => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
       await axios.post('/api/users/need-help', values);
@@ -68,4 +68,4 @@ const ModalHelp = ({ isOpen, closeModal }) => {
   );
 };
 
-export default ModalHelp;
+export default HelpModal;
