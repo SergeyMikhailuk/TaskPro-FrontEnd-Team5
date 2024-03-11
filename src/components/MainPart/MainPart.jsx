@@ -20,10 +20,12 @@ import {
 import ModalAdd from '../ModalWindows/ColumnModals/ModalAddColumn/index';
 
 import { ReactModal } from '../ModalWindows/Modal/Modal';
+import { useSelector } from 'react-redux';
 
 const MainPart = ({ children }) => {
   // const dispatch = useDispatch();
-
+  const boardId = useSelector(store => store.boardsApi);
+  console.log(boardId);
   // const columnsLength = useSelector(selectColumnsLength);
   // const menuMode = useSelector(selectIsMenuOpen);
 
