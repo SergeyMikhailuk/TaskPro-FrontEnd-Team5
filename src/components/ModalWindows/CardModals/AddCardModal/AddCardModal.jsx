@@ -153,10 +153,10 @@ const AddCardModal = ({ columnId, closeModal }) => {
               <DatePicker
                 className="input-ref"
                 minDate={new Date()}
-                // timeFormat="dd/MM/yyyy"
                 selected={startDate}
                 onChange={date => setStartDate(date)}
                 id="datePicker"
+                calendarStartDay={1}
               />
             </Wrapper>
           </FormWrapper>
