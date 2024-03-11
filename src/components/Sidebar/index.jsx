@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
 import { useDeleteBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
 import { logOut } from '../../store/auth/authOperations';
 import HelpModal from '../ModalWindows/HelpModal/index';
@@ -37,30 +36,21 @@ import {
 const Sidebar = () => {
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    dispatch(logOut());
-  };
-
-  const isOpen = useSelector(state => state.sidebar.isOpen);
-  const token = useSelector(state => state.auth.token);
+  const [activeBoardId, setActiveBoardId] = useState();
   const [boards, setBoards] = useState([]);
-
   const { data } = useGetBoardsQuery();
   const deleteBoard = useDeleteBoardMutation();
+  const isOpen = useSelector(state => state.sidebar.isOpen);
 
   useEffect(() => {
     setBoards(data || []);
   }, [data]);
 
-  const updateBoardsList = async () => {
-    try {
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-      const { data } = await axios.get('/api/boards');
-      setBoards(data);
-    } catch (error) {
-      console.error('Error updating board list:', error);
+  useEffect(() => {
+    if (boards.length > 0) {
+      setActiveBoardId(boards[0]._id);
     }
-  };
+  }, [boards]);
 
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
@@ -90,6 +80,11 @@ const Sidebar = () => {
     }
   };
 
+  const handleLogout = () => {
+    dispatch(logOut());
+  };
+  
+
   return (
     <>
       {isOpen && <StyledOverlay onClick={handleToggleSidebar} />}
@@ -117,7 +112,8 @@ const Sidebar = () => {
               key={board._id}
               board={board}
               deleteBoard={deleteBoardHandler}
-              updateBoardsList={updateBoardsList}
+              activeBoardId={activeBoardId}
+              setActiveBoardId={setActiveBoardId}
             />
           ))}
         </BoardsList>

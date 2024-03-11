@@ -13,7 +13,7 @@ import {
   BoardListBtnDelete,
 } from './styled';
 
-const BoardItem = ({ board, deleteBoard }) => {
+const BoardItem = ({ board, deleteBoard, setActiveBoardId }) => {
   const [isModalOpenEdit, setIsModalOpenEdit] = useState(false);
 
   const openModalEdit = () => {
@@ -24,8 +24,12 @@ const BoardItem = ({ board, deleteBoard }) => {
     deleteBoard(board._id);
   };
 
+  const handleBoardClick = () => {
+    setActiveBoardId(board._id);
+  };
+
   return (
-    <BoardIt>
+    <BoardIt onClick={handleBoardClick}>
       <BoardListBox>
         <BoardListTitle>
           <BoardListIcon>{}</BoardListIcon>
