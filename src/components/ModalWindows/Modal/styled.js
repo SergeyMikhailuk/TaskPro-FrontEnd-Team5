@@ -8,7 +8,6 @@ export const ModalWindow = styled(Modal)`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 335px;
     max-height: 80vh;
     min-height: 200px;
     overflow-y: auto;
@@ -16,10 +15,9 @@ export const ModalWindow = styled(Modal)`
     background-color: ${props => props.theme.modal.backgroundMain};
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-    @media screen and (min-width: 768px) {
-      width: 350px;
-    }
+    display: flex; 
+    flex-direction: column;
+    width: fit-content; 
 `;
 
 export const ModalHeder = styled.div`

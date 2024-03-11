@@ -147,18 +147,24 @@ export const AuthFormSubmitButton = styled.button`
   border: none;
   background: ${props => props.theme.editProfileModal.buttonBackground};
   border-radius: 8px;
-
   font-family: 'Poppins';
   font-size: 14px;
   font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.28px;
   color: ${props => props.theme.editProfileModal.buttonColor};
-
+  width: 240px;
   transition: all 150ms linear;
   cursor: pointer;
 
   &:hover {
     background: ${props => props.theme.modal.btnHover};
   }
+  @media screen and (min-width: 345px) {
+    width: 287px; 
+    }
+
+  @media screen and (min-width: 768px) {
+    width: 352px; 
+    }
 `;
