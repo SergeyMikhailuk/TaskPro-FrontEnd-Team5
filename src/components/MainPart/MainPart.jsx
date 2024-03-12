@@ -29,7 +29,7 @@ const MainPart = ({ children }) => {
 
   // const columnsLength = useSelector(selectColumnsLength);
   // const menuMode = useSelector(selectIsMenuOpen);
-
+  console.log(children);
   //Временно:
   // const menuMode = true;
   // const currentBg = useSelector(state => state?.dashboards?.currentBg);

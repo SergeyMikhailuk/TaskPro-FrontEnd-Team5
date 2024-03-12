@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { getActiveBoardId, setActiveBoardId } from 'store/activeBoardSlice';
+
 import {
   BoardIt,
   BoardListBox,
@@ -10,13 +13,16 @@ import {
   BoardListBtnDelete,
 } from './styled';
 
-const BoardItem = ({ board, deleteBoard, setActiveBoardId }) => {
+const BoardItem = ({ board, deleteBoard }) => {
+  const dispatch = useDispatch();
+  const currentId = useSelector(getActiveBoardId);
   const handleDelete = () => {
     deleteBoard(board._id);
   };
 
   const handleBoardClick = () => {
-    setActiveBoardId(board._id);
+    console.log('currentId: ', currentId);
+    dispatch(setActiveBoardId(board._id));
   };
 
   return (

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useDeleteBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
-import { logOut } from '../../store/auth/authOperations';
+import { logOut } from 'store/auth/authOperations';
 import HelpModal from '../ModalWindows/HelpModal/index';
 import { toggleSidebar } from 'store/sidebarSlice';
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
 import Board from './BoardItem/index.js';
+import { getActiveBoardId, setActiveBoardId } from 'store/activeBoardSlice';
+
 import {
   Aside,
   LogoBox,
@@ -37,21 +39,16 @@ import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 const Sidebar = () => {
   const dispatch = useDispatch();
 
-  const [activeBoardId, setActiveBoardId] = useState();
-  const [boards, setBoards] = useState([]);
-  const { data } = useGetBoardsQuery();
+  const { data: boards } = useGetBoardsQuery();
   const [deleteBoard] = useDeleteBoardMutation();
   const isOpen = useSelector(state => state.sidebar.isOpen);
+  const activeBoardId = useSelector(getActiveBoardId);
 
   useEffect(() => {
-    setBoards(data || []);
-  }, [data]);
-
-  useEffect(() => {
-    if (boards.length > 0) {
-      setActiveBoardId(boards[0]._id);
+    if (boards?.length > 0) {
+      dispatch(setActiveBoardId('123123'));
     }
-  }, [boards]);
+  }, [boards, dispatch, activeBoardId]);
 
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
@@ -109,13 +106,12 @@ const Sidebar = () => {
           </AddBoardsCreateBox>
         </AddBoards>
         <BoardsList>
-          {boards.map(board => (
+          {boards?.map(board => (
             <Board
               key={board._id}
               board={board}
               deleteBoard={deleteBoardHandler}
               activeBoardId={activeBoardId}
-              setActiveBoardId={setActiveBoardId}
             />
           ))}
         </BoardsList>
