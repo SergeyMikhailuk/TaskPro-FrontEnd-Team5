@@ -10,7 +10,7 @@ import {
   ModalFormikBoxBtnIcon,
 } from './styled';
 
-const ModalAddColumn = ({ isOpen, closeModal, activeBoardId }) => {
+const ModalColumn = ({ typeModal, closeModal, activeBoardId }) => {
   const initialValues = {
     title: '',
   };
@@ -21,7 +21,7 @@ const ModalAddColumn = ({ isOpen, closeModal, activeBoardId }) => {
     title: Yup.string().required('Title is required'),
   });
 
-  const handleSubmit = async (values, { resetForm, closeModal }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     try {
       await createColumn({ boardId: activeBoardId, column: values });
       resetForm();
@@ -53,7 +53,7 @@ const ModalAddColumn = ({ isOpen, closeModal, activeBoardId }) => {
             </ModalFormikBox>
             <ModalFormikBoxBtn type="submit">
               <ModalFormikBoxBtnIcon />
-              Add
+              {typeModal === 'add' ? 'Add' : 'Edit'}
             </ModalFormikBoxBtn>
           </Form>
         )}
@@ -62,4 +62,4 @@ const ModalAddColumn = ({ isOpen, closeModal, activeBoardId }) => {
   );
 };
 
-export default ModalAddColumn;
+export { ModalColumn };

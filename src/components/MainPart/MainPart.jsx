@@ -17,9 +17,10 @@ import {
   ContentWrapper,
   Wrapper,
 } from './styled';
-import ModalAdd from '../ModalWindows/ColumnModals/ModalAddColumn/index';
+import { ModalColumn } from 'components/ModalWindows/ColumnModals';
 
 import { ReactModal } from '../ModalWindows/Modal/Modal';
+
 // import { useSelector } from 'react-redux';
 
 const MainPart = ({ children }) => {
@@ -124,7 +125,11 @@ const MainPart = ({ children }) => {
           closeModal={handleCloseColumnModal}
           onRequestClose={handleCloseColumnModal}
         >
-          <ModalAdd activeBoardId={activeBoardId} />
+          <ModalColumn
+            typeModal={'add'}
+            activeBoardId={activeBoardId}
+            closeModal={handleCloseColumnModal}
+          />
         </ReactModal>
       </Wrapper>
     </WrapperMain>

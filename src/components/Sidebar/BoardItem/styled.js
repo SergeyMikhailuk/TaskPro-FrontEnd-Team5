@@ -37,9 +37,9 @@ export const BoardIt = styled.li`
     height: 100%;
     width: 4px;
     top: 0;
-    right: 0px;
+    right: 0;
     background-color: ${props => props.theme.sidebar.projectBorder};
-    border-radius: 4px 0px 0px 4px;
+    border-radius: 4px 0 0 4px;
     opacity: 1;
   }
 
