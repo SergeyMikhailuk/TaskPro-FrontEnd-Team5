@@ -106,7 +106,7 @@ export const Column = ({ item }) => {
         closeModal={handleCloseColumnModal}
         onRequestClose={handleCloseColumnModal}
       >
-        <ModalEdit />
+        <ModalEdit closeModal={handleCloseColumnModal}/>
       </ReactModal>
 
       <ReactModal
@@ -115,7 +115,7 @@ export const Column = ({ item }) => {
         closeModal={handleCloseCardModal}
         onRequestClose={handleCloseCardModal}
       >
-        <AddCardModal />
+        <AddCardModal closeModal={handleCloseCardModal}/>
       </ReactModal>
     </Wrapper>
   );

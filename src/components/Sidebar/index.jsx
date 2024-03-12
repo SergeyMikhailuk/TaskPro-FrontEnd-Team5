@@ -149,7 +149,7 @@ const Sidebar = () => {
         closeModal={handleCloseBoardModal}
         onRequestClose={handleCloseBoardModal}
       >
-        <AddBoardModal />
+        <AddBoardModal closeModal={handleCloseBoardModal}/>
       </ReactModal>
     </>
   );

@@ -70,11 +70,11 @@ const AddBoardModal = ({ closeModal }) => {
           });
 
           console.log('Board created:', response);
+          closeModal();
         } catch (error) {
           console.error('Error creating board:', error);
         }
       }
-      closeModal();
     }
   };
 

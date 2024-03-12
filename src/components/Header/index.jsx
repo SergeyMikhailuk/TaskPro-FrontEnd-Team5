@@ -99,7 +99,7 @@ const Header = () => {
         closeModal={handleCloseEditProfileModal}
         onRequestClose={handleCloseEditProfileModal}
       >
-        <UserModal user={user} />
+        <UserModal user={user} closeModal={handleCloseEditProfileModal}/>
       </ReactModal>
     </AppHeader>
   );
