@@ -117,7 +117,7 @@ const EditBoardModal = ({ closeModal, item }) => {
                   >
                     {el.url !== '' && (
                       <CustomRadioBtn
-                        url={el.url}
+                        $url={el.url}
                         onClick={() => handleBgSelection(el.url)}
                         className={selectedBg === el.url ? 'active' : ''}
                       />
