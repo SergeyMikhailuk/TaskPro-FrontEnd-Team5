@@ -31,6 +31,8 @@ import {
   LogOutText,
   StyledOverlay,
 } from './styled';
+import AddBoardModal from 'components/ModalWindows/BoardModal/AddBoard';
+import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -59,13 +61,18 @@ const Sidebar = () => {
   };
 
   const [isModalOpenHelp, setIsModalOpenHelp] = useState(false);
+  const [isOpenBoardModal, setIsOpenBoardModal] = useState(false);
+
+  const handleOpenBoardModal = () => {
+    setIsOpenBoardModal(true);
+  };
+
+  const handleCloseBoardModal = () => {
+    setIsOpenBoardModal(false);
+  };
 
   const openModalHelp = () => {
     setIsModalOpenHelp(true);
-  };
-
-  const openModalAdd = () => {
-    setIsModalOpenHelp(false);
   };
 
   const deleteBoardHandler = async boardId => {
@@ -97,7 +104,7 @@ const Sidebar = () => {
               Create a <br /> new board
             </AddBoardsCreateText>
             <AddBoardsCreateBtnWrap>
-              <AddBoardsCreateBtn onClick={openModalAdd} />
+              <AddBoardsCreateBtn onClick={handleOpenBoardModal} />
             </AddBoardsCreateBtnWrap>
           </AddBoardsCreateBox>
         </AddBoards>
@@ -140,6 +147,14 @@ const Sidebar = () => {
           </LogOutIconBtnWrap>
         </LogOut>
       </Aside>
+      <ReactModal
+        isOpen={isOpenBoardModal}
+        title="Add Card"
+        closeModal={handleCloseBoardModal}
+        onRequestClose={handleCloseBoardModal}
+      >
+        <AddBoardModal />
+      </ReactModal>
     </>
   );
 };

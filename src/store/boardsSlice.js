@@ -37,8 +37,8 @@ export const boardsApi = createApi({
 });
 
 export const {
-useGetBoardsQuery,
-useCreateBoardMutation,
+  useGetBoardsQuery,
+  useCreateBoardMutation,
   useUpdateBoardMutation,
   useDeleteBoardMutation,
 } = boardsApi;

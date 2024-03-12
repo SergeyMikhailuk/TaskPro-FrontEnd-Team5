@@ -25,7 +25,6 @@ import {
 export const Column = ({ item }) => {
   // const dispatch = useDispatch();
 
-
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
 
