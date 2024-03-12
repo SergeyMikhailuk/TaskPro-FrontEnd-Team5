@@ -1,4 +1,7 @@
 import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { useCreateColumnMutation } from 'store/columnsSlice';
 import {
   ModalContainer,
   ModalFormikBox,
@@ -6,8 +9,6 @@ import {
   ModalFormikBoxBtn,
   ModalFormikBoxBtnIcon,
 } from './styled';
-import { Formik } from 'formik';
-import { useCreateColumnMutation } from 'store/columnsSlice';
 
 const ModalAddColumn = ({ isOpen, closeModal, activeBoardId }) => {
   const initialValues = {
@@ -16,9 +17,15 @@ const ModalAddColumn = ({ isOpen, closeModal, activeBoardId }) => {
 
   const [createColumn] = useCreateColumnMutation();
 
-  const handleSubmit = async values => {
+  const validationSchema = Yup.object().shape({
+    title: Yup.string().required('Title is required'),
+  });
+
+  const handleSubmit = async (values, { resetForm, closeModal }) => {
     try {
       await createColumn({ boardId: activeBoardId, column: values });
+      resetForm();
+      closeModal();
     } catch (error) {
       console.error('Error creating column:', error);
     }
@@ -27,29 +34,28 @@ const ModalAddColumn = ({ isOpen, closeModal, activeBoardId }) => {
   return (
     <ModalContainer>
       <Formik
-        id="formEditColumn"
         initialValues={initialValues}
         onSubmit={handleSubmit}
-
-        // validationSchema={ModalSchema}
+        validationSchema={validationSchema}
       >
-        {formik => (
-          <>
+        {() => (
+          <Form>
+            {' '}
             <ModalFormikBox>
-              <ModalFormikBoxInput
+              <Field
                 type="text"
                 name="title"
-                value={formik.values.title}
-                onChange={formik.handleChange}
+                as={ModalFormikBoxInput}
                 placeholder="Title"
                 required
               />
+              <ErrorMessage name="title" component="div" className="error" />{' '}
             </ModalFormikBox>
             <ModalFormikBoxBtn type="submit">
               <ModalFormikBoxBtnIcon />
               Add
             </ModalFormikBoxBtn>
-          </>
+          </Form>
         )}
       </Formik>
     </ModalContainer>
