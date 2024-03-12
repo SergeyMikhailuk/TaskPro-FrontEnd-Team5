@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   DefaultRadioBtn,
   CustomRadioBtn,
@@ -24,7 +24,6 @@ import * as Yup from 'yup';
 // import { editDashbord } from 'redux/dashboards/dashboardsOperations';
 import { useDispatch } from 'react-redux';
 
-
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
 });
@@ -41,7 +40,7 @@ const options = [
 ];
 
 const EditBoardModal = ({ closeModal, item }) => {
-  const dispatch = useDispatch();
+  console.log('EditBoardModal item: ', item);
   // const { _id, name, icon, backgroundURL } = item;
   // const [selectedBg, setSelectedBg] = useState(backgroundURL);
   // const [setIcon, setSetIcon] = useState(icon);
@@ -111,12 +110,12 @@ const EditBoardModal = ({ closeModal, item }) => {
               {data.map((el, idx) => (
                 <label key={idx}>
                   <BgcItem
-                    // onClick={() => handleBgSelection(el.url)}
-                    // className={selectedBg === el.url ? 'active' : ''}
+                  // onClick={() => handleBgSelection(el.url)}
+                  // className={selectedBg === el.url ? 'active' : ''}
                   >
                     {el.url !== '' && (
                       <CustomRadioBtn
-                        url={el.url}
+                        $url={el.url}
                         // onClick={() => handleBgSelection(el.url)}
                         // className={selectedBg === el.url ? 'active' : ''}
                       />
