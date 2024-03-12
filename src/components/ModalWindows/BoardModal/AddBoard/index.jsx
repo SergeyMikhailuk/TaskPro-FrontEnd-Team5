@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectAllDashboards } from 'redux/dashboards/dashboardsSelectors';
-import { addDashboard } from 'redux/dashboards/dashboardsOperations';
-
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import data from '../../background.json';
+import sprite from '../../../../images/sprite.svg';
+import { useCreateBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
 import {
   DefaultRadioBtn,
   CustomRadioBtn,
@@ -24,9 +23,6 @@ import {
   ModalForm,
 } from '../styled';
 
-import data from '../../background.json';
-import sprite from '../../../../images/sprite.svg';
-
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
 });
@@ -42,42 +38,44 @@ const options = [
   '#icon-hexagon',
 ];
 
-const AddBoardModal = ({ closeModal }) => {
-  const dispatch = useDispatch();
-
-  const dashboards = useSelector(selectAllDashboards);
+const AddBoardModal = () => {
   const [selectedBg, setSelectedBg] = useState('');
   const [setIcon, setSetIcon] = useState(options[0]);
 
   const initialValues = {
     title: '',
-    icon: setIcon,
-    bg: selectedBg,
+    iconURL: setIcon,
+    backgroundURL: selectedBg,
   };
+  const [createBoard] = useCreateBoardMutation();
+  const { data: boardsData } = useGetBoardsQuery();
 
-  const handleSubmit = (values, { resetForm }) => {
-    const { bg, icon, title } = values;
+  const handleSubmit = async values => {
+    const { backgroundURL, iconURL, title } = values;
 
-    const dashboard = {
-      name: title,
-      backgroundURL: bg,
-      icon,
-    };
+    if (boardsData) {
+      const alreadyExists = boardsData.some(board => {
+        const name = board.title.toLowerCase();
+        const newName = title.toLowerCase();
+        return name === newName;
+      });
 
-    const alreadyExists = dashboards.findIndex(item => {
-      const name = item.name.toLowerCase();
-      const newName = dashboard.name.toLowerCase();
-      return name === newName;
-    });
+      if (alreadyExists) {
+        console.log(`${title} already exists`);
+      } else {
+        try {
+          const response = await createBoard({
+            title,
+            iconURL,
+            backgroundURL,
+          });
 
-    if (alreadyExists >= 0) {
-      return `${dashboard.name} is already added to contact list`;
-    } else {
-      dispatch(addDashboard(dashboard));
+          console.log('Board created:', response);
+        } catch (error) {
+          console.error('Error creating board:', error);
+        }
+      }
     }
-
-    resetForm();
-    closeModal();
   };
 
   const handleBgSelection = url => {
@@ -130,7 +128,7 @@ const AddBoardModal = ({ closeModal }) => {
           </FormWrapper>
 
           <FormWrapper>
-            <FormTitle>Backgraunds </FormTitle>
+            <FormTitle>Backgrounds </FormTitle>
             <RadioBtnWrapper>
               {data.map((el, idx) => (
                 <label key={idx}>
