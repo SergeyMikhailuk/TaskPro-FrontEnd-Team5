@@ -45,7 +45,7 @@ const Sidebar = () => {
   const activeBoardId = useSelector(getActiveBoardId);
 
   useEffect(() => {
-    if (boards.length > 0) {
+    if (boards?.length > 0) {
       dispatch(setActiveBoardId(boards[0]._id));
     }
   }, [boards, dispatch, activeBoardId]);
@@ -149,7 +149,7 @@ const Sidebar = () => {
         closeModal={handleCloseBoardModal}
         onRequestClose={handleCloseBoardModal}
       >
-        <AddBoardModal closeModal={handleCloseBoardModal}/>
+        <AddBoardModal closeModal={handleCloseBoardModal} />
       </ReactModal>
     </>
   );
