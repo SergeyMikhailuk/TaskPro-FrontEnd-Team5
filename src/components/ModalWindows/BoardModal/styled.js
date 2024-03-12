@@ -20,7 +20,7 @@ export const SectionTitle = styled.h2`
 `;
 
 export const FormWrapper = styled.div`
-  width: 100%;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,6 +30,15 @@ export const FormWrapper = styled.div`
 
   &:last-of-type {
     margin-bottom: 40px;
+  }
+  
+
+  @media screen and (min-width: 345px) {
+    width: 278px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 302px;
   }
 `;
 
