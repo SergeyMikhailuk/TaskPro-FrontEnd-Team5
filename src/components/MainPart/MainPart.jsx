@@ -1,4 +1,4 @@
-// import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useState, useRef } from 'react';
 // import { selectIsMenuOpen } from 'store/modeMenu/modeMenuSelectors';
 // import { closeMenuMode } from 'store/modeMenu/modeMenuSlice';
@@ -23,13 +23,11 @@ import { ReactModal } from '../ModalWindows/Modal/Modal';
 // import { useSelector } from 'react-redux';
 
 const MainPart = ({ children }) => {
-  // const dispatch = useDispatch();
-
-  // const boardId = useSelector(store => store.boardsApi);
+  const activeBoardId = useSelector(store => store.activeBoardId);
 
   // const columnsLength = useSelector(selectColumnsLength);
   // const menuMode = useSelector(selectIsMenuOpen);
-  console.log(children);
+
   //Временно:
   // const menuMode = true;
   // const currentBg = useSelector(state => state?.dashboards?.currentBg);
@@ -126,7 +124,7 @@ const MainPart = ({ children }) => {
           closeModal={handleCloseColumnModal}
           onRequestClose={handleCloseColumnModal}
         >
-          <ModalAdd />
+          <ModalAdd activeBoardId={activeBoardId} />
         </ReactModal>
       </Wrapper>
     </WrapperMain>

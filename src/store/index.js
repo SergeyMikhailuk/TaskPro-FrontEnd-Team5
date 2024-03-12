@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   theme: themeSlice.reducer,
   sidebar: sidebarReducer,
   auth: authReducer,
-  activeBoardId: activeBoardIdSlice,
+  activeBoardId: activeBoardIdSlice.reducer,
   [boardsApi.reducerPath]: boardsApi.reducer,
   [columnsApi.reducerPath]: columnsApi.reducer,
   [todosApi.reducerPath]: todosApi.reducer,

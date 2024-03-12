@@ -45,8 +45,8 @@ const Sidebar = () => {
   const activeBoardId = useSelector(getActiveBoardId);
 
   useEffect(() => {
-    if (boards?.length > 0) {
-      dispatch(setActiveBoardId('123123'));
+    if (boards.length > 0) {
+      dispatch(setActiveBoardId(boards[0]._id));
     }
   }, [boards, dispatch, activeBoardId]);
 
@@ -145,7 +145,7 @@ const Sidebar = () => {
       </Aside>
       <ReactModal
         isOpen={isOpenBoardModal}
-        title="Add Card"
+        title="New board"
         closeModal={handleCloseBoardModal}
         onRequestClose={handleCloseBoardModal}
       >

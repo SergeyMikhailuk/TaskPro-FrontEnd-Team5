@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { getActiveBoardId, setActiveBoardId } from 'store/activeBoardSlice';
+import { setActiveBoardId } from 'store/activeBoardSlice';
 
 import {
   BoardIt,
@@ -14,18 +14,16 @@ import {
   BoardListBtnDelete,
 } from './styled';
 
-import EditBoardModal from '../../../components/ModalWindows/BoardModal/EditBoard/index.jsx'
+import EditBoardModal from '../../../components/ModalWindows/BoardModal/EditBoard/index.jsx';
 import { ReactModal } from '../../ModalWindows/Modal/Modal';
 
 const BoardItem = ({ board, deleteBoard }) => {
   const dispatch = useDispatch();
-  const currentId = useSelector(getActiveBoardId);
   const handleDelete = () => {
     deleteBoard(board._id);
   };
 
   const handleBoardClick = () => {
-    console.log('currentId: ', currentId);
     dispatch(setActiveBoardId(board._id));
   };
 
@@ -58,14 +56,12 @@ const BoardItem = ({ board, deleteBoard }) => {
 
         <ReactModal
           isOpen={isOpenBoardModal}
-          title="Add Column"
+          title="Edit board"
           closeModal={handleCloseBoardModal}
           onRequestClose={handleCloseBoardModal}
         >
           <EditBoardModal />
         </ReactModal>
-
-
       </BoardListBox>
     </BoardIt>
   );

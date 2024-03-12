@@ -15,7 +15,6 @@ import {
   AuthFormSubmitButton,
   PlusIcon,
   TitleInput,
-  SectionTitle,
   Icon,
   IconWrapper,
   ButtonPlus,
@@ -38,7 +37,7 @@ const options = [
   '#icon-hexagon',
 ];
 
-const AddBoardModal = () => {
+const AddBoardModal = ({ closeModal }) => {
   const [selectedBg, setSelectedBg] = useState('');
   const [setIcon, setSetIcon] = useState(options[0]);
 
@@ -51,7 +50,7 @@ const AddBoardModal = () => {
   const { data: boardsData } = useGetBoardsQuery();
 
   const handleSubmit = async values => {
-    const { backgroundURL, iconURL, title } = values;
+    const { title } = values;
 
     if (boardsData) {
       const alreadyExists = boardsData.some(board => {
@@ -66,8 +65,8 @@ const AddBoardModal = () => {
         try {
           const response = await createBoard({
             title,
-            iconURL,
-            backgroundURL,
+            iconURL: setIcon,
+            backgroundURL: selectedBg,
           });
 
           console.log('Board created:', response);
@@ -75,6 +74,7 @@ const AddBoardModal = () => {
           console.error('Error creating board:', error);
         }
       }
+      closeModal();
     }
   };
 
@@ -88,8 +88,6 @@ const AddBoardModal = () => {
 
   return (
     <Section>
-      <SectionTitle>New board</SectionTitle>
-
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -133,8 +131,8 @@ const AddBoardModal = () => {
               {data.map((el, idx) => (
                 <label key={idx}>
                   <BgcItem
-                    onClick={() => handleBgSelection(el.url)}
                     className={selectedBg === el.url ? 'active' : ''}
+                    onClick={() => handleBgSelection(el.url)}
                   >
                     {el.url !== '' && (
                       <CustomRadioBtn
