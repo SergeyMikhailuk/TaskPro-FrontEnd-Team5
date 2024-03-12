@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import data from '../../background.json';
-import sprite from '../../../../images/sprite.svg';
+import data from 'components/ModalWindows/background.json';
+import sprite from 'images/sprite.svg';
+
 import { useCreateBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
 import {
   DefaultRadioBtn,

@@ -8,9 +8,28 @@ import {
 
 ModalWindow.setAppElement('#root');
 
-export const ReactModal = ({ isOpen, title, children, closeModal, onRequestClose }) => {
+const customStyles = {
+  overlay: {
+    zIndex: 1000,
+  },
+  content: {
+    zIndex: 1001,
+  },
+};
+
+export const ReactModal = ({
+  isOpen,
+  title,
+  children,
+  closeModal,
+  onRequestClose,
+}) => {
   return (
-    <ModalWindow isOpen={isOpen} onRequestClose={onRequestClose}>
+    <ModalWindow
+      style={customStyles}
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+    >
       <ModalHeder>
         <Title>{title}</Title>
         <ClosedButton>

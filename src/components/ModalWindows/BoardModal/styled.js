@@ -31,7 +31,7 @@ export const FormWrapper = styled.div`
   &:last-of-type {
     margin-bottom: 40px;
   }
-  
+
 
   @media screen and (min-width: 345px) {
     width: 278px;

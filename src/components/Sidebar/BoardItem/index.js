@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { setActiveBoardId } from 'store/activeBoardSlice';
+import sprite from 'images/sprite.svg';
 
 import {
   BoardIt,
   BoardListBox,
   BoardListTitle,
-  BoardListIcon,
   BoardListBtnGroup,
   BoardListEditBtn,
   BoardListBtnEdit,
@@ -16,6 +16,7 @@ import {
 
 import EditBoardModal from '../../../components/ModalWindows/BoardModal/EditBoard/index.jsx';
 import { ReactModal } from '../../ModalWindows/Modal/Modal';
+import { Icon } from '../../ModalWindows/BoardModal/styled';
 
 const BoardItem = ({ board, deleteBoard }) => {
   const dispatch = useDispatch();
@@ -41,7 +42,15 @@ const BoardItem = ({ board, deleteBoard }) => {
     <BoardIt onClick={handleBoardClick}>
       <BoardListBox>
         <BoardListTitle>
-          <BoardListIcon>{}</BoardListIcon>
+          {/*<BoardListIcon>{}</BoardListIcon>*/}
+          <Icon
+            // className={setIcon === el ? 'active' : ''}
+            // onClick={() => handleIconSelection(el)}
+            width={18}
+            height={18}
+          >
+            <use href={sprite + board?.iconURL} width={18} height={18} />
+          </Icon>
           {board.title}
         </BoardListTitle>
         <BoardListBtnGroup>
@@ -60,7 +69,7 @@ const BoardItem = ({ board, deleteBoard }) => {
           closeModal={handleCloseBoardModal}
           onRequestClose={handleCloseBoardModal}
         >
-          <EditBoardModal  closeModal={handleCloseBoardModal}/>
+          <EditBoardModal closeModal={handleCloseBoardModal} />
         </ReactModal>
       </BoardListBox>
     </BoardIt>
