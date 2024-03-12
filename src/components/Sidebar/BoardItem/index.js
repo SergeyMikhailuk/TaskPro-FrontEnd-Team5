@@ -1,6 +1,10 @@
 import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
+
 import { setActiveBoardId } from 'store/activeBoardSlice';
+import EditBoardModal from 'components/ModalWindows/BoardModal/EditBoard';
+import { ReactModal } from 'components/ModalWindows/Modal/Modal';
+import { Icon } from 'components/ModalWindows/BoardModal/styled';
 import sprite from 'images/sprite.svg';
 
 import {
@@ -13,10 +17,6 @@ import {
   BoardListDeleteBtn,
   BoardListBtnDelete,
 } from './styled';
-
-import EditBoardModal from '../../../components/ModalWindows/BoardModal/EditBoard/index.jsx';
-import { ReactModal } from '../../ModalWindows/Modal/Modal';
-import { Icon } from '../../ModalWindows/BoardModal/styled';
 
 const BoardItem = ({ board, deleteBoard }) => {
   const dispatch = useDispatch();
