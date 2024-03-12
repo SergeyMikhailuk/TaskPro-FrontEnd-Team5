@@ -22,7 +22,6 @@ import sprite from '../../../../images/sprite.svg';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 // import { editDashbord } from 'redux/dashboards/dashboardsOperations';
-import { useDispatch } from 'react-redux';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
@@ -52,6 +51,7 @@ const EditBoardModal = ({ closeModal, item }) => {
   // };
 
   const handleSubmit = values => {
+    console.log(values);
     // const { title, icon, backgroundURL } = values;
     // const updatedData = { name: title, icon, backgroundURL };
     // dispatch(editDashbord({ dashboardId: _id, updatedData }));
