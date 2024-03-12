@@ -93,7 +93,7 @@ const UserModal = ({ closeModal, user }) => {
 
   return (
     <EditWrapper>
-      <ImageWrapper url={!currentImageUrl ? setDefaultAvatar() : undefined}>
+      <ImageWrapper $url={!currentImageUrl ? setDefaultAvatar() : undefined}>
         {currentImageUrl && <UserImage src={changeImage()} alt="user" />}
         <CustomButton
           onClick={() => document.querySelector('.input-field').click()}

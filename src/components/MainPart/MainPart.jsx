@@ -86,7 +86,7 @@ const MainPart = ({ children }) => {
 
   return (
     // <WrapperMain onClick={handleScreenClick} bgcUrl={currentBg} isOpen={menuMode}>
-    <WrapperMain>
+    <WrapperMain $url={'some url need'}>
       {/* <Header children={currentName}>
         <Title>{children}</Title> */}
       <Header>

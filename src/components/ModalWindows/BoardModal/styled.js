@@ -13,7 +13,6 @@ export const Section = styled.div`
 
 export const SectionTitle = styled.h2`
   font-size: 18px;
-  font-family: 'Poppins';
   font-weight: 500;
   letter-spacing: -0.36px;
   margin-bottom: 24px;
@@ -37,7 +36,6 @@ export const FormWrapper = styled.div`
 export const FormTitle = styled.h3`
   color: ${props => props.theme.needHelpModal.textMain};
   font-size: 14px;
-  font-family: 'Poppins';
   font-weight: 500;
   letter-spacing: -0.28px;
 
@@ -51,12 +49,11 @@ export const TitleInput = styled(Field)`
   padding: 14px 18px;
 
   font-size: 14px;
-  font-family: 'Poppins';
   letter-spacing: -0.28px;
 
   background-color: ${props => props.theme.modal.backgroundSecondary};
   border: 1px solid ${props => props.theme.needHelpModal.border};
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
+  box-shadow: 0 4px 16px rgba(22, 22, 22, 0.08);
   outline: none;
   border-radius: 8px;
 
@@ -67,7 +64,6 @@ export const TitleInput = styled(Field)`
   &::placeholder {
     color: ${props => props.theme.needHelpModal.textMain};
     font-size: 14px;
-    font-family: 'Poppins';
     letter-spacing: -0.28px;
   }
 
@@ -119,7 +115,7 @@ export const CustomRadioBtn = styled.div`
   width: 28px;
   height: 28px;
 
-  background-image: url(${props => props.url});
+  background-image: url(${({ $url }) => $url});
   background-position: center;
   background-size: cover;
 
@@ -158,7 +154,6 @@ export const AuthFormSubmitButton = styled.button`
   border: none;
   border-radius: 8px;
 
-  font-family: 'Poppins';
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.28px;
@@ -197,7 +192,6 @@ export const ErrorSection = styled(ErrorMessage)`
   padding-left: 14px;
   color: #c04d4d;
   font-size: 18px;
-  font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.36px;
 `;

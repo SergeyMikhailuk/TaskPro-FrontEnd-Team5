@@ -1,21 +1,18 @@
 import styled from 'styled-components';
 import { ReactComponent as AppBtnSvg } from 'images/svg/plus28.svg';
 
-
-
 export const AddIcon = styled(AppBtnSvg)`
   width: 40px;
   height: 36px;
   border-radius: 6px;
-  & .plus{
-    color: ${props => props.theme.addColumnButton.plusColor};  
+  & .plus {
+    color: ${props => props.theme.addColumnButton.plusColor};
   }
 
-  & .backgr{
+  & .backgr {
     color: ${props => props.theme.addColumnButton.plusBackground};
-    }
+  }
 `;
-
 
 export const WrapperMain = styled.div`
   position: relative;
@@ -26,7 +23,7 @@ export const WrapperMain = styled.div`
   width: 100%;
   height: calc(100vh - 60px);
 
-  background-image: url(${props => props.bgcUrl});
+  background-image: url(${({ $url }) => $url});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -35,11 +32,9 @@ export const WrapperMain = styled.div`
 
   transition: all 250ms linear;
 
-  
-
   @media screen and (min-width: 768px) {
     height: calc(100vh - 68px);
-    padding: 20x 32px 20x 32px;
+    padding: 20px 32px 20px 32px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -108,14 +103,10 @@ export const IconWrapper = styled.div`
   }
 `;
 
-
 export const Text = styled.p`
   color: ${props => props.theme.addColumnButton.color};
   font-size: 14px;
-  font-family: 'Poppins';
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
   letter-spacing: -0.28px;
   width: 150px;
 `;
@@ -125,7 +116,6 @@ export const Wrapper = styled.div`
   overflow: auto;
   width: 100%;
   height: 100%;
-  
 
   &::-webkit-scrollbar {
     height: 12px;
