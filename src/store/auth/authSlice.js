@@ -1,5 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut, refreshUser } from '../auth/authOperations';
+import { toast } from 'react-toastify';
+
+import {
+  register,
+  logIn,
+  logOut,
+  refreshUser,
+  editProfile,
+} from '../auth/authOperations';
 import {
   addCard,
   deleteCard,
@@ -10,6 +18,7 @@ const initialState = {
   user: { name: '', email: '' },
   token: null,
   isLoggedIn: false,
+  isRefreshing: false,
 };
 
 const authSlice = createSlice({
@@ -37,6 +46,23 @@ const authSlice = createSlice({
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
+      })
+      .addCase(editProfile.fulfilled, (state, { payload }) => {
+        state.user.name = payload.name;
+        state.user.email = payload.email;
+        // state.user.theme = payload.theme;
+        state.user.avatarURL = payload.avatarURL;
+        state.isRefreshing = false;
+        state.error = null;
+        // toast.success('User Updated!');
+      })
+      .addCase(editProfile.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(editProfile.rejected, (state, { payload }) => {
+        state.isRefreshing = false;
+        state.error = payload;
+        toast.error(payload);
       })
       .addCase(addCard.fulfilled, (state, action) => {
         state.isLoading = false;
