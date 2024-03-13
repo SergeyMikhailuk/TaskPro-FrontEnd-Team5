@@ -27,11 +27,11 @@ import {
   Pencil,
   Trash,
 } from './styled';
-
+import CardModal from 'components/ModalWindows/CardModals/CardModal';
 // import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
 
 // const Card = ({ item, columnName }) => {
-const Card = ({ item }) => {
+const Card = () => {
   // const dispatch = useDispatch();
   // const [isPopupOpen, setIsPopupOpen] = useState(false);
   // const [delayPopup, setDelayPopup] = useState(false);
@@ -199,7 +199,9 @@ const Card = ({ item }) => {
         closeModal={handleCloseCardModal}
         onRequestClose={handleCloseCardModal}
       >
-        <EditCardModal closeModal={handleCloseCardModal}/>
+        <CardModal typeModal={'edit'} closeModal={handleCloseCardModal} />
+
+
       </ReactModal>
     </>
   );

@@ -1,8 +1,10 @@
+// import { useDispatch, useSelector } from 'react-redux';
+// import { deleteColumn } from 'store/dashboards/dashboardsOperations';
 import React, { useState } from 'react';
 
 import Card from 'components/Board/Cards/Cards';
 import { ModalColumn } from 'components/ModalWindows/ColumnModals';
-import AddCardModal from 'components/ModalWindows/CardModals/AddCardModal/AddCardModal';
+import CardModal from "components/ModalWindows/CardModals/CardModal";
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { deleteColumn } from 'store/dashboards/dashboardsOperations';
@@ -89,7 +91,8 @@ export const Column = ({ item }) => {
         closeModal={handleCloseCardModal}
         onRequestClose={handleCloseCardModal}
       >
-        <AddCardModal closeModal={handleCloseCardModal} />
+        <CardModal typeModal={'add'} closeModal={handleCloseCardModal} />
+
       </ReactModal>
     </Wrapper>
   );
