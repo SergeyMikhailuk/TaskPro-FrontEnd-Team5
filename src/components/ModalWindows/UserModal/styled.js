@@ -3,7 +3,6 @@ import { Form, Field, ErrorMessage } from 'formik';
 
 import { ReactComponent as AddBtn } from 'images/sidebar/add-btn.svg';
 
-
 export const AddPhoto = styled(AddBtn)`
   width: 40px;
   height: 36px;
@@ -24,7 +23,6 @@ export const EditWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: baseline;
   background-color: ${props => props.theme.modal.backgroundMain};
 `;
 
@@ -34,7 +32,7 @@ export const ImageWrapper = styled.div`
   border-radius: 8px;
   width: 68px;
   height: 68px;
-  background-image: url(${props => props.url});
+  background-image: url(${({ $url }) => $url});
   background-position: center;
   background-size: cover;
 `;
@@ -82,7 +80,7 @@ export const ErrorSection = styled(ErrorMessage)`
   text-align: left;
   color: #ff0000;
   font-size: 12px;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   letter-spacing: -0.36px;
   margin-top: 6px;
@@ -101,7 +99,6 @@ export const AuthFormField = styled(Field)`
   padding: 14px 18px;
 
   font-size: 14px;
-  font-family: 'Poppins';
   letter-spacing: -0.28px;
 
   background-color: ${props => props.theme.editProfileModal.background};
@@ -116,7 +113,6 @@ export const AuthFormField = styled(Field)`
   &::placeholder {
     color: ${props => props.theme.editProfileModal.textMain};
     font-size: 14px;
-    font-family: 'Poppins';
     letter-spacing: -0.28px;
   }
 
@@ -124,7 +120,6 @@ export const AuthFormField = styled(Field)`
     opacity: 1;
   }
 `;
-
 
 export const ThirdPasswordField = styled(AuthFormField)`
   padding: 14px 40px 14px 18px;
@@ -147,9 +142,7 @@ export const AuthFormSubmitButton = styled.button`
   border: none;
   background: ${props => props.theme.editProfileModal.buttonBackground};
   border-radius: 8px;
-  font-family: 'Poppins';
   font-size: 14px;
-  font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.28px;
   color: ${props => props.theme.editProfileModal.buttonColor};
@@ -161,10 +154,10 @@ export const AuthFormSubmitButton = styled.button`
     background: ${props => props.theme.modal.btnHover};
   }
   @media screen and (min-width: 345px) {
-    width: 287px; 
-    }
+    width: 287px;
+  }
 
   @media screen and (min-width: 768px) {
-    width: 352px; 
-    }
+    width: 352px;
+  }
 `;

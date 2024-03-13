@@ -40,6 +40,8 @@ const ModalColumn = ({ typeModal, closeModal, activeBoardId }) => {
       >
         {() => (
           <Form>
+
+            {' '}
             <ModalFormikBox>
               <Field
                 type="text"

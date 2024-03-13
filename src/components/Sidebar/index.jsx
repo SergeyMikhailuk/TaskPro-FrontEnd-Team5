@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
-import { logOut } from '../../store/auth/authOperations';
-import ModalHelp from '../ModalWindows/ModalHelp/index';
-import NewBoardForm from '../forms/NewBoardForm/index';
+import { useDeleteBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
+import { logOut } from 'store/auth/authOperations';
+import HelpModal from '../ModalWindows/HelpModal/index';
 import { toggleSidebar } from 'store/sidebarSlice';
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
-import Board from './Board/index.js';
+import Board from './BoardItem/index.js';
+import { getActiveBoardId, setActiveBoardId } from 'store/activeBoardSlice';
+
 import {
   Aside,
   LogoBox,
@@ -32,42 +33,22 @@ import {
   LogOutText,
   StyledOverlay,
 } from './styled';
-import { deleteBoard } from 'Services/api';
+import AddBoardModal from 'components/ModalWindows/BoardModal/AddBoard';
+import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    dispatch(logOut());
-  };
-
+  const { data: boards } = useGetBoardsQuery();
+  const [deleteBoard] = useDeleteBoardMutation();
   const isOpen = useSelector(state => state.sidebar.isOpen);
-  const token = useSelector(state => state.auth.token);
-  const [boards, setBoards] = useState([]);
+  const activeBoardId = useSelector(getActiveBoardId);
 
   useEffect(() => {
-    const fetchBoards = async () => {
-      try {
-        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-        const { data } = await axios.get('/api/users/current');
-
-        setBoards(data.boards);
-      } catch (error) {
-        console.error('Error fetching boards:', error);
-      }
-    };
-    fetchBoards();
-  }, [token]);
-
-  const updateBoardsList = async () => {
-    try {
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-      const { data } = await axios.get('/api/boards');
-      setBoards(data);
-    } catch (error) {
-      console.error('Error updating board list:', error);
+    if (boards?.length > 0) {
+      dispatch(setActiveBoardId(boards[0]._id));
     }
-  };
+  }, [boards, dispatch, activeBoardId]);
 
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
@@ -77,16 +58,30 @@ const Sidebar = () => {
   };
 
   const [isModalOpenHelp, setIsModalOpenHelp] = useState(false);
-  const [isModalOpenAdd, setIsModalOpenAdd] = useState(false);
+  const [isOpenBoardModal, setIsOpenBoardModal] = useState(false);
+
+  const handleOpenBoardModal = () => {
+    setIsOpenBoardModal(true);
+  };
+
+  const handleCloseBoardModal = () => {
+    setIsOpenBoardModal(false);
+  };
 
   const openModalHelp = () => {
     setIsModalOpenHelp(true);
-    setIsModalOpenAdd(false); 
   };
 
-  const openModalAdd = () => {
-    setIsModalOpenAdd(true); 
-    setIsModalOpenHelp(false); 
+  const deleteBoardHandler = async boardId => {
+    try {
+      await deleteBoard({ boardId });
+    } catch (error) {
+      console.error('Error deleting board:', error);
+    }
+  };
+
+  const handleLogout = () => {
+    dispatch(logOut());
   };
 
   return (
@@ -106,17 +101,17 @@ const Sidebar = () => {
               Create a <br /> new board
             </AddBoardsCreateText>
             <AddBoardsCreateBtnWrap>
-              <AddBoardsCreateBtn onClick={openModalAdd} />
+              <AddBoardsCreateBtn onClick={handleOpenBoardModal} />
             </AddBoardsCreateBtnWrap>
           </AddBoardsCreateBox>
         </AddBoards>
         <BoardsList>
-          {boards.map(board => (
+          {boards?.map(board => (
             <Board
-              key={board.id}
+              key={board._id}
               board={board}
-              deleteBoard={deleteBoard}
-              updateBoardsList={updateBoardsList}
+              deleteBoard={deleteBoardHandler}
+              activeBoardId={activeBoardId}
             />
           ))}
         </BoardsList>
@@ -136,18 +131,10 @@ const Sidebar = () => {
             <BoxHelpBtnIcon />
             <BoxHelpBtnText>Need help?</BoxHelpBtnText>
           </BoxHelpBtnOpenModal>
-          {
-            <ModalHelp
-              isOpen={isModalOpenHelp}
-              closeModal={() => setIsModalOpenHelp(false)}
-            />
-          }
-          {
-            <NewBoardForm 
-              isOpen={isModalOpenAdd}
-              closeModal={() => setIsModalOpenAdd(false)}
-            />
-          }
+          <HelpModal
+            isOpen={isModalOpenHelp}
+            closeModal={() => setIsModalOpenHelp(false)}
+          />
         </BoxHelp>
         <LogOut>
           <LogOutIconBtnWrap onClick={handleLogout}>
@@ -156,6 +143,14 @@ const Sidebar = () => {
           </LogOutIconBtnWrap>
         </LogOut>
       </Aside>
+      <ReactModal
+        isOpen={isOpenBoardModal}
+        title="New board"
+        closeModal={handleCloseBoardModal}
+        onRequestClose={handleCloseBoardModal}
+      >
+        <AddBoardModal closeModal={handleCloseBoardModal} />
+      </ReactModal>
     </>
   );
 };

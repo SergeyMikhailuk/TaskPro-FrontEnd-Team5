@@ -2,7 +2,9 @@
 import { useState } from 'react';
 // import { deleteColumn } from 'store/dashboards/dashboardsOperations';
 import Card from '../Cards/Cards';
-import ModalEdit from 'components/ModalWindows/ColumnModals/ModalEditColumn/index';
+
+import { ModalColumn } from 'components/ModalWindows/ColumnModals';
+import CardModal from 'components/ModalWindows/CardModals/CardModal';
 import { ReactModal } from '../../ModalWindows/Modal/Modal';
 import {
   Wrapper,
@@ -106,7 +108,7 @@ export const Column = ({ item }) => {
         closeModal={handleCloseColumnModal}
         onRequestClose={handleCloseColumnModal}
       >
-        <ModalEdit />
+        <ModalColumn typeModal={'edit'} closeModal={handleCloseColumnModal} />
       </ReactModal>
 
       <ReactModal
@@ -116,6 +118,7 @@ export const Column = ({ item }) => {
         onRequestClose={handleCloseCardModal}
       >
         <CardModal typeModal={'add'} closeModal={handleCloseCardModal} />
+
       </ReactModal>
     </Wrapper>
   );

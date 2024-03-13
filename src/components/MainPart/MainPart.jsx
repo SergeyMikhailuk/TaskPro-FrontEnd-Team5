@@ -1,4 +1,4 @@
-// import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useState, useRef } from 'react';
 // import { selectIsMenuOpen } from 'store/modeMenu/modeMenuSelectors';
 // import { closeMenuMode } from 'store/modeMenu/modeMenuSlice';
@@ -17,12 +17,14 @@ import {
   ContentWrapper,
   Wrapper,
 } from './styled';
-import ModalAdd from '../ModalWindows/ColumnModals/ModalAddColumn/index';
+import { ModalColumn } from 'components/ModalWindows/ColumnModals';
 
 import { ReactModal } from '../ModalWindows/Modal/Modal';
 
+// import { useSelector } from 'react-redux';
+
 const MainPart = ({ children }) => {
-  // const dispatch = useDispatch();
+  const activeBoardId = useSelector(store => store.activeBoardId);
 
   // const columnsLength = useSelector(selectColumnsLength);
   // const menuMode = useSelector(selectIsMenuOpen);
@@ -83,7 +85,7 @@ const MainPart = ({ children }) => {
 
   return (
     // <WrapperMain onClick={handleScreenClick} bgcUrl={currentBg} isOpen={menuMode}>
-    <WrapperMain>
+    <WrapperMain $url={'some url need'}>
       {/* <Header children={currentName}>
         <Title>{children}</Title> */}
       <Header>
@@ -123,7 +125,11 @@ const MainPart = ({ children }) => {
           closeModal={handleCloseColumnModal}
           onRequestClose={handleCloseColumnModal}
         >
-          <ModalAdd />
+          <ModalColumn
+            typeModal={'add'}
+            activeBoardId={activeBoardId}
+            closeModal={handleCloseColumnModal}
+          />
         </ReactModal>
       </Wrapper>
     </WrapperMain>

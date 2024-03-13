@@ -31,7 +31,7 @@ const userImages = {
   violet: userViolet,
 };
 
-const UserModal = ({ closeModal }) => {
+const UserModal = ({ closeModal, user }) => {
   const theme = useSelector(getThemeName);
   const [showPassword, setShowPassword] = useState(false);
   const [fileImage, setFileImage] = useState(null);
@@ -39,8 +39,8 @@ const UserModal = ({ closeModal }) => {
 
   const initialValues = {
     image: currentImageUrl,
-    name: '',
-    email: '',
+    name: user.name,
+    email: user.email,
     password: '',
     showPassword: false,
   };
@@ -93,7 +93,7 @@ const UserModal = ({ closeModal }) => {
 
   return (
     <EditWrapper>
-      <ImageWrapper url={!currentImageUrl ? setDefaultAvatar() : undefined}>
+      <ImageWrapper $url={!currentImageUrl ? setDefaultAvatar() : undefined}>
         {currentImageUrl && <UserImage src={changeImage()} alt="user" />}
         <CustomButton
           onClick={() => document.querySelector('.input-field').click()}
@@ -145,7 +145,7 @@ const UserModal = ({ closeModal }) => {
             />
 
             <AuthFormPasswordIcon onClick={handleTogglePassword}>
-              {showPassword ?  <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+              {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
             </AuthFormPasswordIcon>
             <ErrorSection name="password" component="div" />
           </AuthFormWrapper>

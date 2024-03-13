@@ -206,6 +206,8 @@ const Card = () => {
         onRequestClose={handleCloseCardModal}
       >
         <CardModal typeModal={'edit'} closeModal={handleCloseCardModal} />
+
+      
       </ReactModal>
     </>
   );
