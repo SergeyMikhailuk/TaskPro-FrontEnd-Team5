@@ -45,7 +45,7 @@ export const AuthError = styled(ErrorMessage)`
   font-size: 12px;
   border: none;
   margin-bottom: 20px;
-  color: white;
+  color: red;
 `;
 
 export const ModalSection = styled.div`

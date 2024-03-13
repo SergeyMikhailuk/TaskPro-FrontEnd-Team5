@@ -28,7 +28,7 @@ import {
   Trash,
 } from './styled';
 
-import EditCardModal from '../../ModalWindows/CardModals/EditCardModal/EditCardModal';
+import EditCardModal from '../../ModalWindows/CardModals/EditCardModal';
 // import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
 
 // const Card = ({ item, columnName }) => {
@@ -38,7 +38,6 @@ const Card = () => {
   // const [delayPopup, setDelayPopup] = useState(false);
   // const moveIconRef = useRef();
   // const [openCardModal, setOpenCardModal] = useState(false);
-
 
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
 
@@ -207,7 +206,11 @@ const Card = () => {
         closeModal={handleCloseCardModal}
         onRequestClose={handleCloseCardModal}
       >
+<<<<<<< Updated upstream
         <EditCardModal />
+=======
+        <EditCardModal closeModal={handleCloseCardModal} />
+>>>>>>> Stashed changes
       </ReactModal>
     </>
   );

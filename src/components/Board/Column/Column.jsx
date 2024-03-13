@@ -21,6 +21,7 @@ import {
   CardstBtnEdit,
   AddCardCreateBtn,
 } from './styled';
+import CardModal from 'components/ModalWindows/CardModals/CardModal';
 
 export const Column = ({ item }) => {
   // const dispatch = useDispatch();
@@ -116,7 +117,11 @@ export const Column = ({ item }) => {
         closeModal={handleCloseCardModal}
         onRequestClose={handleCloseCardModal}
       >
+<<<<<<< Updated upstream
         <AddCardModal />
+=======
+        <CardModal typeModal={'add'} closeModal={handleCloseCardModal} />
+>>>>>>> Stashed changes
       </ReactModal>
     </Wrapper>
   );

@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Formik } from 'formik';
-// import { RegisterSchema } from '../../../Register/RegisterSchema';
-// import { getThemeName } from 'store/themeSlice';
-
 import * as Yup from 'yup';
 
 import {
@@ -25,8 +21,15 @@ import {
   Textarea,
   TitleInput,
   Wrapper,
+<<<<<<< Updated upstream
 } from './CardModal.styled';
 import { useCreateTodosMutation } from 'store/todosSlice';
+=======
+} from '../CardModal.styled';
+import { useDispatch } from 'react-redux';
+import { addCard } from 'store/dashboards/dashboardsOperations';
+// import { useDispatch } from 'react-redux';
+>>>>>>> Stashed changes
 
 const options = ['low', 'medium', 'high', 'without priority'];
 
