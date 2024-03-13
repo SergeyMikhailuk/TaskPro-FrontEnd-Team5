@@ -18,8 +18,6 @@ import {
   Wrapper,
 } from './styled';
 
-// import { useSelector } from 'react-redux';
-
 const MainPart = ({ children }) => {
   const activeBoardId = useSelector(store => store.activeBoardId);
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);

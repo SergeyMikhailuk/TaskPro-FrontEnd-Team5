@@ -1,13 +1,11 @@
-// import { useDispatch, useSelector } from 'react-redux';
-// import { deleteColumn } from 'store/dashboards/dashboardsOperations';
 import React, { useState } from 'react';
 
+import { useDeleteTodosMutation } from 'store/todosSlice';
 import Card from 'components/Board/Cards/Cards';
 import { ModalColumn } from 'components/ModalWindows/ColumnModals';
-import CardModal from "components/ModalWindows/CardModals/CardModal";
+import CardModal from 'components/ModalWindows/CardModals/CardModal';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { deleteColumn } from 'store/dashboards/dashboardsOperations';
+
 import {
   Wrapper,
   Header,
@@ -28,6 +26,7 @@ import {
 export const Column = ({ item }) => {
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
+  const [deleteCard] = useDeleteTodosMutation();
 
   const handleOpenColumnModal = () => {
     setIsOpenColumnModal(true);
@@ -43,6 +42,15 @@ export const Column = ({ item }) => {
 
   const handleCloseCardModal = () => {
     setIsOpenCardModal(false);
+  };
+
+  const handleDeleteCard = async cardId => {
+    try {
+      console.log(cardId);
+      await deleteCard({ todoId: cardId });
+    } catch (error) {
+      console.error('Error deleting card:', error);
+    }
   };
 
   return (
@@ -63,7 +71,12 @@ export const Column = ({ item }) => {
 
           <TaskList>
             {item.todos.map(todo => (
-              <Card key={todo._id} item={todo} columnName={item.title} />
+              <Card
+                key={todo._id}
+                item={todo}
+                columnName={item.title}
+                onDeleteCard={handleDeleteCard}
+              />
             ))}
           </TaskList>
         </Content>
@@ -91,8 +104,7 @@ export const Column = ({ item }) => {
         closeModal={handleCloseCardModal}
         onRequestClose={handleCloseCardModal}
       >
-        <CardModal typeModal={'add'} closeModal={handleCloseCardModal} />
-
+        <CardModal closeModal={handleCloseCardModal} />
       </ReactModal>
     </Wrapper>
   );

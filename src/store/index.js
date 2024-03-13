@@ -13,6 +13,11 @@ import { todosApi } from 'store/todosSlice';
 const persistConfig = {
   key: 'root',
   storage,
+  blackList: [
+    boardsApi.reducerPath,
+    columnsApi.reducerPath,
+    todosApi.reducerPath,
+  ],
 };
 
 const rootReducer = combineReducers({
