@@ -26,7 +26,6 @@ import {
   useCreateTodosMutation,
   // useUpdateTodosMutation,
 } from 'store/todosSlice';
-import { editCard } from 'store/dashboards/dashboardsOperations';
 
 const options = ['low', 'medium', 'high', 'without priority'];
 
@@ -69,30 +68,26 @@ const CardModal = ({ typeModal, closeModal, columnId }) => {
   const customDate =
     startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
-  let deadline = startDate;
   const initialValues = {
-    title: '',
-    description: '',
+    title: 'description',
+    description: 'description',
     priority: selectedLabel,
   };
 
-  let editedDeadline = startDate;
+  let deadline = startDate;
 
   const handleSubmit = async (values, { resetForm }) => {
-    const { title, description, priority } = values;
+    // const { title, description, priority } = values;
 
     if (deadline === '') {
       deadline = new Date().toISOString();
     }
     try {
-      const response = await createCard(
-        {
-          title,
-          description,
-          priority,
-        },
-        columnId
-      );
+      const response = await createCard({
+        columnId: columnId,
+
+        todo: values,
+      });
 
       console.log('Board created:', response);
       closeModal();
@@ -104,18 +99,25 @@ const CardModal = ({ typeModal, closeModal, columnId }) => {
   const handleSubmitEdit = async (values, { resetForm }) => {
     // const { title, description, priority } = values;
     // const { _id, title, deadline, description, priority } = card;
-
-    if (editedDeadline === '') {
-      editedDeadline = deadline;
-    }
-    try {
-      const response = await editCard({ columnId, ...values });
-
-      console.log('Board created:', response);
-      closeModal();
-    } catch (error) {
-      console.error('Error creating board:', error);
-    }
+    //   if (editedDeadline === '') {
+    //     editedDeadline = deadline;
+    //   }
+    //   try {
+    //     const response = await editCard({ columnId, ...values });
+    // const handleSubmitEdit = () => {};
+    //  async (values, { resetForm }) => {
+    //   const { title, description, priority } = values;
+    //   // const { _id, title, deadline, description, priority } = card;
+    //   if (editedDeadline === '') {
+    //     editedDeadline = deadline;
+    //   }
+    //   try {
+    //     const response = await editCard({ _id, ...values });
+    //     console.log('Board created:', response);
+    //     closeModal();
+    //   } catch (error) {
+    //     console.error('Error creating board:', error);
+    //   }
   };
 
   return (
@@ -123,10 +125,12 @@ const CardModal = ({ typeModal, closeModal, columnId }) => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={typeModal === 'add' ? handleSubmit : handleSubmitEdit}
+        // onSubmit={typeModal === 'add' ? handleSubmitEdit : handleSubmit}
+        onSubmit={handleSubmit}
       >
         {() => (
           <ModalForm>
+            {' '}
             <FormWrapper>
               <AuthError name="title" component="div" />
 
@@ -146,7 +150,6 @@ const CardModal = ({ typeModal, closeModal, columnId }) => {
                 placeholder="Description"
               />
             </FormWrapper>
-
             <FormWrapper>
               <FormTitle>Icons</FormTitle>
               <RadioBtnWrapper>
@@ -169,7 +172,6 @@ const CardModal = ({ typeModal, closeModal, columnId }) => {
                 ))}
               </RadioBtnWrapper>
             </FormWrapper>
-
             <FormWrapper>
               <FormTitle>Deadline </FormTitle>
               <DateTitle
@@ -188,12 +190,11 @@ const CardModal = ({ typeModal, closeModal, columnId }) => {
                 />
               </Wrapper>
             </FormWrapper>
-
             <AuthFormSubmitButton type="submit">
               <ButtonPlus>
                 <PlusIcon />
               </ButtonPlus>
-              {typeModal === 'add' ? 'Add' : 'Edit'}
+              {typeModal === 'add' ? 'Edit' : 'Add'}
             </AuthFormSubmitButton>
           </ModalForm>
         )}

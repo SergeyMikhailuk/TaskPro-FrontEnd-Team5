@@ -38,14 +38,11 @@ export const Textarea = styled.textarea`
 `;
 
 export const AuthError = styled(ErrorMessage)`
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 8px;
-  font-size: 12px;
-  border: none;
-  margin-bottom: 20px;
-  color: red;
+  padding-left: 14px;
+  color: #c04d4d;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.36px;
 `;
 
 export const ModalSection = styled.div`
