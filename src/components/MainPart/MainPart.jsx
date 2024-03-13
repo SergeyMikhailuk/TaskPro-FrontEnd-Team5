@@ -18,7 +18,6 @@ import {
   Wrapper,
 } from './styled';
 
-// import { useSelector } from 'react-redux';
 
 const MainPart = ({ children }) => {
   const activeBoardId = useSelector(store => store.activeBoardId);
@@ -38,7 +37,7 @@ const MainPart = ({ children }) => {
   const handleCloseColumnModal = () => {
     setIsOpenColumnModal(false);
   };
-
+ 
   return (
     <WrapperMain $url={boardData?.board?.backgroundURL}>
       <Header>
