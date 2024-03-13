@@ -18,7 +18,6 @@ import {
   Wrapper,
 } from './styled';
 
-
 const MainPart = ({ children }) => {
   const activeBoardId = useSelector(store => store.activeBoardId);
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
