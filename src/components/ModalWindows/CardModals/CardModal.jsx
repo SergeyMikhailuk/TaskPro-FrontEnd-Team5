@@ -24,7 +24,7 @@ import {
 } from './CardModal.styled';
 import {
   useCreateTodosMutation,
-  useUpdateTodosMutation,
+  // useUpdateTodosMutation,
 } from 'store/todosSlice';
 import { editCard } from 'store/dashboards/dashboardsOperations';
 
@@ -63,7 +63,7 @@ const dateOptions = {
 };
 const CardModal = ({ typeModal, closeModal, columnId }) => {
   const [createCard] = useCreateTodosMutation();
-  const [EditCard] = useUpdateTodosMutation();
+  // const [EditCard] = useUpdateTodosMutation();
   const [selectedLabel, setSelectedLabel] = useState(options[3]);
   const [startDate, setStartDate] = useState('');
   const customDate =
@@ -102,7 +102,7 @@ const CardModal = ({ typeModal, closeModal, columnId }) => {
     closeModal();
   };
   const handleSubmitEdit = async (values, { resetForm }) => {
-    const { title, description, priority } = values;
+    // const { title, description, priority } = values;
     // const { _id, title, deadline, description, priority } = card;
 
     if (editedDeadline === '') {
