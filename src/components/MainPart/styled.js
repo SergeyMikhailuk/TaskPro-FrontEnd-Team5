@@ -134,13 +134,12 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    /* overflow-x: ${props => (props.length < 2 ? 'hidden' : 'scroll')}; */
-    overflow-x: scroll;
+    
+    
   }
 
   @media screen and (min-width: 1280px) {
-    /* overflow-x: ${props => (props.length < 3 ? 'hidden' : 'scroll')}; */
-    overflow-x: scroll;
+    
   }
 `;
 
