@@ -24,7 +24,7 @@ import {
 } from './CardModal.styled';
 import {
   useCreateTodosMutation,
-  // useUpdateTodosMutation,
+  useUpdateTodosMutation,
 } from 'store/todosSlice';
 
 const options = ['low', 'medium', 'high', 'without priority'];
@@ -60,32 +60,36 @@ const dateOptions = {
   month: '2-digit',
   day: '2-digit',
 };
-const CardModal = ({ typeModal, closeModal, columnId }) => {
-  const [createCard] = useCreateTodosMutation();
-  // const [EditCard] = useUpdateTodosMutation();
+const CardModal = ({ typeModal, closeModal, columnId, card }) => {
   const [selectedLabel, setSelectedLabel] = useState(options[3]);
   const [startDate, setStartDate] = useState('');
-  const customDate =
-    startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
   const initialValues = {
     title: 'description',
     description: 'description',
     priority: selectedLabel,
   };
+  if (card) {
+    initialValues.title = card.title;
+    initialValues.description = card.description;
+    initialValues.priority = card.priority;
+  }
+
+  const [createCard] = useCreateTodosMutation();
+  const [editCard] = useUpdateTodosMutation();
+
+  const customDate =
+    startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
   let deadline = startDate;
 
   const handleSubmit = async (values, { resetForm }) => {
-    // const { title, description, priority } = values;
-
     if (deadline === '') {
       deadline = new Date().toISOString();
     }
     try {
       const response = await createCard({
         columnId: columnId,
-
         todo: values,
       });
 
@@ -97,27 +101,14 @@ const CardModal = ({ typeModal, closeModal, columnId }) => {
     closeModal();
   };
   const handleSubmitEdit = async (values, { resetForm }) => {
-    // const { title, description, priority } = values;
-    // const { _id, title, deadline, description, priority } = card;
-    //   if (editedDeadline === '') {
-    //     editedDeadline = deadline;
-    //   }
-    //   try {
-    //     const response = await editCard({ columnId, ...values });
-    // const handleSubmitEdit = () => {};
-    //  async (values, { resetForm }) => {
-    //   const { title, description, priority } = values;
-    //   // const { _id, title, deadline, description, priority } = card;
-    //   if (editedDeadline === '') {
-    //     editedDeadline = deadline;
-    //   }
-    //   try {
-    //     const response = await editCard({ _id, ...values });
-    //     console.log('Board created:', response);
-    //     closeModal();
-    //   } catch (error) {
-    //     console.error('Error creating board:', error);
-    //   }
+    const { _id } = card;
+    try {
+      const response = await editCard({ _id, ...values });
+      console.log('Card updated:', response);
+      closeModal();
+    } catch (error) {
+      console.error('Error updating board:', error);
+    }
   };
 
   return (
@@ -125,8 +116,8 @@ const CardModal = ({ typeModal, closeModal, columnId }) => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        // onSubmit={typeModal === 'add' ? handleSubmitEdit : handleSubmit}
-        onSubmit={handleSubmit}
+        onSubmit={typeModal === 'add' ? handleSubmitEdit : handleSubmit}
+        // onSubmit={handleSubmit}
       >
         {() => (
           <ModalForm>
@@ -194,7 +185,7 @@ const CardModal = ({ typeModal, closeModal, columnId }) => {
               <ButtonPlus>
                 <PlusIcon />
               </ButtonPlus>
-              {typeModal === 'add' ? 'Edit' : 'Add'}
+              {typeModal === 'add' ? 'Add' : 'Edit'}
             </AuthFormSubmitButton>
           </ModalForm>
         )}
