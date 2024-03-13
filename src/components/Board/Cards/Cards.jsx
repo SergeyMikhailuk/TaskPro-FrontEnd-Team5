@@ -1,7 +1,6 @@
 // import { useState, useRef, useEffect } from 'react';
 import { useState } from 'react';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
-import EditCardModal from 'components/ModalWindows/CardModals/EditCardModal/EditCardModal';
 // import CardMovePopUp from './CardMovePopUp';
 // import { useDispatch } from 'react-redux';
 
@@ -31,7 +30,7 @@ import CardModal from 'components/ModalWindows/CardModals/CardModal';
 // import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
 
 // const Card = ({ item, columnName }) => {
-const Card = () => {
+const Card = ({ item }) => {
   // const dispatch = useDispatch();
   // const [isPopupOpen, setIsPopupOpen] = useState(false);
   // const [delayPopup, setDelayPopup] = useState(false);
@@ -200,8 +199,6 @@ const Card = () => {
         onRequestClose={handleCloseCardModal}
       >
         <CardModal typeModal={'edit'} closeModal={handleCloseCardModal} />
-
-
       </ReactModal>
     </>
   );

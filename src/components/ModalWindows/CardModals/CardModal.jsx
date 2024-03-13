@@ -109,7 +109,7 @@ const CardModal = ({ typeModal, closeModal, columnId }) => {
       editedDeadline = deadline;
     }
     try {
-      const response = await editCard({ _id, ...values });
+      const response = await editCard({ columnId, ...values });
 
       console.log('Board created:', response);
       closeModal();
