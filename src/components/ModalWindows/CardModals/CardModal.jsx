@@ -26,6 +26,7 @@ import {
   useCreateTodosMutation,
   useUpdateTodosMutation,
 } from 'store/todosSlice';
+import { editCard } from 'store/dashboards/dashboardsOperations';
 
 const options = ['low', 'medium', 'high', 'without priority'];
 
@@ -61,13 +62,8 @@ const dateOptions = {
   day: '2-digit',
 };
 const CardModal = ({ typeModal, closeModal, columnId }) => {
-  // const initialValues = {
-  //   title,
-  //   description,
-  //   priority: selectedLabel,
-  // };
-
   const [createCard] = useCreateTodosMutation();
+  const [EditCard] = useUpdateTodosMutation();
   const [selectedLabel, setSelectedLabel] = useState(options[3]);
   const [startDate, setStartDate] = useState('');
   const customDate =
@@ -80,24 +76,7 @@ const CardModal = ({ typeModal, closeModal, columnId }) => {
     priority: selectedLabel,
   };
 
-  //   const { _id, title, deadline, description, priority } = card;
-  //   let editedDeadline = startDate;
-
-  // const handleSubmitEdit = async (values, { resetForm }) => {
-  //   const { title, description, priority } = values;
-
-  //   if (editedDeadline === '') {
-  //     editedDeadline = deadline;
-  //   }
-  //   try {
-  //     const response = await useUpdateTodosMutation({_id, ...values});
-
-  //     console.log('Board created:', response);
-  //     closeModal();
-  //   } catch (error) {
-  //     console.error('Error creating board:', error);
-  //   }
-  // };
+  let editedDeadline = startDate;
 
   const handleSubmit = async (values, { resetForm }) => {
     const { title, description, priority } = values;
@@ -122,13 +101,29 @@ const CardModal = ({ typeModal, closeModal, columnId }) => {
     }
     closeModal();
   };
+  const handleSubmitEdit = async (values, { resetForm }) => {
+    const { title, description, priority } = values;
+    // const { _id, title, deadline, description, priority } = card;
+
+    if (editedDeadline === '') {
+      editedDeadline = deadline;
+    }
+    try {
+      const response = await editCard({ _id, ...values });
+
+      console.log('Board created:', response);
+      closeModal();
+    } catch (error) {
+      console.error('Error creating board:', error);
+    }
+  };
 
   return (
     <ModalSection>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={handleSubmit}
+        onSubmit={typeModal === 'add' ? handleSubmit : handleSubmitEdit}
       >
         {() => (
           <ModalForm>

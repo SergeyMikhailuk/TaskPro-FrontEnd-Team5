@@ -3,7 +3,6 @@ import { useState } from 'react';
 // import { deleteColumn } from 'store/dashboards/dashboardsOperations';
 import Card from '../Cards/Cards';
 import ModalEdit from 'components/ModalWindows/ColumnModals/ModalEditColumn/index';
-import AddCardModal from 'components/ModalWindows/CardModals/AddCardModal/AddCardModal';
 import { ReactModal } from '../../ModalWindows/Modal/Modal';
 import {
   Wrapper,
@@ -25,7 +24,6 @@ import CardModal from 'components/ModalWindows/CardModals/CardModal';
 
 export const Column = ({ item }) => {
   // const dispatch = useDispatch();
-
 
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
@@ -117,11 +115,7 @@ export const Column = ({ item }) => {
         closeModal={handleCloseCardModal}
         onRequestClose={handleCloseCardModal}
       >
-<<<<<<< Updated upstream
-        <AddCardModal />
-=======
         <CardModal typeModal={'add'} closeModal={handleCloseCardModal} />
->>>>>>> Stashed changes
       </ReactModal>
     </Wrapper>
   );

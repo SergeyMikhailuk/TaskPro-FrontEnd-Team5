@@ -27,8 +27,7 @@ import {
   Pencil,
   Trash,
 } from './styled';
-
-import EditCardModal from '../../ModalWindows/CardModals/EditCardModal';
+import CardModal from 'components/ModalWindows/CardModals/CardModal';
 // import { deleteCard, editCard } from 'store/dashboards/dashboardsOperations';
 
 // const Card = ({ item, columnName }) => {
@@ -206,11 +205,7 @@ const Card = () => {
         closeModal={handleCloseCardModal}
         onRequestClose={handleCloseCardModal}
       >
-<<<<<<< Updated upstream
-        <EditCardModal />
-=======
-        <EditCardModal closeModal={handleCloseCardModal} />
->>>>>>> Stashed changes
+        <CardModal typeModal={'edit'} closeModal={handleCloseCardModal} />
       </ReactModal>
     </>
   );
