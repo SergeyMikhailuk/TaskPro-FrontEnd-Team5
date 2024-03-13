@@ -1,9 +1,15 @@
+
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { RegisterSchema } from '../../Register/RegisterSchema';
 import { getThemeName } from 'store/themeSlice';
+import { useDispatch } from 'react-redux';
+import { editProfile } from '../../../store/auth/authOperations';
+// import { toast, ToastContainer } from 'react-toastify';
+
+
 
 import {
   AuthFormWrapper,
@@ -24,7 +30,6 @@ import {
 import userDark from 'images/user-dark.svg';
 import userLight from 'images/user-light.svg';
 import userViolet from 'images/user-violet.svg';
-
 const userImages = {
   light: userLight,
   dark: userDark,
@@ -36,6 +41,8 @@ const UserModal = ({ closeModal, user }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [fileImage, setFileImage] = useState(null);
   const [currentImageUrl, setCurrentImageUrl] = useState('');
+  const dispatch = useDispatch();
+  const token = useSelector(state => state.auth.token);
 
   const initialValues = {
     image: currentImageUrl,
@@ -44,16 +51,17 @@ const UserModal = ({ closeModal, user }) => {
     password: '',
     showPassword: false,
   };
-
+  
   const handleImageUpload = event => {
     const file = event.target.files[0];
-
+   
     setFileImage(file);
 
     const reader = new FileReader();
 
     reader.onload = upload => {
       setCurrentImageUrl(upload.target.result);
+      // console.log('Current image URL:', upload.target.result);
     };
 
     if (file) {
@@ -65,27 +73,31 @@ const UserModal = ({ closeModal, user }) => {
     return userImages[theme] || userDark;
   };
 
-  const handleTogglePassword = () => setShowPassword(!showPassword);
+   const handleTogglePassword = () => setShowPassword(!showPassword);
 
-  const onSubmit = values => {
-    const { name, email, password } = values;
+  const onSubmit = (values, { resetForm }) => {
+  
+      const formData = new FormData();
 
-    const formData = new FormData();
+      formData.append('name', values.name);
+      formData.append('email', values.email);
+      formData.append('password', values.password);
 
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('password', password);
-
-    if (fileImage) {
-      formData.append('avatarURL', fileImage);
-    }
-
-    closeModal();
+      if (fileImage) {
+        formData.append('avatarURL', fileImage);
+        // console.log(fileImage);
+      }
+      //  console.log(formData);
+      dispatch(editProfile({ formData, token }));
+      resetForm();
+      closeModal();
+  
   };
 
+  
   const changeImage = () => {
     if (currentImageUrl === '') {
-      return setDefaultAvatar(); // Возвращаем стандартное изображение аватара
+      return setDefaultAvatar();
     }
 
     return currentImageUrl;
@@ -158,3 +170,4 @@ const UserModal = ({ closeModal, user }) => {
 };
 
 export default UserModal;
+
