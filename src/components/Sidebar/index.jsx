@@ -7,7 +7,7 @@ import { toggleSidebar } from 'store/sidebarSlice';
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
 import Board from './BoardItem/index.js';
-import { getActiveBoardId, setActiveBoardId } from 'store/activeBoardSlice';
+import { setActiveBoardId } from 'store/activeBoardSlice';
 
 import {
   Aside,
@@ -42,13 +42,13 @@ const Sidebar = () => {
   const { data: boards } = useGetBoardsQuery();
   const [deleteBoard] = useDeleteBoardMutation();
   const isOpen = useSelector(state => state.sidebar.isOpen);
-  const activeBoardId = useSelector(getActiveBoardId);
+  const activeBoardId = useSelector(state => state.activeBoard);
 
   useEffect(() => {
     if (boards?.length > 0) {
       dispatch(setActiveBoardId(boards[0]._id));
     }
-  }, [boards, dispatch, activeBoardId]);
+  }, [boards, dispatch]);
 
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;

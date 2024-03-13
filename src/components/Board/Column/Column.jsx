@@ -1,11 +1,13 @@
 // import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
 // import { deleteColumn } from 'store/dashboards/dashboardsOperations';
-import Card from '../Cards/Cards';
+import React, { useState } from 'react';
 
+import Card from 'components/Board/Cards/Cards';
 import { ModalColumn } from 'components/ModalWindows/ColumnModals';
-import CardModal from 'components/ModalWindows/CardModals/CardModal';
-import { ReactModal } from '../../ModalWindows/Modal/Modal';
+import CardModal from "components/ModalWindows/CardModals/CardModal";
+import { ReactModal } from 'components/ModalWindows/Modal/Modal';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { deleteColumn } from 'store/dashboards/dashboardsOperations';
 import {
   Wrapper,
   Header,
@@ -22,17 +24,10 @@ import {
   CardstBtnEdit,
   AddCardCreateBtn,
 } from './styled';
-import CardModal from 'components/ModalWindows/CardModals/CardModal';
 
 export const Column = ({ item }) => {
-  // const dispatch = useDispatch();
-
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
-
-  // const selectedPriority = useSelector(
-  //   state => state.dashboards.selectedPriority
-  // );
 
   const handleOpenColumnModal = () => {
     setIsOpenColumnModal(true);
@@ -50,47 +45,26 @@ export const Column = ({ item }) => {
     setIsOpenCardModal(false);
   };
 
-  // const filteredColumn =
-  //   item.cards && item.cards.filter(item => item.priority === selectedPriority);
-
-  // const columnLength = item.cards && item.cards.length;
-  // const fileteredColumnLength = filteredColumn && filteredColumn.length;
-
-  // const condition =
-  //   selectedPriority === 'show all' ? columnLength : fileteredColumnLength;
-
   return (
     <Wrapper>
       <ContentWrapper>
         <Content>
           <Header>
-            {/* <Title>{item.title}</Title> */}
-            <Title>NameColumn </Title>
-
+            <Title>{item.title}</Title>
             <ButtonWrapper>
               <ButtonEdit>
                 <CardstBtnEdit onClick={handleOpenColumnModal} />
               </ButtonEdit>
-
-              {/* <CardsBtnDelete onClick={() => dispatch(deleteColumn(item._id))} /> */}
               <ButtonDelete>
                 <CardsBtnDelete />
               </ButtonDelete>
             </ButtonWrapper>
           </Header>
 
-          {/* <TaskList length={condition}> */}
           <TaskList>
-            <Card />
-            {/* {selectedPriority === 'show all'
-              ? item.cards &&
-                item.cards.map(el => (
-                  <Card key={el._id} item={el} columnName={item.title} />
-                ))
-              : filteredColumn &&
-                filteredColumn.map(el => (
-                  <Card key={el._id} item={el} columnName={item.title} />
-                ))} */}
+            {item.todos.map(todo => (
+              <Card key={todo._id} item={todo} columnName={item.title} />
+            ))}
           </TaskList>
         </Content>
 

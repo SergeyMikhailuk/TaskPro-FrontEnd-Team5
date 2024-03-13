@@ -1,7 +1,7 @@
 // import { useState, useRef, useEffect } from 'react';
 import { useState } from 'react';
-import { ReactModal } from '../../ModalWindows/Modal/Modal';
-
+import { ReactModal } from 'components/ModalWindows/Modal/Modal';
+import EditCardModal from 'components/ModalWindows/CardModals/EditCardModal/EditCardModal';
 // import CardMovePopUp from './CardMovePopUp';
 // import { useDispatch } from 'react-redux';
 
@@ -113,15 +113,9 @@ const Card = () => {
       <CardWrapper>
         <TopWrapper>
           {/* <Title>{title}</Title> */}
-          <Title>NameCard </Title>
+          <Title>{item.title} </Title>
           {/* <Text>{checkTextLength(description)}</Text> */}
-          <Text>
-            {' '}
-            Create a visually stunning and eye-catching wat ch dial design that
-            embodies our brand's essence of sleek aesthetics and modern
-            elegance. Your design should be unique, innovative, and reflective
-            of the latest trends in watch design.
-          </Text>
+          <Text>{item.description}</Text>
         </TopWrapper>
 
         <BottomWrapper>
@@ -133,7 +127,7 @@ const Card = () => {
 
                 <PriorityIndicator />
                 {/* <SubText>{priorityStyles.labelText}</SubText> */}
-                <SubText>Without </SubText>
+                <SubText>{item.priority} </SubText>
               </PriorityWrapper>
             </div>
             <div>
@@ -207,7 +201,7 @@ const Card = () => {
       >
         <CardModal typeModal={'edit'} closeModal={handleCloseCardModal} />
 
-      
+
       </ReactModal>
     </>
   );

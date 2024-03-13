@@ -10,6 +10,11 @@ export const boardsApi = createApi({
       query: () => '/api/boards',
       providesTags: ['Boards'],
     }),
+
+    getBoardById: build.query({
+      query: boardId => `/api/boards/${boardId}`,
+      providesTags: ['Board'],
+    }),
     createBoard: build.mutation({
       query: board => ({
         url: '/api/boards',
@@ -38,6 +43,7 @@ export const boardsApi = createApi({
 
 export const {
   useGetBoardsQuery,
+  useGetBoardByIdQuery,
   useCreateBoardMutation,
   useUpdateBoardMutation,
   useDeleteBoardMutation,

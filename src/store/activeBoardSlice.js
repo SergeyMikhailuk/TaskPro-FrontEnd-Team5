@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const activeBoardIdSlice = createSlice({
   name: 'activeBoardId',
-  initialState: '',
+  initialState: null,
   reducers: {
-    setActiveBoardId: (_, action) => action.payload,
+    setActiveBoardId: (state, action) => action.payload,
   },
 });
 

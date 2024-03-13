@@ -63,3 +63,22 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+
+export const editProfile = createAsyncThunk(
+  'users/editProfile',
+  async ({ formData, thunkAPI, token }) => {
+    try {
+      const resp = await axios.patch('api/users', formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      return resp.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

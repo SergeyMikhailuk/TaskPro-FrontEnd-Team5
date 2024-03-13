@@ -119,6 +119,13 @@ export const AuthFormField = styled(Field)`
   &:focus {
     opacity: 1;
   }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px
+      ${props => props.theme.editProfileModal.background} inset !important;
+    -webkit-text-fill-color: grey;
+  }
 `;
 
 export const ThirdPasswordField = styled(AuthFormField)`
