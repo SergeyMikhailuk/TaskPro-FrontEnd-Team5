@@ -36,7 +36,7 @@ const MainPart = ({ children }) => {
   const handleCloseColumnModal = () => {
     setIsOpenColumnModal(false);
   };
-
+ 
   return (
     <WrapperMain $url={boardData?.board?.backgroundURL}>
       <Header>

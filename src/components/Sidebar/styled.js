@@ -28,7 +28,6 @@ export const Aside = styled.aside`
   flex-direction: column;
   width: 225px;
   background: ${props => props.theme.sidebar.background};
-  overflow: auto;
   position: fixed;
   top: 0;
   left: 0;
