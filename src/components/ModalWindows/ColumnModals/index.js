@@ -33,7 +33,6 @@ const ModalColumn = ({ typeModal, closeModal, activeBoardId, columnId }) => {
       if (typeModal === 'add') {
         await createColumn({ boardId: activeBoardId, column: values });
       } else if (typeModal === 'edit') {
-        console.log(columnId);
         await updateColumn({ columnId, column: values });
       }
       resetForm();

@@ -66,7 +66,7 @@ export const refreshUser = createAsyncThunk(
 
 
 export const editProfile = createAsyncThunk(
-  'users/editProfile',
+  'auth/editProfile',
   async ({ formData, thunkAPI, token }) => {
     try {
       const resp = await axios.patch('api/users', formData, {

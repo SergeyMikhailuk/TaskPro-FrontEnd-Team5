@@ -41,7 +41,8 @@ const Header = () => {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false); // Додаємо стейт для модального вікна
   const user = useSelector(state => state.auth.user);
-
+  // test
+// console.log(user.name);
   const selectHandler = ({ value }) => {
     dispatch(setTheme(value));
     setIsThemeOpen(false);
@@ -99,7 +100,7 @@ const Header = () => {
         closeModal={handleCloseEditProfileModal}
         onRequestClose={handleCloseEditProfileModal}
       >
-        <UserModal user={user} closeModal={handleCloseEditProfileModal}/>
+        <UserModal user={user} closeModal={handleCloseEditProfileModal} />
       </ReactModal>
     </AppHeader>
   );
