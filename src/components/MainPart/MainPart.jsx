@@ -5,6 +5,7 @@ import { useGetBoardByIdQuery } from 'store/boardsSlice';
 import { Column } from 'components/Board/Column/Column';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 import { ModalColumn } from 'components/ModalWindows/ColumnModals';
+import { Filter } from 'components/Filter/Filter';
 
 import {
   WrapperMain,
@@ -22,7 +23,6 @@ const MainPart = ({ children }) => {
   const activeBoardId = useSelector(store => store.activeBoardId);
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
   const { data: boardData } = useGetBoardByIdQuery(activeBoardId);
-
   const scrollRef = useRef(null);
 
   useEffect(() => {
@@ -37,6 +37,20 @@ const MainPart = ({ children }) => {
     setIsOpenColumnModal(false);
   };
  
+  const filter = useSelector((state) => state.filter)
+  const filterCards = () => {
+    const filteredArray = boardData?.columns?.map(column =>
+    {
+      const cards = column.todos?.filter(card =>
+        card.priority.toLowerCase().includes(filter.toLowerCase())
+      );
+      console.log(cards);
+      return column.todos = cards;
+    });
+    return filteredArray;
+  }
+  console.log(filterCards());
+  console.log(boardData);
   return (
     <WrapperMain $url={boardData?.board?.backgroundURL}>
       <Header>
@@ -55,7 +69,7 @@ const MainPart = ({ children }) => {
             <Text>Add another column</Text>
           </AddButton>
         </ContentWrapper>
-
+        <Filter></Filter>
         <ReactModal
           isOpen={isOpenColumnModal}
           title="Add Column"

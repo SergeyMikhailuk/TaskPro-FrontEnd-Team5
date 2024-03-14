@@ -9,6 +9,7 @@ import sidebarReducer from 'store/sidebarSlice';
 import { boardsApi } from 'store/boardsSlice';
 import { columnsApi } from 'store/columnsSlice';
 import { todosApi } from 'store/todosSlice';
+import { filterReducer } from './filterSlice';
 
 const persistConfig = {
   key: 'root',
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   theme: themeSlice.reducer,
   sidebar: sidebarReducer,
   auth: authReducer,
+  filter: filterReducer,
   activeBoardId: activeBoardIdSlice.reducer,
   [boardsApi.reducerPath]: boardsApi.reducer,
   [columnsApi.reducerPath]: columnsApi.reducer,
