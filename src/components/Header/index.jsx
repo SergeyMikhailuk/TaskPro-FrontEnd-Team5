@@ -3,32 +3,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toggleSidebar } from 'store/sidebarSlice';
 import { getThemeName, setTheme } from 'store/themeSlice';
 
-import UserModal from '../ModalWindows/UserModal/UserModal';
+import { selectIsLoading } from 'store/auth/authSelectors';
+
+import UserModal from 'components/ModalWindows/UserModal/UserModal';
 import userDark from 'images/user-dark.svg';
 import userLight from 'images/user-light.svg';
 import userViolet from 'images/user-violet.svg';
 
-import { ReactModal } from '../ModalWindows/Modal/Modal';
+import { ReactModal } from 'components/ModalWindows/Modal/Modal';
+
+import Loader from 'components/Loader/Loader';
 
 import {
   AppHeader,
-  Wrap,
   Burger,
   Info,
   ButtonMenu,
-  ButtonProfile,
   StyledSelectWrapper,
   StyledList,
   StyledItem,
   StyledTitle,
   Down,
+  UserAvatar,
+  UserName,
+  Wrapper,
 } from './styled';
-
-const userImages = {
-  light: userLight,
-  dark: userDark,
-  violet: userViolet,
-};
 
 const themes = [
   { name: 'Light', value: 'light' },
@@ -41,8 +40,11 @@ const Header = () => {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false); // Додаємо стейт для модального вікна
   const user = useSelector(state => state.auth.user);
-  // test
-// console.log(user.name);
+
+  const st = useSelector(state => state);
+  console.log(user);
+  console.log(st);
+
   const selectHandler = ({ value }) => {
     dispatch(setTheme(value));
     setIsThemeOpen(false);
@@ -59,8 +61,19 @@ const Header = () => {
   const handleCloseEditProfileModal = () => {
     setIsEditProfileModalOpen(false);
   };
+  const isLoading = useSelector(selectIsLoading);
 
-  const themeName = useSelector(getThemeName);
+  const activeUserTheme = useSelector(getThemeName);
+
+  const setDefaultAvatar = () => {
+    if (activeUserTheme === 'dark') {
+      return userDark;
+    } else if (activeUserTheme === 'light') {
+      return userLight;
+    } else if (activeUserTheme === 'violet') {
+      return userViolet;
+    }
+  };
 
   return (
     <AppHeader>
@@ -84,14 +97,20 @@ const Header = () => {
             </StyledList>
           )}
         </StyledSelectWrapper>
-        <Wrap>
-          <p>{user.name}</p>
-          <ButtonProfile onClick={handleOpenEditProfileModal}>
-            {' '}
-            {/* Додаємо onClick для відкриття модального вікна */}
-            <img src={userImages[themeName]} alt="" />
-          </ButtonProfile>
-        </Wrap>
+
+        <Wrapper>
+          <UserName>{user.name}</UserName>
+
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <UserAvatar
+              src={user.avatarURL || setDefaultAvatar()}
+              alt="user name"
+              onClick={handleOpenEditProfileModal}
+            />
+          )}
+        </Wrapper>
       </Info>
 
       <ReactModal

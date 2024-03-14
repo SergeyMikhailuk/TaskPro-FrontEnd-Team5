@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
 import { useGetBoardByIdQuery } from 'store/boardsSlice';
 import { Column } from 'components/Board/Column/Column';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 import { ModalColumn } from 'components/ModalWindows/ColumnModals';
 import { Filter } from 'components/Filter/Filter';
+
 
 import {
   WrapperMain,
@@ -37,22 +37,23 @@ const MainPart = ({ children }) => {
     setIsOpenColumnModal(false);
   };
  
-  // const filter = useSelector((state) => state.filter)
-  // const filterCards = () => {
-  //   const filteredArray = boardData?.columns?.map(column =>
-  //   {
-  //     const cards = column.todos?.filter(card =>
-  //       card.priority.toLowerCase().includes(filter.toLowerCase())
-  //     );
-  //     console.log(cards);
-  //     // return column.todos = cards;
-  //   });
-  //   return filteredArray;
-  // }
-  // console.log(filterCards());
-  // console.log(boardData);
+  const filter = useSelector((state) => state.filter)
+  const filterCards = () => {
+    const filteredArray = boardData?.columns?.map(column =>
+    {
+      const cards = column.todos?.filter(card =>
+        card.priority.toLowerCase().includes(filter.toLowerCase())
+      );
+      console.log(cards);
+      return column.todos = cards;
+    });
+    return filteredArray;
+  }
+  console.log(filterCards());
+  console.log(boardData);
   return (
     <WrapperMain $url={boardData?.board?.backgroundURL}>
+      <Filter/>
       <Header>
         <Title>{boardData?.board?.title}</Title>
       </Header>

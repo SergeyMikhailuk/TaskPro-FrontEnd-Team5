@@ -6,22 +6,22 @@ import { ReactComponent as BurgerImage } from './menu.svg';
 import { ReactComponent as DownImage } from './down.svg';
 
 export const ModalWindow = styled(Modal)`
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 335px;
-    max-height: 80vh;
-    min-height: 200px;
-    overflow-y: auto;
-    padding: 24px;
-    background-color: ${props => props.theme.modal.backgroundMain};
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 335px;
+  max-height: 80vh;
+  min-height: 200px;
+  overflow-y: auto;
+  padding: 24px;
+  background-color: ${props => props.theme.modal.backgroundMain};
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-    @media screen and (min-width: 768px) {
-      width: 400px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 400px;
+  }
 `;
 
 export const Down = styled(DownImage)`
@@ -157,4 +157,27 @@ export const StyledItem = styled.li`
     color: ${props => props.theme.themePopup.strokeBell};
     transform: scale(1.1);
   }
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const UserName = styled.span`
+  color: ${props => props.theme.header.userName};
+  font-size: 14px;
+  font-family: Poppins;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+`;
+
+export const UserAvatar = styled.img`
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  object-fit: cover;
 `;
