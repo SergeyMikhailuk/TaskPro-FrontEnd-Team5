@@ -3,12 +3,11 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import { RegisterSchema } from '../../Register/RegisterSchema';
+import { editProfileSchema } from './editProfileSchema';
 import { getThemeName } from 'store/themeSlice';
 import { useDispatch } from 'react-redux';
 import { editProfile } from '../../../store/auth/authOperations';
 // import { toast, ToastContainer } from 'react-toastify';
-
 
 
 import {
@@ -36,25 +35,25 @@ const userImages = {
   violet: userViolet,
 };
 
-const UserModal = ({ closeModal, user }) => {
+const UserModal = ({ closeModal, user}) => {
   const theme = useSelector(getThemeName);
   const [showPassword, setShowPassword] = useState(false);
   const [fileImage, setFileImage] = useState(null);
   const [currentImageUrl, setCurrentImageUrl] = useState('');
   const dispatch = useDispatch();
   const token = useSelector(state => state.auth.token);
-
+   
   const initialValues = {
     image: currentImageUrl,
-    name: user.name,
-    email: user.email,
+    name: user.name || '',
+    email: user.email || '',
     password: '',
     showPassword: false,
   };
   
   const handleImageUpload = event => {
     const file = event.target.files[0];
-   
+
     setFileImage(file);
 
     const reader = new FileReader();
@@ -73,28 +72,29 @@ const UserModal = ({ closeModal, user }) => {
     return userImages[theme] || userDark;
   };
 
-   const handleTogglePassword = () => setShowPassword(!showPassword);
+  const handleTogglePassword = () => setShowPassword(!showPassword);
 
   const onSubmit = (values, { resetForm }) => {
-  
-      const formData = new FormData();
+    const formData = new FormData();
+    //  if (values.name) {
+    //   formData.append('name', values.name);
+    // } else {
+    //   formData.append('name', user.name );
+    // }
 
-      formData.append('name', values.name);
-      formData.append('email', values.email);
-      formData.append('password', values.password);
-
-      if (fileImage) {
-        formData.append('avatarURL', fileImage);
-        // console.log(fileImage);
-      }
-      //  console.log(formData);
-      dispatch(editProfile({ formData, token }));
-      resetForm();
-      closeModal();
-  
+    formData.append('name', values.name);
+    formData.append('email', values.email);
+    formData.append('password', values.password);
+   
+    if (fileImage) {
+      formData.append('avatar', fileImage);
+    }
+    //  console.log(formData);
+    dispatch(editProfile({ formData, token}));
+    resetForm();
+    closeModal();
   };
 
-  
   const changeImage = () => {
     if (currentImageUrl === '') {
       return setDefaultAvatar();
@@ -124,7 +124,7 @@ const UserModal = ({ closeModal, user }) => {
       <Formik
         id="formform"
         initialValues={initialValues}
-        validationSchema={RegisterSchema}
+        validationSchema={editProfileSchema}
         onSubmit={onSubmit}
       >
         <AuthForm>
@@ -161,7 +161,6 @@ const UserModal = ({ closeModal, user }) => {
             </AuthFormPasswordIcon>
             <ErrorSection name="password" component="div" />
           </AuthFormWrapper>
-
           <AuthFormSubmitButton type="submit">Send</AuthFormSubmitButton>
         </AuthForm>
       </Formik>

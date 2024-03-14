@@ -40,6 +40,7 @@ const Header = () => {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false); // Додаємо стейт для модального вікна
   const user = useSelector(state => state.auth.user);
+
   const st = useSelector(state => state);
   console.log(user);
   console.log(st);

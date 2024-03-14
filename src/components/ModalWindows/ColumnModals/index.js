@@ -13,6 +13,7 @@ import {
   ModalFormikBoxInput,
   ModalFormikBoxBtn,
   ModalFormikBoxBtnIcon,
+  ErrorText,
 } from './styled';
 
 const ModalColumn = ({ typeModal, closeModal, activeBoardId, columnId }) => {
@@ -32,7 +33,6 @@ const ModalColumn = ({ typeModal, closeModal, activeBoardId, columnId }) => {
       if (typeModal === 'add') {
         await createColumn({ boardId: activeBoardId, column: values });
       } else if (typeModal === 'edit') {
-        console.log(columnId);
         await updateColumn({ columnId, column: values });
       }
       resetForm();
@@ -60,7 +60,7 @@ const ModalColumn = ({ typeModal, closeModal, activeBoardId, columnId }) => {
                 placeholder="Title"
                 required
               />
-              <ErrorMessage name="title" component="div" className="error" />{' '}
+              <ErrorMessage name="title" component={ErrorText} />{' '}
             </ModalFormikBox>
             <ModalFormikBoxBtn type="submit">
               <ModalFormikBoxBtnIcon />

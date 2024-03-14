@@ -1,11 +1,7 @@
 import React from 'react';
-import Modal from 'react-modal';
 import axios from 'axios';
 import {
-  ModalOverlay,
   ModalContainer,
-  ModalCloseBtnIcon,
-  ModalTitle,
   ModalFormikBox,
   ModalFormikBoxInputEmail,
   ModalFormikBoxInputComment,
@@ -13,7 +9,7 @@ import {
 } from './styled';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-Modal.setAppElement('#root');
+
 
 const HelpModal = ({ isOpen, closeModal }) => {
   const handleSubmit = async (values, { resetForm }) => {
@@ -26,16 +22,8 @@ const HelpModal = ({ isOpen, closeModal }) => {
     }
   };
 
-  return (
-    <Modal isOpen={isOpen} onRequestClose={closeModal}>
-      <ModalOverlay>
+  return (    
         <ModalContainer>
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <button onClick={closeModal}>
-              <ModalCloseBtnIcon />
-            </button>
-          </div>
-          <ModalTitle>Need help</ModalTitle>
           <Formik
             initialValues={{ email: '', message: '' }}
             onSubmit={handleSubmit}
@@ -63,8 +51,6 @@ const HelpModal = ({ isOpen, closeModal }) => {
             </Form>
           </Formik>
         </ModalContainer>
-      </ModalOverlay>
-    </Modal>
   );
 };
 
