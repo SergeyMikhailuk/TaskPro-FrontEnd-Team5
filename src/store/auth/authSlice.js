@@ -48,6 +48,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(editProfile.fulfilled, (state, { payload }) => {
+        console.log('payload: ', payload);
         state.user.name = payload.name;
         state.user.email = payload.email;
         // state.user.theme = payload.theme;

@@ -6,7 +6,6 @@ import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 import { ModalColumn } from 'components/ModalWindows/ColumnModals';
 import { Filter } from 'components/Filter/Filter';
 
-
 import {
   WrapperMain,
   Header,
@@ -22,6 +21,7 @@ import {
 const MainPart = ({ children }) => {
   const activeBoardId = useSelector(store => store.activeBoardId);
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
+  console.log('activeBoardId: ', activeBoardId);
   const { data: boardData } = useGetBoardByIdQuery(activeBoardId);
   const scrollRef = useRef(null);
 
@@ -36,24 +36,20 @@ const MainPart = ({ children }) => {
   const handleCloseColumnModal = () => {
     setIsOpenColumnModal(false);
   };
- 
-  const filter = useSelector((state) => state.filter)
+
+  const filter = useSelector(state => state.filter);
   const filterCards = () => {
-    const filteredArray = boardData?.columns?.map(column =>
-    {
-      const cards = column.todos?.filter(card =>
+    return boardData?.columns?.map(column => {
+      return column?.todos?.filter(card =>
         card.priority.toLowerCase().includes(filter.toLowerCase())
       );
-      console.log(cards);
-      return column.todos = cards;
     });
-    return filteredArray;
-  }
-  console.log(filterCards());
+  };
+  console.log('filterCards(): ', filterCards());
   console.log(boardData);
   return (
     <WrapperMain $url={boardData?.board?.backgroundURL}>
-      <Filter/>
+      <Filter />
       <Header>
         <Title>{boardData?.board?.title}</Title>
       </Header>
