@@ -4,7 +4,7 @@ import { baseQuery } from './baseQuery';
 export const boardsApi = createApi({
   reducerPath: 'boardsApi',
   baseQuery: baseQuery,
-  tagTypes: ['Boards'],
+  tagTypes: ['Board', 'Boards'],
   endpoints: build => ({
     getBoards: build.query({
       query: () => '/api/boards',
