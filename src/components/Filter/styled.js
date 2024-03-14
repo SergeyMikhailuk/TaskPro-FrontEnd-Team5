@@ -5,7 +5,7 @@ import { ReactComponent as FilterImage } from 'images/svg/filter.svg';
 
 export const FilterBtn = styled.button`
   position: absolute;
-  top: 74px;
+  top: 14px;
   right: 20px;
   display: flex;
   align-items: center;
@@ -14,12 +14,20 @@ export const FilterBtn = styled.button`
   font-size: 14px;
   letter-spacing: -0.02em;
   color: ${props => props.theme.addColumnButton.color};
-  background-color: transparent;
-  border: none;
-  padding: 0;
+  background-color: ${props => props.theme.header.background};
+  border: 1px solid ${props => props.theme.addColumnButton.color};
+  border-radius: 4px;
+  padding: 4px 6px;
+  z-index: 1;
+  cursor: pointer;
+  transition: all 250ms linear;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 
   @media screen and (min-width: 768px) {
-    top: 0;
+    
     right: 32px;
   }
 
@@ -87,6 +95,12 @@ export const ShowAllBtn = styled.button`
   background-color: transparent;
   font-family: 'Poppins', sans-serif;
   border: none;
+  cursor: pointer;
+  transition: all 150ms linear;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const RadioLabel = styled.label`
@@ -99,8 +113,14 @@ export const RadioLabel = styled.label`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: all 150ms linear;
   & input:checked + span::before {
     opacity: 1; 
+  }  
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const CustomRadioContainer = styled.div`

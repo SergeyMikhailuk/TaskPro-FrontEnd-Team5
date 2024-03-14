@@ -38,11 +38,13 @@ export const Textarea = styled.textarea`
 `;
 
 export const AuthError = styled(ErrorMessage)`
-  padding-left: 14px;
-  color: #c04d4d;
-  font-size: 18px;
+  text-align: left;
+  color: #ff0000;
+  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   letter-spacing: -0.36px;
+  margin-bottom: 10px;
 `;
 
 export const ModalSection = styled.div`
@@ -116,8 +118,13 @@ export const AuthFormSubmitButton = styled.button`
   transition: all 150ms linear;
   cursor: pointer;
 
-  &:hover {
-    opacity: 0.8;
+  &:hover,
+  &:focus {
+    background-color: ${props => props.theme.modal.btnHover};
+  }
+
+  &:hover svg {
+    transform: scale(1.1);
   }
 
   @media screen and (min-width: 345px) {
@@ -156,6 +163,7 @@ export const RadioBtnWrapper = styled.ul`
   justify-content: center;
   align-items: center;
   gap: 4px;
+ 
 `;
 
 export const Label = styled.label`
@@ -163,18 +171,22 @@ export const Label = styled.label`
   width: 14px;
   height: 14px;
   border-radius: 14px;
-
   cursor: pointer;
+  transition: all 150ms linear;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 
   &.active {
     border: ${props =>
-      props.value === 'without priority' && '2px solid rgb(128,128,128)'};
+      props.value === 'Without priority' && '2px solid rgb(128,128,128)'};
     border: ${props =>
-      props.value === 'low' && '2px solid rgba(143, 161, 208, 1)'};
+      props.value === 'Low' && '2px solid rgba(143, 161, 208, 1)'};
     border: ${props =>
-      props.value === 'medium' && '2px solid rgba(224, 156, 181, 1)'};
+      props.value === 'Medium' && '2px solid rgba(224, 156, 181, 1)'};
     border: ${props =>
-      props.value === 'high' && '2px solid rgba(190, 219, 176, 1)'};
+      props.value === 'High' && '2px solid rgba(190, 219, 176, 1)'};
   }
 `;
 
@@ -189,13 +201,13 @@ export const LabelItem = styled.div`
   transform: translate(-50%, -50%);
 
   background-color: ${props =>
-    props.value === 'without priority' && 'rgb(128,128,128,1)'};
+    props.value === 'Without priority' && 'rgb(128,128,128,1)'};
   background-color: ${props =>
-    props.value === 'low' && 'rgba(143, 161, 208, 1)'};
+    props.value === 'Low' && 'rgba(143, 161, 208, 1)'};
   background-color: ${props =>
-    props.value === 'medium' && 'rgba(224, 156, 181, 1)'};
+    props.value === 'Medium' && 'rgba(224, 156, 181, 1)'};
   background-color: ${props =>
-    props.value === 'high' && 'rgba(190, 219, 176, 1)'};
+    props.value === 'High' && 'rgba(190, 219, 176, 1)'};
 
   transition: all 250ms linear;
 
@@ -376,8 +388,6 @@ export const Wrapper = styled.div`
       margin-bottom: 14px;
     }
   }
-  .react-datepicker__input-container input {
-  }
 `;
 
 export const DateTitle = styled.div`
@@ -385,6 +395,10 @@ export const DateTitle = styled.div`
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.28px;
-
   cursor: pointer;
+  transition: all 150ms linear;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;

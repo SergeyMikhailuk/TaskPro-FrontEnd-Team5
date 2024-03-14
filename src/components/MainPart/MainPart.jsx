@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
 import { useGetBoardByIdQuery } from 'store/boardsSlice';
 import { Column } from 'components/Board/Column/Column';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 import { ModalColumn } from 'components/ModalWindows/ColumnModals';
 import { Filter } from 'components/Filter/Filter';
+
 
 import {
   WrapperMain,
@@ -53,6 +53,7 @@ const MainPart = ({ children }) => {
   console.log(boardData);
   return (
     <WrapperMain $url={boardData?.board?.backgroundURL}>
+      <Filter/>
       <Header>
         <Title>{boardData?.board?.title}</Title>
       </Header>

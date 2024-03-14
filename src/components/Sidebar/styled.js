@@ -180,8 +180,6 @@ export const BoxHelp = styled.div`
   }
 `;
 
-// export const BoardItem = styled.li``;
-
 export const BoxHelpText = styled.p`
   font-size: 12px;
   line-height: 133%;
@@ -206,8 +204,11 @@ export const BoxHelpBtnOpenModal = styled.button`
   background-color: transparent;
   border: none;
 
-  &:hover {
+  &:hover {    
     svg {
+      color: ${props => props.theme.sidebar.iconLogoutHover};
+    }
+    p {
       color: ${props => props.theme.sidebar.iconLogoutHover};
     }
   }
@@ -241,8 +242,11 @@ export const LogOutIconBtnWrap = styled.button`
   display: flex;
   align-items: center;
 
-  &:hover {
+  &:hover {    
     svg {
+      color: ${props => props.theme.sidebar.iconLogoutHover};
+    }
+    p {
       color: ${props => props.theme.sidebar.iconLogoutHover};
     }
   }
