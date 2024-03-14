@@ -17,6 +17,12 @@ export const todosApi = createApi({
         body: todo,
       }),
       invalidatesTags: ['Todos'],
+      onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled;
+        if (data) {
+          dispatch(boardsApi.util.invalidateTags(['Board']));
+        }
+      },
     }),
     updateTodos: build.mutation({
       query: ({ todoId, ...rest }) => ({
@@ -25,6 +31,12 @@ export const todosApi = createApi({
         body: rest,
       }),
       invalidatesTags: ['Todos'],
+      onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled;
+        if (data) {
+          dispatch(boardsApi.util.invalidateTags(['Board']));
+        }
+      },
     }),
     deleteTodos: build.mutation({
       query: ({ todoId }) => ({
@@ -32,6 +44,12 @@ export const todosApi = createApi({
         method: 'DELETE',
       }),
       invalidatesTags: ['Todos'],
+      onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled;
+        if (data) {
+          dispatch(boardsApi.util.invalidateTags(['Board']));
+        }
+      },
     }),
     changeTodosColumn: build.mutation({
       query: ({ todoId, columnId }) => ({
@@ -39,6 +57,12 @@ export const todosApi = createApi({
         method: 'PATCH',
       }),
       invalidatesTags: ['Todos'],
+      onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled;
+        if (data) {
+          dispatch(boardsApi.util.invalidateTags(['Board']));
+        }
+      },
     }),
   }),
 });
