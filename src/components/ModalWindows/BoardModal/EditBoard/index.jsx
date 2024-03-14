@@ -21,7 +21,6 @@ import sprite from '../../../../images/sprite.svg';
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-// import { editDashbord } from 'redux/dashboards/dashboardsOperations';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),

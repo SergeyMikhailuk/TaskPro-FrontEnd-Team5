@@ -18,9 +18,7 @@ export const todosApi = createApi({
         body: rest,
       }),
       invalidatesTags: ['Todos'],
-
       onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
-        console.log('object');
         const { data } = await queryFulfilled;
         if (data) {
           dispatch(boardsApi.util.invalidateTags(['Board']));
