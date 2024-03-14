@@ -31,6 +31,11 @@ export const CloseModal = styled(CloseBtn)`
   width: 18px;
   height: 18px;  
   color: ${props => props.theme.modal.textMain};
+  transition: all 250ms linear;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 
 export const ClosedButton = styled.button`

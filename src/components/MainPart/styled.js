@@ -48,7 +48,7 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 39px;
 `;
 
 export const Title = styled.h2`
@@ -131,15 +131,6 @@ export const Wrapper = styled.div`
     background-color: ${props => props.theme.column.scrollTrack};
     border-radius: 12px;
     border: 1px solid ${props => props.theme.column.scrollBorder};
-  }
-
-  @media screen and (min-width: 768px) {
-    
-    
-  }
-
-  @media screen and (min-width: 1280px) {
-    
   }
 `;
 
