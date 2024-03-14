@@ -13,6 +13,7 @@ import {
   ModalFormikBoxInput,
   ModalFormikBoxBtn,
   ModalFormikBoxBtnIcon,
+  ErrorText,
 } from './styled';
 
 const ModalColumn = ({ typeModal, closeModal, activeBoardId, columnId }) => {
@@ -59,7 +60,7 @@ const ModalColumn = ({ typeModal, closeModal, activeBoardId, columnId }) => {
                 placeholder="Title"
                 required
               />
-              <ErrorMessage name="title" component="div" className="error" />{' '}
+              <ErrorMessage name="title" component={ErrorText} />{' '}
             </ModalFormikBox>
             <ModalFormikBoxBtn type="submit">
               <ModalFormikBoxBtnIcon />

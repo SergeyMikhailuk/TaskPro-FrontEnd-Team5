@@ -124,7 +124,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
         {() => (
           <ModalForm>
             <FormWrapper>
-              <AuthError name="title" component="div" />
+              
 
               <TitleInput
                 type="text"
@@ -132,7 +132,8 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
                 name="title"
                 placeholder="Title"
               />
-              <AuthError name="description" component="div" />
+              <AuthError name="title" component="div" />
+              
 
               <Textarea
                 component="textarea"
@@ -141,6 +142,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
                 type="text"
                 placeholder="Description"
               />
+              <AuthError name="description" component="div" />
             </FormWrapper>
             <FormWrapper>
               <FormTitle>Icons</FormTitle>
