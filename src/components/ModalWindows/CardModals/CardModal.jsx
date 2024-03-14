@@ -26,11 +26,9 @@ import {
 import {
   useCreateTodosMutation,
   useUpdateTodosMutation,
-} from 'store/todosSlice'
+} from 'store/todosSlice';
 
-
-
-const options = ['low', 'medium', 'high', 'without priority'];
+const options = ['Low', 'Medium', 'High', 'Without priority'];
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
@@ -85,35 +83,35 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
   const customDate =
     startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
-  let deadline = startDate;
-
   const handleSubmit = async (values, { resetForm }) => {
     const { title, description, priority } = values;
+    let deadline = startDate;
+
     if (deadline === '') {
       deadline = new Date().toISOString();
     }
-    try {
-      const response = await createCard({
-        columnId: columnId,
-        todo: { title, description, priority, deadline },
-      });
 
-      console.log('Board created:', response);
+    try {
+      if (typeModal === 'add') {
+        await createCard({
+          columnId: columnId,
+          todo: { title, description, priority, deadline },
+        });
+      } else if (typeModal === 'edit' && card) {
+        await editCard({
+          todoId: card._id,
+          title,
+          description,
+          priority,
+          deadline,
+        });
+      }
+
+      resetForm();
       closeModal();
     } catch (error) {
-      console.error('Error creating board:', error);
+      console.error('Error:', error);
     }
-    closeModal();
-  };
-  const handleSubmitEdit = async (values, { resetForm }) => {
-    if (card)
-      try {
-        const response = await editCard({ _id: card._id, ...values });
-        console.log('Card updated:', response);
-        closeModal();
-      } catch (error) {
-        console.error('Error updating board:', error);
-      }
   };
 
   return (
@@ -121,11 +119,10 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={typeModal === 'add' ? handleSubmitEdit : handleSubmit}
+        onSubmit={handleSubmit}
       >
         {() => (
           <ModalForm>
-            {' '}
             <FormWrapper>
               <AuthError name="title" component="div" />
 
