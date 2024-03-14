@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { useDeleteTodosMutation } from 'store/todosSlice';
 import Card from 'components/Board/Cards/Cards';
@@ -62,7 +63,23 @@ export const Column = ({ item }) => {
       console.error('Error deleting column:', error);
     }
   };
-
+  //!filter
+  const filter = useSelector((state) => state.filter)
+  console.log(item);
+  const filterCards = () => {
+    const filteredArray = item?.map()
+    //   boardData?.columns?.map(column =>
+    // {
+    //   const cards = column.todos?.filter(card =>
+    //     card.priority.toLowerCase().includes(filter.toLowerCase())
+    //   );
+    //   console.log(cards);
+      // return column.todos = cards;
+    // });
+    return filteredArray;
+  }
+  // console.log(filterCards());
+  // console.log(boardData);
   return (
     <Wrapper>
       <ContentWrapper>
