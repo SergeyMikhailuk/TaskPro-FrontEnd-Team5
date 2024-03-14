@@ -67,6 +67,9 @@ const Sidebar = () => {
   const handleCloseBoardModal = () => {
     setIsOpenBoardModal(false);
   };
+  const handleCloseHelpModal = () => {
+    setIsModalOpenHelp(false);
+  };
 
   const openModalHelp = () => {
     setIsModalOpenHelp(true);
@@ -131,10 +134,14 @@ const Sidebar = () => {
             <BoxHelpBtnIcon />
             <BoxHelpBtnText>Need help?</BoxHelpBtnText>
           </BoxHelpBtnOpenModal>
-          <HelpModal
+          <ReactModal
             isOpen={isModalOpenHelp}
-            closeModal={() => setIsModalOpenHelp(false)}
-          />
+            title="Need help"
+            closeModal={handleCloseHelpModal}
+            onRequestClose={handleCloseHelpModal}
+          >
+            <HelpModal closeModal={handleCloseBoardModal} />
+          </ReactModal>
         </BoxHelp>
         <LogOut>
           <LogOutIconBtnWrap onClick={handleLogout}>

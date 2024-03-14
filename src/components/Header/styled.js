@@ -99,9 +99,13 @@ export const ButtonProfile = styled.button`
   background-color: transparent;
   border: none;
   padding: 0;
-
+  transition: all 150ms linear;
   img {
     width: 32px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 
@@ -112,6 +116,10 @@ export const StyledSelectWrapper = styled.div`
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  transition: all 150ms linear;
+  &:hover svg {
+    transform: scale(1.3);
+  }
 `;
 export const StyledTitle = styled.p`
   font-size: 14px;
@@ -144,8 +152,9 @@ export const StyledList = styled.ul`
 export const StyledItem = styled.li`
   cursor: pointer;
   color: ${props => props.theme.themePopup.textSecondary};
-  transition: color 0.25s;
+  transition: all 150ms linear;
   &:hover {
     color: ${props => props.theme.themePopup.strokeBell};
+    transform: scale(1.1);
   }
 `;

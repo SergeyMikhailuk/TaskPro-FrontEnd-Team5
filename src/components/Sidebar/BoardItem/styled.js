@@ -77,6 +77,11 @@ export const BoardListBtnEdit = styled(AppEditCardSvg)`
   width: 16px;
   height: 16px;
   color: ${props => props.theme.sidebar.addButtonBackground};
+  transition: all 250ms linear;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 
 export const BoardListDeleteBtn = styled.button`
@@ -88,4 +93,9 @@ export const BoardListBtnDelete = styled(AppTrashCardSvg)`
   width: 16px;
   height: 16px;
   color: ${props => props.theme.sidebar.addButtonBackground};
+  transition: all 250ms linear;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
