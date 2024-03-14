@@ -95,7 +95,11 @@ export const Column = ({ item }) => {
         closeModal={handleCloseColumnModal}
         onRequestClose={handleCloseColumnModal}
       >
-        <ModalColumn typeModal={'edit'} closeModal={handleCloseColumnModal} />
+        <ModalColumn
+          typeModal={'edit'}
+          closeModal={handleCloseColumnModal}
+          columnId={item._id}
+        />
       </ReactModal>
 
       <ReactModal
