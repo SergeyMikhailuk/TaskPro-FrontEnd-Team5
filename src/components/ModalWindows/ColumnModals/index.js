@@ -1,7 +1,12 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useCreateColumnMutation } from 'store/columnsSlice';
+
+import {
+  useCreateColumnMutation,
+  useUpdateColumnMutation,
+} from 'store/columnsSlice';
+
 import {
   ModalContainer,
   ModalFormikBox,
@@ -10,12 +15,13 @@ import {
   ModalFormikBoxBtnIcon,
 } from './styled';
 
-const ModalColumn = ({ typeModal, closeModal, activeBoardId }) => {
+const ModalColumn = ({ typeModal, closeModal, activeBoardId, columnId }) => {
   const initialValues = {
     title: '',
   };
 
   const [createColumn] = useCreateColumnMutation();
+  const [updateColumn] = useUpdateColumnMutation();
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required('Title is required'),
@@ -23,11 +29,16 @@ const ModalColumn = ({ typeModal, closeModal, activeBoardId }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      await createColumn({ boardId: activeBoardId, column: values });
+      if (typeModal === 'add') {
+        await createColumn({ boardId: activeBoardId, column: values });
+      } else if (typeModal === 'edit') {
+        console.log(columnId);
+        await updateColumn({ columnId, column: values });
+      }
       resetForm();
       closeModal();
     } catch (error) {
-      console.error('Error creating column:', error);
+      console.error('Error:', error);
     }
   };
 
@@ -40,7 +51,6 @@ const ModalColumn = ({ typeModal, closeModal, activeBoardId }) => {
       >
         {() => (
           <Form>
-
             {' '}
             <ModalFormikBox>
               <Field

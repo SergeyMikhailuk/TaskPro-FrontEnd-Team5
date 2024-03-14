@@ -1,4 +1,7 @@
 import React from 'react';
+import { Formik } from 'formik';
+
+import { useUpdateColumnMutation } from 'store/columnsSlice';
 
 import {
   ModalContainer,
@@ -7,17 +10,16 @@ import {
   ModalFormikBoxBtn,
   ModalFormikBoxBtnIcon,
 } from './styled';
-import { Formik } from 'formik';
-import { useUpdateColumnMutation } from 'store/columnsSlice';
 
-const ModalEditColumn = ({ isOpen, closeModal, columnId }) => {
+const ModalEditColumn = ({ closeModal, columnId }) => {
   const initialValues = {
     title: '',
   };
   const [updateColumn] = useUpdateColumnMutation();
 
-  const handleSubmit = async (values, { resetForm, closeModal }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     try {
+      console.log(columnId);
       await updateColumn({ columnId, column: values });
       resetForm();
       closeModal();
@@ -28,9 +30,9 @@ const ModalEditColumn = ({ isOpen, closeModal, columnId }) => {
 
   return (
     <ModalContainer>
-      <Formik id="formEditColumn" initialValues={initialValues}>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {formik => (
-          <>
+          <form onSubmit={formik.handleSubmit}>
             <ModalFormikBox>
               <ModalFormikBoxInput
                 type="text"
@@ -45,7 +47,7 @@ const ModalEditColumn = ({ isOpen, closeModal, columnId }) => {
               <ModalFormikBoxBtnIcon />
               Add
             </ModalFormikBoxBtn>
-          </>
+          </form>
         )}
       </Formik>
     </ModalContainer>

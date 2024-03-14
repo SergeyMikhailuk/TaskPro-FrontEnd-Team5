@@ -22,11 +22,13 @@ import {
   CardstBtnEdit,
   AddCardCreateBtn,
 } from './styled';
+import { useDeleteColumnMutation } from 'store/columnsSlice';
 
 export const Column = ({ item }) => {
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
   const [deleteCard] = useDeleteTodosMutation();
+  const [deleteColumn] = useDeleteColumnMutation();
 
   const handleOpenColumnModal = () => {
     setIsOpenColumnModal(true);
@@ -53,6 +55,14 @@ export const Column = ({ item }) => {
     }
   };
 
+  const handleDeleteColumn = async () => {
+    try {
+      await deleteColumn({ columnId: item._id });
+    } catch (error) {
+      console.error('Error deleting column:', error);
+    }
+  };
+
   return (
     <Wrapper>
       <ContentWrapper>
@@ -64,7 +74,7 @@ export const Column = ({ item }) => {
                 <CardstBtnEdit onClick={handleOpenColumnModal} />
               </ButtonEdit>
               <ButtonDelete>
-                <CardsBtnDelete />
+                <CardsBtnDelete onClick={handleDeleteColumn} />
               </ButtonDelete>
             </ButtonWrapper>
           </Header>
@@ -95,7 +105,11 @@ export const Column = ({ item }) => {
         closeModal={handleCloseColumnModal}
         onRequestClose={handleCloseColumnModal}
       >
-        <ModalColumn typeModal={'edit'} closeModal={handleCloseColumnModal} />
+        <ModalColumn
+          typeModal={'edit'}
+          closeModal={handleCloseColumnModal}
+          columnId={item._id}
+        />
       </ReactModal>
 
       <ReactModal

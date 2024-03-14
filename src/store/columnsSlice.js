@@ -1,5 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from './baseQuery';
+import { boardsApi } from './boardsSlice';
 
 export const columnsApi = createApi({
   reducerPath: 'columnsApi',
@@ -17,14 +18,25 @@ export const columnsApi = createApi({
         body: column,
       }),
       invalidatesTags: ['Columns'],
+      onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled;
+        if (data) {
+          dispatch(boardsApi.util.invalidateTags(['Board']));
+        }
+      },
     }),
     updateColumn: build.mutation({
-      query: ({ columnId, ...rest }) => ({
+      query: ({ column, columnId }) => ({
         url: `/api/columns/${columnId}`,
         method: 'PATCH',
-        body: rest,
+        body: column,
       }),
-      invalidatesTags: ['Columns'],
+      onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled;
+        if (data) {
+          dispatch(boardsApi.util.invalidateTags(['Board']));
+        }
+      },
     }),
     deleteColumn: build.mutation({
       query: ({ columnId }) => ({
@@ -32,6 +44,12 @@ export const columnsApi = createApi({
         method: 'DELETE',
       }),
       invalidatesTags: ['Columns'],
+      onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
+        const { data } = await queryFulfilled;
+        if (data) {
+          dispatch(boardsApi.util.invalidateTags(['Board']));
+        }
+      },
     }),
   }),
 });
