@@ -1,5 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from './baseQuery';
+import { boardsApi } from './boardsSlice';
 
 export const todosApi = createApi({
   reducerPath: 'todosApi',

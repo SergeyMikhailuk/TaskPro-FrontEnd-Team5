@@ -168,13 +168,13 @@ export const Label = styled.label`
 
   &.active {
     border: ${props =>
-      props.value === 'without priority' && '2px solid rgb(128,128,128)'};
+      props.value === 'Without priority' && '2px solid rgb(128,128,128)'};
     border: ${props =>
-      props.value === 'low' && '2px solid rgba(143, 161, 208, 1)'};
+      props.value === 'Low' && '2px solid rgba(143, 161, 208, 1)'};
     border: ${props =>
-      props.value === 'medium' && '2px solid rgba(224, 156, 181, 1)'};
+      props.value === 'Medium' && '2px solid rgba(224, 156, 181, 1)'};
     border: ${props =>
-      props.value === 'high' && '2px solid rgba(190, 219, 176, 1)'};
+      props.value === 'High' && '2px solid rgba(190, 219, 176, 1)'};
   }
 `;
 
@@ -189,13 +189,13 @@ export const LabelItem = styled.div`
   transform: translate(-50%, -50%);
 
   background-color: ${props =>
-    props.value === 'without priority' && 'rgb(128,128,128,1)'};
+    props.value === 'Without priority' && 'rgb(128,128,128,1)'};
   background-color: ${props =>
-    props.value === 'low' && 'rgba(143, 161, 208, 1)'};
+    props.value === 'Low' && 'rgba(143, 161, 208, 1)'};
   background-color: ${props =>
-    props.value === 'medium' && 'rgba(224, 156, 181, 1)'};
+    props.value === 'Medium' && 'rgba(224, 156, 181, 1)'};
   background-color: ${props =>
-    props.value === 'high' && 'rgba(190, 219, 176, 1)'};
+    props.value === 'High' && 'rgba(190, 219, 176, 1)'};
 
   transition: all 250ms linear;
 
