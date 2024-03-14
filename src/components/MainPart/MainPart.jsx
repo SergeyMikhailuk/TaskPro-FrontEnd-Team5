@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetBoardByIdQuery } from 'store/boardsSlice';
 import { Column } from 'components/Board/Column/Column';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 import { ModalColumn } from 'components/ModalWindows/ColumnModals';
-import Filter from 'components/Filter/Filter'
+import { Filter } from 'components/Filter/Filter';
 
 import {
   WrapperMain,
@@ -22,12 +22,7 @@ const MainPart = ({ children }) => {
   const activeBoardId = useSelector(store => store.activeBoardId);
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
   const { data: boardData } = useGetBoardByIdQuery(activeBoardId);
-
   const scrollRef = useRef(null);
-
-  useEffect(() => {
-    if (!activeBoardId) return;
-  }, [activeBoardId]);
 
   const handleOpenColumnModal = () => {
     setIsOpenColumnModal(true);
@@ -36,10 +31,20 @@ const MainPart = ({ children }) => {
   const handleCloseColumnModal = () => {
     setIsOpenColumnModal(false);
   };
- 
+
+  const filter = useSelector(state => state.filter);
+  const filterCards = () => {
+    return boardData?.columns?.map(column => {
+      return column?.todos?.filter(card =>
+        card.priority.toLowerCase().includes(filter.toLowerCase())
+      );
+    });
+  };
+  console.log('filterCards(): ', filterCards());
+
   return (
     <WrapperMain $url={boardData?.board?.backgroundURL}>
-      <Filter/>
+      <Filter />
       <Header>
         <Title>{boardData?.board?.title}</Title>
       </Header>
@@ -56,7 +61,7 @@ const MainPart = ({ children }) => {
             <Text>Add another column</Text>
           </AddButton>
         </ContentWrapper>
-
+        <Filter></Filter>
         <ReactModal
           isOpen={isOpenColumnModal}
           title="Add Column"

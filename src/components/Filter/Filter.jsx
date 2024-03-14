@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ReactModal } from '../ModalWindows/Modal/Modal';
 
 import { setFilter } from 'store/filterSlice';
@@ -115,4 +115,5 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+// export default Filter;
+export {Filter}
