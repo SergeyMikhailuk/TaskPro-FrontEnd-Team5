@@ -84,13 +84,14 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
   let deadline = startDate;
 
   const handleSubmit = async (values, { resetForm }) => {
+    const { title, description, priority } = values;
     if (deadline === '') {
       deadline = new Date().toISOString();
     }
     try {
       const response = await createCard({
         columnId: columnId,
-        todo: values,
+        todo: { title, description, priority, deadline },
       });
 
       console.log('Board created:', response);
@@ -101,14 +102,14 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
     closeModal();
   };
   const handleSubmitEdit = async (values, { resetForm }) => {
-    const { _id } = card;
-    try {
-      const response = await editCard({ _id, ...values });
-      console.log('Card updated:', response);
-      closeModal();
-    } catch (error) {
-      console.error('Error updating board:', error);
-    }
+    if (card)
+      try {
+        const response = await editCard({ _id: card._id, ...values });
+        console.log('Card updated:', response);
+        closeModal();
+      } catch (error) {
+        console.error('Error updating board:', error);
+      }
   };
 
   return (
@@ -117,7 +118,6 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={typeModal === 'add' ? handleSubmitEdit : handleSubmit}
-        // onSubmit={handleSubmit}
       >
         {() => (
           <ModalForm>
