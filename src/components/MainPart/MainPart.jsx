@@ -37,20 +37,20 @@ const MainPart = ({ children }) => {
     setIsOpenColumnModal(false);
   };
  
-  const filter = useSelector((state) => state.filter)
-  const filterCards = () => {
-    const filteredArray = boardData?.columns?.map(column =>
-    {
-      const cards = column.todos?.filter(card =>
-        card.priority.toLowerCase().includes(filter.toLowerCase())
-      );
-      console.log(cards);
-      return column.todos = cards;
-    });
-    return filteredArray;
-  }
-  console.log(filterCards());
-  console.log(boardData);
+  // const filter = useSelector((state) => state.filter)
+  // const filterCards = () => {
+  //   const filteredArray = boardData?.columns?.map(column =>
+  //   {
+  //     const cards = column.todos?.filter(card =>
+  //       card.priority.toLowerCase().includes(filter.toLowerCase())
+  //     );
+  //     console.log(cards);
+  //     return column.todos = cards;
+  //   });
+  //   return filteredArray;
+  // }
+  // console.log(filterCards());
+  // console.log(boardData);
   return (
     <WrapperMain $url={boardData?.board?.backgroundURL}>
       <Filter/>
