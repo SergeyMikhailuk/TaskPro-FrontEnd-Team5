@@ -22,18 +22,22 @@ import {
   TitleInput,
   Wrapper,
 } from './CardModal.styled';
+
 import {
   useCreateTodosMutation,
   useUpdateTodosMutation,
-} from 'store/todosSlice';
+} from 'store/todosSlice'
+
+
 
 const options = ['low', 'medium', 'high', 'without priority'];
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
   description: Yup.string()
-    .max(230, 'Maximum 230 characters')
-    .required('Description is required'),
+    .min(1, 'Minimum 1 characters')
+    .max(230, 'Maximum 230 characters'),
+  // .required('Description is required'),
 });
 const months = [
   'January',
