@@ -64,7 +64,6 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
-
 export const editProfile = createAsyncThunk(
   'auth/editProfile',
   async ({ formData, thunkAPI, token }) => {
@@ -76,7 +75,7 @@ export const editProfile = createAsyncThunk(
         },
       });
 
-      return resp.data;
+      return resp.data.user;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

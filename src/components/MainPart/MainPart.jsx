@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetBoardByIdQuery } from 'store/boardsSlice';
 import { Column } from 'components/Board/Column/Column';
@@ -21,13 +21,8 @@ import {
 const MainPart = ({ children }) => {
   const activeBoardId = useSelector(store => store.activeBoardId);
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
-  console.log('activeBoardId: ', activeBoardId);
   const { data: boardData } = useGetBoardByIdQuery(activeBoardId);
   const scrollRef = useRef(null);
-
-  useEffect(() => {
-    if (!activeBoardId) return;
-  }, [activeBoardId]);
 
   const handleOpenColumnModal = () => {
     setIsOpenColumnModal(true);
@@ -46,7 +41,7 @@ const MainPart = ({ children }) => {
     });
   };
   console.log('filterCards(): ', filterCards());
-  console.log(boardData);
+
   return (
     <WrapperMain $url={boardData?.board?.backgroundURL}>
       <Filter />
