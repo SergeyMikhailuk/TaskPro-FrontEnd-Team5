@@ -9,15 +9,13 @@ export const Textarea = styled.textarea`
   padding: 14px 18px;
 
   font-size: 14px;
-  font-family: 'Poppins';
   letter-spacing: -0.28px;
 
   margin-top: 14px;
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
+  box-shadow: 0 4px 16px rgba(22, 22, 22, 0.08);
 
   background-color: ${props => props.theme.modal.backgroundMain};
   border: 1px solid ${props => props.theme.modal.buttonBackground};
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
   outline: none;
   border-radius: 8px;
 
@@ -28,7 +26,6 @@ export const Textarea = styled.textarea`
   &::placeholder {
     color: ${props => props.theme.modal.textMain};
     font-size: 14px;
-    font-family: 'Poppins';
     letter-spacing: -0.28px;
   }
 
@@ -66,10 +63,6 @@ export const FormWrapper = styled.div`
   &:last-of-type {
     margin-bottom: 14px;
   }
-`;
-
-export const LabelInput = styled.label`
-  width: 100%;
 `;
 
 export const TitleInput = styled(Field)`
@@ -163,7 +156,7 @@ export const RadioBtnWrapper = styled.ul`
   justify-content: center;
   align-items: center;
   gap: 4px;
- 
+
 `;
 
 export const Label = styled.label`
@@ -179,14 +172,14 @@ export const Label = styled.label`
   }
 
   &.active {
-    border: ${props =>
-      props.value === 'Without priority' && '2px solid rgb(128,128,128)'};
-    border: ${props =>
-      props.value === 'Low' && '2px solid rgba(143, 161, 208, 1)'};
-    border: ${props =>
-      props.value === 'Medium' && '2px solid rgba(224, 156, 181, 1)'};
-    border: ${props =>
-      props.value === 'High' && '2px solid rgba(190, 219, 176, 1)'};
+    border: ${({$value}) =>
+      $value === 'Without priority' && '2px solid rgb(128,128,128)'};
+    border: ${({$value}) =>
+      $value === 'Low' && '2px solid rgba(143, 161, 208, 1)'};
+    border: ${({$value}) =>
+      $value === 'Medium' && '2px solid rgba(224, 156, 181, 1)'};
+    border: ${({$value}) =>
+      $value === 'High' && '2px solid rgba(190, 219, 176, 1)'};
   }
 `;
 

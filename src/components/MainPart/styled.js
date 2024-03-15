@@ -69,7 +69,7 @@ export const Title = styled.h2`
 export const AddButton = styled.button`
   position: absolute;
   top: 0;
-  right: ${props => (props.length === 0 ? '-334px' : '-368px')};
+  right: ${({$length}) => ($length === 0 ? '-334px' : '-368px')};
   width: 334px;
   height: 56px;
   padding: 14px 0;

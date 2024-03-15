@@ -131,8 +131,8 @@ export const StyledTitle = styled.p`
 
 export const StyledList = styled.ul`
   position: absolute;
-  opacity: ${props => (props.isOpen ? '1' : '0')};
-  transform: translateY(${props => (props.isOpen ? '70px' : '-150px')});
+  opacity: ${({$isOpen}) => ($isOpen ? '1' : '0')};
+  transform: translateY(${({$isOpen}) => ($isOpen ? '70px' : '-150px')});
   transition-property: opacity, transform;
   transition:
     opacity 0.25s,
@@ -169,7 +169,6 @@ export const Wrapper = styled.div`
 export const UserName = styled.span`
   color: ${props => props.theme.header.userName};
   font-size: 14px;
-  font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.28px;
 

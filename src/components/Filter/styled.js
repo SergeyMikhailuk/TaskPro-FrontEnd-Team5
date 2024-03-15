@@ -27,7 +27,7 @@ export const FilterBtn = styled.button`
   }
 
   @media screen and (min-width: 768px) {
-    
+
     right: 32px;
   }
 
@@ -48,10 +48,10 @@ export const Wrapper = styled.div`
 `;
 
 export const Label = styled.div`
-  width: 160px;  
+  width: 160px;
 
   @media screen and (min-width: 345px) {
-    width: 252px; 
+    width: 252px;
     }
 `;
 
@@ -75,20 +75,19 @@ export const Container = styled.div`
 `;
 
 export const LabelColors = styled.p`
-  
+
   color: ${props => props.theme.header.userName};
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.28px;
   font-family: 'Poppins', sans-serif;
 
-  
+
 `;
 
 export const ShowAllBtn = styled.button`
   font-size: 12px;
   font-weight: 400;
-  font-size: 12px;
   letter-spacing: -0.02em;
   text-decoration: underline;
   color: ${props => props.theme.modal.textSecondary};
@@ -115,8 +114,8 @@ export const RadioLabel = styled.label`
   cursor: pointer;
   transition: all 150ms linear;
   & input:checked + span::before {
-    opacity: 1; 
-  }  
+    opacity: 1;
+  }
 
   &:hover {
     transform: scale(1.1);
@@ -140,14 +139,14 @@ export const Marker = styled.span`
   opacity: 1;
   transition: opacity 0.25s ease;
   position: relative;
-  background-color: ${props => {
-    if (props.value === 'without') {
-      return props.theme.modal.radioGray;
-    } else if (props.value === 'low') {
+  background-color: ${({$value}) => {
+    if ($value === 'without') {
+      return 'rgba(255, 255, 255, 0.3)';
+    } else if ($value === 'low') {
       return '#8fa1d0';
-    } else if (props.value === 'medium') {
+    } else if ($value === 'medium') {
       return '#e09cb5';
-    } else if (props.value === 'high') {
+    } else if ($value === 'high') {
       return '#bedbb0';
     }
   }};
@@ -172,5 +171,5 @@ export const RadioInput = styled.input`
   &:checked + ${Marker} + span {
     color: ${props => props.theme.header.userName};
   }
-  
+
 `;

@@ -49,7 +49,7 @@ const Filter = () => {
         closeModal={handleCloseModal}
         onRequestClose={handleCloseModal}
       >
-        <Wrapper >   
+        <Wrapper >
             <Label>
               <Container>
                 <LabelColors>Label colors</LabelColors>
@@ -64,7 +64,7 @@ const Filter = () => {
                       value="without priority"
                       onChange={changeFilter}
                     />
-                    <Marker value="without"></Marker>
+                    <Marker $value="without"></Marker>
                     <span>Without priority</span>
                   </RadioLabel>
                 </RadioItem>
@@ -77,7 +77,7 @@ const Filter = () => {
                       value="low"
                       onChange={changeFilter}
                     />
-                    <Marker value="low"></Marker>
+                    <Marker $value="low"></Marker>
                     <span>Low</span>
                   </RadioLabel>
                 </RadioItem>
@@ -90,7 +90,7 @@ const Filter = () => {
                       value="medium"
                       onChange={changeFilter}
                     />
-                    <Marker value="medium"></Marker>
+                    <Marker $value="medium"></Marker>
                     <span>Medium</span>
                   </RadioLabel>
                 </RadioItem>
@@ -103,7 +103,7 @@ const Filter = () => {
                       value="high"
                       onChange={changeFilter}
                     />
-                    <Marker value="high"></Marker>
+                    <Marker $value="high"></Marker>
                     <span>High</span>
                   </RadioLabel>
                 </RadioItem>

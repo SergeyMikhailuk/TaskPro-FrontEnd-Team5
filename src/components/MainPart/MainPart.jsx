@@ -18,7 +18,7 @@ import {
   Wrapper,
 } from './styled';
 
-const MainPart = ({ children }) => {
+const MainPart = () => {
   const activeBoardId = useSelector(store => store.activeBoardId);
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
   const { data: boardData } = useGetBoardByIdQuery(activeBoardId);
@@ -50,7 +50,7 @@ const MainPart = ({ children }) => {
               activeBoardId={activeBoardId}
             />
           ))}
-          <AddButton onClick={handleOpenColumnModal} type="button">
+          <AddButton onClick={handleOpenColumnModal} $length={boardData?.columns?.length} type="button">
             <IconWrapper>
               <AddIcon />
             </IconWrapper>

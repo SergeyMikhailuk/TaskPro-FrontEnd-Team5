@@ -81,7 +81,7 @@ const Header = () => {
           <StyledTitle>Theme</StyledTitle>
           <Down />
           {isThemeOpen && (
-            <StyledList isOpen={isThemeOpen}>
+            <StyledList $isOpen={isThemeOpen}>
               {themes.map(({ value, name }) => (
                 <StyledItem
                   key={value}
