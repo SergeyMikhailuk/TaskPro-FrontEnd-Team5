@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useGetBoardByIdQuery } from 'store/boardsSlice';
+import { useGetBoardByIdQuery, useGetBoardsQuery } from 'store/boardsSlice';
 import { Column } from 'components/Board/Column/Column';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 import { ModalColumn } from 'components/ModalWindows/ColumnModals';
@@ -20,9 +20,13 @@ import {
 } from './styled';
 
 const BoardPage = () => {
-  const activeBoardId = useSelector(store => store.activeBoardId);
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
+  const { data: boardsData } = useGetBoardsQuery();
+  const currentId = boardsData[0]?._id;
+  const activeBoardId = useSelector(store => store.activeBoardId) || currentId;
+
   const { data: boardData } = useGetBoardByIdQuery(activeBoardId);
+  console.log('boardData: ', boardData);
   const scrollRef = useRef(null);
 
   const handleOpenColumnModal = () => {
