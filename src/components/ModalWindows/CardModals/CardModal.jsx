@@ -80,7 +80,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
     initialValues.description = card.description;
     initialValues.priority = card.priority;
   }
-
+  console.log('card: ', card)
   const [createCard] = useCreateTodosMutation();
   const [editCard] = useUpdateTodosMutation();
   const activeBoardId = useSelector(state => state.activeBoardId);
@@ -158,7 +158,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
                 {options.map((el, idx) => (
                   <Label
                     key={idx}
-                    value={el}
+                    $value={el}
                     className={selectedLabel === el ? 'active' : ''}
                     id="labelOut"
                   >

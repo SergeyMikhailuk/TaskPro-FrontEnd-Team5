@@ -27,14 +27,14 @@ export const CardWrapper = styled.div`
     width: 4px;
     height: 100%;
 
-    background-color: ${props =>
-      props.priority === 'Without priority' && 'rgb(128, 128, 128)'};
-    background-color: ${props =>
-      props.priority === 'Low' && 'rgba(143, 161, 208, 1)'};
-    background-color: ${props =>
-      props.priority === 'Medium' && 'rgba(224, 156, 181, 1)'};
-    background-color: ${props =>
-      props.priority === 'High' && 'rgba(190, 219, 176, 1)'};
+    background-color: ${({$priority}) =>
+      $priority === 'Without priority' && 'rgb(128, 128, 128)'};
+    background-color: ${({$priority}) =>
+      $priority === 'Low' && 'rgba(143, 161, 208, 1)'};
+    background-color: ${({$priority}) =>
+      $priority === 'Medium' && 'rgba(224, 156, 181, 1)'};
+    background-color: ${({$priority}) =>
+      $priority === 'High' && 'rgba(190, 219, 176, 1)'};
   }
   @media screen and (min-width: 345px) {
     width: 300px;
@@ -127,14 +127,14 @@ export const PriorityIndicator = styled.span`
   margin-right: 4px;
 
 
-  background-color: ${props =>
-    props.priority === 'Without priority' && 'rgb(128, 128, 128)'};
-  background-color: ${props =>
-    props.priority === 'Low' && 'rgba(143, 161, 208, 1)'};
-  background-color: ${props =>
-    props.priority === 'Medium' && 'rgba(224, 156, 181, 1)'};
-  background-color: ${props =>
-    props.priority === 'High' && 'rgba(190, 219, 176, 1)'};
+  background-color: ${({$priority}) =>
+    $priority === 'Without priority' && 'rgb(128, 128, 128)'};
+  background-color: ${({$priority}) =>
+    $priority === 'Low' && 'rgba(143, 161, 208, 1)'};
+  background-color: ${({$priority}) =>
+    $priority === 'Medium' && 'rgba(224, 156, 181, 1)'};
+  background-color: ${({$priority}) =>
+    $priority === 'High' && 'rgba(190, 219, 176, 1)'};
 `;
 
 export const IconsGroup = styled.div`

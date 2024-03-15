@@ -26,7 +26,7 @@ import {
 const Card = ({ item, onDeleteCard }) => {
   const { title, _id, deadline, description, priority } = item;
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
-
+  console.log('item: ', item)
   const handleOpenCardModal = () => {
     setIsOpenCardModal(true);
   };
@@ -38,7 +38,7 @@ const Card = ({ item, onDeleteCard }) => {
   const handleDelete = () => {
     onDeleteCard(_id);
   };
- 
+
   // const options = {
   //   year: 'numeric',
   //   month: '2-digit',
@@ -52,7 +52,7 @@ const Card = ({ item, onDeleteCard }) => {
 
   return (
     <>
-      <CardWrapper priority={priority}>
+      <CardWrapper $priority={priority}>
         <TopWrapper>
           <Title>{title}</Title>
           <Text>{description}</Text>
@@ -63,7 +63,7 @@ const Card = ({ item, onDeleteCard }) => {
             <div>
               <SubTitle>Priority</SubTitle>
               <PriorityWrapper>
-                <PriorityIndicator priority={priority} />
+                <PriorityIndicator $priority={priority} />
                 <SubText>{priority} </SubText>
               </PriorityWrapper>
             </div>
