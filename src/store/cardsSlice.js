@@ -11,10 +11,9 @@ export const todosApi = createApi({
       query: todoId => ({ url: `/api/todos/${todoId}`, method: 'GET' }),
       providesTags: ['Todos'],
     }),
-    
-    createTodos: build.mutation({
-      query: ({ todo, columnId }) => ({
 
+    createTodos: build.mutation({
+      query: ({ columnId, ...rest }) => ({
         url: `/api/todos/${columnId}`,
         method: 'POST',
         body: rest,
