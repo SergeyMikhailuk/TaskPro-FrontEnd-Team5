@@ -13,7 +13,7 @@ const BeforeStart = () => {
   return (
     <>
       <Description>
-        Before starting your project, it is essential
+        Before starting your project, it is essential{' '}
         <Accent onClick={() => setIsOpenBoardModal(true)}>
           to create a board
         </Accent>{' '}

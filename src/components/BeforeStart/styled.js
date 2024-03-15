@@ -10,6 +10,13 @@ export const Description = styled.p`
   text-align: center;
 `;
 
-export const Accent = styled.span`
+export const Accent = styled.button`
+  padding: 0;
+  background-color: transparent;
+  border: 0;
   color: ${props => props.theme.themePopup.textAccent};
+
+  &:hover {
+    text-shadow: 0px 0px 1px var(--accent-color);
+  }
 `;
