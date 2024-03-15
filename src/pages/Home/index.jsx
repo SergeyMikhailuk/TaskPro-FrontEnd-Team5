@@ -14,7 +14,7 @@ const HomePage = () => {
 
   return isLoading ? (
     <Loader />
-  ) : boards.length > 0 ? (
+  ) : boards?.length > 0 ? (
     <HomeWrapperBoard>
       <MainPart />
     </HomeWrapperBoard>
