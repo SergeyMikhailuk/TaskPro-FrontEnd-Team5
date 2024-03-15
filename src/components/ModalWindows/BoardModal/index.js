@@ -43,12 +43,12 @@ const options = [
 ];
 
 const BoardModal = ({ closeModal, item, typeModal }) => {
-  const [selectedBg, setSelectedBg] = useState('');
+  const [selectedBg, setSelectedBg] = useState(options[0]);
   const [setIcon, setSetIcon] = useState(options[0]);
   const [initialValues, setInitialValues] = useState({
     title: '',
     iconURL: setIcon,
-    backgroundURL: '',
+    backgroundURL: setSelectedBg,
   });
 
   const [createBoard] = useCreateBoardMutation();
