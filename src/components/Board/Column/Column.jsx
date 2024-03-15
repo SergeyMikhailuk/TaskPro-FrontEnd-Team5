@@ -64,8 +64,13 @@ export const Column = ({ item }) => {
   };
 
   const filter = useSelector(state => state.filter);
+
   const filterCards = () => {
-    return item?.todos?.filter(card => {
+    const sortedTodos = [...item?.todos]?.sort(
+      (a, b) => new Date(a?.deadline) - new Date(b?.deadline)
+    );
+
+    return sortedTodos?.filter(card => {
       if (filter === 'all') {
         return card;
       }
