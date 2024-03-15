@@ -53,7 +53,7 @@ const Filter = () => {
             <Label>
               <Container>
                 <LabelColors>Label colors</LabelColors>
-                <ShowAllBtn type="button">Show all</ShowAllBtn>
+                <ShowAllBtn type="button" value="" onClick={changeFilter}>Show all</ShowAllBtn>
               </Container>
               <CustomRadioContainer>
                 <RadioItem>
@@ -61,7 +61,7 @@ const Filter = () => {
                     <RadioInput
                       name="labelColor"
                       type="radio"
-                      value="without"
+                      value="without priority"
                       onChange={changeFilter}
                     />
                     <Marker value="without"></Marker>

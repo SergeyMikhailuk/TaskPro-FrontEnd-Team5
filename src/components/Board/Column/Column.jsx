@@ -63,22 +63,22 @@ export const Column = ({ item }) => {
       console.error('Error deleting column:', error);
     }
   };
-  //!filter
+
   const filter = useSelector((state) => state.filter)
   const filterCards = () => {
     const filteredArray = item?.todos?.filter(card =>      
     {
-      console.log(card.priority);
-      console.log(filter);
-      card.priority.toLowerCase().includes(filter)
+      if (filter === "") {
+        return card
+      }
+      return card.priority.toLowerCase() === filter
     }
     );
-    console.log(`filtered array>>>>`,filteredArray);
     return filteredArray;
   }
-  console.log(`filter>>>>`, filter);
-  console.log(`filtered cards>>>>`,filterCards());
-  console.log(`item todos >>>>`, item.todos);
+  // console.log(`filter>>>>`, filter);
+  // console.log(`filtered cards>>>>`,filterCards());
+  
   return (
     <Wrapper>
       <ContentWrapper>
@@ -96,7 +96,7 @@ export const Column = ({ item }) => {
           </Header>
 
           <TaskList>
-            {item.todos.map(todo => (
+            {filterCards().map(todo => (
               <Card
                 key={todo._id}
                 item={todo}
