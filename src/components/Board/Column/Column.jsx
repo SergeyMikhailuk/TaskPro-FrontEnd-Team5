@@ -65,21 +65,20 @@ export const Column = ({ item }) => {
   };
   //!filter
   const filter = useSelector((state) => state.filter)
-  console.log(item);
   const filterCards = () => {
-    const filteredArray = item?.map()
-    //   boardData?.columns?.map(column =>
-    // {
-    //   const cards = column.todos?.filter(card =>
-    //     card.priority.toLowerCase().includes(filter.toLowerCase())
-    //   );
-    //   console.log(cards);
-      // return column.todos = cards;
-    // });
+    const filteredArray = item?.todos?.filter(card =>      
+    {
+      console.log(card.priority);
+      console.log(filter);
+      card.priority.toLowerCase().includes(filter)
+    }
+    );
+    console.log(`filtered array>>>>`,filteredArray);
     return filteredArray;
   }
-  // console.log(filterCards());
-  // console.log(boardData);
+  console.log(`filter>>>>`, filter);
+  console.log(`filtered cards>>>>`,filterCards());
+  console.log(`item todos >>>>`, item.todos);
   return (
     <Wrapper>
       <ContentWrapper>
