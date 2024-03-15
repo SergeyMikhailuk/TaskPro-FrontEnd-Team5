@@ -99,7 +99,6 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
           todo: { title, description, priority, deadline },
           activeBoardId,
         });
-        console.log('createCard');
       } else if (typeModal === 'edit' && card) {
         await editCard({
           todoId: card._id,
@@ -109,7 +108,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
           deadline,
         });
       }
-
+      console.log(description);
       resetForm();
       closeModal();
     } catch (error) {
