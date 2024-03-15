@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import { Description, Accent } from './styled';
 import AddBoardModal from 'components/ModalWindows/BoardModal/AddBoard';
+import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 
 const BeforeStart = () => {
   const [isOpenBoardModal, setIsOpenBoardModal] = useState(false);
+
+  const handleCloseBoardModal = () => {
+    setIsOpenBoardModal(false);
+  };
 
   return (
     <>
@@ -18,7 +23,14 @@ const BeforeStart = () => {
       </Description>
 
       {isOpenBoardModal && (
-        <AddBoardModal closeModal={() => setIsOpenBoardModal(false)} />
+        <ReactModal
+          isOpen={isOpenBoardModal}
+          title="New board"
+          closeModal={handleCloseBoardModal}
+          onRequestClose={handleCloseBoardModal}
+        >
+          <AddBoardModal closeModal={handleCloseBoardModal} />
+        </ReactModal>
       )}
     </>
   );
