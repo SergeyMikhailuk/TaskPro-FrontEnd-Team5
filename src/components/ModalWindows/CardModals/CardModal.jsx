@@ -66,7 +66,7 @@ const dateOptions = {
 const CardModal = ({ typeModal, closeModal, columnId, card }) => {
   const [selectedLabel, setSelectedLabel] = useState(options[3]);
   const [startDate, setStartDate] = useState('');
-
+  var descriptionOnChange;
   const initialValues = {
     title: 'title',
     description: 'description',
@@ -84,7 +84,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
     startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
   const handleSubmit = async (values, { resetForm }) => {
-    const { title, description, priority } = values;
+    const { title, priority } = values;
     let deadline = startDate;
 
     if (deadline === '') {
@@ -95,14 +95,14 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
       if (typeModal === 'add') {
         await createCard({
           columnId: columnId,
-          todo: { title, description, priority, deadline },
+          todo: { title, description:descriptionOnChange, priority, deadline },
           activeBoardId,
         });
       } else if (typeModal === 'edit' && card) {
         await editCard({
           todoId: card._id,
           title,
-          description,
+          description:descriptionOnChange,
           priority,
           deadline,
         });
@@ -113,6 +113,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
       console.error('Error:', error);
     }
   };
+
 
   return (
     <ModalSection>
@@ -137,6 +138,10 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
                 id="description"
                 type="text"
                 placeholder="Description"
+                onChange={e => {
+                  descriptionOnChange = e.target.value
+                  console.log(descriptionOnChange);
+                }}
               />
               <AuthError name="description" component="div" />
             </FormWrapper>
