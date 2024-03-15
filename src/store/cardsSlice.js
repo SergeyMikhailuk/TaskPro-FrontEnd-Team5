@@ -13,10 +13,10 @@ export const todosApi = createApi({
     }),
 
     createTodos: build.mutation({
-      query: ({ columnId, ...rest }) => ({
+      query: ({ todo, columnId }) => ({
         url: `/api/todos/${columnId}`,
         method: 'POST',
-        body: rest,
+        body: todo,
       }),
       invalidatesTags: ['Todos'],
       onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
