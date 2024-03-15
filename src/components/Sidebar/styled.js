@@ -24,7 +24,7 @@ export const StyledOverlay = styled.div`
 
 export const Aside = styled.aside`
   display: flex;
-  height: 100%;
+  height: 100vh;
   flex-direction: column;
   width: 225px;
   background: ${props => props.theme.sidebar.background};
