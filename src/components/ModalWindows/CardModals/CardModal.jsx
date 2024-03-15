@@ -81,7 +81,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     const { title, description, priority } = values;
-    console.log('test commit');
+
     try {
       const todoData = { title, description, priority, deadline: startDate };
       if (typeModal === 'add') {
