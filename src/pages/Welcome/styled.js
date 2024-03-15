@@ -17,7 +17,7 @@ export const WelcomeWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 
   background: linear-gradient(
