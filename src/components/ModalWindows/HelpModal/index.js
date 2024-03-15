@@ -1,8 +1,5 @@
 import React from 'react';
-// import axios from 'axios';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useDispatch } from 'react-redux';
-import { needHelp } from 'store/auth/authOperations';
+import axios from 'axios';
 import {
   ModalContainer,
   ModalFormikBox,
@@ -10,16 +7,14 @@ import {
   ModalFormikBoxInputComment,
   ModalFormikBoxBtn,
 } from './styled';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-// await axios.post('/api/users/need-help', values);
 
-const HelpModal = ({ closeModal }) => {
-    const dispatch = useDispatch();
-  const handleSubmit =  (values, { resetForm }) => {
+
+const HelpModal = ({ isOpen, closeModal }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     try {
-      const { email, message } = values;
-      const updateDate = { email, message };
-      dispatch(needHelp(updateDate));
+      await axios.post('/api/users/need-help', values);
       resetForm();
       closeModal();
     } catch (error) {
@@ -37,7 +32,6 @@ const HelpModal = ({ closeModal }) => {
               <ModalFormikBox>
                 <Field
                   type="text"
-                  id="email"
                   name="email"
                   placeholder="Email address"
                   as={ModalFormikBoxInputEmail}
@@ -46,7 +40,6 @@ const HelpModal = ({ closeModal }) => {
                 <ErrorMessage name="email" component="div" />
                 <Field
                   type="text"
-                  id="message"
                   name="message"
                   placeholder="Comment"
                   as={ModalFormikBoxInputComment}

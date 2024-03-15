@@ -81,15 +81,3 @@ export const editProfile = createAsyncThunk(
     }
   }
 );
- export const needHelp = createAsyncThunk(
-  'auth/needHelp',
-  async (credintials, thunkAPI) => {
-    try {
-      const { data } = await axios.post('/need-help', credintials);
-
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
