@@ -16,7 +16,6 @@ export const CardWrapper = styled.div`
   border-radius: 8px;
   background-color: ${props => props.theme.column.backgroundMain};
   overflow: hidden;
-  
 
   &::before {
     content: '';
@@ -28,14 +27,14 @@ export const CardWrapper = styled.div`
     height: 100%;
     background-color: green;
 
-    /* background-color: ${props =>
-      props.priority === 'without' && 'rgb(128, 128, 128)'};
     background-color: ${props =>
-      props.priority === 'low' && 'rgba(143, 161, 208, 1)'};
+      props.priority === 'Without' && 'rgb(128, 128, 128)'};
     background-color: ${props =>
-      props.priority === 'medium' && 'rgba(224, 156, 181, 1)'};
+      props.priority === 'Low' && 'rgba(143, 161, 208, 1)'};
     background-color: ${props =>
-      props.priority === 'high' && 'rgba(190, 219, 176, 1)'}; */
+      props.priority === 'Medium' && 'rgba(224, 156, 181, 1)'};
+    background-color: ${props =>
+      props.priority === 'High' && 'rgba(190, 219, 176, 1)'};
   }
 `;
 
@@ -122,14 +121,14 @@ export const PriorityIndicator = styled.span`
 
   background-color: green;
 
-  /* background-color: ${props =>
-    props.priority === 'without' && 'rgb(128, 128, 128)'};
-    background-color: ${props =>
-    props.priority === 'low' && 'rgba(143, 161, 208, 1)'};
-    background-color: ${props =>
-    props.priority === 'medium' && 'rgba(224, 156, 181, 1)'};
-    background-color: ${props =>
-    props.priority === 'high' && 'rgba(190, 219, 176, 1)'}; */
+  background-color: ${props =>
+    props.priority === 'Without' && 'rgb(128, 128, 128)'};
+  background-color: ${props =>
+    props.priority === 'Low' && 'rgba(143, 161, 208, 1)'};
+  background-color: ${props =>
+    props.priority === 'Medium' && 'rgba(224, 156, 181, 1)'};
+  background-color: ${props =>
+    props.priority === 'High' && 'rgba(190, 219, 176, 1)'};
 `;
 
 export const IconsGroup = styled.div`

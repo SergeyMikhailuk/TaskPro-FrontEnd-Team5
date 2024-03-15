@@ -52,7 +52,7 @@ const Card = ({ item, onDeleteCard }) => {
 
   return (
     <>
-      <CardWrapper>
+      <CardWrapper priority={priority}>
         <TopWrapper>
           <Title>{title}</Title>
           <Text>{description}</Text>
@@ -63,7 +63,7 @@ const Card = ({ item, onDeleteCard }) => {
             <div>
               <SubTitle>Priority</SubTitle>
               <PriorityWrapper>
-                <PriorityIndicator />
+                <PriorityIndicator priority={priority} />
                 <SubText>{priority} </SubText>
               </PriorityWrapper>
             </div>
