@@ -10,7 +10,7 @@ import {
   TaskCard,
   Task,
   Description,
-  TaskOPtions,
+  TaskOptions,
   Priority,
   PriorityColor,
   PriorityInfo,
@@ -64,7 +64,7 @@ const BoardPage = () => {
               </Description>
               <WrapWrap>
                 <OptionWrapper>
-                  <TaskOPtions>
+                  <TaskOptions>
                     <li>
                       <Priority>Priority</Priority>
                       <PriorityWrapper>
@@ -78,7 +78,7 @@ const BoardPage = () => {
                         <PriorityInfo>12/05/2023</PriorityInfo>
                       </Deadline>
                     </li>
-                  </TaskOPtions>
+                  </TaskOptions>
                 </OptionWrapper>
                 <BtnContainer>
                   <BtnList>
@@ -111,7 +111,7 @@ const BoardPage = () => {
               </Description>
               <WrapWrap>
                 <OptionWrapper>
-                  <TaskOPtions>
+                  <TaskOptions>
                     <li>
                       <Priority>Priority</Priority>
                       <PriorityWrapper>
@@ -125,7 +125,7 @@ const BoardPage = () => {
                         <PriorityInfo>12/05/2023</PriorityInfo>
                       </Deadline>
                     </li>
-                  </TaskOPtions>
+                  </TaskOptions>
                 </OptionWrapper>
                 <BtnContainer>
                   <BtnList>
@@ -158,7 +158,7 @@ const BoardPage = () => {
               </Description>
               <WrapWrap>
                 <OptionWrapper>
-                  <TaskOPtions>
+                  <TaskOptions>
                     <li>
                       <Priority>Priority</Priority>
                       <PriorityWrapper>
@@ -172,7 +172,7 @@ const BoardPage = () => {
                         <PriorityInfo>12/05/2023</PriorityInfo>
                       </Deadline>
                     </li>
-                  </TaskOPtions>
+                  </TaskOptions>
                 </OptionWrapper>
                 <BtnContainer>
                   <BtnList>
@@ -205,7 +205,7 @@ const BoardPage = () => {
               </Description>
               <WrapWrap>
                 <OptionWrapper>
-                  <TaskOPtions>
+                  <TaskOptions>
                     <li>
                       <Priority>Priority</Priority>
                       <PriorityWrapper>
@@ -219,7 +219,7 @@ const BoardPage = () => {
                         <PriorityInfo>12/05/2023</PriorityInfo>
                       </Deadline>
                     </li>
-                  </TaskOPtions>
+                  </TaskOptions>
                 </OptionWrapper>
                 <BtnContainer>
                   <BtnList>
@@ -252,7 +252,7 @@ const BoardPage = () => {
               </Description>
               <WrapWrap>
                 <OptionWrapper>
-                  <TaskOPtions>
+                  <TaskOptions>
                     <li>
                       <Priority>Priority</Priority>
                       <PriorityWrapper>
@@ -266,7 +266,7 @@ const BoardPage = () => {
                         <PriorityInfo>12/05/2023</PriorityInfo>
                       </Deadline>
                     </li>
-                  </TaskOPtions>
+                  </TaskOptions>
                 </OptionWrapper>
                 <BtnContainer>
                   <BtnList>

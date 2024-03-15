@@ -1,92 +1,83 @@
-import MainPart from '../../components/MainPart/MainPart'
+import React, { useState, useRef } from 'react';
+import { useSelector } from 'react-redux';
 
-const BoardPage = () => {
-    return (
-      <>
-<MainPart/>
+import { useGetBoardByIdQuery } from 'store/boardsSlice';
+import { Column } from 'components/Board/Column/Column';
+import { ReactModal } from 'components/ModalWindows/Modal/Modal';
+import { ModalColumn } from 'components/ModalWindows/ColumnModals';
+import { Filter } from 'components/Filter/Filter';
 
-</>
+import {
+  WrapperMain,
+  Header,
+  AddIcon,
+  Title,
+  AddButton,
+  IconWrapper,
+  Text,
+  ContentWrapper,
+  Wrapper,
+} from './styled';
+
+const Index = () => {
+  const activeBoardId = useSelector(store => store.activeBoardId);
+  const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
+  const { data: boardData } = useGetBoardByIdQuery(activeBoardId);
+  const scrollRef = useRef(null);
+
+  const handleOpenColumnModal = () => {
+    setIsOpenColumnModal(true);
+  };
+
+  const handleCloseColumnModal = () => {
+    setIsOpenColumnModal(false);
+  };
+
+  return (
+    <WrapperMain $url={boardData?.board?.backgroundURL}>
+      <Filter />
+      <Header>
+        <div>
+          <Title>{boardData?.board?.title}</Title>
+        </div>
+      </Header>
+
+      <Wrapper ref={scrollRef}>
+        <ContentWrapper>
+          {boardData?.columns?.map(column => (
+            <Column
+              key={column._id}
+              item={column}
+              activeBoardId={activeBoardId}
+            />
+          ))}
+          <AddButton
+            onClick={handleOpenColumnModal}
+            $length={boardData?.columns?.length}
+            type="button"
+          >
+            <IconWrapper>
+              <AddIcon />
+            </IconWrapper>
+            <Text>Add another column</Text>
+          </AddButton>
+        </ContentWrapper>
+        <Filter></Filter>
+        <ReactModal
+          isOpen={isOpenColumnModal}
+          title="Add Column"
+          closeModal={handleCloseColumnModal}
+          onRequestClose={handleCloseColumnModal}
+        >
+          <ModalColumn
+            typeModal={'add'}
+            activeBoardId={activeBoardId}
+            closeModal={handleCloseColumnModal}
+          />
+        </ReactModal>
+      </Wrapper>
+    </WrapperMain>
   );
 };
 
-export default BoardPage;
-
-
-// import {
-//   Title,
-//   ColumnName,
-//   Wrapper,
-//   TitleWrapper,
-//   TitleHeader,
-//   IconWrapper,
-//   IconLink,
-//   Icon,
-//   Use,
-//   TaskCard,
-//   Task,
-//   Description,
-//   TaskOPtions,
-//   Priority,
-//   PriorityColor,
-//   PriorityInfo,
-//   PriorityWrapper,
-//   Deadline,
-// } from './styled';
-
-// const BoardPage = () => {
-//   return (
-//     <>
-//       <Wrapper>
-//         <Title>Board Page</Title>
-//         <ColumnName>
-//           <li>
-//             <TitleWrapper>
-//               <TitleHeader>To Do</TitleHeader>
-//             </TitleWrapper>
-//           </li>
-//           <li>
-//             <IconWrapper>
-//               <IconLink>
-//                 <Icon>
-//                   <Use href="images/sprite.svg#icon-pencil"></Use>
-//                 </Icon>
-//               </IconLink>
-//               <IconLink>
-//                 <Icon>
-//                   <Use href="images/sprite.svg#icon-trash"></Use>
-//                 </Icon>
-//               </IconLink>
-//             </IconWrapper>
-//           </li>
-//         </ColumnName>
-
-//         <TaskCard>
-//           <Task>
-//             <TitleHeader>The Watch Spot Design</TitleHeader>
-//             <Description>
-//               Create a visually stunning and eye-catching watch dial design that
-//               embodies our brand's...
-//             </Description>
-//             <TaskOPtions>
-//               <li>
-//                 <Priority>Priority</Priority>
-//                 <PriorityWrapper>
-//                   <PriorityColor></PriorityColor>
-//                   <PriorityInfo>Low</PriorityInfo>
-//                 </PriorityWrapper>
-//               </li>
-//               <li>
-//                 <Deadline>
-//                   <Priority>Deadline</Priority>
-//                   <PriorityInfo>12/05/2023</PriorityInfo>
-//                 </Deadline>
-//               </li>
-//             </TaskOPtions>
-//           </Task>
-//         </TaskCard>
-//       </Wrapper>
-//     </>
-//   );
-// };
-
-// export default BoardPage;
+export default Index;

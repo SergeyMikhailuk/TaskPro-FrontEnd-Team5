@@ -1,121 +1,151 @@
 import styled from 'styled-components';
+import { ReactComponent as AppBtnSvg } from 'images/svg/plus28.svg';
 
-export const Title = styled.h1`
-  color: ${props => props.theme.column.textMain};
-  padding-left: 20px;
-  padding-top: 20px;
-  margin-bottom: 20px;
+export const AddIcon = styled(AppBtnSvg)`
+  width: 40px;
+  height: 36px;
+  border-radius: 6px;
+  & .plus {
+    color: ${props => props.theme.addColumnButton.plusColor};
+  }
+
+  & .backgr {
+    color: ${props => props.theme.addColumnButton.plusBackground};
+  }
 `;
-export const Wrapper = styled.div``;
 
-export const ColumnName = styled.ul`
+export const WrapperMain = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+  background-image: url(${({ $url }) => $url});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 14px 20px 14px 20px;
+
+  transition: all 250ms linear;
+
+  @media screen and (min-width: 768px) {
+    height: calc(100vh - 68px);
+  }
+`;
+
+export const Header = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 39px;
+
+  div {
+    background-color: ${props => props.theme.header.background};
+    padding: 4px 6px;
+    border-radius: 6px;
+    border: 1px solid ${props => props.theme.addColumnButton.color};
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 26px;
+  }
+
+  @media screen and (min-width: 1044px) {
+    margin-bottom: 10px;
+  }
+`;
+
+export const Title = styled.h2`
+  color: ${props => props.theme.header.userName};
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+`;
+
+export const AddButton = styled.button`
+  position: absolute;
+  top: 0;
+  right: ${({ $length }) => ($length === 0 ? '-334px' : '-368px')};
   width: 334px;
   height: 56px;
-  background-color: #121212;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 20px;
-  margin-left: 24px;
-  border-radius: 8px;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: -0.02em;
-  line-height: 21px;
-  color: #ffffff;
-`;
-export const TitleWrapper = styled.div``;
+  padding: 14px 0;
 
-export const TitleHeader = styled.h2`
-  font-size: 14px;
-`;
-export const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-`;
-export const IconLink = styled.a``;
 
-export const Icon = styled.svg`
-  width: 16px;
-  height: 16px;
-`;
-export const Use = styled.use``;
-
-export const TaskCard = styled.div``;
-
-export const Task = styled.div`
-  width: 334px;
-  height: 154px;
-  background-color: #121212;
-  padding-left: 20px;
-  margin-left: 24px;
-  margin-top: 20px;
   border-radius: 8px;
-  border-left: 5px solid #8fa1d0;
-  color: #ffffff;
-  position: relative;
-  h2 {
-    padding-top: 14px;
-  }
-`;
-export const Description = styled.p`
-  width: 290px;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
-  opacity: 50%;
-  padding-top: 8px;
+  background: ${props => props.theme.addColumnButton.background};
+  outline: none;
+  border: none;
 
-  &::after {
-    content: '';
-    position: absolute;
-    width: 290px;
-    height: 1px;
-    top: 50%;
-    left: 21px;
-    border: 1px solid #ffffff;
-    opacity: 10%;
-    margin-top: 12px;
+  transition: all 250ms linear;
+  cursor: pointer;
+
+  &:hover svg {
+    transform: scale(1.1);
   }
 `;
 
-export const TaskOPtions = styled.ul`
+export const IconWrapper = styled.div`
+  width: 28px;
+  height: 28px;
   display: flex;
-  width: 35px;
-
-  gap: 14px;
-  margin-top: 30px;
-  li {
-  }
-`;
-
-export const Priority = styled.h3`
-  display: block;
-  font-size: 8px;
-  font-weight: 400;
-  color: #ffffff;
-  opacity: 50%;
-  padding-bottom: 5px;
-`;
-
-export const PriorityColor = styled.div`
-  width: 12px;
-  height: 12px;
-  background-color: #8fa1d0;
-  border-radius: 50%;
-`;
-export const PriorityInfo = styled.p`
-  font-size: 10px;
-`;
-
-export const PriorityWrapper = styled.div`
-  font-size: 10px;
-  display: flex;
-  gap: 10px;
+  justify-content: center;
   align-items: center;
+  border-radius: 8px;
+  background-color: ${props => props.theme.addColumnButton.plusBackground};
+
+  transition: all 250ms linear;
+
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
-export const Deadline = styled.div`
+
+export const Text = styled.p`
+  color: ${props => props.theme.addColumnButton.color};
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  width: 150px;
+`;
+
+export const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  overflow-x: auto;
+  width: 100%;
+  height: 100%;
+
+  &::-webkit-scrollbar {
+    height: 12px;
+    width: calc(100% - 24px);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${props => props.theme.column.scrollThumb};
+    border-radius: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: ${props => props.theme.column.scrollTrack};
+    border-radius: 12px;
+    border: 1px solid ${props => props.theme.column.scrollBorder};
+  }
+`;
+
+export const ContentWrapper = styled.div`
+  position: relative;
+  display: flex;
+  gap: 34px;
 `;

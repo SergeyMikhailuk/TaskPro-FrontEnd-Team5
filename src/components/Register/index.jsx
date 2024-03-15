@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
-import { register } from '../../store/auth/authOperations';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+
+import { register } from 'store/auth/authOperations';
+
 import { RegisterSchema } from './RegisterSchema';
 
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import {
   AuthForm,
   AuthNav,

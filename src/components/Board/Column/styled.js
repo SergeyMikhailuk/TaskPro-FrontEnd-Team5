@@ -11,6 +11,7 @@ export const ButtonEdit = styled.button`
   background-color: transparent;
   cursor: pointer;
 `;
+
 export const ButtonDelete = styled.button`
   border: none;
   background-color: transparent;
@@ -71,7 +72,7 @@ export const TaskList = styled.ul`
   flex-direction: column;
   width: 280px;
   gap: 8px;
-  
+
   overflow-y: auto;
   overflow-x: hidden;
   height: calc(100vh - 384px);
@@ -112,7 +113,7 @@ export const Header = styled.div`
   border-radius: 8px;
   background-color: ${props => props.theme.column.backgroundMain};
   font-weight: 500;
-  
+
   @media screen and (min-width: 345px) {
     width: 300px;
   }
@@ -125,7 +126,6 @@ export const Header = styled.div`
 export const Title = styled.h2`
   color: ${props => props.theme.column.textMain};
   font-size: 14px;
-  font-family: 'Poppins';
   font-weight: 500;
   letter-spacing: -0.28px;
 `;
@@ -137,20 +137,6 @@ export const ButtonWrapper = styled.div`
   gap: 8px;
 `;
 
-export const Icon = styled.svg`
-  width: 16px;
-  height: 16px;
-  stroke: ${props => props.theme.column.icon};
-  fill: transparent;
-  cursor: pointer;
-  transition: all 250ms linear;
-
-  &:hover {
-    opacity: 0.4;
-    transform: scale(1.4);
-  }
-`;
-
 export const Button = styled.button`
   display: flex;
   justify-content: center;
@@ -158,7 +144,6 @@ export const Button = styled.button`
   width: 280px;
   padding: 14px;
   font-size: 14px;
-  font-family: 'Poppins';
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
@@ -167,9 +152,12 @@ export const Button = styled.button`
   color: ${props => props.theme.column.buttonColor};
   background-color: ${props => props.theme.column.buttonBackground};
   border-radius: 8px;
-  transition: background-color 250ms linear, border 250ms linear, opacity 250ms linear, transform 250ms linear;
+  transition:
+    background-color 250ms linear,
+    border 250ms linear,
+    opacity 250ms linear,
+    transform 250ms linear;
   cursor: pointer;
-  
 
   &:hover svg {
     transform: scale(1.1);
@@ -185,6 +173,7 @@ export const Button = styled.button`
   @media screen and (min-width: 345px) {
     width: 300px;
   }
+
   @media screen and (min-width: 768px) {
     width: 334px;
   }
@@ -195,18 +184,9 @@ export const ButtonPlus = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-
   width: 28px;
   height: 28px;
   background-color: ${props => props.theme.column.plusBackground};
   margin-right: 8px;
-
   cursor: pointer;
-`;
-
-export const PlusIcon = styled.svg`
-  width: 14px;
-  height: 14px;
-  stroke: ${props => props.theme.column.plusColor};
-  transition: all 250ms linear;
 `;

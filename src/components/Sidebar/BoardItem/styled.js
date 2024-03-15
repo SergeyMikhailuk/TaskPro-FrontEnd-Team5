@@ -1,18 +1,11 @@
 import styled from 'styled-components';
 import { ReactComponent as AppEditCardSvg } from 'images/sidebar/edit-card.svg';
-import { ReactComponent as AppIconCardSvg } from 'images/sidebar/icon-card.svg';
 import { ReactComponent as AppTrashCardSvg } from 'images/sidebar/trash-card.svg';
 
 export const BoardListTitle = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-`;
-
-export const BoardListIcon = styled(AppIconCardSvg)`
-  width: 18px;
-  height: 18px;
-  margin-right: 4px;
 `;
 
 export const BoardIt = styled.li`
@@ -53,7 +46,7 @@ export const BoardListBox = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: 20px 24px  20px 0;
+  padding: 20px 24px 20px 0;
 
   &:hover {
     color: ${props => props.theme.needHelp.icon};

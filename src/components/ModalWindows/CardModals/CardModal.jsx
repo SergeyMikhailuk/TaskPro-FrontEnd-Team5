@@ -36,7 +36,6 @@ const validationSchema = Yup.object().shape({
   description: Yup.string()
     .min(1, 'Minimum 1 characters')
     .max(230, 'Maximum 230 characters'),
-  // .required('Description is required'),
 });
 const months = [
   'January',
@@ -66,7 +65,7 @@ const dateOptions = {
 const CardModal = ({ typeModal, closeModal, columnId, card }) => {
   const [selectedLabel, setSelectedLabel] = useState(options[3]);
   const [startDate, setStartDate] = useState('');
-  var descriptionOnChange;
+  let descriptionOnChange;
   const initialValues = {
     title: 'title',
     description: 'description',
@@ -95,14 +94,14 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
       if (typeModal === 'add') {
         await createCard({
           columnId: columnId,
-          todo: { title, description:descriptionOnChange, priority, deadline },
+          todo: { title, description: descriptionOnChange, priority, deadline },
           activeBoardId,
         });
       } else if (typeModal === 'edit' && card) {
         await editCard({
           todoId: card._id,
           title,
-          description:descriptionOnChange,
+          description: descriptionOnChange,
           priority,
           deadline,
         });
@@ -113,7 +112,6 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
       console.error('Error:', error);
     }
   };
-
 
   return (
     <ModalSection>
@@ -139,7 +137,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
                 type="text"
                 placeholder="Description"
                 onChange={e => {
-                  descriptionOnChange = e.target.value
+                  descriptionOnChange = e.target.value;
                   console.log(descriptionOnChange);
                 }}
                 defaultValue={initialValues.description}

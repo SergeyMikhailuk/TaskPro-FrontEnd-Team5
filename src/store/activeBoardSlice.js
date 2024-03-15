@@ -9,5 +9,3 @@ export const activeBoardIdSlice = createSlice({
 });
 
 export const { setActiveBoardId } = activeBoardIdSlice.actions;
-
-export const getActiveBoardId = state => state.activeBoardId;

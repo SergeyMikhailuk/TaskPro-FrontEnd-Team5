@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import { ReactComponent as FilterImage } from 'images/svg/filter.svg';
 
-
 export const FilterBtn = styled.button`
   position: absolute;
   top: 14px;
@@ -27,7 +26,6 @@ export const FilterBtn = styled.button`
   }
 
   @media screen and (min-width: 768px) {
-
     right: 32px;
   }
 
@@ -52,10 +50,8 @@ export const Label = styled.div`
 
   @media screen and (min-width: 345px) {
     width: 252px;
-    }
+  }
 `;
-
-
 
 export const Container = styled.div`
   display: flex;
@@ -75,14 +71,10 @@ export const Container = styled.div`
 `;
 
 export const LabelColors = styled.p`
-
   color: ${props => props.theme.header.userName};
   font-weight: 500;
   font-size: 14px;
   letter-spacing: -0.28px;
-  font-family: 'Poppins', sans-serif;
-
-
 `;
 
 export const ShowAllBtn = styled.button`
@@ -127,9 +119,11 @@ export const CustomRadioContainer = styled.div`
   flex-direction: column;
   gap: 12px;
 `;
+
 export const RadioItem = styled.li`
   display: flex;
 `;
+
 export const Marker = styled.span`
   margin-right: 8px;
   width: 14px;
@@ -139,7 +133,7 @@ export const Marker = styled.span`
   opacity: 1;
   transition: opacity 0.25s ease;
   position: relative;
-  background-color: ${({$value}) => {
+  background-color: ${({ $value }) => {
     if ($value === 'without') {
       return 'rgba(255, 255, 255, 0.3)';
     } else if ($value === 'low') {
@@ -168,8 +162,8 @@ export const Marker = styled.span`
 
 export const RadioInput = styled.input`
   display: none;
+
   &:checked + ${Marker} + span {
     color: ${props => props.theme.header.userName};
   }
-
 `;

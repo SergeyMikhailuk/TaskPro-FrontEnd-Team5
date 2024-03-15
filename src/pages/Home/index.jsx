@@ -6,7 +6,7 @@ import { HomeWrapper, HomeWrapperBoard } from './styled';
 
 import BeforeStart from 'components/BeforeStart';
 import Loader from 'components/Loader/Loader';
-import MainPart from 'components/MainPart/MainPart';
+import MainPart from 'pages/Board';
 
 const HomePage = () => {
   const { data: boards } = useGetBoardsQuery();

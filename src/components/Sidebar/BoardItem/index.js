@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import { setActiveBoardId } from 'store/activeBoardSlice';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
+import BoardModal from 'components/ModalWindows/BoardModal';
 import { Icon } from 'components/ModalWindows/BoardModal/styled';
 import sprite from 'images/sprite.svg';
 
@@ -16,7 +17,6 @@ import {
   BoardListDeleteBtn,
   BoardListBtnDelete,
 } from './styled';
-import BoardModal from 'components/ModalWindows/BoardModal';
 
 const BoardItem = ({ board, deleteBoard }) => {
   const dispatch = useDispatch();
@@ -42,13 +42,7 @@ const BoardItem = ({ board, deleteBoard }) => {
     <BoardIt onClick={handleBoardClick}>
       <BoardListBox>
         <BoardListTitle>
-          {/*<BoardListIcon>{}</BoardListIcon>*/}
-          <Icon
-            // className={setIcon === el ? 'active' : ''}
-            // onClick={() => handleIconSelection(el)}
-            width={18}
-            height={18}
-          >
+          <Icon width={18} height={18}>
             <use href={sprite + board?.iconURL} width={18} height={18} />
           </Icon>
           {board.title}

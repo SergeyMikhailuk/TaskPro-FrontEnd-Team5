@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { Description, Accent } from './styled';
+
 import BoardModal from 'components/ModalWindows/BoardModal/index';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
+
+import { Description, Accent } from './styled';
 
 const BeforeStart = () => {
   const [isOpenBoardModal, setIsOpenBoardModal] = useState(false);

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
-import { logIn } from '../../store/auth/authOperations';
 import { ToastContainer } from 'react-toastify';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+
+import { logIn } from 'store/auth/authOperations';
 import { LoginSchema } from './LoginSchema';
+
 import {
   AuthForm,
   AuthNav,
@@ -16,10 +18,10 @@ import {
   AuthFormPasswordIcon,
   ThirdPasswordField,
   AuthButton,
-} from '../Register/styled';
+} from 'components/Register/styled';
 
 const LoginForm = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePassword = () => setShowPassword(!showPassword);
@@ -36,7 +38,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <ToastContainer/>
+      <ToastContainer />
       <Formik
         initialValues={initialValues}
         validationSchema={LoginSchema}

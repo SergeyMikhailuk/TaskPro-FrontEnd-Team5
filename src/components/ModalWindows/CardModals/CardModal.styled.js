@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
+
 import { ReactComponent as AppBtnSvg } from 'images/svg/plus28.svg';
 
 export const Textarea = styled.textarea`
@@ -123,6 +124,7 @@ export const AuthFormSubmitButton = styled.button`
   @media screen and (min-width: 345px) {
     width: 287px;
   }
+
   @media screen and (min-width: 768px) {
     width: 302px;
   }
@@ -156,7 +158,6 @@ export const RadioBtnWrapper = styled.ul`
   justify-content: center;
   align-items: center;
   gap: 4px;
-
 `;
 
 export const Label = styled.label`
@@ -172,13 +173,13 @@ export const Label = styled.label`
   }
 
   &.active {
-    border: ${({$value}) =>
+    border: ${({ $value }) =>
       $value === 'Without priority' && '2px solid rgb(128,128,128)'};
-    border: ${({$value}) =>
+    border: ${({ $value }) =>
       $value === 'Low' && '2px solid rgba(143, 161, 208, 1)'};
-    border: ${({$value}) =>
+    border: ${({ $value }) =>
       $value === 'Medium' && '2px solid rgba(224, 156, 181, 1)'};
-    border: ${({$value}) =>
+    border: ${({ $value }) =>
       $value === 'High' && '2px solid rgba(190, 219, 176, 1)'};
   }
 `;

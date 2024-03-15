@@ -2,12 +2,11 @@ import styled from 'styled-components';
 
 import { ReactComponent as AddModalSvg } from 'images/modal/modal-add-btn-icon.svg';
 
-
 export const ErrorText = styled.div`
   text-align: left;
   color: #ff0000;
   font-size: 12px;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   letter-spacing: -0.36px;
   margin-bottom: 10px;
@@ -67,14 +66,13 @@ export const ModalFormikBoxBtn = styled.button`
     transform: scale(1.1);
   }
 
-
   @media screen and (min-width: 345px) {
-    width: 287px; 
-    }
+    width: 287px;
+  }
 
   @media screen and (min-width: 768px) {
-    width: 302px; 
-    }
+    width: 302px;
+  }
 `;
 
 export const ModalFormikBoxBtnIcon = styled(AddModalSvg)`

@@ -13,16 +13,9 @@ const sidebarSlice = createSlice({
     toggleSidebar: state => {
       state.isOpen = !state.isOpen;
     },
-    openAddBoardModal: state => {
-      state.showAddBoardModal = true;
-    },
-    closeAddBoardModal: state => {
-      state.showAddBoardModal = false;
-    },
   },
 });
 
-export const { toggleSidebar, openAddBoardModal, closeAddBoardModal } =
-  sidebarSlice.actions;
+export const { toggleSidebar } = sidebarSlice.actions;
 
 export default sidebarSlice.reducer;

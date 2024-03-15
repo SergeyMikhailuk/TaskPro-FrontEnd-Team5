@@ -5,11 +5,10 @@ export const ModalContainer = styled.div`
   background-color: ${props => props.theme.modal.backgroundMain};
 `;
 
-
 export const ModalFormikBox = styled.div`
   margin-bottom: 24px;
   display: flex;
- flex-direction: column;
+  flex-direction: column;
 `;
 
 export const ModalFormikBoxInputEmail = styled.input`

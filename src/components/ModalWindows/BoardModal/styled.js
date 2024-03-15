@@ -11,27 +11,17 @@ export const Section = styled.div`
   align-items: start;
 `;
 
-export const SectionTitle = styled.h2`
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: -0.36px;
-  margin-bottom: 24px;
-  color: ${props => props.theme.needHelpModal.textMain};
-`;
-
 export const FormWrapper = styled.div`
   width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
-
   margin-bottom: 24px;
 
   &:last-of-type {
     margin-bottom: 40px;
   }
-
 
   @media screen and (min-width: 345px) {
     width: 278px;
@@ -47,7 +37,6 @@ export const FormTitle = styled.h3`
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.28px;
-
   margin-bottom: 14px;
 `;
 
@@ -56,7 +45,6 @@ export const TitleInput = styled(Field)`
   width: 100%;
   height: 49px;
   padding: 14px 18px;
-
   font-size: 14px;
   letter-spacing: -0.28px;
 

@@ -1,4 +1,5 @@
 import { ThreeCircles } from 'react-loader-spinner';
+
 import { Overlay, LoaderSpinner } from './styled';
 
 const Loader = () => {

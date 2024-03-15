@@ -4,14 +4,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useDeleteBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
 import { logOut } from 'store/auth/authOperations';
 import { toggleSidebar } from 'store/sidebarSlice';
-import imgDecor from 'images/sidebar/aside-img.png';
-import imgDecor2x from 'images/sidebar/aside-img-2x.png';
-import Board from './BoardItem/index.js';
 import { setActiveBoardId } from 'store/activeBoardSlice';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 import BoardModal from 'components/ModalWindows/BoardModal';
 import HelpModal from 'components/ModalWindows/HelpModal/index';
 
+import imgDecor from 'images/sidebar/aside-img.png';
+import imgDecor2x from 'images/sidebar/aside-img-2x.png';
+
+import Board from './BoardItem/index.js';
 import {
   Aside,
   LogoBox,

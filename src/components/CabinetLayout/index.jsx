@@ -1,10 +1,11 @@
 import { Suspense } from 'react';
+import { ThemeProvider } from 'styled-components';
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { ThemeProvider } from 'styled-components';
-import Loader from '../Loader/Loader';
+
 import { getThemeName } from 'store/themeSlice';
 import { themes } from 'constants/theme';
+import Loader from 'components/Loader/Loader';
 import Header from 'components/Header';
 import Sidebar from 'components/Sidebar';
 

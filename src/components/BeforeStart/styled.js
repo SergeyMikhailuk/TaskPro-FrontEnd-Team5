@@ -17,6 +17,6 @@ export const Accent = styled.button`
   color: ${props => props.theme.themePopup.textAccent};
 
   &:hover {
-    text-shadow: 0px 0px 1px var(--accent-color);
+    text-shadow: 0 0 1px var(--accent-color);
   }
 `;

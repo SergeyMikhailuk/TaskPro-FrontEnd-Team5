@@ -1,6 +1,6 @@
 import {
   ModalWindow,
-  ModalHeder,
+  ModalHeader,
   Title,
   ClosedButton,
   CloseModal,
@@ -30,12 +30,12 @@ export const ReactModal = ({
       isOpen={isOpen}
       onRequestClose={onRequestClose}
     >
-      <ModalHeder>
+      <ModalHeader>
         <Title>{title}</Title>
         <ClosedButton>
           <CloseModal onClick={closeModal} />
         </ClosedButton>
-      </ModalHeder>
+      </ModalHeader>
       {children}
     </ModalWindow>
   );

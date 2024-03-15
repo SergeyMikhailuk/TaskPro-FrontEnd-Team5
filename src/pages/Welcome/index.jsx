@@ -1,4 +1,5 @@
 import React from 'react';
+
 import iconImage from 'images/welcome-icon.png';
 
 import {

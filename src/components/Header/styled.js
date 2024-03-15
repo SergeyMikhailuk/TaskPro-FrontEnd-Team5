@@ -1,28 +1,7 @@
 import styled from 'styled-components';
 
-import Modal from 'react-modal';
-
 import { ReactComponent as BurgerImage } from './menu.svg';
 import { ReactComponent as DownImage } from './down.svg';
-
-export const ModalWindow = styled(Modal)`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 335px;
-  max-height: 80vh;
-  min-height: 200px;
-  overflow-y: auto;
-  padding: 24px;
-  background-color: ${props => props.theme.modal.backgroundMain};
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-  @media screen and (min-width: 768px) {
-    width: 400px;
-  }
-`;
 
 export const Down = styled(DownImage)`
   color: ${props => props.theme.themePopup.textMain};
@@ -55,6 +34,7 @@ export const AppHeader = styled.header`
   @media screen and (min-width: 768px) {
     padding: 18px 32px;
   }
+
   @media screen and (min-width: 1440px) {
     justify-content: flex-end;
     padding: 18px 24px;
@@ -67,46 +47,11 @@ export const Info = styled.div`
   gap: 12px;
 `;
 
-export const Wrap = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  p {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    letter-spacing: -0.02em;
-    color: ${props => props.theme.header.userName};
-  }
-`;
-
-export const Image = styled.div`
-  svg {
-    width: 32px;
-    height: 32px;
-    stroke: white;
-  }
-`;
-
 export const ButtonMenu = styled.button`
   background-color: transparent;
   border: none;
   padding: 0;
   display: flex;
-`;
-
-export const ButtonProfile = styled.button`
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  transition: all 150ms linear;
-  img {
-    width: 32px;
-  }
-
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 
 export const StyledSelectWrapper = styled.div`
@@ -121,6 +66,7 @@ export const StyledSelectWrapper = styled.div`
     transform: scale(1.3);
   }
 `;
+
 export const StyledTitle = styled.p`
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
@@ -131,8 +77,8 @@ export const StyledTitle = styled.p`
 
 export const StyledList = styled.ul`
   position: absolute;
-  opacity: ${({$isOpen}) => ($isOpen ? '1' : '0')};
-  transform: translateY(${({$isOpen}) => ($isOpen ? '70px' : '-150px')});
+  opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
+  transform: translateY(${({ $isOpen }) => ($isOpen ? '70px' : '-150px')});
   transition-property: opacity, transform;
   transition:
     opacity 0.25s,
@@ -171,7 +117,6 @@ export const UserName = styled.span`
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.28px;
-
 `;
 
 export const UserAvatar = styled.img`

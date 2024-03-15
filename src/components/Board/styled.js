@@ -4,8 +4,6 @@ import { ReactComponent as PencilSVG } from 'images/svg/pencil.svg';
 import { ReactComponent as TrashSVG } from 'images/svg/trash.svg';
 import { ReactComponent as ArrowSVG } from 'images/svg/arrow-circle-broken-right.svg';
 
-import { colors } from 'constants/colors';
-
 export const Pencil = styled(PencilSVG)``;
 
 export const TrashBin = styled(TrashSVG)``;
@@ -13,9 +11,9 @@ export const TrashBin = styled(TrashSVG)``;
 export const ArrowCircle = styled(ArrowSVG)``;
 
 export const Title = styled.h1`
-  color: ${colors.green};
   font-size: 50px;
 `;
+
 export const Wrapper = styled.div``;
 
 export const ColumnName = styled.ul`
@@ -33,11 +31,13 @@ export const ColumnName = styled.ul`
   line-height: 21px;
   color: #ffffff;
 `;
+
 export const TitleWrapper = styled.div``;
 
 export const TitleHeader = styled.h2`
   font-size: 14px;
 `;
+
 export const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -45,12 +45,13 @@ export const IconWrapper = styled.div`
   gap: 8px;
   padding-right: 20px;
 `;
+
 export const IconBtn = styled.button`
   background-color: #121212;
   border: none;
   width: 16px;
   height: 16px;
-  padding: 0px;
+  padding: 0;
 `;
 
 export const Icon = styled.svg`
@@ -77,6 +78,7 @@ export const Task = styled.div`
     padding-top: 14px;
   }
 `;
+
 export const Description = styled.p`
   width: 290px;
   font-weight: 400;
@@ -97,16 +99,18 @@ export const Description = styled.p`
     margin-top: 12px;
   }
 `;
+
 export const WrapWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 `;
+
 export const OptionWrapper = styled.div`
   display: flex;
 `;
 
-export const TaskOPtions = styled.ul`
+export const TaskOptions = styled.ul`
   display: flex;
   width: 35px;
   gap: 14px;
@@ -130,6 +134,7 @@ export const PriorityColor = styled.div`
   background-color: #8fa1d0;
   border-radius: 50%;
 `;
+
 export const PriorityInfo = styled.p`
   font-size: 10px;
 `;
@@ -140,10 +145,12 @@ export const PriorityWrapper = styled.div`
   gap: 10px;
   align-items: center;
 `;
+
 export const Deadline = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 export const BtnContainer = styled.div`
   display: flex;
 `;
@@ -157,7 +164,7 @@ export const BtnList = styled.ul`
 export const Btn = styled.button`
   border: none;
   background-color: #121212;
-  padding: 0px;
+  padding: 0;
   fill: #fff;
   opacity: 50%;
 `;

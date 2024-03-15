@@ -52,9 +52,11 @@ export const CustomButton = styled.button`
   border: none;
   transition: all 150ms linear;
   cursor: pointer;
+
   svg {
     color: ${props => props.theme.sidebar.addButtonHover};
   }
+
   svg:hover {
     color: ${props => props.theme.sidebar.iconLogoutHover};
   }

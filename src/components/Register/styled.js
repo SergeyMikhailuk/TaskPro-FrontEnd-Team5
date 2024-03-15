@@ -8,14 +8,13 @@ export const AuthForm = styled(Form)`
   height: fit-content;
   padding: 24px;
   border-radius: 8px;
-  background: rgba(31, 31, 31, 1);
-   @media screen and (min-width: 767px) {
+  background-color: rgba(31, 31, 31, 1);
+
+  @media screen and (min-width: 767px) {
     max-width: 424px;
     padding: 40px;
   }
 `;
-
-
 
 export const AuthNav = styled.div`
   display: flex;
@@ -85,15 +84,14 @@ export const AuthInput = styled.label`
   margin-bottom: 14px;
   padding: 14px 30px 14px 18px;
   outline: none;
-  color: 1F1F1F;
+  color: #1f1f1f;
   border-radius: 8px;
   border: 1px solid rgba(190, 219, 176, 0.4);
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
+  box-shadow: 0 4px 16px rgba(22, 22, 22, 0.08);
 
   &:focus-within {
     border: 1px solid rgba(190, 219, 176, 1);
   }
- 
 `;
 
 export const AuthField = styled(Field)`
@@ -105,6 +103,7 @@ export const AuthField = styled(Field)`
   line-height: 21px;
   outline: none;
   color: rgba(190, 219, 176, 1);
+
   &:focus {
     opacity: 1;
   }
@@ -115,7 +114,7 @@ export const AuthField = styled(Field)`
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px rgba(31, 31, 31, 1) inset;
+    -webkit-box-shadow: 0 0 0 1000px rgba(31, 31, 31, 1) inset;
     -webkit-text-fill-color: grey;
   }
 `;
@@ -130,7 +129,6 @@ export const AuthFormPasswordIcon = styled.div`
   right: 18px;
   color: rgba(255, 255, 255, 1);
   opacity: 0.4;
-
   cursor: pointer;
 `;
 
@@ -138,7 +136,7 @@ export const AuthError = styled(ErrorMessage)`
   text-align: left;
   color: #ff0000;
   font-size: 12px;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   letter-spacing: -0.36px;
   margin-bottom: 10px;
@@ -169,9 +167,8 @@ export const AuthButton = styled.button`
   &:active {
     transform: scale(0.95);
   }
-  
-   @media screen and (min-width: 767px) {
-    width: 344px;}
 
+  @media screen and (min-width: 767px) {
+    width: 344px;
+  }
 `;
-

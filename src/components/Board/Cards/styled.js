@@ -27,13 +27,13 @@ export const CardWrapper = styled.div`
     width: 4px;
     height: 100%;
 
-    background-color: ${({$priority}) =>
+    background-color: ${({ $priority }) =>
       $priority === 'Without priority' && 'rgb(128, 128, 128)'};
-    background-color: ${({$priority}) =>
+    background-color: ${({ $priority }) =>
       $priority === 'Low' && 'rgba(143, 161, 208, 1)'};
-    background-color: ${({$priority}) =>
+    background-color: ${({ $priority }) =>
       $priority === 'Medium' && 'rgba(224, 156, 181, 1)'};
-    background-color: ${({$priority}) =>
+    background-color: ${({ $priority }) =>
       $priority === 'High' && 'rgba(190, 219, 176, 1)'};
   }
   @media screen and (min-width: 345px) {
@@ -42,7 +42,6 @@ export const CardWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 334px;
-
   }
 `;
 
@@ -108,6 +107,7 @@ export const SubTitle = styled.p`
   line-height: 1.5;
   margin-bottom: 4px;
 `;
+
 export const SubText = styled.p`
   color: ${props => props.theme.column.textMain};
   font-weight: 400;
@@ -126,14 +126,13 @@ export const PriorityIndicator = styled.span`
   border-radius: 12px;
   margin-right: 4px;
 
-
-  background-color: ${({$priority}) =>
+  background-color: ${({ $priority }) =>
     $priority === 'Without priority' && 'rgb(128, 128, 128)'};
-  background-color: ${({$priority}) =>
+  background-color: ${({ $priority }) =>
     $priority === 'Low' && 'rgba(143, 161, 208, 1)'};
-  background-color: ${({$priority}) =>
+  background-color: ${({ $priority }) =>
     $priority === 'Medium' && 'rgba(224, 156, 181, 1)'};
-  background-color: ${({$priority}) =>
+  background-color: ${({ $priority }) =>
     $priority === 'High' && 'rgba(190, 219, 176, 1)'};
 `;
 
@@ -151,9 +150,9 @@ export const Trash = styled(TrashSvg)`
   cursor: pointer;
   transition: all 250ms linear;
 
-&:hover {
-  transform: scale(1.2);
-}
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 
 export const Pencil = styled(PencilSvg)`
@@ -175,7 +174,6 @@ export const ArrowCircle = styled(ArrowCircleSvg)`
   fill: transparent;
   color: ${props => props.theme.column.textSecondary};
   cursor: pointer;
-
   transition: all 250ms linear;
 
   &:hover {
@@ -198,4 +196,3 @@ export const Bell = styled(BellSvg)`
   color: ${props => props.theme.column.textSecondary};
   transition: all 150ms linear;
 `;
-
