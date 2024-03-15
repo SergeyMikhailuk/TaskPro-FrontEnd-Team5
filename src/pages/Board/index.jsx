@@ -19,7 +19,7 @@ import {
   Wrapper,
 } from './styled';
 
-const Index = () => {
+const BoardPage = () => {
   const activeBoardId = useSelector(store => store.activeBoardId);
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
   const { data: boardData } = useGetBoardByIdQuery(activeBoardId);
@@ -80,4 +80,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default BoardPage;
