@@ -69,7 +69,7 @@ const BoardItem = ({ board, deleteBoard }) => {
           closeModal={handleCloseBoardModal}
           onRequestClose={handleCloseBoardModal}
         >
-          <EditBoardModal closeModal={handleCloseBoardModal} />
+          <EditBoardModal item={board} closeModal={handleCloseBoardModal} />
         </ReactModal>
       </BoardListBox>
     </BoardIt>

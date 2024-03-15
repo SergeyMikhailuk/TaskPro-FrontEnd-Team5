@@ -1,4 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import data from 'components/ModalWindows/background.json';
+import sprite from 'images/sprite.svg';
+// import { useDispatch } from 'react-redux';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { useUpdateBoardMutation, useGetBoardByIdQuery, } from 'store/boardsSlice';
+
+
 import {
   DefaultRadioBtn,
   CustomRadioBtn,
@@ -16,12 +24,6 @@ import {
   ErrorSection,
   ModalForm,
 } from '../styled';
-import data from '../../background.json';
-import sprite from '../../../../images/sprite.svg';
-
-import { Formik } from 'formik';
-import * as Yup from 'yup';
-// import { editDashbord } from 'redux/dashboards/dashboardsOperations';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
@@ -38,38 +40,60 @@ const options = [
   '#icon-hexagon',
 ];
 
-const EditBoardModal = ({ closeModal, item }) => {
-  console.log('EditBoardModal item: ', item);
-  // const { _id, name, icon, backgroundURL } = item;
-  // const [selectedBg, setSelectedBg] = useState(backgroundURL);
-  // const [setIcon, setSetIcon] = useState(icon);
+const EditBoardModal = ({ closeModal, item}) => {
+  // const dispatch = useDispatch();
+  const { _id, title, iconURL, backgroundURL } = item;
+  const [selectedBg, setSelectedBg] = useState(backgroundURL);
+  const [setIcon, setSetIcon] = useState(iconURL);
+ 
+  const initialValues = {
+    title: title,
+    iconURL: setIcon,
+    backgroundURL: selectedBg,
+  };
+  const [updateBoard] = useUpdateBoardMutation(_id);
+  const { data: boardsData } = useGetBoardByIdQuery(_id);
+  console.log('boardsData', boardsData);
 
-  // const initialValues = {
-  //   title: name,
-  //   icon: setIcon,
-  //   backgroundURL: selectedBg,
-  // };
+  const handleSubmit = async values => {
+    const { title, iconURL, backgroundURL } = values;
+    const updatedData = {_id, title, iconURL, backgroundURL };
+    console.log('updatedData', updatedData);
 
-  const handleSubmit = values => {
-    console.log(values);
-    // const { title, icon, backgroundURL } = values;
-    // const updatedData = { name: title, icon, backgroundURL };
-    // dispatch(editDashbord({ dashboardId: _id, updatedData }));
-    closeModal();
+    
+
+     
+        try {
+          const response = await updateBoard({
+            _id,
+            title,
+            iconURL: setIcon,
+            backgroundURL: selectedBg,
+          });
+
+          console.log('Board edited:', response);
+          closeModal();
+        } catch (error) {
+          console.error('Error edited board:', error);
+        }
+      
+    
   };
 
-  // const handleBgSelection = url => {
-  //   setSelectedBg(url);
-  // };
+  const handleBgSelection = url => {
+    setSelectedBg(url);
+  };
 
-  // const handleIconSelection = el => {
-  //   setSetIcon(el);
-  // };
+  const handleIconSelection = el => {
+    setSetIcon(el);
+  };
 
+
+  
   return (
     <Section>
       <Formik
-        // initialValues={initialValues}
+        initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
@@ -81,6 +105,7 @@ const EditBoardModal = ({ closeModal, item }) => {
               id="title"
               name="title"
               placeholder="Title"
+              autoComplete="off"
             />
           </FormWrapper>
 
@@ -90,8 +115,8 @@ const EditBoardModal = ({ closeModal, item }) => {
               {options.map((el, idx) => (
                 <IconWrapper key={idx}>
                   <Icon
-                    // className={setIcon === el ? 'active' : ''}
-                    // onClick={() => handleIconSelection(el)}
+                    className={setIcon === el ? 'active' : ''}
+                    onClick={() => handleIconSelection(el)}
                     width={18}
                     height={18}
                   >
@@ -105,28 +130,24 @@ const EditBoardModal = ({ closeModal, item }) => {
           </FormWrapper>
 
           <FormWrapper>
-            <FormTitle>Background </FormTitle>
+            <FormTitle>Backgrounds </FormTitle>
             <RadioBtnWrapper>
               {data.map((el, idx) => (
                 <label key={idx}>
                   <BgcItem
-                  // onClick={() => handleBgSelection(el.url)}
-                  // className={selectedBg === el.url ? 'active' : ''}
+                    className={selectedBg === el.url ? 'active' : ''}
+                    onClick={() => handleBgSelection(el.url)}
                   >
                     {el.url !== '' && (
                       <CustomRadioBtn
                         $url={el.url}
-                        // onClick={() => handleBgSelection(el.url)}
-                        // className={selectedBg === el.url ? 'active' : ''}
+                        onClick={() => handleBgSelection(el.url)}
+                        className={selectedBg === el.url ? 'active' : ''}
                       />
                     )}
                   </BgcItem>
 
-                  <DefaultRadioBtn
-                    type="radio"
-                    value={el.url}
-                    name="backgroundURL"
-                  />
+                  <DefaultRadioBtn type="radio" value={el.url} name="bg" />
                 </label>
               ))}
             </RadioBtnWrapper>
@@ -145,5 +166,6 @@ const EditBoardModal = ({ closeModal, item }) => {
     </Section>
   );
 };
+
 
 export default EditBoardModal;
