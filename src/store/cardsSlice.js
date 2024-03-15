@@ -11,11 +11,13 @@ export const todosApi = createApi({
       query: todoId => ({ url: `/api/todos/${todoId}`, method: 'GET' }),
       providesTags: ['Todos'],
     }),
+    
     createTodos: build.mutation({
       query: ({ todo, columnId }) => ({
+
         url: `/api/todos/${columnId}`,
         method: 'POST',
-        body: todo,
+        body: rest,
       }),
       invalidatesTags: ['Todos'],
       onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
@@ -33,6 +35,7 @@ export const todosApi = createApi({
       }),
       invalidatesTags: ['Todos'],
       onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
+        console.log('Contact');
         const { data } = await queryFulfilled;
         if (data) {
           dispatch(boardsApi.util.invalidateTags(['Board']));

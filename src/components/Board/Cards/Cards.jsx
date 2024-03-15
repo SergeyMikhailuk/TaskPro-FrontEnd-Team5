@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { format } from 'date-fns';
+import { format, differenceInDays } from 'date-fns';
 
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 import CardModal from 'components/ModalWindows/CardModals/CardModal';
@@ -36,23 +36,22 @@ const Card = ({ item, onDeleteCard }) => {
   };
 
   const handleDelete = () => {
-    console.log(_id);
     onDeleteCard(_id);
   };
 
-  const options = {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  };
-
-  const today = new Date().toLocaleString('en-GB', options);
+  // const options = {
+  //   year: 'numeric',
+  //   month: '2-digit',
+  //   day: '2-digit',
+  // };
 
   const formatedDeadline = format(new Date(deadline), 'dd/MM/yyyy');
+  const difference = differenceInDays(new Date(formatedDeadline), new Date());
+  const isOneDayLeft = difference === 1;
 
   return (
     <>
-      <CardWrapper>
+      <CardWrapper priority={priority}>
         <TopWrapper>
           <Title>{title}</Title>
           <Text>{description}</Text>
@@ -63,7 +62,7 @@ const Card = ({ item, onDeleteCard }) => {
             <div>
               <SubTitle>Priority</SubTitle>
               <PriorityWrapper>
-                <PriorityIndicator />
+                <PriorityIndicator priority={priority} />
                 <SubText>{priority} </SubText>
               </PriorityWrapper>
             </div>
@@ -74,14 +73,10 @@ const Card = ({ item, onDeleteCard }) => {
           </Stats>
 
           <IconsGroup>
-            {today === formatedDeadline && (
-              <>
-                <Bell aria-label="bell icon" />
-                <IconBellWrapper></IconBellWrapper>
-              </>
-            )}
+            {isOneDayLeft && <Bell aria-label="bell icon" />}
             <Bell aria-label="bell icon" />
             <IconBellWrapper></IconBellWrapper>
+
             <ArrowCircle />
 
             <Pencil onClick={handleOpenCardModal} aria-label="edit icon" />

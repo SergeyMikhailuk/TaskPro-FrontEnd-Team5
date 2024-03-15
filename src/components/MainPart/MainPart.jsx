@@ -46,7 +46,9 @@ const MainPart = ({ children }) => {
     <WrapperMain $url={boardData?.board?.backgroundURL}>
       <Filter />
       <Header>
-        <Title>{boardData?.board?.title}</Title>
+        <div>
+          <Title>{boardData?.board?.title}</Title>
+        </div>
       </Header>
 
       <Wrapper ref={scrollRef}>

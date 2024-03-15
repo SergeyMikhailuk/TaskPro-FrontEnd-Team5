@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import { useDeleteBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
 import { logOut } from 'store/auth/authOperations';
-import HelpModal from '../ModalWindows/HelpModal/index';
 import { toggleSidebar } from 'store/sidebarSlice';
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
 import Board from './BoardItem/index.js';
 import { setActiveBoardId } from 'store/activeBoardSlice';
+import { ReactModal } from 'components/ModalWindows/Modal/Modal';
+import BoardModal from 'components/ModalWindows/BoardModal';
+import HelpModal from 'components/ModalWindows/HelpModal/index';
 
 import {
   Aside,
@@ -33,8 +36,6 @@ import {
   LogOutText,
   StyledOverlay,
 } from './styled';
-import AddBoardModal from 'components/ModalWindows/BoardModal/AddBoard';
-import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -156,7 +157,7 @@ const Sidebar = () => {
         closeModal={handleCloseBoardModal}
         onRequestClose={handleCloseBoardModal}
       >
-        <AddBoardModal closeModal={handleCloseBoardModal} />
+        <BoardModal closeModal={handleCloseBoardModal} typeModal={'create'} />
       </ReactModal>
     </>
   );
