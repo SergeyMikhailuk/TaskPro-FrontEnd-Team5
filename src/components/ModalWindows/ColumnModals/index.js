@@ -16,9 +16,9 @@ import {
   ErrorText,
 } from './styled';
 
-const ModalColumn = ({ typeModal, closeModal, activeBoardId, columnId }) => {
+const ModalColumn = ({ typeModal, closeModal, activeBoardId, columnId, column }) => {
   const initialValues = {
-    title: '',
+    title: typeModal === 'edit' ? column.title : 'Title',
   };
 
   const [createColumn] = useCreateColumnMutation();
@@ -49,8 +49,8 @@ const ModalColumn = ({ typeModal, closeModal, activeBoardId, columnId }) => {
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        {() => (
-          <Form>
+        {formikProps => (
+          <Form onSubmit={formikProps.handleSubmit}>
             {' '}
             <ModalFormikBox>
               <Field
