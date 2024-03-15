@@ -93,7 +93,7 @@ const Sidebar = () => {
       {isOpen && <StyledOverlay onClick={handleToggleSidebar} />}
       <Aside className={isOpen ? 'open' : ''}>
         <LogoBox>
-          <a href="/">
+          <a href="/TaskPro-FrontEnd-Team5/home">
             <AppLogo />
             <LogoBoxTitle>Task Pro</LogoBoxTitle>
           </a>
