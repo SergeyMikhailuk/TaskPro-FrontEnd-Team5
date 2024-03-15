@@ -67,11 +67,14 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
   const [selectedLabel, setSelectedLabel] = useState(options[3]);
   const [startDate, setStartDate] = useState('');
 
+  var descriptionOnChange
+
   const initialValues = {
-    title: 'description',
+    title: 'title',
     description: 'description',
     priority: selectedLabel,
   };
+
   if (card) {
     initialValues.title = card.title;
     initialValues.description = card.description;
@@ -84,10 +87,14 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
   const customDate =
     startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
-  const handleSubmit = async (values, { resetForm }) => {
-    const { title, description, priority } = values;
-    let deadline = startDate;
+  const handleSubmit = async ( values, { resetForm }) => {
+    const { title, priority } = values;
+    
+    initialValues.title = title;
+    initialValues.description = descriptionOnChange;
+    initialValues.priority = priority;
 
+    let deadline = startDate;
     if (deadline === '') {
       deadline = new Date().toISOString();
     }
@@ -96,26 +103,25 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
       if (typeModal === 'add') {
         await createCard({
           columnId: columnId,
-          todo: { title, description, priority, deadline },
+          todo: { title, description: descriptionOnChange, priority, deadline },
           activeBoardId,
         });
       } else if (typeModal === 'edit' && card) {
         await editCard({
           todoId: card._id,
           title,
-          description,
+          description: descriptionOnChange,
           priority,
           deadline,
         });
       }
-      console.log(description);
       resetForm();
       closeModal();
     } catch (error) {
       console.error('Error:', error);
     }
   };
-
+  
   return (
     <ModalSection>
       <Formik
@@ -135,11 +141,14 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
               <AuthError name="title" component="div" />
 
               <Textarea
-                component="textarea"
-                name="description"
-                id="description"
                 type="text"
+                id="description"
+                name="description"
                 placeholder="Description"
+                component="textarea"
+                onChange={e => {
+                  descriptionOnChange = e.target.value
+                }}
               />
               <AuthError name="description" component="div" />
             </FormWrapper>

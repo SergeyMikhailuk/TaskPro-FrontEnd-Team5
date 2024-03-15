@@ -63,6 +63,7 @@ export const Column = ({ item }) => {
     }
   };
 
+
   return (
     <Wrapper>
       <ContentWrapper>
@@ -120,8 +121,8 @@ export const Column = ({ item }) => {
       >
         <CardModal
           typeModal={'add'}
-          columnId={item._id}
           closeModal={handleCloseCardModal}
+          columnId={item._id}
         />
       </ReactModal>
     </Wrapper>
