@@ -26,7 +26,6 @@ import {
 const Card = ({ item, onDeleteCard }) => {
   const { title, _id, deadline, description, priority } = item;
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
-  console.log('item: ', item)
   const handleOpenCardModal = () => {
     setIsOpenCardModal(true);
   };
@@ -38,13 +37,6 @@ const Card = ({ item, onDeleteCard }) => {
   const handleDelete = () => {
     onDeleteCard(_id);
   };
-
-  // const options = {
-  //   year: 'numeric',
-  //   month: '2-digit',
-  //   day: '2-digit',
-  // };
-  // console.log(`descr>>>`, description);
 
   const formatedDeadline = format(new Date(deadline), 'dd/MM/yyyy');
   const difference = differenceInDays(new Date(formatedDeadline), new Date());

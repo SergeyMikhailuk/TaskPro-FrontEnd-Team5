@@ -77,7 +77,6 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
     initialValues.description = card.description;
     initialValues.priority = card.priority;
   }
-  console.log('card: ', card)
   const [createCard] = useCreateTodosMutation();
   const [editCard] = useUpdateTodosMutation();
   const activeBoardId = useSelector(state => state.activeBoardId);
@@ -86,7 +85,6 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     const { title, description, priority } = values;
-    console.log(' title, description, priority',  title, description, priority)
     let deadline = startDate;
 
     if (deadline === '') {
@@ -109,7 +107,6 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
           deadline,
         });
       }
-      console.log(description);
       resetForm();
       closeModal();
     } catch (error) {

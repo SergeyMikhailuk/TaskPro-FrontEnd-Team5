@@ -55,7 +55,6 @@ const BoardModal = ({ closeModal, item, typeModal }) => {
   const [updateBoard] = useUpdateBoardMutation();
   const { data: boardsData } = useGetBoardsQuery();
 
-  console.log(item);
   useEffect(() => {
     if (typeModal === 'edit' && item) {
       setInitialValues({
@@ -96,7 +95,6 @@ const BoardModal = ({ closeModal, item, typeModal }) => {
               backgroundURL: selectedBg,
             });
           }
-          console.log('Board', typeModal === 'edit' ? 'updated' : 'created');
           closeModal();
         } catch (error) {
           console.error(
