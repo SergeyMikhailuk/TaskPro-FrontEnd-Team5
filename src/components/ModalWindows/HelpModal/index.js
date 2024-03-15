@@ -15,7 +15,7 @@ const HelpModal = ({ closeModal }) => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
       await axios.post('/api/users/need-help', values);
-      // resetForm();
+      resetForm();
       closeModal();
     } catch (error) {
       console.error('Error submitting form:', error);
