@@ -71,37 +71,34 @@ export const TaskList = styled.ul`
   flex-direction: column;
   width: 280px;
   gap: 8px;
-  max-height: calc(154px * 2 + 8px);
+  
   overflow-y: auto;
   overflow-x: hidden;
-  
+  height: calc(100vh - 384px);
 
-  ::-webkit-scrollbar {
-    width: 8px;
+  &::-webkit-scrollbar {
+    height: 8px;
+    width: calc(100% - 24px);
   }
 
-  ::-webkit-scrollbar-track {
-    background-color: ${props => props.theme.column.scrollTrack};
-    border: 1px solid ${props => props.theme.column.scrollBorder};
-    border-radius: 12px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    border-radius: 12px;
+  &::-webkit-scrollbar-thumb {
     background-color: ${props => props.theme.column.scrollThumb};
+    border-radius: 12px;
   }
 
-  @media screen and (min-width: 345px) {
+  &::-webkit-scrollbar-track {
+    background-color: ${props => props.theme.column.scrollTrack};
+    border-radius: 12px;
+    border: 1px solid ${props => props.theme.column.scrollBorder};
+  }
+
+  @media screen and (min-width: 310px) {
     width: 300px;
   }
 
   @media screen and (min-width: 768px) {
-    max-height: calc(154px * 3 + 16px);
+    height: calc(100vh - 292px);
     width: 334px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    max-height: calc(154px * 5 + 32px);
   }
 `;
 
@@ -170,7 +167,7 @@ export const Button = styled.button`
   color: ${props => props.theme.column.buttonColor};
   background-color: ${props => props.theme.column.buttonBackground};
   border-radius: 8px;
-  transition: all 250ms linear;
+  transition: background-color 250ms linear, border 250ms linear, opacity 250ms linear, transform 250ms linear;
   cursor: pointer;
   
 

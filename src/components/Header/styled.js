@@ -172,6 +172,7 @@ export const UserName = styled.span`
   font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.28px;
+
 `;
 
 export const UserAvatar = styled.img`
@@ -180,4 +181,10 @@ export const UserAvatar = styled.img`
   border-radius: 8px;
   cursor: pointer;
   object-fit: cover;
+
+  transition: all 250ms linear;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;

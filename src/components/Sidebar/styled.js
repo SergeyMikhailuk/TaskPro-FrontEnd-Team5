@@ -93,7 +93,7 @@ export const LogoBoxTitle = styled.h2`
 `;
 
 export const AddBoards = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 26px;
 `;
 
 export const AddBoardsTitle = styled.h3`

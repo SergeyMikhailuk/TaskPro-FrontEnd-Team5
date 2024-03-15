@@ -1,26 +1,27 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
+import { useGetBoardsQuery } from 'store/boardsSlice';
+import { selectIsLoading } from 'store/auth/authSelectors';
 
-// import { Description, HomeWrapper, Accent } from './styled';
+import { HomeWrapper, HomeWrapperBoard } from './styled';
 
+import BeforeStart from 'components/BeforeStart';
+import Loader from 'components/Loader/Loader';
 import MainPart from 'components/MainPart/MainPart';
-import { HomeWrapperBoard } from './styled';
 
 const HomePage = () => {
-  return (
-    <>
-      {/*<HomeWrapper>*/}
-      {/*  <Description>*/}
-      {/*    Before starting your project, it is essential*/}
-      {/*    <Accent>to create a board</Accent> to visualize and track all the*/}
-      {/*    necessary tasks and milestones. This board serves as a powerful tool*/}
-      {/*    to organize the workflow and ensure effective collaboration among team*/}
-      {/*    members.*/}
-      {/*  </Description>*/}
-      {/*</HomeWrapper>*/}
-      <HomeWrapperBoard>
-        <MainPart />
-      </HomeWrapperBoard>
-    </>
+  const { data: boards } = useGetBoardsQuery();
+  const isLoading = useSelector(selectIsLoading);
+
+  return isLoading ? (
+    <Loader />
+  ) : boards.length > 0 ? (
+    <HomeWrapperBoard>
+      <MainPart />
+    </HomeWrapperBoard>
+  ) : (
+    <HomeWrapper>
+      <BeforeStart />
+    </HomeWrapper>
   );
 };
 

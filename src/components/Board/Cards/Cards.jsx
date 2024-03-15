@@ -76,6 +76,7 @@ const Card = ({ item, onDeleteCard }) => {
             {isOneDayLeft && <Bell aria-label="bell icon" />}
             <Bell aria-label="bell icon" />
             <IconBellWrapper></IconBellWrapper>
+
             <ArrowCircle />
 
             <Pencil onClick={handleOpenCardModal} aria-label="edit icon" />

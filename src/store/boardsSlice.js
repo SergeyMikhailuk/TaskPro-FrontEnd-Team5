@@ -4,6 +4,7 @@ import { baseQuery } from './baseQuery';
 export const boardsApi = createApi({
   reducerPath: 'boardsApi',
   baseQuery: baseQuery,
+
   tagTypes: ['Board', 'Boards'],
   endpoints: build => ({
     getBoards: build.query({
@@ -13,7 +14,9 @@ export const boardsApi = createApi({
 
     getBoardById: build.query({
       query: boardId => `/api/boards/${boardId}`,
-      providesTags: ['Board'],
+      providesTags: (result, error, boardId) => [
+        { type: 'Board', id: boardId },
+      ],
     }),
     createBoard: build.mutation({
       query: board => ({
