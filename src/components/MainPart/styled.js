@@ -21,7 +21,7 @@ export const WrapperMain = styled.div`
   justify-content: start;
   align-items: start;
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100% - 60px);
 
   background-image: url(${({ $url }) => $url});
   background-size: cover;
@@ -33,7 +33,7 @@ export const WrapperMain = styled.div`
   transition: all 250ms linear;
 
   @media screen and (min-width: 768px) {
-    height: calc(100vh - 68px);
+    height: calc(100% - 68px);
     padding: 20px 32px 20px 32px;
   }
 
