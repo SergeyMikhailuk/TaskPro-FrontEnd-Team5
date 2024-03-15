@@ -7,12 +7,23 @@ import {
   logOut,
   refreshUser,
   editProfile,
+  needHelp,
 } from '../auth/authOperations';
 import {
   addCard,
   deleteCard,
   editCard,
 } from 'store/dashboards/dashboardsOperations';
+
+
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
 
 const initialState = {
   user: { name: '', email: '' },
@@ -95,6 +106,7 @@ const authSlice = createSlice({
         state.currentDashboard.columns[indexColumn].cards.splice(indexCard, 1);
         state.columnsLength = state.currentDashboard.columns.length;
       })
+
       .addCase(editCard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
@@ -118,6 +130,12 @@ const authSlice = createSlice({
           deadline,
         };
         state.columnsLength = state.currentDashboard.columns.length;
+      })
+    
+      .addCase(needHelp.rejected, handleRejected)
+      .addCase(needHelp.pending, handlePending)
+      .addCase(needHelp.fulfilled, (state, action) => {
+        state.isLoading = false;
       });
   },
 });
