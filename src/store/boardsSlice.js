@@ -24,10 +24,10 @@ export const boardsApi = createApi({
       invalidatesTags: ['Boards'],
     }),
     updateBoard: build.mutation({
-      query: ({ boardId, ...rest }) => ({
+      query: ({ boardId, updatedBoard }) => ({
         url: `/api/boards/${boardId}`,
         method: 'PATCH',
-        body: rest,
+        body: updatedBoard,
       }),
       invalidatesTags: ['Boards'],
     }),
