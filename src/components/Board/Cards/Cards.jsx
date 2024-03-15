@@ -38,7 +38,7 @@ const Card = ({ item, onDeleteCard }) => {
   const handleDelete = () => {
     onDeleteCard(_id);
   };
-
+ 
   // const options = {
   //   year: 'numeric',
   //   month: '2-digit',

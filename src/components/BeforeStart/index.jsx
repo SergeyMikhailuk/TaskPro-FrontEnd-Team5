@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Description, Accent } from './styled';
-import AddBoardModal from 'components/ModalWindows/BoardModal/AddBoard';
+import BoardModal from 'components/ModalWindows/BoardModal/index';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 
 const BeforeStart = () => {
@@ -29,7 +29,7 @@ const BeforeStart = () => {
           closeModal={handleCloseBoardModal}
           onRequestClose={handleCloseBoardModal}
         >
-          <AddBoardModal closeModal={handleCloseBoardModal} />
+          <BoardModal closeModal={handleCloseBoardModal} typeModal={'create'} />
         </ReactModal>
       )}
     </>
