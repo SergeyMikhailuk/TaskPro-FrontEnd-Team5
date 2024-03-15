@@ -52,7 +52,11 @@ const MainPart = ({ children }) => {
       <Wrapper ref={scrollRef}>
         <ContentWrapper>
           {boardData?.columns?.map(column => (
-            <Column key={column._id} item={column} />
+            <Column
+              key={column._id}
+              item={column}
+              activeBoardId={activeBoardId}
+            />
           ))}
           <AddButton onClick={handleOpenColumnModal} type="button">
             <IconWrapper>

@@ -18,12 +18,6 @@ export const columnsApi = createApi({
         body: column,
       }),
       invalidatesTags: ['Columns'],
-      onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
-        const { data } = await queryFulfilled;
-        if (data) {
-          dispatch(boardsApi.util.invalidateTags(['Board']));
-        }
-      },
     }),
     updateColumn: build.mutation({
       query: ({ column, columnId }) => ({
