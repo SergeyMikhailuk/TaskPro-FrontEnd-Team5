@@ -32,16 +32,6 @@ const MainPart = ({ children }) => {
     setIsOpenColumnModal(false);
   };
 
-  const filter = useSelector(state => state.filter);
-  const filterCards = () => {
-    return boardData?.columns?.map(column => {
-      return column?.todos?.filter(card =>
-        card.priority.toLowerCase().includes(filter.toLowerCase())
-      );
-    });
-  };
-  console.log('filterCards(): ', filterCards());
-
   return (
     <WrapperMain $url={boardData?.board?.backgroundURL}>
       <Filter />

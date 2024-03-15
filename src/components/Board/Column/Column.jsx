@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { useDeleteTodosMutation } from 'store/cardsSlice';
 import Card from 'components/Board/Cards/Cards';
@@ -63,6 +64,21 @@ export const Column = ({ item }) => {
     }
   };
 
+  const filter = useSelector((state) => state.filter)
+  const filterCards = () => {
+    const filteredArray = item?.todos?.filter(card =>      
+    {
+      if (filter === "") {
+        return card
+      }
+      return card.priority.toLowerCase() === filter
+    }
+    );
+    return filteredArray;
+  }
+  // console.log(`filter>>>>`, filter);
+  // console.log(`filtered cards>>>>`,filterCards());
+  
   return (
     <Wrapper>
       <ContentWrapper>
@@ -80,7 +96,7 @@ export const Column = ({ item }) => {
           </Header>
 
           <TaskList>
-            {item.todos.map(todo => (
+            {filterCards().map(todo => (
               <Card
                 key={todo._id}
                 item={todo}
