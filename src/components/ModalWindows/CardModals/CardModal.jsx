@@ -142,6 +142,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
                   descriptionOnChange = e.target.value
                   console.log(descriptionOnChange);
                 }}
+                defaultValue={initialValues.description}
               />
               <AuthError name="description" component="div" />
             </FormWrapper>
