@@ -35,9 +35,6 @@ export const WrapperMain = styled.div`
   @media screen and (min-width: 768px) {
     height: calc(100vh - 68px);
   }
-
-
-
 `;
 
 export const Header = styled.div`
@@ -148,5 +145,4 @@ export const ContentWrapper = styled.div`
   position: relative;
   display: flex;
   gap: 34px;
-  
 `;

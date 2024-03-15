@@ -24,7 +24,7 @@ export const StyledOverlay = styled.div`
 
 export const Aside = styled.aside`
   display: flex;
-  height: 100vh;
+  height: 100%;
   flex-direction: column;
   width: 225px;
   background: ${props => props.theme.sidebar.background};
@@ -204,7 +204,7 @@ export const BoxHelpBtnOpenModal = styled.button`
   background-color: transparent;
   border: none;
 
-  &:hover {    
+  &:hover {
     svg {
       color: ${props => props.theme.sidebar.iconLogoutHover};
     }
@@ -242,7 +242,7 @@ export const LogOutIconBtnWrap = styled.button`
   display: flex;
   align-items: center;
 
-  &:hover {    
+  &:hover {
     svg {
       color: ${props => props.theme.sidebar.iconLogoutHover};
     }

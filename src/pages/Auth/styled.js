@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,4 +12,4 @@ export const Container = styled.div`
     rgba(196, 196, 196, 0) 25%,
     #bedbb0 92.19%
   );
-`; 
+`;
