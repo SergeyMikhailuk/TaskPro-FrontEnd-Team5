@@ -18,7 +18,6 @@ import {
   PriorityIndicator,
   SubText,
   ArrowCircle,
-  IconBellWrapper,
   Pencil,
   Trash,
 } from './styled';
@@ -39,8 +38,9 @@ const Card = ({ item, onDeleteCard }) => {
   };
 
   const formatedDeadline = format(new Date(deadline), 'dd/MM/yyyy');
-  const difference = differenceInDays(new Date(formatedDeadline), new Date());
-  const isOneDayLeft = difference === 1;
+  const difference = differenceInDays(new Date(deadline), new Date());
+
+  const isOneDayLeft = difference < 1;
 
   return (
     <>
@@ -66,9 +66,7 @@ const Card = ({ item, onDeleteCard }) => {
           </Stats>
 
           <IconsGroup>
-            {isOneDayLeft && <Bell aria-label="bell icon" />}
-            <Bell aria-label="bell icon" />
-            <IconBellWrapper></IconBellWrapper>
+            <Bell aria-label="bell icon" $isActive={isOneDayLeft} />
 
             <ArrowCircle />
 

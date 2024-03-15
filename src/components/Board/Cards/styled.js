@@ -181,18 +181,14 @@ export const ArrowCircle = styled(ArrowCircleSvg)`
   }
 `;
 
-export const IconBellWrapper = styled.div`
-  height: 16px;
-  width: 16px;
-  background-color: ${props => props.theme.themePopup.backgroundBell};
-  filter: ${props => props.theme.themePopup.filterBell};
-  position: relative;
-`;
-
 export const Bell = styled(BellSvg)`
-  position: absolute;
   height: 16px;
   width: 16px;
   color: ${props => props.theme.column.textSecondary};
   transition: all 150ms linear;
+
+  filter: ${({ $isActive }) =>
+    $isActive
+      ? 'drop-shadow(0 0 1px #00ff00) drop-shadow(0 0 1px #00ff00) drop-shadow(0 0 4px #00ff00) drop-shadow(0 0 8px #00ff00)'
+      : 'none'};
 `;
