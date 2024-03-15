@@ -80,8 +80,6 @@ const Card = ({ item, onDeleteCard }) => {
                 <IconBellWrapper></IconBellWrapper>
               </>
             )}
-            <Bell aria-label="bell icon" />
-            <IconBellWrapper></IconBellWrapper>
             <ArrowCircle />
 
             <Pencil onClick={handleOpenCardModal} aria-label="edit icon" />

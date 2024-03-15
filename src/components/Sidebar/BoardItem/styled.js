@@ -6,6 +6,7 @@ import { ReactComponent as AppTrashCardSvg } from 'images/sidebar/trash-card.svg
 export const BoardListTitle = styled.div`
   display: flex;
   align-items: center;
+  gap: 8px;
 `;
 
 export const BoardListIcon = styled(AppIconCardSvg)`
@@ -52,7 +53,7 @@ export const BoardListBox = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: 20px 24px 20px 24px;
+  padding: 20px 24px  20px 0;
 
   &:hover {
     color: ${props => props.theme.needHelp.icon};
