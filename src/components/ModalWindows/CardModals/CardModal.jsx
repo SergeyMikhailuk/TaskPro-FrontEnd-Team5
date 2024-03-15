@@ -84,7 +84,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
     startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
   const handleSubmit = async (values, { resetForm }) => {
-    const { title, description, priority } = values;
+    const { title, priority } = values;
     let deadline = startDate;
 
     if (deadline === '') {
