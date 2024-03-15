@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import data from 'components/ModalWindows/background.json';
 import sprite from 'images/sprite.svg';
 
-import { useCreateBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
+import {
+  useCreateBoardMutation,
+  useGetBoardsQuery,
+  useUpdateBoardMutation,
+} from 'store/boardsSlice';
 import {
   DefaultRadioBtn,
   CustomRadioBtn,
@@ -21,7 +25,7 @@ import {
   ButtonPlus,
   ErrorSection,
   ModalForm,
-} from '../styled';
+} from './styled';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
@@ -38,17 +42,29 @@ const options = [
   '#icon-hexagon',
 ];
 
-const AddBoardModal = ({ closeModal }) => {
+const BoardModal = ({ closeModal, item, typeModal }) => {
   const [selectedBg, setSelectedBg] = useState('');
   const [setIcon, setSetIcon] = useState(options[0]);
-
-  const initialValues = {
+  const [initialValues, setInitialValues] = useState({
     title: '',
     iconURL: setIcon,
-    backgroundURL: selectedBg,
-  };
+    backgroundURL: '',
+  });
+
   const [createBoard] = useCreateBoardMutation();
+  const [updateBoard] = useUpdateBoardMutation();
   const { data: boardsData } = useGetBoardsQuery();
+
+  console.log(item);
+  useEffect(() => {
+    if (typeModal === 'edit' && item) {
+      setInitialValues({
+        title: item.title,
+        iconURL: item.iconURL,
+        backgroundURL: item.backgroundURL,
+      });
+    }
+  }, [typeModal, item]);
 
   const handleSubmit = async values => {
     const { title } = values;
@@ -64,16 +80,30 @@ const AddBoardModal = ({ closeModal }) => {
         console.log(`${title} already exists`);
       } else {
         try {
-          const response = await createBoard({
-            title,
-            iconURL: setIcon,
-            backgroundURL: selectedBg,
-          });
-
-          console.log('Board created:', response);
+          if (typeModal === 'edit' && item) {
+            await updateBoard({
+              boardId: item._id,
+              updatedBoard: {
+                title,
+                iconURL: setIcon,
+                backgroundURL: selectedBg,
+              },
+            });
+          } else {
+            await createBoard({
+              title,
+              iconURL: setIcon,
+              backgroundURL: selectedBg,
+            });
+          }
+          console.log('Board', typeModal === 'edit' ? 'updated' : 'created');
           closeModal();
         } catch (error) {
-          console.error('Error creating board:', error);
+          console.error(
+            'Error',
+            typeModal === 'edit' ? 'updating board:' : 'creating board:',
+            error
+          );
         }
       }
     }
@@ -156,7 +186,7 @@ const AddBoardModal = ({ closeModal }) => {
                 <use href={sprite + '#icon-plus'} />
               </PlusIcon>
             </ButtonPlus>
-            Create
+            {typeModal === 'edit' ? 'Edit' : 'Create'}
           </AuthFormSubmitButton>
         </ModalForm>
       </Formik>
@@ -164,4 +194,4 @@ const AddBoardModal = ({ closeModal }) => {
   );
 };
 
-export default AddBoardModal;
+export default BoardModal;

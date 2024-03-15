@@ -26,10 +26,9 @@ export const CardWrapper = styled.div`
     transform: translateY(-50%);
     width: 4px;
     height: 100%;
-    background-color: green;
 
     background-color: ${props =>
-      props.priority === 'Without' && 'rgb(128, 128, 128)'};
+      props.priority === 'Without priority' && 'rgb(128, 128, 128)'};
     background-color: ${props =>
       props.priority === 'Low' && 'rgba(143, 161, 208, 1)'};
     background-color: ${props =>
@@ -43,6 +42,7 @@ export const CardWrapper = styled.div`
 
   @media screen and (min-width: 768px) {
     width: 334px;
+
   }
 `;
 
@@ -126,10 +126,9 @@ export const PriorityIndicator = styled.span`
   border-radius: 12px;
   margin-right: 4px;
 
-  background-color: green;
 
   background-color: ${props =>
-    props.priority === 'Without' && 'rgb(128, 128, 128)'};
+    props.priority === 'Without priority' && 'rgb(128, 128, 128)'};
   background-color: ${props =>
     props.priority === 'Low' && 'rgba(143, 161, 208, 1)'};
   background-color: ${props =>
