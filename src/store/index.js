@@ -8,7 +8,7 @@ import { activeBoardIdSlice } from 'store/activeBoardSlice';
 import sidebarReducer from 'store/sidebarSlice';
 import { boardsApi } from 'store/boardsSlice';
 import { columnsApi } from 'store/columnsSlice';
-import { todosApi } from 'store/todosSlice';
+import { todosApi } from 'store/cardsSlice';
 import { filterReducer } from './filterSlice';
 
 const persistConfig = {
