@@ -136,7 +136,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
               <AuthError name="title" component="div" />
 
               <Textarea
-                component="textarea"
+                // component="textarea"
                 name="description"
                 id="description"
                 type="text"
