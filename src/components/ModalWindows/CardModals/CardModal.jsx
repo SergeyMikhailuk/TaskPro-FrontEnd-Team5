@@ -138,7 +138,6 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
                 placeholder="Description"
                 onChange={e => {
                   descriptionOnChange = e.target.value;
-                  console.log(descriptionOnChange);
                 }}
                 defaultValue={initialValues.description}
               />
