@@ -64,7 +64,7 @@ const dateOptions = {
 };
 const CardModal = ({ typeModal, closeModal, columnId, card }) => {
   const [startDate, setStartDate] = useState(
-    card.deadline ? new Date(card.deadline) : new Date().toISOString()
+    card.deadline ? new Date(card.deadline) : new Date()
   );
   const initialValues = {
     title: typeModal === 'edit' ? card.title : 'Title',
@@ -81,9 +81,15 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
 
   const handleSubmit = async (values, { resetForm }) => {
     const { title, description, priority } = values;
-    console.log('test commit');
+
+    let deadline = startDate;
+
+    if (!deadline) {
+      deadline = new Date().toISOString();
+    }
+
     try {
-      const todoData = { title, description, priority, deadline: startDate };
+      const todoData = { title, description, priority, deadline };
       if (typeModal === 'add') {
         await createCard({ columnId, todo: todoData, activeBoardId });
       } else if (typeModal === 'edit' && card) {
