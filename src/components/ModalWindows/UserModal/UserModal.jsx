@@ -1,14 +1,11 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { editProfileSchema } from './editProfileSchema';
 import { getThemeName } from 'store/themeSlice';
 import { useDispatch } from 'react-redux';
-import { editProfile } from '../../../store/auth/authOperations';
-// import { toast, ToastContainer } from 'react-toastify';
-
+import { editProfile } from 'store/auth/authOperations';
 
 import {
   AuthFormWrapper,
@@ -35,14 +32,14 @@ const userImages = {
   violet: userViolet,
 };
 
-const UserModal = ({ closeModal, user}) => {
+const UserModal = ({ closeModal, user }) => {
   const theme = useSelector(getThemeName);
   const [showPassword, setShowPassword] = useState(false);
   const [fileImage, setFileImage] = useState(null);
   const [currentImageUrl, setCurrentImageUrl] = useState('');
   const dispatch = useDispatch();
   const token = useSelector(state => state.auth.token);
-   
+  const avatarURL = useSelector(state => state.auth.user.avatarURL);
   const initialValues = {
     image: currentImageUrl,
     name: user.name || '',
@@ -50,7 +47,14 @@ const UserModal = ({ closeModal, user}) => {
     password: '',
     showPassword: false,
   };
-  
+ 
+  useEffect(() => {
+    if (avatarURL) {
+      setCurrentImageUrl(avatarURL);
+    }
+  }, [avatarURL]);
+
+
   const handleImageUpload = event => {
     const file = event.target.files[0];
 
@@ -60,7 +64,6 @@ const UserModal = ({ closeModal, user}) => {
 
     reader.onload = upload => {
       setCurrentImageUrl(upload.target.result);
-      // console.log('Current image URL:', upload.target.result);
     };
 
     if (file) {
@@ -76,21 +79,21 @@ const UserModal = ({ closeModal, user}) => {
 
   const onSubmit = (values, { resetForm }) => {
     const formData = new FormData();
-    //  if (values.name) {
-    //   formData.append('name', values.name);
-    // } else {
-    //   formData.append('name', user.name );
-    // }
 
-    formData.append('name', values.name);
-    formData.append('email', values.email);
-    formData.append('password', values.password);
-   
+    formData.append('name', values.name ? values.name : user.name);
+    formData.append('email', values.email ? values.email : user.email);
+    formData.append('password', values.password ? values.password : user.password);
+    
     if (fileImage) {
       formData.append('avatar', fileImage);
     }
-    //  console.log(formData);
-    dispatch(editProfile({ formData, token}));
+
+    formData.forEach((value, key) => {
+      if (Array.isArray(value)) {
+        formData.set(key, value.toString());
+      }
+    });
+    dispatch(editProfile({ formData, token }));
     resetForm();
     closeModal();
   };
@@ -169,4 +172,3 @@ const UserModal = ({ closeModal, user}) => {
 };
 
 export default UserModal;
-

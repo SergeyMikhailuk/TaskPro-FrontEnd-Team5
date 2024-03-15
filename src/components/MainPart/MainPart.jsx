@@ -1,11 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useGetBoardByIdQuery } from 'store/boardsSlice';
 import { Column } from 'components/Board/Column/Column';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 import { ModalColumn } from 'components/ModalWindows/ColumnModals';
 import { Filter } from 'components/Filter/Filter';
-
 
 import {
   WrapperMain,
@@ -25,10 +24,6 @@ const MainPart = ({ children }) => {
   const { data: boardData } = useGetBoardByIdQuery(activeBoardId);
   const scrollRef = useRef(null);
 
-  useEffect(() => {
-    if (!activeBoardId) return;
-  }, [activeBoardId]);
-
   const handleOpenColumnModal = () => {
     setIsOpenColumnModal(true);
   };
@@ -36,32 +31,34 @@ const MainPart = ({ children }) => {
   const handleCloseColumnModal = () => {
     setIsOpenColumnModal(false);
   };
- 
-  // const filter = useSelector((state) => state.filter)
-  // const filterCards = () => {
-  //   const filteredArray = boardData?.columns?.map(column =>
-  //   {
-  //     const cards = column.todos?.filter(card =>
-  //       card.priority.toLowerCase().includes(filter.toLowerCase())
-  //     );
-  //     console.log(cards);
-  //     return column.todos = cards;
-  //   });
-  //   return filteredArray;
-  // }
-  // console.log(filterCards());
-  // console.log(boardData);
+
+  const filter = useSelector(state => state.filter);
+  const filterCards = () => {
+    return boardData?.columns?.map(column => {
+      return column?.todos?.filter(card =>
+        card.priority.toLowerCase().includes(filter.toLowerCase())
+      );
+    });
+  };
+  console.log('filterCards(): ', filterCards());
+
   return (
     <WrapperMain $url={boardData?.board?.backgroundURL}>
-      <Filter/>
+      <Filter />
       <Header>
-        <Title>{boardData?.board?.title}</Title>
+        <div>
+          <Title>{boardData?.board?.title}</Title>
+        </div>
       </Header>
 
       <Wrapper ref={scrollRef}>
         <ContentWrapper>
           {boardData?.columns?.map(column => (
-            <Column key={column._id} item={column} />
+            <Column
+              key={column._id}
+              item={column}
+              activeBoardId={activeBoardId}
+            />
           ))}
           <AddButton onClick={handleOpenColumnModal} type="button">
             <IconWrapper>

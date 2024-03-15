@@ -17,7 +17,7 @@ export const WelcomeWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 
   background: linear-gradient(
@@ -124,13 +124,14 @@ export const WelcomeLoginButton = styled(NavLink)`
   height: 41px;
   cursor: pointer;
   display: flex;
-  align-items: center ;
+  align-items: center;
   justify-content: center;
-  border-radius: 8px;   
+  border-radius: 8px;
   transition: all 150ms linear;
 
-  &:hover, &:focus {
-    opacity: 0.8;    
+  &:hover,
+  &:focus {
+    opacity: 0.8;
     background: #161616;
     color: #ffffff;
   }

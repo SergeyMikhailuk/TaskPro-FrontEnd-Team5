@@ -2,7 +2,6 @@ import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 
 import { setActiveBoardId } from 'store/activeBoardSlice';
-import EditBoardModal from 'components/ModalWindows/BoardModal/EditBoard';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
 import { Icon } from 'components/ModalWindows/BoardModal/styled';
 import sprite from 'images/sprite.svg';
@@ -17,6 +16,7 @@ import {
   BoardListDeleteBtn,
   BoardListBtnDelete,
 } from './styled';
+import BoardModal from 'components/ModalWindows/BoardModal';
 
 const BoardItem = ({ board, deleteBoard }) => {
   const dispatch = useDispatch();
@@ -69,7 +69,11 @@ const BoardItem = ({ board, deleteBoard }) => {
           closeModal={handleCloseBoardModal}
           onRequestClose={handleCloseBoardModal}
         >
-          <EditBoardModal closeModal={handleCloseBoardModal} />
+          <BoardModal
+            closeModal={handleCloseBoardModal}
+            typeModal={'edit'}
+            item={board}
+          />
         </ReactModal>
       </BoardListBox>
     </BoardIt>

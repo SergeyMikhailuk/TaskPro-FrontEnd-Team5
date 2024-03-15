@@ -11,12 +11,12 @@ export const CardWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 14px 20px 14px 24px;
-  width: 334px;
+  width: 280px;
   min-height: 154px;
   border-radius: 8px;
   background-color: ${props => props.theme.column.backgroundMain};
   overflow: hidden;
-  
+  transition: all 250ms linear;
 
   &::before {
     content: '';
@@ -26,16 +26,23 @@ export const CardWrapper = styled.div`
     transform: translateY(-50%);
     width: 4px;
     height: 100%;
-    background-color: green;
 
-    /* background-color: ${props =>
-      props.priority === 'without' && 'rgb(128, 128, 128)'};
     background-color: ${props =>
-      props.priority === 'low' && 'rgba(143, 161, 208, 1)'};
+      props.priority === 'Without priority' && 'rgb(128, 128, 128)'};
     background-color: ${props =>
-      props.priority === 'medium' && 'rgba(224, 156, 181, 1)'};
+      props.priority === 'Low' && 'rgba(143, 161, 208, 1)'};
     background-color: ${props =>
-      props.priority === 'high' && 'rgba(190, 219, 176, 1)'}; */
+      props.priority === 'Medium' && 'rgba(224, 156, 181, 1)'};
+    background-color: ${props =>
+      props.priority === 'High' && 'rgba(190, 219, 176, 1)'};
+  }
+  @media screen and (min-width: 345px) {
+    width: 300px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 334px;
+
   }
 `;
 
@@ -83,7 +90,6 @@ export const BottomWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  width: 290px;
 `;
 
 export const Stats = styled.div`
@@ -120,16 +126,15 @@ export const PriorityIndicator = styled.span`
   border-radius: 12px;
   margin-right: 4px;
 
-  background-color: green;
 
-  /* background-color: ${props =>
-    props.priority === 'without' && 'rgb(128, 128, 128)'};
-    background-color: ${props =>
-    props.priority === 'low' && 'rgba(143, 161, 208, 1)'};
-    background-color: ${props =>
-    props.priority === 'medium' && 'rgba(224, 156, 181, 1)'};
-    background-color: ${props =>
-    props.priority === 'high' && 'rgba(190, 219, 176, 1)'}; */
+  background-color: ${props =>
+    props.priority === 'Without priority' && 'rgb(128, 128, 128)'};
+  background-color: ${props =>
+    props.priority === 'Low' && 'rgba(143, 161, 208, 1)'};
+  background-color: ${props =>
+    props.priority === 'Medium' && 'rgba(224, 156, 181, 1)'};
+  background-color: ${props =>
+    props.priority === 'High' && 'rgba(190, 219, 176, 1)'};
 `;
 
 export const IconsGroup = styled.div`
@@ -143,11 +148,12 @@ export const Trash = styled(TrashSvg)`
   height: 16px;
   width: 16px;
   color: ${props => props.theme.column.textSecondary};
-  transition: all 150ms linear;
   cursor: pointer;
+  transition: all 250ms linear;
 
-  &:hover {
-  }
+&:hover {
+  transform: scale(1.2);
+}
 `;
 
 export const Pencil = styled(PencilSvg)`
@@ -155,8 +161,12 @@ export const Pencil = styled(PencilSvg)`
   width: 16px;
   fill: transparent;
   color: ${props => props.theme.column.textSecondary};
-  transition: all 150ms linear;
   cursor: pointer;
+  transition: all 250ms linear;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 
 export const ArrowCircle = styled(ArrowCircleSvg)`
@@ -164,10 +174,12 @@ export const ArrowCircle = styled(ArrowCircleSvg)`
   width: 16px;
   fill: transparent;
   color: ${props => props.theme.column.textSecondary};
-  transition: all 150ms linear;
   cursor: pointer;
 
+  transition: all 250ms linear;
+
   &:hover {
+    transform: scale(1.2);
   }
 `;
 
@@ -176,68 +188,14 @@ export const IconBellWrapper = styled.div`
   width: 16px;
   background-color: ${props => props.theme.themePopup.backgroundBell};
   filter: ${props => props.theme.themePopup.filterBell};
+  position: relative;
 `;
 
 export const Bell = styled(BellSvg)`
   position: absolute;
   height: 16px;
   width: 16px;
-  color: ${props => props.theme.themePopup.strokeBell};
+  color: ${props => props.theme.column.textSecondary};
   transition: all 150ms linear;
 `;
 
-export const MoverWrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-`;
-
-export const PopupWrapper = styled.ul`
-  position: absolute;
-  bottom: 130%;
-  left: 50%;
-  transform: translateX(-60%);
-  min-width: 160px;
-  padding: 18px;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 8px;
-  border: 1px solid ${props => props.theme.themePopup.border};
-  background: ${props => props.theme.themePopup.background};
-  box-shadow: 0px 4px 16px 0px ${props => props.theme.themePopup.boxShadow};
-  gap: 4px;
-  z-index: 99;
-  overflow-y: scroll;
-  scroll-behavior: auto;
-  max-height: 112px;
-
-  ::-webkit-scrollbar {
-    width: 0;
-  }
-`;
-
-export const PopupItem = styled.li`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  width: 100%;
-  color: ${props => props.theme.themePopup.textSecondary};
-  stroke: ${props => props.theme.themePopup.textSecondary};
-  fill: transparent;
-  transition: all 250ms linear;
-  cursor: pointer;
-
-  &:hover {
-    color: ${props => props.theme.themePopup.textAccent};
-    stroke: ${props => props.theme.themePopup.textAccent};
-  }
-`;
-
-export const PopupText = styled.p`
-  font-size: 14px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  letter-spacing: -0.28px;
-`;

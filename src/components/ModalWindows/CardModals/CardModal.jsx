@@ -26,7 +26,8 @@ import {
 import {
   useCreateTodosMutation,
   useUpdateTodosMutation,
-} from 'store/todosSlice';
+} from 'store/cardsSlice';
+import { useSelector } from 'react-redux';
 
 const options = ['Low', 'Medium', 'High', 'Without priority'];
 
@@ -79,7 +80,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
 
   const [createCard] = useCreateTodosMutation();
   const [editCard] = useUpdateTodosMutation();
-
+  const activeBoardId = useSelector(state => state.activeBoardId);
   const customDate =
     startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
@@ -96,6 +97,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
         await createCard({
           columnId: columnId,
           todo: { title, description, priority, deadline },
+          activeBoardId,
         });
       } else if (typeModal === 'edit' && card) {
         await editCard({
@@ -106,7 +108,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
           deadline,
         });
       }
-
+      console.log(description);
       resetForm();
       closeModal();
     } catch (error) {
@@ -124,8 +126,6 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
         {() => (
           <ModalForm>
             <FormWrapper>
-              
-
               <TitleInput
                 type="text"
                 id="title"
@@ -133,7 +133,6 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
                 placeholder="Title"
               />
               <AuthError name="title" component="div" />
-              
 
               <Textarea
                 component="textarea"

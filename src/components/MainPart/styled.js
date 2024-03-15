@@ -22,7 +22,7 @@ export const WrapperMain = styled.div`
   align-items: start;
   width: 100%;
   height: calc(100vh - 60px);
-
+  overflow: hidden;
   background-image: url(${({ $url }) => $url});
   background-size: cover;
   background-position: center;
@@ -34,11 +34,6 @@ export const WrapperMain = styled.div`
 
   @media screen and (min-width: 768px) {
     height: calc(100vh - 68px);
-    padding: 20px 32px 20px 32px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    padding: 14px 24px 14px 24px;
   }
 `;
 
@@ -49,6 +44,18 @@ export const Header = styled.div`
   align-items: center;
   position: relative;
   margin-bottom: 39px;
+  div {
+    background-color: ${props => props.theme.header.background};
+    padding: 4px 6px;
+    border-radius: 6px;
+    border: 1px solid ${props => props.theme.addColumnButton.color};
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 26px;
+  }
+  @media screen and (min-width: 1044px) {
+    margin-bottom: 10px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -113,7 +120,7 @@ export const Text = styled.p`
 
 export const Wrapper = styled.div`
   display: flex;
-  overflow: auto;
+  overflow-x: auto;
   width: 100%;
   height: 100%;
 

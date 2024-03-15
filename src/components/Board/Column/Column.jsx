@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useDeleteTodosMutation } from 'store/todosSlice';
+import { useDeleteTodosMutation } from 'store/cardsSlice';
 import Card from 'components/Board/Cards/Cards';
 import { ModalColumn } from 'components/ModalWindows/ColumnModals';
 import CardModal from 'components/ModalWindows/CardModals/CardModal';

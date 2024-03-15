@@ -4,7 +4,8 @@ import { baseQuery } from './baseQuery';
 export const boardsApi = createApi({
   reducerPath: 'boardsApi',
   baseQuery: baseQuery,
-  tagTypes: ['Boards'],
+
+  tagTypes: ['Board', 'Boards'],
   endpoints: build => ({
     getBoards: build.query({
       query: () => '/api/boards',
@@ -13,7 +14,9 @@ export const boardsApi = createApi({
 
     getBoardById: build.query({
       query: boardId => `/api/boards/${boardId}`,
-      providesTags: ['Board'],
+      providesTags: (result, error, boardId) => [
+        { type: 'Board', id: boardId },
+      ],
     }),
     createBoard: build.mutation({
       query: board => ({
@@ -24,10 +27,10 @@ export const boardsApi = createApi({
       invalidatesTags: ['Boards'],
     }),
     updateBoard: build.mutation({
-      query: ({ boardId, ...rest }) => ({
+      query: ({ boardId, updatedBoard }) => ({
         url: `/api/boards/${boardId}`,
         method: 'PATCH',
-        body: rest,
+        body: updatedBoard,
       }),
       invalidatesTags: ['Boards'],
     }),
