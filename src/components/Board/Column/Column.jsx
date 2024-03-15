@@ -63,17 +63,15 @@ export const Column = ({ item }) => {
     }
   };
 
-  const filter = useSelector((state) => state.filter)
+  const filter = useSelector(state => state.filter);
   const filterCards = () => {
-	  return item?.todos?.filter(card =>
-    {
-      if (filter === "") {
-        return card
+    return item?.todos?.filter(card => {
+      if (filter === 'all') {
+        return card;
       }
-      return card.priority.toLowerCase() === filter
-    }
-    );
-  }
+      return card.priority.toLowerCase() === filter;
+    });
+  };
 
   return (
     <Wrapper>
@@ -132,6 +130,7 @@ export const Column = ({ item }) => {
       >
         <CardModal
           typeModal={'add'}
+          card={item}
           columnId={item._id}
           closeModal={handleCloseCardModal}
         />

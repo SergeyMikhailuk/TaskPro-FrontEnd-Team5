@@ -33,7 +33,7 @@ const Filter = () => {
   };
 
   const changeFilter = e => {
-    dispatch(setFilter(e.target.value));
+    dispatch(setFilter(e.target.value || 'all'));
   };
 
   return (
@@ -53,7 +53,7 @@ const Filter = () => {
           <Label>
             <Container>
               <LabelColors>Label colors</LabelColors>
-              <ShowAllBtn type="button" value="" onClick={changeFilter}>
+              <ShowAllBtn type="button" onClick={changeFilter}>
                 Show all
               </ShowAllBtn>
             </Container>

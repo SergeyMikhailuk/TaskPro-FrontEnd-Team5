@@ -63,19 +63,16 @@ const dateOptions = {
   day: '2-digit',
 };
 const CardModal = ({ typeModal, closeModal, columnId, card }) => {
-  const [selectedLabel, setSelectedLabel] = useState(options[3]);
-  const [startDate, setStartDate] = useState('');
-  let descriptionOnChange;
+  const [startDate, setStartDate] = useState(
+    card.deadline ? new Date(card.deadline) : new Date().toISOString()
+  );
   const initialValues = {
-    title: 'title',
-    description: 'description',
-    priority: selectedLabel,
+    title: typeModal === 'edit' ? card.title : 'Title',
+    description: card.description || '',
+    priority: card.priority || 'Low',
+    deadline: card.deadline,
   };
-  if (card) {
-    initialValues.title = card.title;
-    initialValues.description = card.description;
-    initialValues.priority = card.priority;
-  }
+
   const [createCard] = useCreateTodosMutation();
   const [editCard] = useUpdateTodosMutation();
   const activeBoardId = useSelector(state => state.activeBoardId);
@@ -83,28 +80,14 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
     startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
   const handleSubmit = async (values, { resetForm }) => {
-    const { title, priority } = values;
-    let deadline = startDate;
-
-    if (deadline === '') {
-      deadline = new Date().toISOString();
-    }
+    const { title, description, priority } = values;
 
     try {
+      const todoData = { title, description, priority, deadline: startDate };
       if (typeModal === 'add') {
-        await createCard({
-          columnId: columnId,
-          todo: { title, description: descriptionOnChange, priority, deadline },
-          activeBoardId,
-        });
+        await createCard({ columnId, todo: todoData, activeBoardId });
       } else if (typeModal === 'edit' && card) {
-        await editCard({
-          todoId: card._id,
-          title,
-          description: descriptionOnChange,
-          priority,
-          deadline,
-        });
+        await editCard({ todoId: card._id, ...todoData });
       }
       resetForm();
       closeModal();
@@ -120,8 +103,8 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {() => (
-          <ModalForm>
+        {formikProps => (
+          <ModalForm onSubmit={formikProps.handleSubmit}>
             <FormWrapper>
               <TitleInput
                 type="text"
@@ -132,14 +115,14 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
               <AuthError name="title" component="div" />
 
               <Textarea
+                as="textarea"
                 name="description"
                 id="description"
                 type="text"
                 placeholder="Description"
-                onChange={e => {
-                  descriptionOnChange = e.target.value;
-                }}
-                defaultValue={initialValues.description}
+                onChange={formikProps.handleChange}
+                onBlur={formikProps.handleBlur}
+                value={formikProps.values.description}
               />
               <AuthError name="description" component="div" />
             </FormWrapper>
@@ -150,17 +133,26 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
                   <Label
                     key={idx}
                     $value={el}
-                    className={selectedLabel === el ? 'active' : ''}
+                    className={
+                      formikProps.values.priority === el ? 'active' : ''
+                    }
                     id="labelOut"
                   >
                     <LabelItem
-                      onClick={() => setSelectedLabel(el)}
                       value={el}
-                      className={selectedLabel === el ? 'active' : ''}
+                      className={
+                        formikProps.values.priority === el ? 'active' : ''
+                      }
                       id="labelIn"
                     />
 
-                    <DefaultRadioBtn type="radio" value={el} name="priority" />
+                    <DefaultRadioBtn
+                      type="radio"
+                      value={el}
+                      name="priority"
+                      checked={formikProps.values.priority === el}
+                      onChange={formikProps.handleChange}
+                    />
                   </Label>
                 ))}
               </RadioBtnWrapper>
