@@ -7,7 +7,7 @@ import {
   logOut,
   refreshUser,
   editProfile,
-} from '../auth/authOperations';
+} from 'store/auth/authOperations';
 import {
   addCard,
   deleteCard,
@@ -38,7 +38,7 @@ const authSlice = createSlice({
           state.isLoggedIn = true;
         }
       })
-      .addCase(logOut.fulfilled, (state, action) => {
+      .addCase(logOut.fulfilled, (state) => {
         state.user = { name: '', email: '' };
         state.token = '';
         state.isLoggedIn = false;
@@ -48,14 +48,11 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(editProfile.fulfilled, (state, { payload }) => {
-        console.log('payload: ', payload);
         state.user.name = payload.name;
         state.user.email = payload.email;
-        // state.user.theme = payload.theme;
         state.user.avatarURL = payload.avatarURL;
         state.isRefreshing = false;
         state.error = null;
-        // toast.success('User Updated!');
       })
       .addCase(editProfile.pending, state => {
         state.isRefreshing = true;

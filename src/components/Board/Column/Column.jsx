@@ -49,7 +49,6 @@ export const Column = ({ item }) => {
 
   const handleDeleteCard = async cardId => {
     try {
-      console.log(cardId);
       await deleteCard({ todoId: cardId });
     } catch (error) {
       console.error('Error deleting card:', error);
@@ -66,7 +65,7 @@ export const Column = ({ item }) => {
 
   const filter = useSelector((state) => state.filter)
   const filterCards = () => {
-    const filteredArray = item?.todos?.filter(card =>      
+	  return item?.todos?.filter(card =>
     {
       if (filter === "") {
         return card
@@ -74,11 +73,8 @@ export const Column = ({ item }) => {
       return card.priority.toLowerCase() === filter
     }
     );
-    return filteredArray;
   }
-  // console.log(`filter>>>>`, filter);
-  // console.log(`filtered cards>>>>`,filterCards());
-  
+
   return (
     <Wrapper>
       <ContentWrapper>
