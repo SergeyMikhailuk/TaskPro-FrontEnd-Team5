@@ -23,7 +23,10 @@ export const boardsApi = createApi({
         method: 'POST',
         body: board,
       }),
-      invalidatesTags: ['Boards'],
+      invalidatesTags: (result, error, { boardId }) => [
+        { type: 'Board', id: boardId },
+        { type: 'Boards' },
+      ],
     }),
     updateBoard: build.mutation({
       query: ({ boardId, updatedBoard }) => ({

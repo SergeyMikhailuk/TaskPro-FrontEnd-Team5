@@ -1,10 +1,12 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import data from 'components/ModalWindows/background.json';
+import { activeBoardIdSlice, setActiveBoardId } from 'store/activeBoardSlice';
 import sprite from 'images/sprite.svg';
 
 import {
   useCreateBoardMutation,
+  useGetBoardsQuery,
   useUpdateBoardMutation,
 } from 'store/boardsSlice';
 import {
@@ -24,6 +26,8 @@ import {
   ErrorSection,
   ModalForm,
 } from './styled';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
@@ -48,6 +52,12 @@ const BoardModal = ({ closeModal, item, typeModal }) => {
   };
   const [createBoard] = useCreateBoardMutation();
   const [updateBoard] = useUpdateBoardMutation();
+  const { data: boards } = useGetBoardsQuery();
+  const firstBoardId = boards?.[0]?._id;
+  const dispatch = useDispatch();
+  const activeBoardId = useSelector(state => state.activeBoardId);
+
+  console.log(activeBoardId);
 
   const handleSubmit = async values => {
     const { title, iconURL, backgroundURL } = values;
@@ -64,11 +74,13 @@ const BoardModal = ({ closeModal, item, typeModal }) => {
         });
         closeModal();
       } else {
-        await createBoard({
+        const boardResp = await createBoard({
           title,
           iconURL,
           backgroundURL,
         });
+        console.log(boardResp?.data?._id);
+        dispatch(setActiveBoardId(boardResp?.data?._id));
       }
       closeModal();
     } catch (error) {
@@ -80,7 +92,7 @@ const BoardModal = ({ closeModal, item, typeModal }) => {
       closeModal();
     }
   };
-
+  // console.log(item);
   return (
     <Section>
       <Formik
