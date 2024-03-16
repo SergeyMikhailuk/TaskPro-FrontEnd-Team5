@@ -55,6 +55,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 
     localStorage.removeItem('token');
     clearToken();
+
     thunkAPI.dispatch(clearActiveBoardId());
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -66,6 +67,7 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
+
     if (!persistedToken) {
       return thunkAPI.rejectWithValue('Oops');
     }
@@ -89,7 +91,6 @@ export const editProfile = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
-
       return resp.data.user;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
