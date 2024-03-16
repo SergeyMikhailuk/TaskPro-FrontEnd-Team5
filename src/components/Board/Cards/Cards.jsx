@@ -22,7 +22,7 @@ import {
   Trash,
 } from './styled';
 
-const Card = ({ item, onDeleteCard }) => {
+const Card = ({ item, onDeleteCard, onSelectForMove }) => {
   const { title, _id, deadline, description, priority } = item;
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
   const handleOpenCardModal = () => {
@@ -35,6 +35,10 @@ const Card = ({ item, onDeleteCard }) => {
 
   const handleDelete = () => {
     onDeleteCard(_id);
+  };
+
+  const handleSelectForMove = () => {
+    onSelectForMove(item._id);
   };
 
   const formatedDeadline = format(new Date(deadline), 'dd/MM/yyyy');
@@ -68,7 +72,7 @@ const Card = ({ item, onDeleteCard }) => {
           <IconsGroup>
             <Bell aria-label="bell icon" $isActive={isOneDayLeft} />
 
-            <ArrowCircle />
+            <ArrowCircle onClick={handleSelectForMove} />
 
             <Pencil onClick={handleOpenCardModal} aria-label="edit icon" />
             <Trash aria-label="edit icon" onClick={handleDelete} />

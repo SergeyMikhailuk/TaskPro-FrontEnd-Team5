@@ -152,6 +152,7 @@ export const Trash = styled(TrashSvg)`
 
   &:hover {
     transform: scale(1.2);
+    color: ${props => props.theme.column.buttonBackground};
   }
 `;
 
@@ -165,6 +166,7 @@ export const Pencil = styled(PencilSvg)`
 
   &:hover {
     transform: scale(1.2);
+    color: ${props => props.theme.column.buttonBackground};
   }
 `;
 
@@ -178,6 +180,7 @@ export const ArrowCircle = styled(ArrowCircleSvg)`
 
   &:hover {
     transform: scale(1.2);
+    color: ${props => props.theme.column.buttonBackground};
   }
 `;
 
