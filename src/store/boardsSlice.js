@@ -33,6 +33,7 @@ export const boardsApi = createApi({
       }),
       invalidatesTags: (result, error, { boardId }) => [
         { type: 'Board', id: boardId },
+        { type: 'Boards' },
       ],
     }),
     deleteBoard: build.mutation({
