@@ -2,6 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import { boardsApi } from 'store/boardsSlice';
+import { clearActiveBoardId } from 'store/activeBoardSlice';
 import 'react-toastify/dist/ReactToastify.css';
 
 axios.defaults.baseURL = 'https://taskpro-backend-uiwy.onrender.com';
@@ -49,9 +50,12 @@ export const logIn = createAsyncThunk(
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     thunkAPI.dispatch({ type: 'auth/clearState' });
-    clearToken();
-    localStorage.removeItem('token', 'activeBoardId');
+
     await axios.post('/api/users/logout');
+
+    localStorage.removeItem('token');
+    clearToken();
+    thunkAPI.dispatch(clearActiveBoardId());
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }

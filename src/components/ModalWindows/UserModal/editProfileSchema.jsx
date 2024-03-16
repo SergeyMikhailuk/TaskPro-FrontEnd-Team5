@@ -15,7 +15,7 @@ export const editProfileSchema = Yup.object().shape({
   password: Yup.string()
     .min(8, 'Password must be at least 8 characters')
     .max(64, 'Password is too long')
-    // .required('Password is required')
+    .required('Password is required')
     .matches(/^[a-zA-Z0-9]+$/, {
       message:
         'Password must contain Latin letters and numbers, without spaces in different case, from 8 to 64 characters',
