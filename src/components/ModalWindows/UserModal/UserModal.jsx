@@ -44,7 +44,7 @@ const UserModal = ({ closeModal, user }) => {
     image: currentImageUrl,
     name: user.name || '',
     email: user.email || '',
-    password: '',
+    password: user.password || '',
     showPassword: false,
   };
  
