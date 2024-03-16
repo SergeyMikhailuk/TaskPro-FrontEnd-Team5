@@ -134,7 +134,6 @@ export const Column = ({ item }) => {
             ))}
             {isMoveCardOpen && (
               <MoveCardContainer>
-                {/* <p>Move card to:</p> */}
                 {boardsData.columns.map(column => {
                   if (column.title !== item.title) {
                     return (
@@ -148,27 +147,9 @@ export const Column = ({ item }) => {
                       </button>
                     );
                   }
-                  // return null;
+                  return null;
                 })}
               </MoveCardContainer>
-
-              // <Popup id="move-popup">
-              //       {allColumns
-              //         .filter(column => column._id !== columnId)
-              //         .map(column => {
-              //           return (
-              //             <button
-              //               key={column._id}
-              //               type="button"
-              //               title={`${column.title}`}
-              //               onClick={() => moveCard(column._id)}
-              //             >
-              //               <span> {column.title}</span>
-              //               <ArrowCircle />
-              //             </button>
-              //           );
-              //         })}
-              //     </Popup>
             )}
           </TaskList>
         </Content>
