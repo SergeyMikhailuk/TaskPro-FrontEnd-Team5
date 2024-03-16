@@ -37,6 +37,9 @@ export const logIn = createAsyncThunk(
     try {
       const { data } = await axios.post('/api/users/login', credentials);
       setToken(data.token);
+
+      await thunkAPI.dispatch(boardsApi.util.invalidateTags(['Boards']));
+
       return data;
     } catch (error) {
       toast.error(

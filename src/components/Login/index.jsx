@@ -30,9 +30,8 @@ const LoginForm = () => {
     email: '',
     password: '',
   };
-
-  const onSubmit = (values, { resetForm }) => {
-    dispatch(logIn(values));
+  const onSubmit = async (values, { resetForm }) => {
+    await dispatch(logIn(values));
     resetForm();
   };
 

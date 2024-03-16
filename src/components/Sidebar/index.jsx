@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { useDeleteBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
@@ -81,7 +81,6 @@ const Sidebar = () => {
   const deleteBoardHandler = async boardId => {
     try {
       await deleteBoard({ boardId });
-      const activeBoardId = boards?.[0]?._id;
       dispatch(setActiveBoardId(boards[0]?._id));
     } catch (error) {
       console.error('Error deleting board:', error);
