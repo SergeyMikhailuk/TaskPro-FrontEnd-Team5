@@ -124,6 +124,7 @@ export const Column = ({ item }) => {
           typeModal={'edit'}
           closeModal={handleCloseColumnModal}
           columnId={item._id}
+          column={item}
         />
       </ReactModal>
 

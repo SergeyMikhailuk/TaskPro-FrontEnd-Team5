@@ -66,6 +66,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
   const [startDate, setStartDate] = useState(
     card.deadline ? new Date(card.deadline) : new Date()
   );
+
   const initialValues = {
     title: typeModal === 'edit' ? card.title : 'Title',
     description: card.description || '',
@@ -76,8 +77,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
   const [createCard] = useCreateTodosMutation();
   const [editCard] = useUpdateTodosMutation();
   const activeBoardId = useSelector(state => state.activeBoardId);
-  const customDate =
-    startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
+  const customDate = startDate.toLocaleString('en-GB', dateOptions);
 
   const handleSubmit = async (values, { resetForm }) => {
     const { title, description, priority } = values;
@@ -132,6 +132,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
               />
               <AuthError name="description" component="div" />
             </FormWrapper>
+
             <FormWrapper>
               <FormTitle>Icons</FormTitle>
               <RadioBtnWrapper>
@@ -163,6 +164,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
                 ))}
               </RadioBtnWrapper>
             </FormWrapper>
+
             <FormWrapper>
               <FormTitle>Deadline </FormTitle>
               <DateTitle
@@ -181,6 +183,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
                 />
               </Wrapper>
             </FormWrapper>
+
             <AuthFormSubmitButton type="submit">
               <ButtonPlus>
                 <PlusIcon />

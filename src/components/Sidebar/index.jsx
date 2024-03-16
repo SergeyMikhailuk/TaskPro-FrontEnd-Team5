@@ -12,7 +12,8 @@ import HelpModal from 'components/ModalWindows/HelpModal/index';
 import imgDecor from 'images/sidebar/aside-img.png';
 import imgDecor2x from 'images/sidebar/aside-img-2x.png';
 
-import Board from './BoardItem/index.js';
+import BoardTabItem from 'components/BoardTabItem';
+
 import {
   Aside,
   LogoBox,
@@ -44,13 +45,13 @@ const Sidebar = () => {
   const { data: boards } = useGetBoardsQuery();
   const [deleteBoard] = useDeleteBoardMutation();
   const isOpen = useSelector(state => state.sidebar.isOpen);
-  const activeBoardId = useSelector(state => state.activeBoard);
+  const activeBoardId = useSelector(state => state.activeBoardId);
 
   useEffect(() => {
-    if (boards?.length > 0) {
+    if (boards?.length > 0 && !activeBoardId) {
       dispatch(setActiveBoardId(boards[0]._id));
     }
-  }, [boards, dispatch]);
+  }, [boards, dispatch, activeBoardId]);
 
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
@@ -94,7 +95,7 @@ const Sidebar = () => {
       {isOpen && <StyledOverlay onClick={handleToggleSidebar} />}
       <Aside className={isOpen ? 'open' : ''}>
         <LogoBox>
-          <a href="/">
+          <a href="TaskPro-FrontEnd-Team5/home">
             <AppLogo />
             <LogoBoxTitle>Task Pro</LogoBoxTitle>
           </a>
@@ -112,7 +113,7 @@ const Sidebar = () => {
         </AddBoards>
         <BoardsList>
           {boards?.map(board => (
-            <Board
+            <BoardTabItem
               key={board._id}
               board={board}
               deleteBoard={deleteBoardHandler}
@@ -142,7 +143,7 @@ const Sidebar = () => {
             closeModal={handleCloseHelpModal}
             onRequestClose={handleCloseHelpModal}
           >
-            <HelpModal closeModal={handleCloseBoardModal} />
+            <HelpModal closeModal={handleCloseHelpModal} />
           </ReactModal>
         </BoxHelp>
         <LogOut>
