@@ -8,7 +8,7 @@ export const BoardListTitle = styled.div`
   gap: 8px;
 `;
 
-export const BoardIt = styled.li`
+export const BoardLi = styled.li`
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -16,12 +16,14 @@ export const BoardIt = styled.li`
   font-size: 14px;
   color: ${props => props.theme.sidebar.textSecondary};
   letter-spacing: -0.32px;
-  height: 61px;
+  height: 50px;
   margin-bottom: 4px;
-  margin-right: 4px;
+  cursor: pointer;
+  background-color: ${({ $isActive, theme }) =>
+    $isActive ? theme.sidebar.projectHover : 'transparent'};
 
   &:hover {
-    background-color: ${props => props.theme.sidebar.projectHover};
+    background-color: ${({ theme }) => theme.sidebar.projectHover};
   }
 
   :hover::after {
@@ -46,7 +48,7 @@ export const BoardListBox = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: 20px 24px 20px 0;
+  padding: 12px;
 
   &:hover {
     color: ${props => props.theme.needHelp.icon};

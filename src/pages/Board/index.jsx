@@ -26,7 +26,7 @@ const BoardPage = () => {
   const activeBoardId = useSelector(store => store.activeBoardId) || currentId;
 
   const { data: boardData } = useGetBoardByIdQuery(activeBoardId);
-  console.log('boardData: ', boardData);
+
   const scrollRef = useRef(null);
 
   const handleOpenColumnModal = () => {

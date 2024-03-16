@@ -49,13 +49,13 @@ export const Aside = styled.aside`
     position: static;
     transform: translateX(0);
     transition: none;
-    width: 310px;
+    width: 260px;
     z-index: 0;
   }
 `;
 
 export const LogoBox = styled.div`
-  margin-bottom: 70px;
+  margin-bottom: 32px;
   display: flex;
   align-items: center;
 
@@ -63,13 +63,6 @@ export const LogoBox = styled.div`
     display: flex;
     align-items: center;
     gap: 8px;
-  }
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 60px;
-  }
-  @media screen and (min-width: 1440px) {
-    margin-bottom: 60px;
   }
 `;
 
@@ -107,15 +100,10 @@ export const AddBoardsTitle = styled.h3`
 export const AddBoardsCreateBox = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 197px;
   padding-top: 14px;
   padding-bottom: 14px;
   border-top: solid 1px rgba(255, 255, 255, 0.5);
   border-bottom: solid 1px rgba(255, 255, 255, 0.5);
-
-  @media screen and (min-width: 768px) {
-    width: 212px;
-  }
 `;
 
 export const AddBoardsCreateText = styled.div`
@@ -147,9 +135,8 @@ export const AddBoardsCreateBtn = styled(AppBtnSvg)`
 `;
 
 export const BoardsList = styled.ul`
-  height: 185px;
+  min-height: 185px;
   overflow: auto;
-  margin-bottom: 40px;
 
   &::-webkit-scrollbar {
     width: 7px;
@@ -168,16 +155,11 @@ export const BoardsList = styled.ul`
 `;
 
 export const BoxHelp = styled.div`
-  width: 197px;
   border-radius: 8px;
   background-color: ${props => props.theme.needHelp.background};
-  padding: 14px;
+  padding: 8px 16px 16px;
   margin-bottom: 24px;
-
-  @media screen and (min-width: 768px) {
-    width: 212px;
-    padding: 20px;
-  }
+  margin-top: auto;
 `;
 
 export const BoxHelpText = styled.p`

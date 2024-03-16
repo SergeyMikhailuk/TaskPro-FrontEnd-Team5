@@ -11,7 +11,6 @@ export const boardsApi = createApi({
       query: () => '/api/boards',
       providesTags: ['Boards'],
     }),
-
     getBoardById: build.query({
       query: boardId => `/api/boards/${boardId}`,
       providesTags: (result, error, boardId) => [
@@ -32,7 +31,9 @@ export const boardsApi = createApi({
         method: 'PATCH',
         body: updatedBoard,
       }),
-      invalidatesTags: ['Boards'],
+      invalidatesTags: (result, error, { boardId }) => [
+        { type: 'Board', id: boardId },
+      ],
     }),
     deleteBoard: build.mutation({
       query: ({ boardId }) => ({

@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import React, { useState } from 'react';
 
 import { setActiveBoardId } from 'store/activeBoardSlice';
@@ -8,7 +8,7 @@ import { Icon } from 'components/ModalWindows/BoardModal/styled';
 import sprite from 'images/sprite.svg';
 
 import {
-  BoardIt,
+  BoardLi,
   BoardListBox,
   BoardListTitle,
   BoardListBtnGroup,
@@ -20,6 +20,8 @@ import {
 
 const BoardItem = ({ board, deleteBoard }) => {
   const dispatch = useDispatch();
+  const activeBoardId = useSelector(state => state.activeBoardId);
+
   const handleDelete = () => {
     deleteBoard(board._id);
   };
@@ -36,10 +38,11 @@ const BoardItem = ({ board, deleteBoard }) => {
 
   const handleCloseBoardModal = () => {
     setIsOpenBoardModal(false);
+    dispatch(setActiveBoardId(board._id));
   };
 
   return (
-    <BoardIt onClick={handleBoardClick}>
+    <BoardLi onClick={handleBoardClick} $isActive={board._id === activeBoardId}>
       <BoardListBox>
         <BoardListTitle>
           <Icon width={18} height={18}>
@@ -70,7 +73,7 @@ const BoardItem = ({ board, deleteBoard }) => {
           />
         </ReactModal>
       </BoardListBox>
-    </BoardIt>
+    </BoardLi>
   );
 };
 
