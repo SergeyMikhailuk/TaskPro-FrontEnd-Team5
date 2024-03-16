@@ -1,17 +1,17 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+import { boardsApi } from 'store/boardsSlice';
 import 'react-toastify/dist/ReactToastify.css';
 
 axios.defaults.baseURL = 'https://taskpro-backend-uiwy.onrender.com';
 
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-  },
+const setToken = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+const clearToken = () => {
+  axios.defaults.headers.common.Authorization = '';
 };
 
 export const register = createAsyncThunk(
@@ -19,7 +19,10 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await axios.post('/api/users/register', credentials);
-      token.set(data.user.token);
+      setToken(data.user.token);
+
+      await thunkAPI.dispatch(boardsApi.util.invalidateTags(['Boards']));
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -27,22 +30,31 @@ export const register = createAsyncThunk(
   }
 );
 
-export const logIn = createAsyncThunk('auth/login', async credentials => {
-  try {
-    const { data } = await axios.post('/api/users/login', credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    toast.error(
-      'Error: "The email address or password is incorrect. Please retry..."'
-    );
+export const logIn = createAsyncThunk(
+  'auth/login',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/api/users/login', credentials);
+      setToken(data.token);
+      return data;
+    } catch (error) {
+      toast.error(
+        'Error: "The email address or password is incorrect. Please retry..."'
+      );
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
 
-export const logOut = createAsyncThunk('auth/logout', async () => {
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
+    thunkAPI.dispatch({ type: 'auth/clearState' });
+    clearToken();
+    localStorage.removeItem('token', 'activeBoardId');
     await axios.post('/api/users/logout');
-  } catch (error) {}
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
 });
 
 export const refreshUser = createAsyncThunk(
@@ -53,7 +65,7 @@ export const refreshUser = createAsyncThunk(
     if (!persistedToken) {
       return thunkAPI.rejectWithValue('Oops');
     }
-    token.set(persistedToken);
+    setToken(persistedToken);
     try {
       const { data } = await axios.get('/api/users/current');
       return data;
@@ -65,7 +77,7 @@ export const refreshUser = createAsyncThunk(
 
 export const editProfile = createAsyncThunk(
   'auth/editProfile',
-  async ({ formData, thunkAPI, token }) => {
+  async ({ formData, token }, thunkAPI) => {
     try {
       const resp = await axios.patch('api/users', formData, {
         headers: {
@@ -75,8 +87,8 @@ export const editProfile = createAsyncThunk(
       });
 
       return resp.data.user;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
