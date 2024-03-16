@@ -1,12 +1,11 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import data from 'components/ModalWindows/background.json';
-import { activeBoardIdSlice, setActiveBoardId } from 'store/activeBoardSlice';
+import {setActiveBoardId } from 'store/activeBoardSlice';
 import sprite from 'images/sprite.svg';
 
 import {
   useCreateBoardMutation,
-  useGetBoardsQuery,
   useUpdateBoardMutation,
 } from 'store/boardsSlice';
 import {
@@ -52,8 +51,6 @@ const BoardModal = ({ closeModal, item, typeModal }) => {
   };
   const [createBoard] = useCreateBoardMutation();
   const [updateBoard] = useUpdateBoardMutation();
-  const { data: boards } = useGetBoardsQuery();
-  const firstBoardId = boards?.[0]?._id;
   const dispatch = useDispatch();
   const activeBoardId = useSelector(state => state.activeBoardId);
 

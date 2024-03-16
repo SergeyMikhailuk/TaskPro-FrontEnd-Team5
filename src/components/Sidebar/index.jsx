@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { useDeleteBoardMutation, useGetBoardsQuery } from 'store/boardsSlice';
@@ -47,12 +47,6 @@ const Sidebar = () => {
   const isOpen = useSelector(state => state.sidebar.isOpen);
   const activeBoardId = useSelector(state => state.activeBoardId);
 
-  // useEffect(() => {
-  //   if (boards?.length > 0) {
-  //     dispatch(setActiveBoardId(boards[0]?._id));
-  //   }
-  // }, [boards, dispatch, activeBoardId]);
-
   const isRetina = window.devicePixelRatio > 1;
   const imgSrc = isRetina ? imgDecor2x : imgDecor;
 
@@ -81,7 +75,6 @@ const Sidebar = () => {
   const deleteBoardHandler = async boardId => {
     try {
       await deleteBoard({ boardId });
-      const activeBoardId = boards?.[0]?._id;
       dispatch(setActiveBoardId(boards[0]?._id));
     } catch (error) {
       console.error('Error deleting board:', error);
