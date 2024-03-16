@@ -19,7 +19,6 @@ const HomePage = () => {
 
   useEffect(() => {
     if (!activeBoardId && firstBoardId) {
-      console.log('useEffect setActiveBoardId(firstBoardId)');
       dispatch(setActiveBoardId(firstBoardId));
     }
   }, [activeBoardId, firstBoardId, dispatch]);
