@@ -98,7 +98,7 @@ const Card = ({ item, onDeleteCard }) => {
             {isMoveCardOpen && boardsData?.columns?.length >= 2 && (
               <MoveCardContainer>
                 {boardsData?.columns?.map(column => {
-                  if (column.title !== item.title) {
+                  if (column._id !== item.column) {
                     return (
                       <button
                         key={column._id}

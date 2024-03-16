@@ -198,19 +198,38 @@ export const Bell = styled(BellSvg)`
 
 export const MoveCardContainer = styled.div`
   position: absolute;
-  top: 50%;
-  left: 0;
+  top: 40%;
+  right: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 8px;
   padding: 18px;
   width: 130px;
-  border: none;
   border-radius: 8px;
-  background-color: ${props => props.theme.column.plusBackground};
+  background-color: ${props => props.theme.header.background};
   z-index: 3;
   transform: translateY(-50%);
+  max-height: 86px;
+  overflow-y: auto;
+  border: 1px solid ${props => props.theme.container.background};
+  box-shadow: 0 4px 16px 0 rgba(17, 17, 17, 0.1);
+
+  &::-webkit-scrollbar {
+    height: 12px;
+    width: calc(100% - 24px);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${props => props.theme.column.scrollThumb};
+    border-radius: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: ${props => props.theme.column.scrollTrack};
+    border-radius: 12px;
+    border: 1px solid ${props => props.theme.column.scrollBorder};
+  }
 
   &:hover,
   &:focus {
@@ -230,7 +249,6 @@ export const MoveCardContainer = styled.div`
     background-color: transparent;
     padding: 0;
     width: 100%;
-    overflow: hidden;
 
     border: none;
 
