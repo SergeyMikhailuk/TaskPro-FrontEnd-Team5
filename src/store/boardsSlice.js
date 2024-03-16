@@ -12,7 +12,7 @@ export const boardsApi = createApi({
       providesTags: ['Boards'],
     }),
     getBoardById: build.query({
-      query: boardId => `/api/boards/${boardId}`,
+      query: boardId => (boardId ? `/api/boards/${boardId}` : ``),
       providesTags: (result, error, boardId) => [
         { type: 'Board', id: boardId },
       ],

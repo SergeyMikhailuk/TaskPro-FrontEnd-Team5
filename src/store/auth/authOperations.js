@@ -2,6 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import { boardsApi } from 'store/boardsSlice';
+import { clearActiveBoardId } from 'store/activeBoardSlice';
 import 'react-toastify/dist/ReactToastify.css';
 
 axios.defaults.baseURL = 'https://taskpro-backend-uiwy.onrender.com';
@@ -36,7 +37,6 @@ export const logIn = createAsyncThunk(
     try {
       const { data } = await axios.post('/api/users/login', credentials);
       setToken(data.token);
-      await thunkAPI.dispatch(boardsApi.util.invalidateTags(['Boards']));
       return data;
     } catch (error) {
       toast.error(
@@ -50,9 +50,13 @@ export const logIn = createAsyncThunk(
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     thunkAPI.dispatch({ type: 'auth/clearState' });
-    clearToken();
 
     await axios.post('/api/users/logout');
+
+    localStorage.removeItem('token');
+    clearToken();
+
+    thunkAPI.dispatch(clearActiveBoardId());
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -63,6 +67,7 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
+
     if (!persistedToken) {
       return thunkAPI.rejectWithValue('Oops');
     }
@@ -86,7 +91,6 @@ export const editProfile = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
-
       return resp.data.user;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
