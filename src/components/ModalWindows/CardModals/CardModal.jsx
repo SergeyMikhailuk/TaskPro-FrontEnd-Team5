@@ -3,7 +3,8 @@ import { Formik } from 'formik';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import * as Yup from 'yup';
-
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   AuthError,
   AuthFormSubmitButton,
@@ -82,6 +83,11 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
   const handleSubmit = async (values, { resetForm }) => {
     const { title, description, priority } = values;
 
+    if (!description) {
+      toast.error('Description is required!');
+      return;
+    }
+
     let deadline = startDate;
 
     if (!deadline) {
@@ -104,6 +110,7 @@ const CardModal = ({ typeModal, closeModal, columnId, card }) => {
 
   return (
     <ModalSection>
+      <ToastContainer />
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
