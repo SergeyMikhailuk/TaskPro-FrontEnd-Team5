@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import { authReducer } from 'store/auth/authSlice';
+import authReducer from 'store/auth/authSlice';
 import { themeSlice } from 'store/themeSlice';
 import { activeBoardIdSlice } from 'store/activeBoardSlice';
 import sidebarReducer from 'store/sidebarSlice';

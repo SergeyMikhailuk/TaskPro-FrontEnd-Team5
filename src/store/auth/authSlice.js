@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-
 import {
   register,
   logIn,
@@ -24,23 +23,26 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    clearState: () => initialState,
+  },
   extraReducers: builder => {
     builder
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.user.token;
+        const { user } = action.payload;
+        state.user = user;
+        state.token = user.token;
         state.isLoggedIn = true;
       })
       .addCase(logIn.fulfilled, (state, action) => {
-        if (action.payload) {
-          state.user = action.payload.user;
-          state.token = action.payload.token;
-          state.isLoggedIn = true;
-        }
+        const { user, token } = action.payload;
+        state.user = user;
+        state.token = token;
+        state.isLoggedIn = true;
       })
       .addCase(logOut.fulfilled, state => {
-        state.user = { name: '', email: '' };
-        state.token = '';
+        state.user = initialState.user;
+        state.token = initialState.token;
         state.isLoggedIn = false;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
@@ -48,9 +50,10 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(editProfile.fulfilled, (state, { payload }) => {
-        state.user.name = payload.name;
-        state.user.email = payload.email;
-        state.user.avatarURL = payload.avatarURL;
+        const { name, email, avatarURL } = payload;
+        state.user.name = name;
+        state.user.email = email;
+        state.user.avatarURL = avatarURL;
         state.isRefreshing = false;
         state.error = null;
       })
@@ -63,60 +66,49 @@ const authSlice = createSlice({
         toast.error(payload);
       })
       .addCase(addCard.fulfilled, (state, action) => {
-        state.isLoading = false;
-
+        const { owner } = action.payload;
         const index = state.currentDashboard.columns.findIndex(
-          item => item._id === action.payload.owner
+          item => item._id === owner
         );
-
-        if (!state.currentDashboard.columns[index].cards) {
-          state.currentDashboard.columns[index].cards = [];
+        const { cards } = state.currentDashboard.columns[index];
+        if (!cards) {
+          state.currentDashboard.columns[index].cards = [action.payload];
+        } else {
+          cards.push(action.payload);
         }
-
-        state.currentDashboard.columns[index].cards.push(action.payload);
-
         state.error = null;
       })
       .addCase(deleteCard.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-
-        const indexColumn = state.currentDashboard.columns.findIndex(
-          item => item._id === action.payload.owner
-        );
-
-        const indexCard = state.currentDashboard.columns[
-          indexColumn
-        ].cards.findIndex(item => item._id === action.payload._id);
-
-        state.currentDashboard.columns[indexColumn].cards.splice(indexCard, 1);
-        state.columnsLength = state.currentDashboard.columns.length;
-      })
-      .addCase(editCard.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-
-        const { _id, title, description, priority, deadline, owner } =
-          action.payload;
-
+        const { owner, _id } = action.payload;
         const indexColumn = state.currentDashboard.columns.findIndex(
           item => item._id === owner
         );
-
-        const indexCard = state.currentDashboard.columns[
-          indexColumn
-        ].cards.findIndex(item => item._id === _id);
-
-        state.currentDashboard.columns[indexColumn].cards[indexCard] = {
-          ...state.currentDashboard.columns[indexColumn].cards[indexCard],
+        const { cards } = state.currentDashboard.columns[indexColumn];
+        const indexCard = cards.findIndex(item => item._id === _id);
+        cards.splice(indexCard, 1);
+        state.columnsLength = state.currentDashboard.columns.length;
+      })
+      .addCase(editCard.fulfilled, (state, action) => {
+        const { _id, title, description, priority, deadline, owner } =
+          action.payload;
+        const indexColumn = state.currentDashboard.columns.findIndex(
+          item => item._id === owner
+        );
+        const { cards } = state.currentDashboard.columns[indexColumn];
+        const indexCard = cards.findIndex(item => item._id === _id);
+        const updatedCard = {
+          ...cards[indexCard],
           title,
           description,
           priority,
           deadline,
         };
+        cards[indexCard] = updatedCard;
         state.columnsLength = state.currentDashboard.columns.length;
       });
   },
 });
 
-export const authReducer = authSlice.reducer;
+export const { clearState } = authSlice.actions;
+
+export default authSlice.reducer;
