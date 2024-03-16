@@ -195,3 +195,82 @@ export const Bell = styled(BellSvg)`
       ? 'drop-shadow(0 0 1px #00ff00) drop-shadow(0 0 1px #00ff00) drop-shadow(0 0 4px #00ff00) drop-shadow(0 0 8px #00ff00)'
       : 'none'};
 `;
+
+export const MoveCardContainer = styled.div`
+  position: absolute;
+  top: 40%;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 18px;
+  width: 130px;
+  border-radius: 8px;
+  background-color: ${props => props.theme.header.background};
+  z-index: 3;
+  transform: translateY(-50%);
+  max-height: 86px;
+  overflow-y: auto;
+  border: 1px solid ${props => props.theme.container.background};
+  box-shadow: 0 4px 16px 0 rgba(17, 17, 17, 0.1);
+
+  &::-webkit-scrollbar {
+    height: 12px;
+    width: calc(100% - 24px);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${props => props.theme.column.scrollThumb};
+    border-radius: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: ${props => props.theme.column.scrollTrack};
+    border-radius: 12px;
+    border: 1px solid ${props => props.theme.column.scrollBorder};
+  }
+
+  &:hover,
+  &:focus {
+    border: ${props => props.theme.editProfileModal.inputBorder};
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    row-gap: 10px;
+    font-size: 11px;
+    color: ${props => props.theme.column.textSecondary};
+    background-color: transparent;
+    padding: 0;
+    width: 100%;
+
+    border: none;
+
+    span {
+      max-width: 80px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &:hover,
+    &:focus {
+      color: ${props => props.theme.column.buttonBackground};
+    }
+
+    svg path {
+      transition: all 250ms linear;
+    }
+
+    &:hover svg path,
+    &:focus svg path {
+      stroke: ${props => props.theme.column.buttonBackground};
+    }
+  }
+`;
