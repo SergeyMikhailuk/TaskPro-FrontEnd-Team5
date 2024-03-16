@@ -135,7 +135,7 @@ export const Column = ({ item }) => {
             {isMoveCardOpen && (
               <MoveCardContainer>
                 {/* <p>Move card to:</p> */}
-                {boardsData.columns.map(column => {
+                {boardsData?.columns?.map(column => {
                   if (column.title !== item.title) {
                     return (
                       <button
@@ -148,7 +148,7 @@ export const Column = ({ item }) => {
                       </button>
                     );
                   }
-                  // return null;
+                  return null;
                 })}
               </MoveCardContainer>
 
