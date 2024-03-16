@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { ReactComponent as ArrowCircleSvg } from 'images/svg/arrow-circle-broken-right.svg';
 import { ReactComponent as AppEditCardSvg } from 'images/sidebar/edit-card.svg';
 import { ReactComponent as AppTrashCardSvg } from 'images/sidebar/trash-card.svg';
 import { ReactComponent as AppBtnSvg } from 'images/svg/plus28.svg';
@@ -189,4 +189,80 @@ export const ButtonPlus = styled.div`
   background-color: ${props => props.theme.column.plusBackground};
   margin-right: 8px;
   cursor: pointer;
+`;
+
+export const PlusIcon = styled.svg`
+  width: 14px;
+  height: 14px;
+  stroke: ${props => props.theme.column.plusColor};
+  transition: all 250ms linear;
+`;
+export const MoveCardContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 18px;
+  width: 130px;
+  border: none;
+  border-radius: 8px;
+  background-color: ${props => props.theme.column.plusBackground};
+  z-index: 3;
+  transform: translateY(-50%);
+
+  &:hover,
+  &:focus {
+    border: ${props => props.theme.editProfileModal.inputBorder};
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+  }
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    row-gap: 10px;
+    font-size: 11px;
+    color: ${props => props.theme.column.textSecondary};
+    background-color: transparent;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+
+    border: none;
+
+    span {
+      max-width: 80px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &:hover,
+    &:focus {
+      color: ${props => props.theme.column.buttonBackground};
+    }
+
+    svg path {
+      transition: all 250ms linear;
+    }
+
+    &:hover svg path,
+    &:focus svg path {
+      stroke: ${props => props.theme.column.buttonBackground};
+    }
+  }
+`;
+
+export const ArrowCircle = styled(ArrowCircleSvg)`
+  height: 16px;
+  width: 16px;
+  fill: transparent;
+  color: ${props => props.theme.column.textSecondary};
+  cursor: pointer;
+  transition: all 250ms linear;
 `;

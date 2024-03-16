@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { useDeleteTodosMutation } from 'store/cardsSlice';
+import {
+  useChangeTodosColumnMutation,
+  useDeleteTodosMutation,
+} from 'store/cardsSlice';
 import Card from 'components/Board/Cards/Cards';
 import { ModalColumn } from 'components/ModalWindows/ColumnModals';
 import CardModal from 'components/ModalWindows/CardModals/CardModal';
 import { ReactModal } from 'components/ModalWindows/Modal/Modal';
+import { useDeleteColumnMutation } from 'store/columnsSlice';
+import { useGetBoardByIdQuery } from 'store/boardsSlice';
 
 import {
   Wrapper,
@@ -22,14 +27,20 @@ import {
   CardsBtnDelete,
   CardstBtnEdit,
   AddCardCreateBtn,
+  MoveCardContainer,
+  ArrowCircle,
 } from './styled';
-import { useDeleteColumnMutation } from 'store/columnsSlice';
 
 export const Column = ({ item }) => {
   const [isOpenColumnModal, setIsOpenColumnModal] = useState(false);
   const [isOpenCardModal, setIsOpenCardModal] = useState(false);
+  const [isMoveCardOpen, setIsMoveCardOpen] = useState(false);
+  const [activeCard, setActiveCard] = useState(null);
   const [deleteCard] = useDeleteTodosMutation();
   const [deleteColumn] = useDeleteColumnMutation();
+  const activeBoardId = useSelector(state => state.activeBoardId);
+  const { data: boardsData } = useGetBoardByIdQuery(activeBoardId);
+  const [changeColumnMutation] = useChangeTodosColumnMutation();
 
   const handleOpenColumnModal = () => {
     setIsOpenColumnModal(true);
@@ -60,6 +71,23 @@ export const Column = ({ item }) => {
       await deleteColumn({ columnId: item._id });
     } catch (error) {
       console.error('Error deleting column:', error);
+    }
+  };
+
+  const handleToggleMoveCard = cardId => {
+    setActiveCard(cardId);
+    setIsMoveCardOpen(prevState => !prevState);
+  };
+
+  const handleMoveCard = async (todoId, columnId) => {
+    try {
+      await changeColumnMutation({
+        todoId: todoId,
+        columnId: columnId,
+      });
+      setIsMoveCardOpen(false);
+    } catch (error) {
+      console.error('Error moving card:', error);
     }
   };
 
@@ -101,8 +129,47 @@ export const Column = ({ item }) => {
                 item={todo}
                 columnName={item.title}
                 onDeleteCard={handleDeleteCard}
+                onSelectForMove={() => handleToggleMoveCard(todo._id)}
               />
             ))}
+            {isMoveCardOpen && (
+              <MoveCardContainer>
+                {/* <p>Move card to:</p> */}
+                {boardsData.columns.map(column => {
+                  if (column.title !== item.title) {
+                    return (
+                      <button
+                        key={column._id}
+                        type="button"
+                        onClick={() => handleMoveCard(activeCard, column._id)}
+                      >
+                        <span> {column.title} </span>
+                        <ArrowCircle />
+                      </button>
+                    );
+                  }
+                  // return null;
+                })}
+              </MoveCardContainer>
+
+              // <Popup id="move-popup">
+              //       {allColumns
+              //         .filter(column => column._id !== columnId)
+              //         .map(column => {
+              //           return (
+              //             <button
+              //               key={column._id}
+              //               type="button"
+              //               title={`${column.title}`}
+              //               onClick={() => moveCard(column._id)}
+              //             >
+              //               <span> {column.title}</span>
+              //               <ArrowCircle />
+              //             </button>
+              //           );
+              //         })}
+              //     </Popup>
+            )}
           </TaskList>
         </Content>
 

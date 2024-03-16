@@ -54,7 +54,7 @@ export const todosApi = createApi({
     }),
     changeTodosColumn: build.mutation({
       query: ({ todoId, columnId }) => ({
-        url: `/api/todos/${todoId}/owner${columnId}`,
+        url: `/api/todos/${todoId}/owner/${columnId}`,
         method: 'PATCH',
       }),
       invalidatesTags: ['Todos'],
