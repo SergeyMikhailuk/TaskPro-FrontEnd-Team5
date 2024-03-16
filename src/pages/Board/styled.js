@@ -70,10 +70,7 @@ export const Title = styled.h2`
 `;
 
 export const AddButton = styled.button`
-  position: absolute;
-  top: 0;
-  right: ${({ $length }) => ($length === 0 ? '-334px' : '-368px')};
-  width: 334px;
+  width: 280px;
   height: 56px;
   padding: 14px 0;
 
@@ -92,6 +89,14 @@ export const AddButton = styled.button`
 
   &:hover svg {
     transform: scale(1.1);
+  }
+
+  @media screen and (min-width: 345px) {
+    width: 300px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 334px;
   }
 `;
 
