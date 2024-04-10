@@ -80,7 +80,7 @@ const LoginForm = () => {
               to={'https://taskpro-backend-uiwy.onrender.com/api/users/google'}
             >
               <FcGoogle style={{ width: '28px', height: '28px' }} />
-              <span>Register with Google</span>
+              <span>Log In with Google</span>
             </GoogleAuthButton>
           </AuthForm>
         )}

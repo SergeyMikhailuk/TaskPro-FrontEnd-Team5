@@ -3,6 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import { boardsApi } from 'store/boardsSlice';
 import { clearActiveBoardId } from 'store/activeBoardSlice';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 axios.defaults.baseURL = 'https://taskpro-backend-uiwy.onrender.com';
@@ -95,6 +96,32 @@ export const editProfile = createAsyncThunk(
         },
       });
       return resp.data.user;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const handleGoogleAuth = createAsyncThunk(
+  'auth/handleAuth',
+  async (_, thunkAPI) => {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('accessToken');
+
+      if (token) {
+        setToken(token);
+        thunkAPI.dispatch({
+          type: 'auth/saveTokens',
+          payload: { token },
+        });
+
+        return { token };
+      } else {
+        return thunkAPI.rejectWithValue(
+          'Access token or refresh token is missing'
+        );
+      }
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
