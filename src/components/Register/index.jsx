@@ -7,6 +7,7 @@ import { register } from 'store/auth/authOperations';
 
 import { RegisterSchema } from './RegisterSchema';
 
+import { FcGoogle } from 'react-icons/fc';
 import {
   AuthForm,
   AuthNav,
@@ -18,6 +19,7 @@ import {
   AuthFormPasswordIcon,
   AuthButton,
   ThirdPasswordField,
+  GoogleAuthButton,
 } from './styled';
 
 const RegisterForm = () => {
@@ -82,6 +84,12 @@ const RegisterForm = () => {
             </AuthInput>
             <AuthError name="password" component="div" />
             <AuthButton type="submit">Register Now</AuthButton>
+            <GoogleAuthButton
+              to={'https://taskpro-backend-uiwy.onrender.com/api/users/google'}
+            >
+              <FcGoogle style={{ width: '28px', height: '28px' }} />
+              <span>Register with Google</span>
+            </GoogleAuthButton>
           </AuthForm>
         )}
       </Formik>
