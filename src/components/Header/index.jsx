@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleSidebar } from 'store/sidebarSlice';
 import { getThemeName, setTheme } from 'store/themeSlice';
-
 import { selectIsLoading } from 'store/auth/authSelectors';
 
+import { ReactModal } from 'components/ModalWindows/Modal/Modal';
+import Loader from 'components/Loader/Loader';
 import UserModal from 'components/ModalWindows/UserModal/UserModal';
+
 import userDark from 'images/user-dark.svg';
 import userLight from 'images/user-light.svg';
 import userViolet from 'images/user-violet.svg';
-
-import { ReactModal } from 'components/ModalWindows/Modal/Modal';
-
-import Loader from 'components/Loader/Loader';
 
 import {
   AppHeader,
@@ -38,8 +36,8 @@ const themes = [
 const Header = () => {
   const dispatch = useDispatch();
   const [isThemeOpen, setIsThemeOpen] = useState(false);
-  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false); // Додаємо стейт для модального вікна
-  const user = useSelector(state => state.auth.user);
+  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
+  const user = useSelector(state => state.auth.user.user || state.auth.user);
 
   const selectHandler = ({ value }) => {
     dispatch(setTheme(value));

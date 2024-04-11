@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { ReactComponent as BurgerImage } from './menu.svg';
-import { ReactComponent as DownImage } from './down.svg';
+import { ReactComponent as BurgerImage } from 'images/svg/menu.svg';
+import { ReactComponent as DownImage } from 'images/svg/down.svg';
 
 export const Down = styled(DownImage)`
   color: ${props => props.theme.themePopup.textMain};

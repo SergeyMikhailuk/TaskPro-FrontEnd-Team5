@@ -1,6 +1,6 @@
 import { Form, Field, ErrorMessage } from 'formik';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export const AuthForm = styled(Form)`
   max-width: 335px;
@@ -143,6 +143,41 @@ export const AuthError = styled(ErrorMessage)`
 `;
 
 export const AuthButton = styled.button`
+  color: rgba(22, 22, 22, 1);
+  background-color: rgba(190, 219, 176, 1);
+  width: 100%;
+  height: 49px;
+  margin-top: 10px;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: #a1cf89;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  @media screen and (min-width: 767px) {
+    width: 344px;
+  }
+`;
+
+export const GoogleAuthButton = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   color: rgba(22, 22, 22, 1);
   background-color: rgba(190, 219, 176, 1);
   width: 100%;

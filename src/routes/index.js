@@ -8,6 +8,7 @@ import RestrictedRoute from 'routes/RestrictedRoute';
 import PrivateRoute from 'routes/PrivateRoute';
 import LoginForm from 'components/Login';
 import RegisterForm from 'components/Register';
+import HandleAuth from 'pages/HandleGoogleAuth';
 
 const Welcome = lazy(() => import('pages/Welcome'));
 const Home = lazy(() => import('pages/Home'));
@@ -17,7 +18,6 @@ const Auth = lazy(() => import('pages/Auth'));
 const routing = () => (
   <Route path="/" element={<AppLayout />}>
     <Route index element={<BaseRedirect />} />
-
     <Route
       path="welcome"
       element={
@@ -36,6 +36,7 @@ const routing = () => (
           </PrivateRoute>
         }
       />
+
       <Route
         path=":boardName"
         element={
@@ -45,7 +46,6 @@ const routing = () => (
         }
       />
     </Route>
-
     <Route path="auth" element={<Auth />}>
       <Route index element={<Navigate to="/welcome" replace />} />
       <Route
@@ -65,7 +65,7 @@ const routing = () => (
         }
       />
     </Route>
-
+    <Route path="/handle-auth" element={<HandleAuth />} />
     <Route path="*" element={<Navigate to="/" />} />
   </Route>
 );

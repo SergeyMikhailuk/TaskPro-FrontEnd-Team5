@@ -6,6 +6,7 @@ import {
   logOut,
   refreshUser,
   editProfile,
+  handleGoogleAuth,
 } from 'store/auth/authOperations';
 import {
   addCard,
@@ -37,6 +38,11 @@ const authSlice = createSlice({
       .addCase(logIn.fulfilled, (state, action) => {
         const { user, token } = action.payload;
         state.user = user;
+        state.token = token;
+        state.isLoggedIn = true;
+      })
+      .addCase(handleGoogleAuth.fulfilled, (state, action) => {
+        const { token } = action.payload;
         state.token = token;
         state.isLoggedIn = true;
       })

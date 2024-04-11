@@ -7,6 +7,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { logIn } from 'store/auth/authOperations';
 import { LoginSchema } from './LoginSchema';
 
+import { FcGoogle } from 'react-icons/fc';
 import {
   AuthForm,
   AuthNav,
@@ -18,6 +19,7 @@ import {
   AuthFormPasswordIcon,
   ThirdPasswordField,
   AuthButton,
+  GoogleAuthButton,
 } from 'components/Register/styled';
 
 const LoginForm = () => {
@@ -74,6 +76,12 @@ const LoginForm = () => {
             </AuthInput>
             <AuthError name="password" component="div" />
             <AuthButton type="submit">Log In Now</AuthButton>
+            <GoogleAuthButton
+              to={'https://taskpro-backend-uiwy.onrender.com/api/users/google'}
+            >
+              <FcGoogle style={{ width: '28px', height: '28px' }} />
+              <span>Log In with Google</span>
+            </GoogleAuthButton>
           </AuthForm>
         )}
       </Formik>
